@@ -17,4 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/admin', 'AdminController@index')->name('index');
+    Route::group(['middleware' => 'auth', 'prefix' => "admin"], function () {
+        Route::get('/', 'Admin\AdminController@index')->name('index');
+
+        Route::resource('user', 'Admin\UserController');
+    });
+
+

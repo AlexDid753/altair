@@ -111,6 +111,10 @@
                 </nav>
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                     <div class="container align-items-center pb-2 mb-3">
+                        @if(Session::has('message'))
+                            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                        @endif
+
                         @yield('content')
                     </div>
                 </main>
