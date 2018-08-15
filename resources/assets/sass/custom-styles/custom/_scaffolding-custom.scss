@@ -1,0 +1,180 @@
+//
+// Scaffolding
+// --------------------------------------------------
+
+
+// Reset fonts for relevant elements
+input,
+button,
+select,
+textarea {
+  outline: none;
+}
+
+// Body styles
+// --------------------------------------------------
+
+body {
+  font-family: $font-family-base;
+  font-size: 16px;
+  line-height: 1.625;
+  -webkit-text-size-adjust: none;
+  color: $text-color;
+  background-color: $body-bg;
+  @media (min-width: $screen-sm-min) {
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+  }
+}
+
+// Page styles
+// --------------------------------------------------
+
+.page {
+  overflow: hidden;
+  background-color: $content-bg;
+}
+
+//Page Header
+.page-head {
+  position: relative;
+  z-index: 1000;
+  min-height: 1px;
+}
+
+//Page Content
+
+.page-content {
+}
+
+//Page Footer
+
+.page-footer {
+  background-color: $gray-darker;
+  &-default {
+    position: relative;
+    @extend .contact-darker;
+    @include section-shadow;
+    @media (min-width: 1800px) {
+      background-color: $body-bg;
+      box-shadow: none;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: calc(50% - (#{$shell-xl-width}/2 + 100px));
+        right: 0;
+        @include section-shadow;
+        @include bg-variant-custom(#{$gray-darker});
+        pointer-events: none;
+      }
+    }
+  }
+  &-secondary {
+    @include bg-variant-custom(#{$gray-darker});
+  }
+  &-classic {
+    @include bg-variant-custom(#{$gray-darker});
+    &-title {
+      position: relative;
+      padding-bottom: 15px;
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 50px;
+        border-bottom: 2px solid $brand-school-bus-yellow;
+        left: 50%;
+        @include transform(translateX(-50%));
+        @media (min-width: $screen-sm-min) {
+          left: 0;
+          @include transform(translateX(0));
+        }
+      }
+    }
+    a.text-white {
+      @include link($white, $brand-school-bus-yellow);
+    }
+    .list-inline-lg {
+      @media (min-width: $screen-xl-min) {
+        @include element-groups-custom($list-inline-lg-offsets + 5px, $list-inline-lg-offsets + 5px);
+      }
+    }
+  }
+  .form-validation {
+    top: 4px;
+    right: 6px;
+  }
+}
+
+// Responsive images (ensure images don't scale beyond their parents)
+.img-responsive {
+  @include img-responsive(inline-block);
+}
+
+// Links
+
+// Links
+a {
+  @include transition(.3s ease-out all);
+  &,
+  &:active,
+  &:focus {
+    color: $link-color;
+    text-decoration: none;
+  }
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+}
+// Figures
+//
+// We reset this here because previously Normalize had no `figure` margins. This
+// ensures we don't break anyone's use of the element.
+
+figure {
+  margin: 0;
+}
+
+// Horizontal rules
+
+hr {
+  &.divider {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: 1px solid $hr-border;
+    &-mine-shaft {
+      border-color: $gray-mine-shaft;
+    }
+  }
+}
+
+.divider-custom {
+  margin: 25px 0;
+  height: 70px;
+  width: 1px;
+  border-left: 1px solid $white;
+}
+
+.divider-block {
+  @media (min-width: $screen-lg-min) {
+    position: relative;
+    //padding-left: 85px;
+    //&:before {
+    //  content: '';
+    //  position: absolute;
+    //  top: 23px;
+    //  left: 0;
+    //  width: 70px;
+    //  border-top: 1px solid $hr-border;
+    //}
+  }
+  @media (min-width: $screen-xl-min) {
+    padding-left: 125px;
+    //&:before {
+    //  width: 95px;
+    //}
+  }
+}

@@ -1,0 +1,26 @@
+//Blockquote Custom
+.quote-default {
+  max-width: 985px;
+  padding: 45px 15px;
+  h5,h6 {
+    color: $white;
+  }
+  @include section-shadow;
+  @include bg-variant-custom(#{$gray-darker});
+  @media (min-width: $screen-sm-min) {
+    padding: 50px 60px 30px 55px;
+  }
+  @media (min-width: $screen-lg-min) {
+    padding: 50px 100px 30px 55px;
+  }
+  &-variant-1 {
+    @media (min-width: $screen-sm-min) {
+      padding: 50px 45px 30px 55px;
+    }
+    @media (min-width: $screen-lg-min) {
+      @media (min-width: $screen-lg-min) {
+        padding: 50px 80px 30px 55px;
+      }
+    }
+  }
+}

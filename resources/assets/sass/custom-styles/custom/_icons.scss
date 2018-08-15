@@ -1,0 +1,84 @@
+//
+// Icons
+// --------------------------------------------------
+
+// Base styles
+// --------------------------------------------------
+
+.icon {
+  display: inline-block;
+  font-size: 16px;
+  &:before {
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    font-style: normal;
+    speak: none;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+// Alternate icons
+// --------------------------------------------------
+
+.icon-default {
+  color: $text-color;
+}
+
+.icon-primary {
+  color: $brand-primary;
+}
+
+.icon-silver-chalice {
+  color: $gray-silver-chalice;
+}
+
+.icon-darker {
+  color: $gray-darker;
+}
+
+.icon--school-bus-yellow {
+  color: $brand-school-bus-yellow;
+}
+
+.icon-white {
+  color: $white;
+}
+
+a {
+  &.icon-darker {
+    &:hover {
+      color: $brand-primary;
+    }
+  }
+  &.icon-silver-chalice {
+    &:hover {
+      color: $brand-primary;
+    }
+  }
+  &.icon--school-bus-yellow-white {
+    @include link($white, $brand-school-bus-yellow)
+  }
+  &.icon-white {
+    &:hover {
+      color: $brand-primary;
+    }
+  }
+}
+
+// Button Sizes
+// --------------------------------------------------
+
+.icon-xs {
+  font-size: 14px;
+}
+
+.icon-sm {
+  font-size: 12px;
+}
+
+.icon-lg {
+  font-size: 30px;
+}
