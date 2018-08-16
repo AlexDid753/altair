@@ -21,6 +21,9 @@ Auth::routes();
         Route::get('/', 'Admin\AdminController@index')->name('index');
 
         Route::resource('user', 'Admin\UserController');
+        Route::get( '{id}/delete', 'Admin\UserController@destroy')->name("user.delete");
+
+        Route::resource('page', 'Admin\PageController');
     });
 
 

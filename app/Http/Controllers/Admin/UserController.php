@@ -28,7 +28,7 @@ class UserController extends Controller
 */
     public function index()
     {
-        return view('admin.user', ['users' => User::all()]);
+        return view('admin.user.index', ['users' => User::all()]);
     }
 
     public function edit($id)
@@ -36,10 +36,6 @@ class UserController extends Controller
         $user = User::find($id);
 
         return view('admin.user.edit', ['user' => $user]);
-
-        // show the edit form and pass the user
-        //return User::make('user.edit')
-            //->with('user', $user);
     }
 
     public function update($id)
@@ -50,13 +46,11 @@ class UserController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
 
-        // process the login
         if ($validator->fails()) {
             return Redirect::to('users/' . $id . '/edit')
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
-            // store
             $user = user::find($id);
             $user->name       = Input::get('name');
             $user->email      = Input::get('email');
@@ -71,21 +65,13 @@ class UserController extends Controller
 
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-
     public function destroy($id)
     {
-        // delete
         $user = user::find($id);
         $user->delete();
 
-        // redirect
         Session::flash('message', 'Successfully deleted user!');
         return Redirect::to('/admin/user');
     }
-    */
+
 }

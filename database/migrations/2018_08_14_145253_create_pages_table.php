@@ -27,6 +27,7 @@ class CreatePagesTable extends Migration
             $table->string('meta_keywords')->nullable();
             $table->text('preview')->nullable();
             $table->text('content')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
