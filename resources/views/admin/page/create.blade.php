@@ -2,6 +2,6 @@
 
 @section('content')
     {{ Form::open(array('action' => 'Admin\PageController@store', 'method' => 'post')) }}
-        @include('admin.pages.form')
+        @include('admin.page.form')
     {{ Form::close() }}
 @endsection

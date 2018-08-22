@@ -2,6 +2,6 @@
 
 @section('content')
     {{ Form::model($model, array('route' => array('page.update', $model->id), 'method' => 'PUT')) }}
-        @include('admin.pages.form')
+        @include('admin.page.form')
     {{ Form::close() }}
 @endsection
