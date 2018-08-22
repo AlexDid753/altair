@@ -67,7 +67,6 @@ class BaseAdminController extends Controller
     public function edit($id)
     {
         $model = $this->model::find($id);
-
         return view('admin.' . $this->name . '.edit', [
             'model' => $model,
             'name' => $this->name,
@@ -116,6 +115,12 @@ class BaseAdminController extends Controller
 
         Session::flash('message', 'Successfully deleted '.$this->name.'!');
         return Redirect::to('/admin/'.$this->name);
+    }
+
+    public function form(Request $request, $id = null)
+    {
+        $where = ['id' => $id];
+        $model = $this->model::firstOrNew($where);
     }
 
 }
