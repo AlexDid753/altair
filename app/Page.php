@@ -13,7 +13,7 @@ class Page extends Model
 
 
     protected $attributes = [
-        'fields' => '{}'
+        //'fields' => '{}'
     ];
 
     protected $fillable = [
@@ -56,12 +56,12 @@ class Page extends Model
 
     public function parent()
     {
-        return $this->belongsTo('App\Models\Page');
+        return $this->belongsTo('App\Page');
     }
 
     public function childrens()
     {
-        return $this->hasMany('App\Models\Page', 'parent_id', 'id');
+        return $this->hasMany('App\Page', 'parent_id', 'id');
     }
 
     public function fullUrl()
@@ -93,7 +93,12 @@ class Page extends Model
         else
             $out = ['' => ''];
 
-        $models = self::where(['parent_id' => $parentId])->get();
+        if ($parentId == null) {
+            $models = self::all();
+        }else {
+            $models = self::where(['parent_id' => $parentId])->get();
+        }
+
         if ($models)
             foreach ($models as $model) {
                 $out[$model->id] = $parentName ? $parentName . $model->name : $model->name;
@@ -102,6 +107,12 @@ class Page extends Model
             }
 
         return $out;
+    }
+
+    public function isContainer()
+    {
+        return false;
+        //return $this->template && $this->template->is_container;
     }
 
 }

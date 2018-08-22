@@ -1,6 +1,3 @@
-{{ Form::open(array('action' => 'Admin\PageController@store', 'method' => 'post')) }}
-
-
 <div class="row">
     <div class="col-md-11">
 
@@ -22,4 +19,3 @@
         </div>
     </div>
 </div>
-{{ Form::close() }}

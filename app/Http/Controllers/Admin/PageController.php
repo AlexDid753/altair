@@ -14,8 +14,9 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public $model;
+    public $name;
     public $attributes = [
-        'fields' => '{}'
+        //'fields' => '{}'
     ];
 
     public $fields = [
@@ -31,7 +32,11 @@ class PageController extends Controller
     public function __construct()
     {
         if (!$this->model)
-            $this->model = 'App\Models\Page';
+            $this->model = 'App\Page';
+
+        if (!$this->name) {
+            $this->name = "page";
+        }
     }
 
     public function getRouteKeyName()
@@ -42,7 +47,11 @@ class PageController extends Controller
 
     public function index()
     {
-        return view('admin.pages.index', ['pages' => Page::all()]);
+        return view('admin.pages.index', [
+            'pages' => Page::all(),
+            'paddind' => 0,
+            'name' => $this->name
+        ]);
     }
 
 
@@ -116,8 +125,10 @@ class PageController extends Controller
             
             if (isset($id)) {
                 $page = Page::find($id);
+                Session::flash('message', 'Successfully updated page!');
             }else {
-                $page = new Page; 
+                $page = new Page;
+                Session::flash('message', 'Successfully created page!');
             }
             
             $page->name       = Input::get('name'); //todo сделать через набор атрибутов
@@ -129,7 +140,7 @@ class PageController extends Controller
 
             // redirect
             Session::flash('message', 'Successfully created page!');
-            return view('admin.pages.index', ['pages' => Page::all()]);
+            return Redirect::to('/admin/page');
         }
     }
 
@@ -148,10 +159,11 @@ class PageController extends Controller
     public function update(Request $request, $id)
     {
         $this->store($request,$id);
+        return Redirect::to('/admin/page');
     }
 
 
-    public function destroy($id)
+    public function delete($id)
     {
         $page = Page::find($id);
         $page->delete();
@@ -159,4 +171,26 @@ class PageController extends Controller
         Session::flash('message', 'Successfully deleted page!');
         return Redirect::to('/admin/page');
     }
+
+    public function child(Request $request, $id = null)
+    {
+        /* todo переделать
+        $from = $this->model::where(['id' => $id])->first();
+        if (!$from)
+            return redirect($this->redirectTo);
+
+        $to = new $this->model($from->getAttributes());
+        $to->name = $to->name . ' - copy';
+        $to->parent_id = $from->id;
+
+        if (!empty($to->fields))
+            $to->fields = json_decode($to->fields);
+
+        $to->save();
+        return redirect($this->redirectTo);
+        */
+        return Redirect::to('/admin/page');
+
+    }
+
 }

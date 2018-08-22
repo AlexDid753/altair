@@ -6,16 +6,21 @@
             <table class="table table-striped">
                 <tbody>
 
-                @foreach ($pages as $page)
-                    <tr>
-                        <td>{{ $page->name }}</td>
-                        <td class="text-right">
-                            <a href="{{ route('page.edit', ['id' => $page->id]) }}" class="mr-3"><span data-feather="edit"></span></a>
+                    @foreach ($pages as $page)
+                        @if (!$page->parent_id)
+                            <tr><!-- Строки первого уровня без родителей -->
+                                <td>{{ $page->name }}</td>
+                                <td class="text-right">
+                                    <a href="{{ route('page.edit', ['id' => $page->id]) }}" class="mr-3"><span data-feather="edit"></span></a>
 
-                            <a href="{{ route('page.destroy', ['id' => $page->id]) }}" onclick="return confirm('Действительно удалить &quot;{{ $page->name }}&quot; ?')"><span data-feather="trash"></span></a>
-                        </td>
-                    </tr>
-                @endforeach
+                                    <a href="{{ route('page.delete', ['id' => $page->id]) }}" onclick="return confirm('Действительно удалить &quot;{{ $page->name }}&quot; ?')"><span data-feather="trash"></span></a>
+                                </td>
+                            </tr>
+                            @if ($page->childrens)
+                                @includeIf('admin.pages.table_row', ['models' => $page->childrens, 'padding' => 18])
+                            @endif
+                        @endif
+                    @endforeach
 
                 </tbody>
             </table>
