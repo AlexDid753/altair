@@ -27,6 +27,16 @@ Auth::routes();
         Route::get( 'page/{id}/child', 'Admin\PageController@child')->name("page.child");
         Route::get( 'page/{id}/delete', 'Admin\PageController@delete')->name("page.delete");
 
+        Route::get('template', 'Admin\TemplateController@index');
+        Route::get( 'template/create', 'Admin\TemplateController@create')->name("template.create");
+        Route::post('template', 'Admin\TemplateController@store')->name("template.store");
+        Route::post('template/create', 'Admin\TemplateController@create'); //todo надо ли?
+        Route::get( 'template/{id}/copy/',   'Admin\TemplateController@copy')->name("template.copy");
+        Route::get( 'template/{id}/child/',  'Admin\TemplateController@child')->name("template.child");
+        Route::get( 'template/{id}/edit/',   'Admin\TemplateController@form')->name("template.edit");
+        Route::post('template/{id}/update/', 'Admin\TemplateController@form')->name("template.update");
+        Route::get( 'template/{id}/delete/', 'Admin\TemplateController@delete')->name("template.delete");
+
 
 //        Route::get( '/',           studly_case($url) . 'Controller@list');
 //        Route::get( 'add',         studly_case($url) . 'Controller@form')->name("{$url}.add");
