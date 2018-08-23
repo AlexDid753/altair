@@ -21,7 +21,7 @@ Auth::routes();
         Route::get('/', 'Admin\AdminController@index')->name('index');
 
 
-        foreach (['user', 'page','template'] as $url) {
+        foreach (['user', 'page','template', 'news'] as $url) {
             Route::prefix($url)->group(function () use ($url) {
                 $controller = 'Admin\\'.studly_case($url) . 'Controller';
 

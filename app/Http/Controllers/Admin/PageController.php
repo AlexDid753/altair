@@ -3,12 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Page;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Http\Request;
+
 
 class PageController extends BaseAdminController
 {

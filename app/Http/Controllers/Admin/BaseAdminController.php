@@ -36,13 +36,6 @@ class BaseAdminController extends Controller
             $this->redirectTo = '/admin/' . $this->name;
     }
 
-    public function index(){
-        return view('admin.'.$this->name.'.index', [
-            'models' => $this->model::all(),
-            'paddind' => 0,
-            'name' => $this->name
-        ]);
-    }
 
     public function create()
     {
@@ -51,7 +44,7 @@ class BaseAdminController extends Controller
         return view('admin.'.$this->name.'.create', ['model' => $model, 'fields' => $this->fields]);
     }
 
-    public function list(Request $request)
+    public function index()
     {
         if ($this->listWhere())
             $models = $this->model::where($this->listWhere())->paginate(50);
@@ -120,6 +113,11 @@ class BaseAdminController extends Controller
     {
         $where = ['id' => $id];
         $model = $this->model::firstOrNew($where);
+    }
+
+    public function listWhere()
+    {
+
     }
 
 }
