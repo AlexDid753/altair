@@ -6,13 +6,13 @@
             <table class="table table-striped">
                 <tbody>
 
-                @foreach ($users as $user)
+                @foreach ($models as $model)
                     <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
+                        <td>{{ $model->name }}</td>
+                        <td>{{ $model->email }}</td>
                         <td class="text-right">
-                            <a href="{{ route('user.edit', ['id' => $user->id]) }}" class="mr-3"><span data-feather="edit"></span></a>
-                            <a href="{{ route('user.delete', ['id' => $user->id]) }}" onclick="return confirm('Действительно удалить &quot;{{ $user->name }}&quot; ?')"><span data-feather="trash"></span></a>
+                            <a href="{{ route('user.edit', ['id' => $model->id]) }}" class="mr-3"><span data-feather="edit"></span></a>
+                            <a href="{{ route('user.delete', ['id' => $model->id]) }}" onclick="return confirm('Действительно удалить &quot;{{ $model->name }}&quot; ?')"><span data-feather="trash"></span></a>
                         </td>
                     </tr>
                 @endforeach

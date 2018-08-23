@@ -2,7 +2,7 @@
 
 @section('content')
         @csrf
-        {{ Form::model($user, array('route' => array('user.update', $user->id), 'method' => 'PUT')) }}
+        {{ Form::model($model, array('route' => array('user.update', $model->id), 'method' => 'PUT')) }}
 
         <div class="row">
             <div class="col-md-11">
