@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-@dd($models)
 @section('content')
     <div class="row">
         <div class="col-md-11">
