@@ -97,11 +97,10 @@ class BaseAdminController extends Controller
                 $model = new $this->model();
                 Session::flash('message', 'Successfully created '.$this->name.'!');
             }
-
+            $this->data = $request->all();
             foreach ($this->fields as $field_name => $value) {
                 $model->$field_name = Input::get($field_name);
             }
-
             $model->save();
 
             return Redirect::to('/admin/'.$this->name);
