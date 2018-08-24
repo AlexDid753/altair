@@ -51,7 +51,7 @@ class BaseAdminController extends Controller
         else
             $models = $this->model::paginate(50);
 
-        return view()->first(['admin.' . $this->name . '.list', 'admin.base.list'], [
+        return view()->first(['admin.' . $this->name . '.list', 'admin.base.index'], [
             'models' => $models,
             'name' => $this->name
         ]);

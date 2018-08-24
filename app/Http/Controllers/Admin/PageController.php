@@ -37,4 +37,17 @@ class PageController extends BaseAdminController
         return view('admin.page.show', compact('page')); //todo поставить маршрут на просмотр страницы на сайте не в админке
     }
 
+    public function index()
+    {
+        if ($this->listWhere())
+            $models = $this->model::where($this->listWhere())->paginate(50);
+        else
+            $models = $this->model::paginate(50);
+
+        return view()->first(['admin.' . $this->name . '.list', 'admin.page.index'], [
+            'models' => $models,
+            'name' => $this->name
+        ]);
+    }
+
 }

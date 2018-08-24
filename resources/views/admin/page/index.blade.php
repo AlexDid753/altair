@@ -5,7 +5,6 @@
         <div class="col-md-11">
             <table class="table table-striped">
                 <tbody>
-
                     @foreach ($models as $model)
                         @if (!$model->parent_id)
                             <tr><!-- Строки первого уровня без родителей -->
@@ -21,7 +20,6 @@
                             @endif
                         @endif
                     @endforeach
-
                 </tbody>
             </table>
         </div>
