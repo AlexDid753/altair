@@ -31,6 +31,9 @@
         "sven/artisan-view": "^3.0"
     },
     "autoload": {
+        "files": [
+            "app/helpers.php"
+        ],
         "classmap": [
             "database/seeds",
             "database/factories"

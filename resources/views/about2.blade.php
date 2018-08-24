@@ -8,6 +8,7 @@
                     <h1>{{ $model->name }}</h1>
                     {!! $model->text !!}
                 </div>
+                <img src="{{ resize($model->img1[0]->image,100) }}" alt="">
             </div>
     </section>
 @endsection
