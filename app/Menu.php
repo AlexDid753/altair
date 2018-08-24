@@ -24,10 +24,12 @@ class Menu extends Model
         return $this->hasMany('App\Menu', 'parent_id', 'id')->sortAsc();
     }
 
-    public static function getUrl($id)
+    public function getUrl()
     {
-        $model = self::firstOrNew(['id' => $id]);
-        return $model->url ?: '#notFound';
+        if ($this->page_id)
+            return Page::getUrl($this->page_id);
+
+        return $this->url;
     }
 
     public function fullUrl()

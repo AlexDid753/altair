@@ -50,7 +50,7 @@
 
     </main>
 
-    @includeIf('blocks.footer')
+    {{--@includeIf('blocks.footer')--}}
 
 </div>
 

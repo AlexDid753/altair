@@ -2,7 +2,13 @@
 
 namespace App\Providers;
 
+
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
+use App\Menu;
+//use App\Settings;
+use App\Page;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +19,28 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if (!app()->runningInConsole()) {
+
+            Blade::directive('page_url', function ($id) {
+                return "<?php echo App\Page::getUrl({$id}); ?>";
+            });
+
+            $topMenu = Menu::where(['parent_id' => 1])->get();
+            view()->share('topMenu', $topMenu);
+
+            $footerMenu = Menu::where(['parent_id' => 2])->get();
+            view()->share('footerMenu', $footerMenu);
+
+            $latestNews = Page::where(['parent_id' => 8])->orderBy('created_at', 'desc')->limit(2)->get();
+            view()->share('latestNews', $latestNews);
+
+//            $settings = new Settings;
+//            view()->share('settings', $settings);
+
+            if (!starts_with(request()->path(), 'admin'))
+                Paginator::defaultView('pagination::default');
+
+        }
     }
 
     /**
