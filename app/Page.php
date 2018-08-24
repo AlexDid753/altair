@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Page extends Model
 {
     use SoftDeletes;
+    public $product_template_id = 7;
 
     protected $attributes = [
         'fields' => '{}'
@@ -222,5 +223,9 @@ class Page extends Model
     {
         $model = self::firstOrNew(['id' => $id]);
         return $model->url ?: '#notFound';
+    }
+
+    public function isProduct() {
+         return $this->template_id == $this->product_template_id ? true : false ;
     }
 }

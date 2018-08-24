@@ -11,10 +11,18 @@ class PageController extends BaseController
 {
     public function show(Request $request, $url = '/')
     {
+        $session_data = $request->session()->all();
+
         if ($url != '/')
             $url = '/' . $url;
 
         $model = Page::where(['published' => 1, 'url' => $url])->first();
+
+        // Push product ID to session
+        if($model->isProduct()){
+            session()->push('products.recently_viewed', $model->id);
+        };
+
 
 //        if (!$model && ($redirect = Redirect::getRedirect($url))) {
 //            return redirect($redirect[0], $redirect[1]);
