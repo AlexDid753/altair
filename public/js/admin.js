@@ -5,6 +5,7 @@ function initEditor() {
         plugins: "image, link, code",
         toolbar: "link image code",
         language: 'ru',
+        language_url : '/packages/tinymce/langs/ru.js',
         file_browser_callback : elFinderBrowser,
         init_instance_callback: function (editor) {
             editor.on('blur', function (e) {

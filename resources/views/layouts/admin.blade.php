@@ -136,7 +136,7 @@
     <!-- Scripts -->
     <script>
         var appConfig = {
-            elfinderRoute: '<? /*route('elfinder.tinymce4')*/ ?>'
+            elfinderRoute: '<?= route('elfinder.tinymce4') ?>'
         };
     </script>
 

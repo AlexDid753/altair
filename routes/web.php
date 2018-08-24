@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/elfinder', 'Barryvdh\Elfinder\ElfinderController@showPopup')->name('elfinder');
+});
+
 Auth::routes();
 
     Route::group(['middleware' => 'auth', 'prefix' => "admin"], function () {

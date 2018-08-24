@@ -15,6 +15,7 @@ class PageController extends BaseAdminController
         'parent_id' => ['type' => 'dropdown', 'label' => 'Parent', 'model' => 'Page', 'method' => 'dropdown'],
         'template_id' => ['type' => 'dropdown', 'label' => 'Template', 'model' => 'Template', 'method' => 'dropdown'],
         'fields' => 'template_fields',
+
     ];
 
     public function __construct()
