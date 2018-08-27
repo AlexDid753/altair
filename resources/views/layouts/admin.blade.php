@@ -44,21 +44,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/portfolio">
+                                <a class="nav-link" href="/admin/category">
                                     <span data-feather="shopping-cart"></span>
-                                    Портфолио
+                                    Категории товаров
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/catalog_stone">
+                                <a class="nav-link" href="/admin/product">
                                     <span data-feather="shopping-cart"></span>
-                                    Товары каталога камня
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/catalog_product">
-                                    <span data-feather="shopping-cart"></span>
-                                    Товары каталога изделий
+                                    Товары
                                 </a>
                             </li>
                         </ul>
