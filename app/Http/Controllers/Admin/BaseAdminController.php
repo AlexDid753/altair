@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -60,10 +61,14 @@ class BaseAdminController extends Controller
     public function edit($id)
     {
         $model = $this->model::find($id);
+        if ($this->name == 'product' || $this->name == 'category') {
+            $categories = Category::all();
+        }
         return view('admin.' . $this->name . '.edit', [
             'model' => $model,
             'name' => $this->name,
-            'fields' => $this->fields
+            'fields' => $this->fields,
+            'categories' => $categories
         ]);
     }
 

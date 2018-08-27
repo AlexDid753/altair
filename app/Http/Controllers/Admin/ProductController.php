@@ -3,6 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Product;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+
 
 
 class ProductController extends BaseAdminController
@@ -48,6 +54,38 @@ class ProductController extends BaseAdminController
             'name' => $this->name
         ]);
     }
+
+    public function store(Request $request, $id = null)
+    {
+        $rules = $this->model::validatorRules();
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('admin/'.$this->name.'/create')
+                ->withErrors($validator);
+        } else {
+
+            if (isset($id)) {
+                $model = $this->model::find($id);
+                Session::flash('message', 'Successfully updated '.$this->name.'!');
+            }else {
+                $model = new $this->model();
+                Session::flash('message', 'Successfully created '.$this->name.'!');
+            }
+            $this->data = $request->all();
+
+            foreach ($this->fields as $field_name => $value) {
+                $model->$field_name = Input::get($field_name);
+            }
+
+            $model->categories()->sync($this->data['categories']);
+
+            $model->save();
+
+            return Redirect::to('/admin/'.$this->name);
+        }
+    }
+
 
 
 }

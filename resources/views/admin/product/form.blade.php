@@ -11,6 +11,16 @@
             ])
         @endforeach
 
+        <p>Относится к категориям: </p>
+        @foreach($categories as $category)
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            {{ Form::checkbox('categories[]', $category->id) }} {{ $category->title }}
+                        </div>
+                    </div>
+                </div>
+        @endforeach
 
     </div>
     <div class="col-md-1">
