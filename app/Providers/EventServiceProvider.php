@@ -29,13 +29,7 @@ class EventServiceProvider extends ServiceProvider
 
     public static function setUrl($model){
         $newUrl = $model->fullUrl();
-
-        if ($model->id && $newUrl != $model->url) {
-//                Redirect::firstOrCreate([
-//                    'from' => $model->url,
-//                    'model' => 'Page',
-//                    'model_id' => $model->id
-//                ]);
+        if ($newUrl != $model->url) {
             $model->url = $newUrl;
         }
         //Log::model($model);
@@ -74,6 +68,7 @@ class EventServiceProvider extends ServiceProvider
 
         Product::saving(function($model)
         {
+
             EventServiceProvider::setUrl($model);
         });
     }

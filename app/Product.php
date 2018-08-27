@@ -11,4 +11,15 @@ class Product extends ResourcePage
         return $this->belongsToMany('App\Category');
     }
 
+    public function parent()
+    {
+        return $this->belongsTo('App\Category');
+    }
+
+    public function childrens()
+    {
+
+    }
+
+
 }

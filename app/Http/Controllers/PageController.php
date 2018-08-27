@@ -18,11 +18,6 @@ class PageController extends BaseController
 
         $model = Page::where(['published' => 1, 'url' => $url])->first();
 
-        // Push product ID to session
-        if($model->isProduct()){
-            session()->push('products.recently_viewed', $model->id);
-        };
-
 
 //        if (!$model && ($redirect = Redirect::getRedirect($url))) {
 //            return redirect($redirect[0], $redirect[1]);
@@ -30,6 +25,11 @@ class PageController extends BaseController
 
         if (!$model)
             abort(404, 'Страница не найдена');
+
+        // Push product ID to session
+        if($model->isProduct()){
+            session()->push('products.recently_viewed', $model->id);
+        };
 
         $params = [
             'model' => $model,

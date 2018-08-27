@@ -78,9 +78,14 @@ class ProductController extends BaseAdminController
                 $model->$field_name = Input::get($field_name);
             }
 
-            $model->categories()->sync($this->data['categories']);
+
+
+
 
             $model->save();
+
+            if ($model->categories())
+                $model->categories()->sync($this->data['categories']);
 
             return Redirect::to('/admin/'.$this->name);
         }

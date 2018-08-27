@@ -101,6 +101,17 @@ class ResourcePage extends Model
         return $out;
     }
 
+    /**
+     * Скоуп запроса опубликованных моделей.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePublished($query)
+    {
+        return $query->where('published','=', 1)->get();
+    }
+
 
 
 

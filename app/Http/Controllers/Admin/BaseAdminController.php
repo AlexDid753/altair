@@ -41,8 +41,13 @@ class BaseAdminController extends Controller
     public function create()
     {
         $model = new $this->model;
+        $categories = $this->getCategories();
 
-        return view('admin.'.$this->name.'.create', ['model' => $model, 'fields' => $this->fields]);
+        return view('admin.'.$this->name.'.create', [
+            'model' => $model,
+            'fields' => $this->fields,
+            'categories' => $categories
+        ]);
     }
 
     public function index()
@@ -61,15 +66,19 @@ class BaseAdminController extends Controller
     public function edit($id)
     {
         $model = $this->model::find($id);
-        if ($this->name == 'product' || $this->name == 'category') {
-            $categories = Category::all();
-        }
+        $categories = $this->getCategories();
         return view('admin.' . $this->name . '.edit', [
             'model' => $model,
             'name' => $this->name,
             'fields' => $this->fields,
             'categories' => $categories
         ]);
+    }
+
+    public function getCategories(){
+        if ($this->name == 'product' || $this->name == 'category') {
+            return $categories = Category::all();
+        }
     }
 
     public function update(Request $request, $id)
