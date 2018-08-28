@@ -13,7 +13,13 @@ class CatalogController extends BaseController
 {
     public function show(Request $request)
     {
+
+
+    }
+
+    public function index(Request $request) {
         $models = Category::published();
+        dd($models);
         if (!$models)
             abort(404, 'Страница не найдена');
         $params = [
@@ -23,6 +29,5 @@ class CatalogController extends BaseController
         ];
 
         return view('catalog', $params);
-
     }
 }

@@ -42,6 +42,19 @@ class Category extends Model
         return false;
     }
 
+    public function fullUrl()
+    {
+        if (!$this->parent()->exists()) {
+            $url = '/'. 'catalog/' . trim($this->slug, '/');
+        }else{
+            $url = '/' . trim($this->slug, '/');
+            $parent = $this->parent;
+            $url = $parent->url . $url;
+        }
+
+        return $url;
+    }
+
 
 
 

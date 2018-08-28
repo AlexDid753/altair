@@ -68,7 +68,6 @@ class EventServiceProvider extends ServiceProvider
 
         Product::saving(function($model)
         {
-
             EventServiceProvider::setUrl($model);
         });
     }
