@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Page extends Model
 {
     use SoftDeletes;
-    public $product_template_id = 7;
 
     protected $attributes = [
         'fields' => '{}'
@@ -148,24 +147,6 @@ class Page extends Model
         return ['' => ''] + $plucked->all();
     }
 
-    public static function dropdownStones()
-    {
-        $plucked = self::where(['template_id' => 9])->pluck('name', 'id');
-        return $plucked->all();
-    }
-
-    public static function dropdownProducts()
-    {
-        $plucked = self::where(['template_id' => 12])->pluck('name', 'id');
-        return $plucked->all();
-    }
-
-    public static function dropdownPortfolio()
-    {
-        $plucked = self::where(['template_id' => 19])->pluck('name', 'id');
-        return $plucked->all();
-    }
-
     public static function dropdownCountry()
     {
         $countries = [
@@ -225,7 +206,4 @@ class Page extends Model
         return $model->url ?: '#notFound';
     }
 
-    public function isProduct() {
-         return $this->template_id == $this->product_template_id ? true : false ;
-    }
 }

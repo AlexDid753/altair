@@ -4,8 +4,24 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends ResourcePage
+class Category extends Model
 {
+    use Traits\ResourcePageMethods;
+
+    protected $fillable = [
+        'parent_id',
+        'published',
+        'title',
+        'slug',
+        'url',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
+        'text'
+    ];
+    protected $casts = [
+        'published' => 'boolean',
+    ];
 
     public function products()
     {

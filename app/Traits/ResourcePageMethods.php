@@ -1,26 +1,8 @@
-<?php
-
-namespace App;
-
-use Illuminate\Database\Eloquent\Model;
+<?php namespace App\Traits;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-
-class ResourcePage extends Model
+trait ResourcePageMethods
 {
     use SoftDeletes;
-
-    protected $fillable = [
-        'parent_id',
-        'published',
-        'title',
-        'slug',
-        'url',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
-        'text'
-    ];
 
     public static function validatorRules()
     {
@@ -29,10 +11,6 @@ class ResourcePage extends Model
             'images' => 'array'
         ];
     }
-
-    protected $casts = [
-        'published' => 'boolean',
-    ];
 
     public function setSlugAttribute($value)
     {
@@ -54,23 +32,6 @@ class ResourcePage extends Model
     public function parent()
     {
         return $this->belongsTo('App\Page');
-    }
-
-    public function childrens()
-    {
-        return $this->hasMany('App\Page', 'parent_id', 'id');
-    }
-
-    public function fullUrl()
-    {
-        $url = '/' . trim($this->slug, '/');
-        $parent = $this->parent;
-        while ($parent) {
-            $url = '/' . $parent->slug . $url;
-            $parent = $parent->parent;
-        }
-
-        return $url;
     }
 
     public static function getUrl($id)
@@ -101,32 +62,20 @@ class ResourcePage extends Model
         return $out;
     }
 
-    /**
-     * Скоуп запроса опубликованных моделей.
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopePublished($query)
     {
         return $query->where('published','=', 1)->get();
     }
 
+    public function fullUrl()
+    {
+        $url = '/' . trim($this->slug, '/');
+        $parent = $this->parent;
+        while ($parent) {
+            $url = '/' . $parent->slug . $url;
+            $parent = $parent->parent;
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return $url;
+    }
 }
