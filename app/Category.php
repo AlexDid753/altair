@@ -33,6 +33,10 @@ class Category extends Model
         return $this->hasMany('App\Category', 'parent_id', 'id');
     }
 
+    public function publishedChildrens(){
+        return $this->childrens()->where('published', '=', 1);
+    }
+
     public function parent()
     {
         return $this->belongsTo('App\Category');

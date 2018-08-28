@@ -42,33 +42,46 @@ class EventServiceProvider extends ServiceProvider
                     $children->save();
     }
 
+    public static function setProductsUrl($model){
+        if (count($model->products))
+            foreach ($model->products as $product)
+                if ($product->url != $product->fullUrl())
+                    $product->save();
+        if (count($model->childrens))
+            foreach ($model->childrens as $children) {
+                self::setChildrensUrl($children);
+                self::setProductsUrl($children);
+            }
+    }
+
     public function boot()
     {
         parent::boot();
 
         Page::saving(function($model)
         {
-            EventServiceProvider::setUrl($model);
+            self::setUrl($model);
         });
 
         Page::saved(function($model)
         {
-            EventServiceProvider::setChildrensUrl($model);
+            self::setChildrensUrl($model);
         });
 
         Category::saving(function($model)
         {
-            EventServiceProvider::setUrl($model);
+            self::setUrl($model);
         });
 
         Category::saved(function($model)
         {
-            EventServiceProvider::setChildrensUrl($model);
+            self::setChildrensUrl($model);
+            self::setProductsUrl($model);
         });
 
         Product::saving(function($model)
         {
-            EventServiceProvider::setUrl($model);
+            self::setUrl($model);
         });
     }
 }

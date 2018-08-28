@@ -34,6 +34,18 @@ class Product extends Model
         return $this->belongsTo('App\Category');
     }
 
+    public function fullUrl()
+    {
+        $url = '/' . trim($this->slug, '/');
+        $parent = $this->parent;
+        if ($parent){
+            $url = $parent->url . $url;
+        }else {
+            $url = '/'. 'catalog/' . trim($this->slug, '/');
+        }
+
+        return $url;
+    }
 
 
 }

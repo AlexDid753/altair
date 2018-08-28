@@ -10,8 +10,19 @@
         </div>
     </section>
     <section>
-        @foreach($model->childrens as $product)
-            <a href="{{ $product->getUrl($product->id) }}">{{ $product->name }}</a>
+        <h2>Категории</h2>
+        @foreach($subcategories as $subcategory)
+            <a href="{{ $subcategory->getUrl($subcategory->id) }}">{{ $subcategory->title }}</a>
         @endforeach
+    </section>
+    <section>
+        <h2>Продукты</h2>
+        <ul>
+            @foreach($products as $product)
+                <li>
+                    <a href="{{ $product->getUrl($product->id) }}">{{ $product->title }}</a>
+                </li>
+            @endforeach
+        </ul>
     </section>
 @endsection

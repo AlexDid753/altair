@@ -10,20 +10,21 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Category;
+use App\Product;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/elfinder', 'Barryvdh\Elfinder\ElfinderController@showPopup')->name('elfinder');
+    //Route::get('/admin/elfinder', 'Barryvdh\Elfinder\ElfinderController@showPopup')->name('elfinder');
 });
 
 Auth::routes();
 
-    Route::group(['middleware' => 'auth', 'prefix' => "admin"], function () {
+Route::group(['middleware' => 'auth', 'prefix' => "admin"], function () {
         Route::get('/', 'Admin\AdminController@index')->name('index');
-
 
         foreach (['user', 'page','template', 'news', 'menu', 'category', 'product'] as $url) {
             Route::prefix($url)->group(function () use ($url) {
@@ -42,8 +43,18 @@ Auth::routes();
             });
         }
 
+});
 
+Route::get('catalog', 'CategoryController@index')->name('index');
+
+
+$categories_urls = Category::published()->pluck('url');
+foreach ($categories_urls as $url) {
+    Route::prefix($url)->group(function () use ($url) {
+        Route::get( '', 'CategoryController@show');
+        Route::get('{url?}', 'ProductController@show')->where('url', '[A-Za-z0-9/-]+');
     });
+}
 
 Route::get('{url?}', 'PageController@show')->where('url', '[A-Za-z0-9/-]+');
 
