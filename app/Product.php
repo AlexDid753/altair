@@ -17,10 +17,12 @@ class Product extends Model
         'meta_title',
         'meta_description',
         'meta_keywords',
-        'text'
+        'text',
+        'images'
     ];
     protected $casts = [
         'published' => 'boolean',
+        //'images' => 'array'
     ];
 
 

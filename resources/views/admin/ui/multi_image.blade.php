@@ -10,7 +10,7 @@
 
     <div class="col-md-12">
         <div class="multi-item-container">
-            @foreach ($model->$fieldModelName ?: json_decode('[{"image":""}]') as $key => $value)
+            @foreach (json_decode($model->$fieldModelName) ?: json_decode('[{"image":""}]') as $key => $value)
                 <div class="multi-item row mb-2">
                     <div class="col-md-8">
                         <div class="input-group">

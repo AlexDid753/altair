@@ -15,6 +15,9 @@ class CategoryController extends BaseAdminController
         'url' => 'input_readonly',
         'parent_id' => ['type' => 'dropdown', 'label' => 'Parent', 'model' => 'Category', 'method' => 'dropdown'],
 
+        'text' => 'editor',
+        'images' => 'multi_image',
+
         'meta_title' => 'input',
         'meta_description' => 'input',
         'meta_keywords' => 'input'

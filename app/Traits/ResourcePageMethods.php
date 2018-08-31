@@ -8,7 +8,6 @@ trait ResourcePageMethods
     {
         return [
             'title' => 'required|string|max:255',
-            'images' => 'array'
         ];
     }
 
