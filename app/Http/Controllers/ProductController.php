@@ -10,7 +10,7 @@ class ProductController extends BaseController
 {
     public function show(Request $request, $url=null)
     {
-        $url = $request->getRequestUri();
+        $url = prepare_url($request->getRequestUri());
         $model = Product::where(['published' => 1, 'url' => $url])->first();
 
         if (!$model)

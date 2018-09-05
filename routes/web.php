@@ -47,13 +47,13 @@ Route::group(['middleware' => 'auth', 'prefix' => "admin"], function () {
 
 Route::get('catalog', 'CategoryController@index')->name('index');
 
-
 $categories_urls = Category::published()->pluck('url');
 foreach ($categories_urls as $url) {
-    Route::prefix($url)->group(function () use ($url) {
-        Route::get( '', 'CategoryController@show');
-        Route::get('{url?}', 'ProductController@show')->where('url', '[A-Za-z0-9/-]+');
-    });
+    Route::get( $url, 'CategoryController@show');
+}
+
+foreach ($categories_urls as $url) {
+    Route::get($url."{url}", 'ProductController@show')->where('url', '[A-Za-z0-9/-]+');
 }
 
 Route::get('{url?}', 'PageController@show')->where('url', '[A-Za-z0-9/-]+');

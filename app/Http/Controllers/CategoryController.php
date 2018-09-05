@@ -13,12 +13,12 @@ class CategoryController extends BaseController
 {
     public function show(Request $request)
     {
-        $url = $request->getRequestUri();
+        $url = prepare_url($request->getRequestUri());
         $model = Category::where(['published' => 1, 'url' => $url])->first();
-        $subcategories = $model->childrens->where('published' , '=', 1);
-        $products = $model->products->where('published' , '=', 1);
         if (!$model)
             abort(404, 'Страница не найдена');
+        $subcategories = $model->childrens->where('published' , '=', 1);
+        $products = $model->products->where('published' , '=', 1);
 
         return view('category', [
             'model' => $model,
