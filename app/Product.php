@@ -8,6 +8,14 @@ class Product extends Model
 {
     use Traits\ResourcePageMethods;
 
+    public static function validatorRules()
+    {
+        return [
+            'title' => 'required|string|max:255',
+            'categories' => 'required'
+        ];
+    }
+
     protected $fillable = [
         'parent_id',
         'published',
@@ -20,6 +28,7 @@ class Product extends Model
         'text',
         'images'
     ];
+
     protected $casts = [
         'published' => 'boolean',
         //'images' => 'array'

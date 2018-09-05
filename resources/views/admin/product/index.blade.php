@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="row">
-        <div class="col-md-11">
+        <div class="col-md-10">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -15,7 +15,7 @@
                     @foreach ($models as $model)
                             <tr>
                                 <td>{{ $model->title }}</td>
-                                <td>{{ $model->parent->title }}</td>
+                                <td>{{ $model->parent->title or '—' }}</td>
                                 <td class="text-right">
                                     <a href="{{ route($name.'.edit', ['id' => $model->id]) }}" class="mr-3"><span data-feather="edit"></span></a>
 

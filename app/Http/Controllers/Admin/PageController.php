@@ -12,6 +12,7 @@ class PageController extends BaseAdminController
         'name' => 'input',
         'published' => 'checkbox',
         'slug' => 'input',
+        'url' => ['type' => 'input', "attributes"=>['readonly'=>'readonly']],
         'parent_id' => ['type' => 'dropdown', 'label' => 'Parent', 'model' => 'Page', 'method' => 'dropdown'],
         'template_id' => ['type' => 'dropdown', 'label' => 'Template', 'model' => 'Template', 'method' => 'dropdown'],
         'fields' => 'template_fields',

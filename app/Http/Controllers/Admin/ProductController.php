@@ -70,20 +70,16 @@ class ProductController extends BaseAdminController
 
             if (isset($id)) {
                 $model = $this->model::find($id);
-                Session::flash('message', 'Successfully updated '.$this->name.'!');
+                Session::flash('message', 'Продукт обновлен!');
             }else {
                 $model = new $this->model();
-                Session::flash('message', 'Successfully created '.$this->name.'!');
+                Session::flash('message', 'Продукт создан!');
             }
             $this->data = $request->all();
 
             foreach ($this->fields as $field_name => $value) {
                 $model->$field_name = Input::get($field_name);
             }
-
-
-
-
 
             $model->save();
 
@@ -93,6 +89,33 @@ class ProductController extends BaseAdminController
             return Redirect::to('/admin/'.$this->name);
         }
     }
+
+    public function create()
+    {
+        $model = new $this->model;
+        $categories = $this->getCategories();
+
+        return view('admin.product.create', [
+            'model' => $model,
+            'fields' => $this->fields,
+            'categories' => $categories,
+            'class_name' => strtolower((new \ReflectionClass($model))->getShortName())
+        ]);
+    }
+
+    public function edit($id)
+    {
+        $model = $this->model::find($id);
+        $categories = $this->getCategories();
+        return view('admin.product.edit', [
+            'model' => $model,
+            'name' => $this->name,
+            'fields' => $this->fields,
+            'categories' => $categories,
+            'class_name' => strtolower((new \ReflectionClass($model))->getShortName())
+        ]);
+    }
+
 
 
 

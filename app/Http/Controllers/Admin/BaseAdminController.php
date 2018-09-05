@@ -101,10 +101,10 @@ class BaseAdminController extends Controller
 
             if (isset($id)) {
                 $model = $this->model::find($id);
-                Session::flash('message', 'Successfully updated '.$this->name.'!');
+                Session::flash('message', "Успешно обновлено!");
             }else {
                 $model = new $this->model();
-                Session::flash('message', 'Successfully created '.$this->name.'!');
+                Session::flash('message', "Успешно создано!");
             }
             $this->data = $request->all();
             foreach ($this->fields as $field_name => $value) {

@@ -38,12 +38,6 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/news">
-                                    <span data-feather="align-left"></span>
-                                    Новости
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="/admin/category">
                                     <span data-feather="shopping-cart"></span>
                                     Категории товаров
@@ -74,11 +68,7 @@
                                     <span data-feather="sidebar"></span>
                                     Шаблоны
                                 </a>
-                                <a class="nav-link" href="/admin/log">
-                                    <span data-feather="eye"></span>
-                                    Лог изменений
-                                </a>
-                                <a class="nav-link" href="{{-- route('settings', [], false) --}}">
+                                <a class="nav-link" href="/admin/settings">
                                     <span data-feather="settings"></span>
                                     Настройки
                                 </a>

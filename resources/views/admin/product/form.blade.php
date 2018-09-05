@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-11">
+    <div class="col-md-10">
 
         @foreach ($fields as $fieldName => $fieldValue)
 
@@ -26,7 +26,7 @@
     </div>
     <div class="col-md-1">
         <div class="control-buttons">
-            <button type="submit" class="btn btn-outline-primary"><span data-feather="save"></span> {{ __('Save') }}</button>
+            <button type="submit" class="btn btn-outline-primary"><span data-feather="save"></span> {{ __('Сохранить') }}</button>
             <a target="_blank" href="{{ $model->url }}"><div  class="btn btn-outline-primary"><span data-feather="eye"></span> {{ __('See product') }}</div></a>
         </div>
     </div>

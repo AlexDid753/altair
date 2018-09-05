@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-11">
+        <div class="col-md-10">
             <table class="table table-striped">
                 <tbody>
 

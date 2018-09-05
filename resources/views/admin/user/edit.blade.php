@@ -5,7 +5,7 @@
         {{ Form::model($model, array('route' => array('user.update', $model->id), 'method' => 'PUT')) }}
 
         <div class="row">
-            <div class="col-md-11">
+            <div class="col-md-10">
                 {{ Html::ul($errors->all()) }}
 
 
@@ -24,7 +24,7 @@
             </div>
             <div class="col-md-1">
                 <div class="control-buttons">
-                    <button type="submit" class="btn btn-outline-primary"><span data-feather="save"></span> {{ __('Save') }}</button>
+                    <button type="submit" class="btn btn-outline-primary"><span data-feather="save"></span> {{ __('Сохранить') }}</button>
                 </div>
             </div>
         </div>
