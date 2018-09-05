@@ -3,10 +3,19 @@
     <div class="row">
         <div class="col-md-11">
             <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Наименование</td>
+                        <td>Категория</td>
+                        <td class="text-right">
+                        </td>
+                    </tr>
+                </thead>
                 <tbody>
                     @foreach ($models as $model)
                             <tr>
                                 <td>{{ $model->title }}</td>
+                                <td>{{ $model->parent->title }}</td>
                                 <td class="text-right">
                                     <a href="{{ route($name.'.edit', ['id' => $model->id]) }}" class="mr-3"><span data-feather="edit"></span></a>
 

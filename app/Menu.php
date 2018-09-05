@@ -26,9 +26,13 @@ class Menu extends Model
 
     public function getUrl()
     {
-        if ($this->page_id)
-            return Page::getUrl($this->page_id);
-
+        if ($this->page_id){
+            if ($this->page_type == 'pages') {
+                return Page::getUrl($this->page_id);
+            } else {
+                return Category::getUrl($this->page_id);
+            }
+        }
         return $this->url;
     }
 

@@ -34,6 +34,11 @@ class Category extends Model
         return $this->hasMany('App\Category', 'parent_id', 'id');
     }
 
+    public function getNameAttribute()
+    {
+        return $this->attributes['title'];
+    }
+
     public function publishedChildrens(){
         return $this->childrens()->where('published', '=', 1);
     }

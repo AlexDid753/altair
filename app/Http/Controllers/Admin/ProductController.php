@@ -18,7 +18,7 @@ class ProductController extends BaseAdminController
         'title' => 'input',
         'published' => 'checkbox',
         'slug' => 'input',
-        'url' => 'input_readonly',
+        'url' => ['type' => 'input', "attributes"=>['readonly'=>'readonly']],
         'parent_id' => ['type' => 'dropdown', 'label' => 'Parent', 'model' => 'Category', 'method' => 'dropdown'],
 
         'text' => 'editor',

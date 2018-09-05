@@ -7,6 +7,7 @@
                 'fieldName' => $fieldName,
                 'fieldModelName' => isset($fieldValue['fieldModelName']) ? $fieldValue['fieldModelName'] : $fieldName,
                 "fieldValue" => $fieldValue,
+                'attributes' => isset($fieldValue['attributes'])? $fieldValue['attributes'] : '',
                 'model' => $model
             ])
         @endforeach

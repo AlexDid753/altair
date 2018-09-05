@@ -72,6 +72,12 @@ function multiItemFill(id) {
     console.log(JSON.stringify(multiItems));
 }
 
+//Устанавливаем значение скрытого инпута с типом страницы соотвественно выбранному элементу в селекте на форме Menu
+function hiddenInputSet() {
+    $('input#page_type').val($('select#page_id option:selected').data('page-type'));
+}
+hiddenInputSet();
+
 jQuery(function($) {
 
     feather.replace();
@@ -196,4 +202,6 @@ jQuery(function($) {
         if (location.pathname.indexOf($(this).attr('href')) > -1)
             $(this).addClass('active');
     });
+
+    $('select#page_id').change(function () {hiddenInputSet()});
 });

@@ -26,10 +26,10 @@ class PageController extends BaseController
         if (!$model)
             abort(404, 'Страница не найдена');
 
-        // Push product ID to session
-        if($model->isProduct()){
-            session()->push('products.recently_viewed', $model->id);
-        };
+//        // Push product ID to session  #todo перести в контроллер продуктов
+//        if($model->isProduct()){
+//            session()->push('products.recently_viewed', $model->id);
+//        };
 
         $params = [
             'model' => $model,

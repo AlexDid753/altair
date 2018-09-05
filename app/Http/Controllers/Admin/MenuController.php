@@ -12,8 +12,8 @@ class MenuController extends BaseAdminController
         'published' => 'checkbox',
         'sort' => 'input',
         'parent_id' => ['type' => 'dropdown', 'label' => 'Parent', 'model' => 'Menu', 'method' => 'dropdown'],
-        'page_id' => ['type' => 'dropdown', 'label' => 'Page', 'model' => 'Page', 'method' => 'dropdownMenu'],
-        'url' => 'input'
+        'page_id' => ['type' => 'dropdown_menu', 'label' => 'Page', 'model' => 'Page',  'method' => 'dropdownMenu'],
+        'page_type' => ['type' => 'input', "attributes"=>['hidden'=>'hidden']]
     ];
 
     public function index()

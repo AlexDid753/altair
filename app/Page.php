@@ -143,8 +143,22 @@ class Page extends Model
 
     public static function dropdownMenu()
     {
-        $plucked = self::pluck('name', 'id');
-        return ['' => ''] + $plucked->all();
+        $data = [];
+        $i = 0;
+        $pages = self::all();
+        $categories = Category::all();
+        $resources = $pages->merge($categories);
+        foreach ($resources as $resource) {
+            $data[$i] = array(
+                'name' =>  $resource->name,
+                'id' => $resource->id,
+                'type' => $resource->getTable()
+            );
+            $i++;
+        }
+
+
+        return ['' => ''] + $data;
     }
 
     public static function dropdownCountry()

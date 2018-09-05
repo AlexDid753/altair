@@ -1,12 +1,30 @@
 <div class="form-group row">
-    @if (is_array($fieldValue) && !empty($fieldValue['label']))
-        <label for="{{ $fieldName }}" class="col-md-12 col-form-label">{{ __($fieldValue['label']) }}</label>
+    {{--todo отрефакторить бы--}}
+    @if (isset($attributes) && is_array($attributes))
+        @if (!array_key_exists('hidden', $attributes))  {{-- Не выводить label для скрытого инпута --}}
+                @if (is_array($fieldValue) && !empty($fieldValue['label']))
+                    <label for="{{ $fieldName }}" class="col-md-12 col-form-label">{{ __($fieldValue['label']) }}</label>
+                @else
+                    <label for="{{ $fieldName }}" class="col-md-12 col-form-label">{{ __(str_singular(ucfirst(str_replace('_', ' ', $fieldName)))) }}</label>
+                @endif
+        @endif
     @else
-        <label for="{{ $fieldName }}" class="col-md-12 col-form-label">{{ __(str_singular(ucfirst(str_replace('_', ' ', $fieldName)))) }}</label>
+        @if (is_array($fieldValue) && !empty($fieldValue['label']))
+            <label for="{{ $fieldName }}" class="col-md-12 col-form-label">{{ __($fieldValue['label']) }}</label>
+        @else
+            <label for="{{ $fieldName }}" class="col-md-12 col-form-label">{{ __(str_singular(ucfirst(str_replace('_', ' ', $fieldName)))) }}</label>
+        @endif
     @endif
+
 
     <div class="col-md-12">
         <input
+                {{--вывод атрибутов--}}
+                @if (is_array($attributes) && !empty($attributes))
+                    @foreach ($attributes as $attribute)
+                        {{ $attribute }}
+                    @endforeach
+                @endif
                 id="{{ $fieldName }}"
                 type="text"
                 autocomplete="off"
