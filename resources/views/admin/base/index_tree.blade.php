@@ -16,7 +16,7 @@
                                 </td>
                             </tr>
                             @if ($model->childrens)
-                                @includeIf('admin.'.$name.'.table_row', ['models' => $model->childrens, 'padding' => 18])
+                                @includeIf('admin.base.table_row', ['models' => $model->childrens, 'padding' => 18])
                             @endif
                         @endif
                     @endforeach

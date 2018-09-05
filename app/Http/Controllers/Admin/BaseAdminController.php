@@ -43,10 +43,11 @@ class BaseAdminController extends Controller
         $model = new $this->model;
         $categories = $this->getCategories();
 
-        return view('admin.'.$this->name.'.create', [
+        return view('admin.base.create', [
             'model' => $model,
             'fields' => $this->fields,
-            'categories' => $categories
+            'categories' => $categories,
+            'class_name' => strtolower((new \ReflectionClass($model))->getShortName())
         ]);
     }
 
@@ -67,11 +68,12 @@ class BaseAdminController extends Controller
     {
         $model = $this->model::find($id);
         $categories = $this->getCategories();
-        return view('admin.' . $this->name . '.edit', [
+        return view('admin.base.edit', [
             'model' => $model,
             'name' => $this->name,
             'fields' => $this->fields,
-            'categories' => $categories
+            'categories' => $categories,
+            'class_name' => strtolower((new \ReflectionClass($model))->getShortName())
         ]);
     }
 
