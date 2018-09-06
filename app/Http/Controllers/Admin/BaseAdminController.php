@@ -85,8 +85,14 @@ class BaseAdminController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->store($request,$id);
-        return Redirect::to('/admin/'.$this->name);
+        $rules = $this->model::validatorRules();
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return back()->withInput()->withErrors($validator);
+        }else {
+            $this->store($request,$id);
+            return Redirect::to('/admin/'.$this->name);
+        }
     }
 
     public function store(Request $request, $id = null)
@@ -121,7 +127,7 @@ class BaseAdminController extends Controller
         $model = $this->model::find($id);
         $model->delete();
 
-        Session::flash('message', 'Successfully deleted '.$this->name.'!');
+        Session::flash('message', 'Удалено!');
         return Redirect::to('/admin/'.$this->name);
     }
 

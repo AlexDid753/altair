@@ -27,7 +27,7 @@
     <div class="col-md-1">
         <div class="control-buttons">
             <button type="submit" class="btn btn-outline-primary"><span data-feather="save"></span> {{ __('Сохранить') }}</button>
-            <a target="_blank" href="{{ $model->url }}"><div  class="btn btn-outline-primary"><span data-feather="eye"></span> {{ __('See product') }}</div></a>
+            <a target="_blank" href="{{ $model->url }}"><div  class="btn btn-outline-primary"><span data-feather="eye"></span> {{ __('Смотреть продукт') }}</div></a>
         </div>
     </div>
 </div>

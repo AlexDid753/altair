@@ -13,9 +13,7 @@
 use App\Category;
 use App\Product;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () {return view('welcome');})->name('index');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/elfinder', 'Barryvdh\Elfinder\ElfinderController@showPopup')->name('elfinder');
@@ -24,7 +22,7 @@ Route::middleware(['auth'])->group(function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth', 'prefix' => "admin"], function () {
-        Route::get('/', 'Admin\AdminController@index')->name('index');
+        Route::get('/', 'Admin\AdminController@index')->name('admin.index');
 
         foreach (['user', 'page','template', 'news', 'menu', 'category', 'product'] as $url) {
             Route::prefix($url)->group(function () use ($url) {
@@ -45,7 +43,7 @@ Route::group(['middleware' => 'auth', 'prefix' => "admin"], function () {
 
 });
 
-Route::get('catalog', 'CategoryController@index')->name('index');
+Route::get('catalog', 'CategoryController@index')->name('catalog');
 
 $categories_urls = Category::published()->pluck('url');
 foreach ($categories_urls as $url) {
