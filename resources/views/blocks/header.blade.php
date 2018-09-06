@@ -90,7 +90,7 @@
                     <div class="col-md-9 col-sm-8 col-xs-12">
                         <nav class="main-nav main-nav1 pull-left">
                             <ul>
-                                <li class="menu-item-has-children has-mega-menu">
+                                <!-- <li class="menu-item-has-children has-mega-menu">
                                     <a href="#">Home</a>
                                     <div class="mega-menu">
                                         <div class="content-mega-menu">
@@ -134,8 +134,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </li>
-                                <li class="menu-item-has-children has-mega-menu">
+                                </li> -->
+                               <!-- <li class="menu-item-has-children has-mega-menu">
                                     <a href="#">Featured</a>
                                     <div class="mega-menu full-mega-menu">
                                         <div class="content-mega-menu">
@@ -188,7 +188,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </li>
+                                </li> -->
                                 <li class="menu-item-has-children">
                                     <a href="#">Pages</a>
                                     <ul class="sub-menu">
@@ -198,8 +198,21 @@
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="listview.html">Shop</a>
+                                    <a href="listview.html">Каталог</a>
                                     <ul class="sub-menu">
+                                        @foreach($topMenu as $menuItem)
+                                            <li class="menu-item-has-children">
+                                                <a href="{{ $menuItem->getUrl() }}">{{ $menuItem->name }}</a>
+                                                @if (count($menuItem->childrens))
+                                                    <ul class="sub-menu">
+                                                        @foreach($menuItem->childrens as $subMenuItem)
+                                                            <li><a href="{{ $subMenuItem->getUrl() }}">{{ $subMenuItem->name }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                        <!--
                                         <li class="menu-item-has-children">
                                             <a href="listview.html">List</a>
                                             <ul class="sub-menu">
@@ -225,6 +238,7 @@
                                                 <li><a href="product-onsale.html">Product Onsale</a></li>
                                             </ul>
                                         </li>
+                                        -->
                                         <li><a href="cart.html">Cart</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
                                         <li><a href="member-login.html">Member Login</a></li>

@@ -2,6 +2,7 @@
 
 @section('content')
     <section id="content">
+        <!--
         <div class="banner-slider banner-jewelry2 bg-slider parallax-slider">
             <div class="wrap-item" data-navigation="true" data-transition="fade" data-itemscustom="[[0,1]]">
                 <div class="item-slider item-slider2">
@@ -36,6 +37,7 @@
                 </div>
             </div>
         </div>
+        -->
         <!-- End Banner Slider -->
         <div class="container">
             <div class="list-adv2">
@@ -78,51 +80,23 @@
             <!-- End Adv -->
             <div class="block-cate2">
                 <div class="title-box2 text-center">
-                    <h2 class="title24 dark play-font font-italic">Popular Categories</h2>
+                    <h2 class="title24 dark play-font font-italic">Популярные категории</h2>
                     <img src="images/home/jewelry2/line-black.png" alt="" />
                 </div>
                 <div class="list-cat2">
                     <div class="row">
-                        <div class="col-md-3 col-sm-6 col-xs-6">
-                            <div class="item-cat2 text-center">
-                                <div class="cat-thumb"><a href="#"><img src="images/home/jewelry2/cat1.png" alt="" /></a></div>
-                                <div class="cat-info">
-                                    <h3 class="title18 dark play-font font-italic">Rings</h3>
-                                    <p class="desc dark opacity">Ring with Diamonds</p>
-                                    <a href="#" class="link-circle title18"><i class="icon ion-ios-arrow-thin-right"></i></a>
+                        @foreach($categories as $category)
+                            <div class="col-md-3 col-sm-6 col-xs-6">
+                                <div class="item-cat2 text-center">
+                                    <div class="cat-thumb"><a href="#"><img src="images/home/jewelry2/cat1.png" alt="" /></a></div>
+                                    <div class="cat-info">
+                                        <h3 class="title18 dark play-font font-italic">{{$category->name}}</h3>
+                                        <p class="desc dark opacity">Ring with Diamonds</p>
+                                        <a href="#" class="link-circle title18"><i class="icon ion-ios-arrow-thin-right"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6">
-                            <div class="item-cat2 text-center">
-                                <div class="cat-thumb"><a href="#"><img src="images/home/jewelry2/cat2.png" alt="" /></a></div>
-                                <div class="cat-info">
-                                    <h3 class="title18 dark play-font font-italic">Necklaces</h3>
-                                    <p class="desc dark opacity">Diamonds & Sapphires</p>
-                                    <a href="#" class="link-circle title18"><i class="icon ion-ios-arrow-thin-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6">
-                            <div class="item-cat2 text-center">
-                                <div class="cat-thumb"><a href="#"><img src="images/home/jewelry2/cat3.png" alt="" /></a></div>
-                                <div class="cat-info">
-                                    <h3 class="title18 dark play-font font-italic">Earrings</h3>
-                                    <p class="desc dark opacity">Drop Pendant</p>
-                                    <a href="#" class="link-circle title18"><i class="icon ion-ios-arrow-thin-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6">
-                            <div class="item-cat2 text-center">
-                                <div class="cat-thumb"><a href="#"><img src="images/home/jewelry2/cat4.png" alt="" /></a></div>
-                                <div class="cat-info">
-                                    <h3 class="title18 dark play-font font-italic">Bracelets</h3>
-                                    <p class="desc dark opacity">Gold & Diamonds</p>
-                                    <a href="#" class="link-circle title18"><i class="icon ion-ios-arrow-thin-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

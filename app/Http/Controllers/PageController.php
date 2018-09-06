@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use App\Category;
 use App\Page;
 //use App\Redirect;
 
@@ -100,5 +101,16 @@ class PageController extends BaseController
             return view($model->template->view ?: 'welcome', $params);
 
         return $model;
+    }
+
+    public function index(Request $request) {
+
+        //Опубликованные корневые категории
+        $categories = Category::published()->where('parent_id', '=', null);
+
+        return view('index', [
+            'categories' => $categories,
+        ]);
+
     }
 }
