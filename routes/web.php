@@ -13,7 +13,7 @@
 use App\Category;
 use App\Product;
 
-Route::get('/', function () {return view('welcome');})->name('index');
+Route::get('/', function () {return view('index');})->name('index');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/elfinder', 'Barryvdh\Elfinder\ElfinderController@showPopup')->name('elfinder');
