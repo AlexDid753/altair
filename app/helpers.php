@@ -75,3 +75,13 @@ if (! function_exists('prepare_url')) {
         return $url;
     }
 }
+
+if (! function_exists('round_up')) {
+    function round_up($value, $places)
+    {
+        $mult = pow(10, abs($places));
+        return $places < 0 ?
+            ceil($value / $mult) * $mult :
+            ceil($value * $mult) / $mult;
+    }
+}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\Category;
@@ -108,8 +109,11 @@ class PageController extends BaseController
         //Опубликованные корневые категории
         $categories = Category::published()->where('parent_id', '=', null);
 
+        $products = Product::published();
+
         return view('index', [
             'categories' => $categories,
+            'products' => $products
         ]);
 
     }

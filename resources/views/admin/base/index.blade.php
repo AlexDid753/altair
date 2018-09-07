@@ -28,7 +28,7 @@
         </div>
         <div class="col-md-1">
             <div class="control-buttons">
-                <a class="btn btn-outline-primary" href="{{ route($name . '.create') }}"><span data-feather="plus"></span> {{ __('Add') }}</a>
+                <a class="btn btn-outline-primary" href="{{ route($name . '.create') }}"><span data-feather="plus"></span> {{ __('Добавить') }}</a>
             </div>
         </div>
     </div>

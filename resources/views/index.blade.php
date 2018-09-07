@@ -64,299 +64,48 @@
                     </div>
                 </div>
                 <div class="tab-product-jewelry4">
-                    <h2 class="title24 dark play-font font-italic">Best Selling Products</h2>
+                    <h2 class="title24 dark play-font font-italic">Самое продаваемое</h2>
                     <div class="box-best-seller9">
                         <ul class="list-inline-block title-list-tab text-left style-white">
-                            <li class="active"><a href="#tab1" data-toggle="tab">Bracelets</a></li>
-                            <li><a href="#tab2" data-toggle="tab">Rings</a></li>
-                            <li><a href="#tab1" data-toggle="tab">Earrings</a></li>
+                            <li class="active"><a href="#tab1" data-toggle="tab">Тестовая активная таба</a></li>
+                            @foreach($categories as $category)
+                                <li class=""><a href="#tab1" data-toggle="tab">{{$category->name}}</a></li>
+                            @endforeach
                         </ul>
-                        <div class="box-product-filter clearfix">
-                            <a href="#" class="btn-filter-product inline-block pull-right"><i class="icon ion-funnel"></i>Filter</a>
-                            <div class="list-product-filter-type">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-4 col-xs-12">
-                                        <div class="widget widget-category">
-                                            <h2 class="widget-title title14 dark font-bold play-font text-uppercase">Categories</h2>
-                                            <div class="widget-content">
-                                                <ul class="list-category-toggle toggle-tab list-none">
-                                                    <li class="item-toggle-tab">
-                                                        <a href="#" class="toggle-tab-title">Clothing</a>
-                                                        <ul class="toggle-tab-content list-none">
-                                                            <li><a href="#">For Men’s <span>25</span></a></li>
-                                                            <li><a href="#">For Men’s <span>09</span></a></li>
-                                                            <li><a href="#">Accessories <span>37</span></a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="item-toggle-tab">
-                                                        <a href="#" class="toggle-tab-title">Baggage</a>
-                                                        <ul class="toggle-tab-content list-none">
-                                                            <li><a href="#">For Men’s <span>25</span></a></li>
-                                                            <li><a href="#">For Men’s <span>09</span></a></li>
-                                                            <li><a href="#">Accessories <span>37</span></a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="item-toggle-tab">
-                                                        <a href="#" class="toggle-tab-title">Shoes</a>
-                                                        <ul class="toggle-tab-content list-none">
-                                                            <li><a href="#">For Men’s <span>25</span></a></li>
-                                                            <li><a href="#">For Men’s <span>09</span></a></li>
-                                                            <li><a href="#">Accessories <span>37</span></a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="item-toggle-tab">
-                                                        <a href="#" class="toggle-tab-title">Jewelry</a>
-                                                        <ul class="toggle-tab-content list-none">
-                                                            <li><a href="#">For Men’s <span>25</span></a></li>
-                                                            <li><a href="#">For Men’s <span>09</span></a></li>
-                                                            <li><a href="#">Accessories <span>37</span></a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="item-toggle-tab">
-                                                        <a href="#" class="toggle-tab-title">Rain Coat</a>
-                                                        <ul class="toggle-tab-content list-none">
-                                                            <li><a href="#">For Men’s <span>25</span></a></li>
-                                                            <li><a href="#">For Men’s <span>09</span></a></li>
-                                                            <li><a href="#">Accessories <span>37</span></a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="item-toggle-tab">
-                                                        <a href="#" class="toggle-tab-title">Suitcase</a>
-                                                        <ul class="toggle-tab-content list-none">
-                                                            <li><a href="#">For Men’s <span>25</span></a></li>
-                                                            <li><a href="#">For Men’s <span>09</span></a></li>
-                                                            <li><a href="#">Accessories <span>37</span></a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-12">
-                                        <div class="widget widget-price">
-                                            <h2 class="widget-title title14 font-bold play-font text-uppercase dark">Price</h2>
-                                            <div class="widget-content">
-                                                <div class="range-filter">
-                                                    <div class="slider-range">
-                                                        <span class="min-price"></span>
-                                                        <span class="max-price"></span>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-12">
-                                        <div class="widget widget-color">
-                                            <h2 class="widget-title title14 font-bold play-font text-uppercase dark">colors</h2>
-                                            <div class="widget-content">
-                                                <ul class="list-none list-attr">
-                                                    <li><a href="#"><i style="background-color:#000000"></i> Black<span>03</span></a></li>
-                                                    <li><a href="#" class="active" data-color="#1476c6"><i style="background-color:#1476c6"></i>Blue<span>05</span></a></li>
-                                                    <li><a href="#"><i style="background-color:#5be5ee"></i>Cyan<span>13</span></a></li>
-                                                    <li><a href="#"><i style="background-color:#e36d55"></i>Beige<span>05</span></a></li>
-                                                    <li><a href="#"><i style="background-color:#ff1b1b"></i>Red<span>07</span></a></li>
-                                                    <li><a href="#"><i style="background-color:#f1ca2d"></i>Yellow<span>05</span></a></li>
-                                                    <li><a href="#"><i style="background-color:#ffffff"></i>White<span>05</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-12">
-                                        <div class="widget widget-attr">
-                                            <h2 class="widget-title title14 font-bold play-font text-uppercase dark">Size</h2>
-                                            <div class="widget-content">
-                                                <ul class="list-none list-attr">
-                                                    <li><a href="#">29"<span>05</span></a></li>
-                                                    <li><a href="#" class="active">30"<span>03</span></a></li>
-                                                    <li><a href="#">XS<span>07</span></a></li>
-                                                    <li><a href="#">S<span>05</span></a></li>
-                                                    <li><a href="#">M<span>05</span></a></li>
-                                                    <li><a href="#">L<span>04</span></a></li>
-                                                    <li><a href="#">XL<span>08</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="tab-content">
                             <div id="tab1" class="tab-pane active">
                                 <div class="product-slider">
                                     <div class="wrap-item hide-navi" data-pagination="false" data-navigation="true" data-itemscustom="[[0,1],[560,2],[768,3],[990,4]]">
-                                        <div class="item-product item-product4 text-center border">
-                                            <div class="product-thumb">
-                                                <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-01.jpg" alt=""></a>
-                                                <a href="quick-view.html" class="quickview-link fancybox.iframe title12 round white"><i class="fa fa-search"></i></a>
-                                            </div>
-                                            <div class="product-info">
-                                                <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                                <div class="product-price title14 play-font">
-                                                    <del class="silver">$601.00</del>
-                                                    <ins class="black title18">$400.67</ins>
+                                        @foreach($products as $product)
+                                            <div class="item-product item-product4 text-center border">
+                                                <div class="product-thumb">
+                                                    <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-01.jpg" alt=""></a>
+                                                    <a href="quick-view.html" class="quickview-link fancybox.iframe title12 round white"><i class="fa fa-search"></i></a>
                                                 </div>
-                                                <ul class="wrap-rating list-inline-block">
-                                                    <li>
-                                                        <div class="product-rate">
-                                                            <div class="product-rating" style="width:100%"></div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <span class="rate-number silver">(5.0)</span>
-                                                    </li>
-                                                </ul>
-                                                <div class="product-extra-link4 title18">
-                                                    <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                                    <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                                    <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-product item-product4 text-center border">
-                                            <div class="product-thumb">
-                                                <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-02.jpg" alt=""></a>
-                                                <a href="quick-view.html" class="quickview-link fancybox.iframe title12 round white"><i class="fa fa-search"></i></a>
-                                                <div class="product-label">
-                                                    <span class="new-label pull-left">New</span>
-                                                    <span class="sale-label pull-right">Sale!</span>
+                                                <div class="product-info">
+                                                    <h3 class="title14 product-title"><a href="#" class="black">{{$product->title}}</a></h3>
+                                                    <div class="product-price title14 play-font">
+                                                        <del class="silver">$601.00 &#8381;</del>
+                                                        <ins class="black title18">400.67 &#8381;</ins>
+                                                    </div>
+                                                    <ul class="wrap-rating list-inline-block">
+                                                        <li>
+                                                            <div class="product-rate">
+                                                                <div class="product-rating" style="width:100%"></div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <span class="rate-number silver">(5.0)</span>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="product-extra-link4 title18">
+                                                        <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
+                                                        <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
+                                                        <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="product-info">
-                                                <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                                <div class="product-price title14 play-font">
-                                                    <del class="silver">$601.00</del>
-                                                    <ins class="black title18">$400.67</ins>
-                                                </div>
-                                                <ul class="wrap-rating list-inline-block">
-                                                    <li>
-                                                        <div class="product-rate">
-                                                            <div class="product-rating" style="width:100%"></div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <span class="rate-number silver">(5.0)</span>
-                                                    </li>
-                                                </ul>
-                                                <div class="product-extra-link4 title18">
-                                                    <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                                    <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                                    <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-product item-product4 text-center border">
-                                            <div class="product-thumb">
-                                                <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-03.jpg" alt=""></a>
-                                                <a href="quick-view.html" class="quickview-link fancybox.iframe title12 round white"><i class="fa fa-search"></i></a>
-                                            </div>
-                                            <div class="product-info">
-                                                <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                                <div class="product-price title14 play-font">
-                                                    <del class="silver">$601.00</del>
-                                                    <ins class="black title18">$400.67</ins>
-                                                </div>
-                                                <ul class="wrap-rating list-inline-block">
-                                                    <li>
-                                                        <div class="product-rate">
-                                                            <div class="product-rating" style="width:100%"></div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <span class="rate-number silver">(5.0)</span>
-                                                    </li>
-                                                </ul>
-                                                <div class="product-extra-link4 title18">
-                                                    <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                                    <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                                    <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-product item-product4 text-center border">
-                                            <div class="product-thumb">
-                                                <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-04.jpg" alt=""></a>
-                                                <a href="quick-view.html" class="quickview-link fancybox.iframe title12 round white"><i class="fa fa-search"></i></a>
-                                            </div>
-                                            <div class="product-info">
-                                                <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                                <div class="product-price title14 play-font">
-                                                    <del class="silver">$601.00</del>
-                                                    <ins class="black title18">$400.67</ins>
-                                                </div>
-                                                <ul class="wrap-rating list-inline-block">
-                                                    <li>
-                                                        <div class="product-rate">
-                                                            <div class="product-rating" style="width:100%"></div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <span class="rate-number silver">(5.0)</span>
-                                                    </li>
-                                                </ul>
-                                                <div class="product-extra-link4 title18">
-                                                    <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                                    <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                                    <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-product item-product4 text-center border">
-                                            <div class="product-thumb">
-                                                <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-05.jpg" alt=""></a>
-                                                <a href="quick-view.html" class="quickview-link fancybox.iframe title12 round white"><i class="fa fa-search"></i></a>
-                                            </div>
-                                            <div class="product-info">
-                                                <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                                <div class="product-price title14 play-font">
-                                                    <del class="silver">$601.00</del>
-                                                    <ins class="black title18">$400.67</ins>
-                                                </div>
-                                                <ul class="wrap-rating list-inline-block">
-                                                    <li>
-                                                        <div class="product-rate">
-                                                            <div class="product-rating" style="width:100%"></div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <span class="rate-number silver">(5.0)</span>
-                                                    </li>
-                                                </ul>
-                                                <div class="product-extra-link4 title18">
-                                                    <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                                    <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                                    <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-product item-product4 text-center border">
-                                            <div class="product-thumb">
-                                                <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-06.jpg" alt=""></a>
-                                                <a href="quick-view.html" class="quickview-link fancybox.iframe title12 round white"><i class="fa fa-search"></i></a>
-                                            </div>
-                                            <div class="product-info">
-                                                <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                                <div class="product-price title14 play-font">
-                                                    <del class="silver">$601.00</del>
-                                                    <ins class="black title18">$400.67</ins>
-                                                </div>
-                                                <ul class="wrap-rating list-inline-block">
-                                                    <li>
-                                                        <div class="product-rate">
-                                                            <div class="product-rating" style="width:100%"></div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <span class="rate-number silver">(5.0)</span>
-                                                    </li>
-                                                </ul>
-                                                <div class="product-extra-link4 title18">
-                                                    <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                                    <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                                    <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -395,345 +144,46 @@
         </div>
         <div class="container">
             <div class="block-popular-product4 block-popular-product5 bg-white">
-                <h2 class="title24 play-font font-italic dark">Most Popular Products</h2>
+                <h2 class="title24 play-font font-italic dark">Самые популярные товары</h2>
                 <div class="product-slider">
                     <div class="wrap-item group-navi" data-pagination="false" data-navigation="true" data-itemscustom="[[0,1],[560,2],[990,3]]">
-                        <div class="list-item">
-                            <div class="item-product item-product4 table-custom">
-                                <div class="product-thumb">
-                                    <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-01.jpg" alt=""></a>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                    <div class="product-price title14 play-font">
-                                        <del class="silver">$601.00</del>
-                                        <ins class="black title18">$400.67</ins>
-                                    </div>
-                                    <ul class="wrap-rating list-inline-block">
-                                        <li>
-                                            <div class="product-rate">
-                                                <div class="product-rating" style="width:100%"></div>
+                        @php
+                            $groups_count = round_up(count($products) / 3, 0);
+                            $product_groups = $products->split($groups_count);
+                        @endphp
+                        @foreach($product_groups as $group)
+                            <div class="list-item">
+                                @foreach($group as $product)
+                                    <div class="item-product item-product4 table-custom">
+                                        <div class="product-thumb">
+                                            <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-01.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product-info">
+                                            <h3 class="title14 product-title"><a href="#" class="black">{{$product->title}}</a></h3>
+                                            <div class="product-price title14 play-font">
+                                                <del class="silver">$601.00</del>
+                                                <ins class="black title18">$400.67</ins>
                                             </div>
-                                        </li>
-                                        <li>
-                                            <span class="rate-number silver">(5.0)</span>
-                                        </li>
-                                    </ul>
-                                    <div class="product-extra-link4 title18">
-                                        <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                        <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                        <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product item-product4 table-custom">
-                                <div class="product-thumb">
-                                    <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-02.jpg" alt=""></a>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                    <div class="product-price title14 play-font">
-                                        <del class="silver">$601.00</del>
-                                        <ins class="black title18">$400.67</ins>
-                                    </div>
-                                    <ul class="wrap-rating list-inline-block">
-                                        <li>
-                                            <div class="product-rate">
-                                                <div class="product-rating" style="width:100%"></div>
+                                            <ul class="wrap-rating list-inline-block">
+                                                <li>
+                                                    <div class="product-rate">
+                                                        <div class="product-rating" style="width:100%"></div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <span class="rate-number silver">(5.0)</span>
+                                                </li>
+                                            </ul>
+                                            <div class="product-extra-link4 title18">
+                                                <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
+                                                <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
+                                                <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
                                             </div>
-                                        </li>
-                                        <li>
-                                            <span class="rate-number silver">(5.0)</span>
-                                        </li>
-                                    </ul>
-                                    <div class="product-extra-link4 title18">
-                                        <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                        <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                        <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
-                            <div class="item-product item-product4 table-custom">
-                                <div class="product-thumb">
-                                    <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-03.jpg" alt=""></a>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                    <div class="product-price title14 play-font">
-                                        <del class="silver">$601.00</del>
-                                        <ins class="black title18">$400.67</ins>
-                                    </div>
-                                    <ul class="wrap-rating list-inline-block">
-                                        <li>
-                                            <div class="product-rate">
-                                                <div class="product-rating" style="width:100%"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="rate-number silver">(5.0)</span>
-                                        </li>
-                                    </ul>
-                                    <div class="product-extra-link4 title18">
-                                        <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                        <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                        <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End List -->
-                        <div class="list-item">
-                            <div class="item-product item-product4 table-custom">
-                                <div class="product-thumb">
-                                    <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-04.jpg" alt=""></a>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                    <div class="product-price title14 play-font">
-                                        <del class="silver">$601.00</del>
-                                        <ins class="black title18">$400.67</ins>
-                                    </div>
-                                    <ul class="wrap-rating list-inline-block">
-                                        <li>
-                                            <div class="product-rate">
-                                                <div class="product-rating" style="width:100%"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="rate-number silver">(5.0)</span>
-                                        </li>
-                                    </ul>
-                                    <div class="product-extra-link4 title18">
-                                        <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                        <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                        <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product item-product4 table-custom">
-                                <div class="product-thumb">
-                                    <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-05.jpg" alt=""></a>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                    <div class="product-price title14 play-font">
-                                        <del class="silver">$601.00</del>
-                                        <ins class="black title18">$400.67</ins>
-                                    </div>
-                                    <ul class="wrap-rating list-inline-block">
-                                        <li>
-                                            <div class="product-rate">
-                                                <div class="product-rating" style="width:100%"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="rate-number silver">(5.0)</span>
-                                        </li>
-                                    </ul>
-                                    <div class="product-extra-link4 title18">
-                                        <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                        <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                        <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product item-product4 table-custom">
-                                <div class="product-thumb">
-                                    <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-06.jpg" alt=""></a>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                    <div class="product-price title14 play-font">
-                                        <del class="silver">$601.00</del>
-                                        <ins class="black title18">$400.67</ins>
-                                    </div>
-                                    <ul class="wrap-rating list-inline-block">
-                                        <li>
-                                            <div class="product-rate">
-                                                <div class="product-rating" style="width:100%"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="rate-number silver">(5.0)</span>
-                                        </li>
-                                    </ul>
-                                    <div class="product-extra-link4 title18">
-                                        <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                        <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                        <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End List -->
-                        <div class="list-item">
-                            <div class="item-product item-product4 table-custom">
-                                <div class="product-thumb">
-                                    <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-07.jpg" alt=""></a>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                    <div class="product-price title14 play-font">
-                                        <del class="silver">$601.00</del>
-                                        <ins class="black title18">$400.67</ins>
-                                    </div>
-                                    <ul class="wrap-rating list-inline-block">
-                                        <li>
-                                            <div class="product-rate">
-                                                <div class="product-rating" style="width:100%"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="rate-number silver">(5.0)</span>
-                                        </li>
-                                    </ul>
-                                    <div class="product-extra-link4 title18">
-                                        <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                        <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                        <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product item-product4 table-custom">
-                                <div class="product-thumb">
-                                    <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-08.jpg" alt=""></a>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                    <div class="product-price title14 play-font">
-                                        <del class="silver">$601.00</del>
-                                        <ins class="black title18">$400.67</ins>
-                                    </div>
-                                    <ul class="wrap-rating list-inline-block">
-                                        <li>
-                                            <div class="product-rate">
-                                                <div class="product-rating" style="width:100%"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="rate-number silver">(5.0)</span>
-                                        </li>
-                                    </ul>
-                                    <div class="product-extra-link4 title18">
-                                        <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                        <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                        <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product item-product4 table-custom">
-                                <div class="product-thumb">
-                                    <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-09.jpg" alt=""></a>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                    <div class="product-price title14 play-font">
-                                        <del class="silver">$601.00</del>
-                                        <ins class="black title18">$400.67</ins>
-                                    </div>
-                                    <ul class="wrap-rating list-inline-block">
-                                        <li>
-                                            <div class="product-rate">
-                                                <div class="product-rating" style="width:100%"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="rate-number silver">(5.0)</span>
-                                        </li>
-                                    </ul>
-                                    <div class="product-extra-link4 title18">
-                                        <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                        <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                        <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End List -->
-                        <div class="list-item">
-                            <div class="item-product item-product4 table-custom">
-                                <div class="product-thumb">
-                                    <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-10.jpg" alt=""></a>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                    <div class="product-price title14 play-font">
-                                        <del class="silver">$601.00</del>
-                                        <ins class="black title18">$400.67</ins>
-                                    </div>
-                                    <ul class="wrap-rating list-inline-block">
-                                        <li>
-                                            <div class="product-rate">
-                                                <div class="product-rating" style="width:100%"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="rate-number silver">(5.0)</span>
-                                        </li>
-                                    </ul>
-                                    <div class="product-extra-link4 title18">
-                                        <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                        <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                        <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product item-product4 table-custom">
-                                <div class="product-thumb">
-                                    <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-11.jpg" alt=""></a>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                    <div class="product-price title14 play-font">
-                                        <del class="silver">$601.00</del>
-                                        <ins class="black title18">$400.67</ins>
-                                    </div>
-                                    <ul class="wrap-rating list-inline-block">
-                                        <li>
-                                            <div class="product-rate">
-                                                <div class="product-rating" style="width:100%"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="rate-number silver">(5.0)</span>
-                                        </li>
-                                    </ul>
-                                    <div class="product-extra-link4 title18">
-                                        <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                        <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                        <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product item-product4 table-custom">
-                                <div class="product-thumb">
-                                    <a href="#" class="product-thumb-link zoom-thumb"><img src="images/photos/jewelry/dark-light-jewelry-12.jpg" alt=""></a>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="title14 product-title"><a href="#" class="black">Blue ring in ged palladium</a></h3>
-                                    <div class="product-price title14 play-font">
-                                        <del class="silver">$601.00</del>
-                                        <ins class="black title18">$400.67</ins>
-                                    </div>
-                                    <ul class="wrap-rating list-inline-block">
-                                        <li>
-                                            <div class="product-rate">
-                                                <div class="product-rating" style="width:100%"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="rate-number silver">(5.0)</span>
-                                        </li>
-                                    </ul>
-                                    <div class="product-extra-link4 title18">
-                                        <a href="compare-product.html" class="compare-link inline-block black fancybox fancybox.iframe"><i class="icon ion-ios-loop-strong"></i><span class="title10 white text-uppercase">Compare</span></a>
-                                        <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Add to cart</span></a>
-                                        <a href="#" class="wishlist-link black inline-block"><i class="icon ion-android-favorite-outline"></i><span class="title10 white text-uppercase">Wishlist</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End List -->
+                        @endforeach
                     </div>
                 </div>
             </div>

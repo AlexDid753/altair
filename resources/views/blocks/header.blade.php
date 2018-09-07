@@ -16,7 +16,7 @@
                             @foreach($topMenu as $menuItem)
                                 <li class="{{ count($menuItem->childrens) ? 'menu-item-has-children' : ''}}">
                                     <a href="{{$menuItem->url}}">{{$menuItem->name}}</a>
-                                    @if (count($menuItem->childrens))
+                                    @if (count($menuItem->childrens)) {{--todo сделать рекурсивное применение шаблона --}}
                                         <ul class="sub-menu">
                                             @foreach($menuItem->childrens as $subMenuItem)
                                                 <li class="{{ count($subMenuItem->childrens) ? 'menu-item-has-children' : ''}}"><a href="{{ $subMenuItem->getUrl() }}">{{ $subMenuItem->name }}</a>
