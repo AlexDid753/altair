@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="robots" content="" />
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="robots" content=""/>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }}</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7cPlayfair+Display:400,700,400i,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7cPlayfair+Display:400,700,400i,700i"
+          rel="stylesheet">
     <link rel="stylesheet" href="{{ mix('/css/front.css') }}">
 
     <!-- <link rel="stylesheet" type="text/css" href="css/rtl.css" media="all"/> -->
 </head>
 
 
-
 <body class="preload">
 <div class="wrap">
-    @includeIf('blocks.header')
-    <!-- End Header -->
-    @yield('content')
-    <!-- End Content -->
-    @includeIf('blocks.footer')
-    <!-- End Footer -->
+@include('blocks.header')
+<!-- End Header -->
+@yield('content')
+<!-- End Content -->
+@include('blocks.footer')
+<!-- End Footer -->
     <div class="wishlist-mask">
         <div class="wishlist-popup">
             <span class="popup-icon"><i class="fa fa-bullhorn" aria-hidden="true"></i></span>
@@ -50,7 +50,18 @@
     <a href="#" class="scroll-top dark"><i class="fa fa-angle-up"></i></a>
 </div>
 <script src="js/libs/jquery-3.2.1.min.js"></script>
-<script src="{{ mix('/js/front.js') }}"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/libs/jquery.fancybox.min.js"></script>
+<script src="js/libs/jquery-ui.min.js"></script>
+<script src="js/libs/owl.carousel.min.js"></script>
+<script src="js/libs/jquery.jcarousellite.min.js"></script>
+<script src="js/libs/jquery.mCustomScrollbar.min.js"></script>
+<script src="js/libs/jquery.elevatezoom.min.js"></script>
+<script src="js/libs/popup.min.js"></script>
+<script src="js/libs/timecircles.min.js"></script>
+<script src="js/libs/wow.min.js"></script>
+<script src="js/theme.js"></script>
+
 
 </body>
 </html>
