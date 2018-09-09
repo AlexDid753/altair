@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=""/>
-    <meta name="keywords" content=""/>
-    <meta name="robots" content=""/>
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="robots" content="" />
     <title>{{ config('app.name') }}</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7cPlayfair+Display:400,700,400i,700i"
-          rel="stylesheet">
-    <link rel="stylesheet" href="{{ mix('/css/front.css') }}">
-
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7cPlayfair+Display:400,700,400i,700i" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/libs/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/libs/ionicons.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/libs/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/libs/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/libs/jquery.fancybox.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/libs/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/libs/owl.carousel.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/libs/owl.transitions.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/libs/jquery.mCustomScrollbar.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/libs/owl.theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/libs/animate.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/libs/hover.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/theme.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/browser.css" media="all"/>
     <!-- <link rel="stylesheet" type="text/css" href="css/rtl.css" media="all"/> -->
 </head>
-
-
-<body class="preload">
+<body class="preload" style="background:#f4f4f4">
 <div class="wrap">
 @include('blocks.header')
 <!-- End Header -->
@@ -61,7 +69,5 @@
 <script src="js/libs/timecircles.min.js"></script>
 <script src="js/libs/wow.min.js"></script>
 <script src="js/theme.js"></script>
-
-
 </body>
 </html>
