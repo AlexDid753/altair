@@ -47,11 +47,6 @@ class Page extends Model
         return $return;
     }
 
-    public function getNameAttribute()
-    {
-        return $this->attributes['title'];
-    }
-
     public static function validatorRules()
     {
         return [

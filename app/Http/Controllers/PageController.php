@@ -55,37 +55,6 @@ class PageController extends BaseController
             $params['models'] = $models;
         }
 
-        // stone catalog
-        if ($model->id == 5) {
-            $params['sidebarFilter'] = true;
-
-            $country = $request->get('country');
-            $color = $request->get('color');
-            $slug = $request->get('stone');
-
-            if ($country || $color || $slug) {
-                $query = Page::select('*');
-
-                if ($country)
-                    $query->where('fields->country', $country);
-
-                if ($color)
-                    $query->where(function ($query) use ($color) {
-                        $query->where('fields->color_1', $color)
-                            ->orWhere('fields->color_2', $color)
-                            ->orWhere('fields->color_3', $color)
-                            ->orWhere('fields->color_4', $color);
-                    });
-
-                if ($slug) {
-                    $parentIds = Page::where([['slug', $slug], ['parent_id', 5]])->pluck('id');
-                    $query->whereIn('parent_id', $parentIds);
-                }
-
-                $params['searchResult'] = $query->get();
-            }
-        }
-
         // news item
         if ($model->template_id == 4) {
             $prev = Page::where([['created_at', '<', $model->created_at], ['template_id', '=', 4]])
@@ -104,17 +73,4 @@ class PageController extends BaseController
         return $model;
     }
 
-    public function index(Request $request) {
-
-        //Опубликованные корневые категории
-        $categories = Category::published()->where('parent_id', '=', null);
-
-        $products = Product::published();
-
-        return view('index', [
-            'categories' => $categories,
-            'products' => $products
-        ]);
-
-    }
 }
