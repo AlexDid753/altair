@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 
 class Page extends Model
 {
@@ -147,7 +148,9 @@ class Page extends Model
         $i = 0;
         $pages = self::all();
         $categories = Category::all();
-        $resources = $pages->merge($categories);
+        $resources = new Collection();
+        $pages->map(function ($item) use ($resources) {$resources->push($item);});
+        $categories->map(function ($item) use ($resources) {$resources->push($item);});
         foreach ($resources as $resource) {
             $data[$i] = array(
                 'name' =>  $resource->name,

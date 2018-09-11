@@ -70,13 +70,9 @@
                 <!-- End Main Footer -->
                 <div class="footer-bottom2">
                     <ul class="footer-menu text-uppercase text-center list-inline-block">
-                        <li><a href="#" class="white wobble-top">cONTACT US</a></li>
-                        <li><a href="#" class="white wobble-top">SITEMAP</a></li>
-                        <li><a href="#" class="white wobble-top">CAREERS</a></li>
-                        <li><a href="#" class="white wobble-top">REPRINTS &amp; PERMISSIONS</a></li>
-                        <li><a href="#" class="white wobble-top">Privacy &amp; Cookies</a></li>
-                        <li><a href="#" class="white wobble-top">Terms &amp; Conditions</a></li>
-                        <li><a href="#" class="white wobble-top">About Us</a></li>
+                        @foreach($footerMenu as $item)
+                            <li><a href="{{$item->getUrl()}}" class="white wobble-top">{{$item->name}}</a></li>
+                        @endforeach
                     </ul>
                     <p class="desc copyright-footer text-center"><span class="white opaci"> Bwstore © 2018 All Rights Reserved. Design by:</span> <a href="http://7uptheme.com" class="white">7uptheme.com</a></p>
                 </div>
