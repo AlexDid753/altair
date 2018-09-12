@@ -13,6 +13,25 @@
 use App\Category;
 use App\Product;
 
+//Route::get('/products_generate',function(){
+//    $faker = Faker\Factory::create();
+//
+//    $limit = 4;
+//
+//    for ($i = 0; $i < $limit; $i++) {
+//
+//        DB::table('products')->insert([ //,
+//            'title' => $faker->unique()->name,
+//            'published' => '1',
+//            'slug' => $faker->slug,
+//            'url'=>$faker->slug,
+//            'parent_id' => $faker->numberBetween($min = 0, $max = 16),
+//            'text' => $faker->text,
+//        ]);
+//        echo "$faker->name . ', ' . $faker->numberBetween($min = 0, $max = 16) . ', Contact No' . $faker->text . '<br>'";
+//    }
+//});
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/elfinder', 'Barryvdh\Elfinder\ElfinderController@showPopup')->name('elfinder');
