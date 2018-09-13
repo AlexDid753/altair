@@ -12,6 +12,7 @@
 */
 use App\Category;
 use App\Product;
+use Illuminate\Support\Facades\App;
 
 //Route::get('/products_generate',function(){
 //    $faker = Faker\Factory::create();
@@ -62,14 +63,15 @@ Route::group(['middleware' => 'auth', 'prefix' => "admin"], function () {
 });
 
 Route::get('catalog', 'CategoryController@index')->name('catalog');
+if(!App::runningInConsole()) {
+    $categories_urls = Category::published()->pluck('url');
+    foreach ($categories_urls as $url) {
+        Route::get( $url, 'CategoryController@show');
+    }
 
-$categories_urls = Category::published()->pluck('url');
-foreach ($categories_urls as $url) {
-    Route::get( $url, 'CategoryController@show');
-}
-
-foreach ($categories_urls as $url) {
-    Route::get($url."{url}", 'ProductController@show')->where('url', '[A-Za-z0-9/-]+');
+    foreach ($categories_urls as $url) {
+        Route::get($url."{url}", 'ProductController@show')->where('url', '[A-Za-z0-9/-]+');
+    }
 }
 
 Route::get('{url?}', 'PageController@show')->where('url', '[A-Za-z0-9/-]+');
