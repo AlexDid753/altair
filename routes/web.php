@@ -14,25 +14,26 @@ use App\Category;
 use App\Product;
 use Illuminate\Support\Facades\App;
 
-//Route::get('/products_generate',function(){
-//    $faker = Faker\Factory::create();
-//
-//    $limit = 4;
-//
-//    for ($i = 0; $i < $limit; $i++) {
-//
-//        DB::table('products')->insert([ //,
-//            'title' => $faker->unique()->name,
-//            'published' => '1',
-//            'slug' => $faker->slug,
-//            'url'=>$faker->slug,
-//            'parent_id' => $faker->numberBetween($min = 0, $max = 16),
-//            'text' => $faker->text,
-//        ]);
-//        echo "$faker->name . ', ' . $faker->numberBetween($min = 0, $max = 16) . ', Contact No' . $faker->text . '<br>'";
-//    }
-//});
+/**
+ * Генерация связей с продуктами
+ */
+/*
+Route::get('/category_product_generate',function(){
+    $faker = Faker\Factory::create();
 
+    $limit = 40;
+
+    for ($i = 0; $i < $limit; $i++) {
+
+        DB::table('category_product')->insert([ //,
+            'category_id' => $faker->numberBetween($min = 0, $max = 16),
+            'product_id' => $faker->numberBetween($min = 47, $max = 96)
+        ]);
+        echo "Успешно вставлена связь <br>";
+    }
+    echo "Закоментируйте текущий роут!";
+});
+*/
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/elfinder', 'Barryvdh\Elfinder\ElfinderController@showPopup')->name('elfinder');
