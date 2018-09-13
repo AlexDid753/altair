@@ -69,7 +69,7 @@
                                             <p class="desc product-desc">Our urban and streetwear fashion place is no Old Navy, Banana Republic or a Walmart clothing store, God forbid. We've quickly become the Iowa's and Midwest's biggest online retailers. </p>
 
                                             <div class="detail-extra-link">
-                                                <a href="#" class="wishlist-link"><i class="fa fa-heart-o"></i><span>Добавить в избранное</span></a>
+                                                <a href="#" class="wishlist-link"><i class="fa {{$model->isLiked() ? 'fa-heart' : 'fa-heart-o'}}" data-slug="{{$model->slug}}"></i><span>{{$model->isLiked() ? 'Удалить из избранного' : 'Добавить в избранное'}}</span></a>
                                             </div>
                                             <ul class="list-none product-meta-info">
                                                 <li>

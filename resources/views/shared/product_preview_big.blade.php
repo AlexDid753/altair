@@ -21,7 +21,7 @@
         </ul>
         <div class="product-extra-link4 title18">
             <a href="#" class="addcart-link black inline-block"><i class="icon ion-bag"></i><span class="title10 white text-uppercase">Добавить в корзину</span></a>
-            <a href="#" class="wishlist-link black inline-block"><i data-slug="{{$model->slug}}" class="icon {{ $model->isLiked() ? 'ion-android-favorite' : 'ion-android-favorite-outline' }}"></i><span class="title10 white text-uppercase">Добавить в избранное</span></a>
+            <a href="#" class="wishlist-link black inline-block"><i class="icon {{ $model->isLiked() ? 'ion-android-favorite' : 'ion-android-favorite-outline' }}" data-slug="{{$model->slug}}"></i><span class="title10 white text-uppercase">Добавить в избранное</span></a>
         </div>
     </div>
 </div>

@@ -229,17 +229,32 @@ $(function() {
         event.preventDefault();
         var i = $(this).find('i');
         var slug = i.data('slug');
+        var span = i.parent('.wishlist-link').find('span');
         if (slug){
             $.ajax({
                 url: '/product_like/' + slug,
 				success: function () {
-                    if (i.hasClass('ion-android-favorite-outline')) {
-                        i.removeClass('ion-android-favorite-outline');
-                        i.addClass('ion-android-favorite');
-                    } else {
-                        i.removeClass('ion-android-favorite');
-                        i.addClass('ion-android-favorite-outline');
-                    }
+                	if (i.parents('.detail-info').length) {//если показывается в блоке детальной информации о продукте
+                		if(i.hasClass('fa-heart')) {
+                        	span.text('Добавить в избранное');
+                            i.removeClass('fa-heart');
+                            i.addClass('fa-heart-o');
+						}else {
+                			span.text('Удалить из избранного');
+                            i.removeClass('fa-heart-o');
+                            i.addClass('fa-heart');
+						}
+					}else {
+                        if (i.hasClass('ion-android-favorite-outline')) {
+                            span.text('Удалить из избранного');
+                            i.removeClass('ion-android-favorite-outline');
+                            i.addClass('ion-android-favorite');
+                        } else {
+                            span.text('Добавить в избранное');
+                            i.removeClass('ion-android-favorite');
+                            i.addClass('ion-android-favorite-outline');
+                        }
+					}
                 }
             });
 		}
