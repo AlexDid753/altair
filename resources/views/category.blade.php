@@ -43,7 +43,6 @@
                             @endif
                             <div class="product-grid-view">
                                 <div class="row">
-                                    @dd($products)
                                     @each('shared.product_preview', $products, 'model')
                                 </div>
                                 <div class="pagi-nav text-right">

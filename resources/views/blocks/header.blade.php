@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="logo logo1 pull-left">
-                        <a href="index.html">
+                        <a href="/">
                             <span class="logo-icon title24 round white bg-dark"><i class="fa fa-diamond"></i></span>
                             <strong class="play-font font-italic title30 white text-uppercase">Altair-</strong>
                             <span class="play-font font-italic font-normal title30 white">Serebro</span>

@@ -1,39 +1,29 @@
 <footer id="footer">
     <div class="footer-dark-style">
-        <div class="container">
-            <div class="list-service-footer">
-                <ul class="list-none">
-                    <li><a href="#"><img src="images/home/jewelry4/icon1.png" alt="" /></a> <span class="white opaci">FREE DELIVERY FROM $99</span></li>
-                    <li><a href="#"><img src="images/home/jewelry4/icon2.png" alt="" /></a> <span class="white opaci">SECURE PAYMENT</span></li>
-                    <li><a href="#"><img src="images/home/jewelry4/icon3.png" alt="" /></a> <span class="white opaci">100% GUARANTEED</span></li>
-                    <li><a href="#"><img src="images/home/jewelry4/icon4.png" alt="" /></a> <span class="white opaci">MONEY BACK GUARANTEED</span></li>
-                </ul>
-            </div>
-        </div>
         <div class="footer2 bg-dark">
             <div class="container">
                 <div class="main-footer2">
                     <div class="row">
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="block-footer2">
-                                <h2 class="title30 white play-font font-italic">Newsletter</h2>
-                                <p class="desc white opaci">Sign up to our newsletter to receive updates on the art of Coin.</p>
+                                <h2 class="title30 white play-font font-italic">Подписка на акции</h2>
+                                <p class="desc white opaci">Введите свою почту чтобы подписаться на рассылку об акциях.</p>
                                 <form class="form-newsletter2">
-                                    <input type="text" placeholder="EMAIL ADDRESS">
-                                    <input type="submit" value="Subscription">
+                                    <input type="text" placeholder="Электронная почта">
+                                    <input type="submit" value="Подписаться">
                                 </form>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="block-footer2">
                                 <div class="logo logo-footer2 text-center">
-                                    <a href="index.html">
+                                    <a href="/">
                                         <span class="logo-icon title24 round white bg-dark"><i class="fa fa-diamond"></i></span>
-                                        <strong class="play-font  title30 white text-uppercase">BW-</strong>
-                                        <span class="play-font font-normal title30 white">Store</span>
+                                        <strong class="play-font  title30 white text-uppercase">Altair-</strong>
+                                        <span class="play-font font-normal title30 white">Serebro</span>
                                     </a>
                                 </div>
-                                <h2 class="title18 play-font white text-center font-italic">Follow Us On</h2>
+                                <h2 class="title18 play-font white text-center font-italic">Подпишитесь на нас в соцсетях</h2>
                                 <div class="social-network-footer text-center">
                                     <a href="#" class="inline-block round"><i class="fa fa-facebook"></i></a>
                                     <a href="#" class="inline-block round"><i class="fa fa-twitter"></i></a>
@@ -43,24 +33,24 @@
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="block-footer2">
-                                <h2 class="title30 white play-font font-italic">Concierge</h2>
-                                <p class="desc white opaci">Don't hesitate in contacting us for any questions you might have.</p>
+                                <h2 class="title30 white play-font font-italic">Контакты</h2>
+                                <p class="desc white opaci">Обращайтесь к нам по любым вопросам.</p>
                                 <ul class="list-none contact-foter2">
                                     <li>
                                         <i class="fa fa-location-arrow white"></i>
-                                        <span class="text-uppercase white opaci">SHIPPING & RETURNS</span>
+                                        <span class="text-uppercase white opaci">Доставка</span>
                                     </li>
                                     <li>
                                         <i class="fa fa-question white"></i>
-                                        <span class="text-uppercase white opaci">FREQUENTLY ASKED QUESTIONS</span>
+                                        <span class="text-uppercase white opaci">Часто задаваемые вопросы</span>
                                     </li>
                                     <li>
                                         <i class="fa fa-volume-control-phone white"></i>
-                                        <span class="text-uppercase white opaci">+84 1678 311 160</span>
+                                        <span class="text-uppercase white opaci">+7 (812) 555 5555</span>
                                     </li>
                                     <li>
                                         <i class="fa fa-envelope white"></i>
-                                        <a class="white opaci" href="mailto:contact.7uptheme@gmail.com">contact.7uptheme@gmail.com</a>
+                                        <a class="white opaci" href="mailto:contact.7uptheme@gmail.com">contact@altair-serebro.ru</a>
                                     </li>
                                 </ul>
                             </div>
@@ -74,7 +64,7 @@
                             <li><a href="{{$item->getUrl()}}" class="white wobble-top">{{$item->name}}</a></li>
                         @endforeach
                     </ul>
-                    <p class="desc copyright-footer text-center"><span class="white opaci"> Bwstore © 2018 All Rights Reserved. Design by:</span> <a href="http://7uptheme.com" class="white">7uptheme.com</a></p>
+                    <p class="desc copyright-footer text-center"><span class="white opaci"> Altair-Serebro © 2018 Создание сайта — </span> <a target="_blank" href="http://Molinos.Ru" class="white">Molinos.Ru</a></p>
                 </div>
             </div>
         </div>

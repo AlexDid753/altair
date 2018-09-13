@@ -5,7 +5,7 @@
             <a href="quick-view.html" class="quickview-link fancybox.iframe title12 round white"><i class="fa fa-search"></i></a>
         </div>
         <div class="product-info">
-            <h3 class="title14 product-title"><a href="#" class="black">{{$model->name}}</a></h3>
+            <h3 class="title14 product-title"><a href="{{$model->url}}" class="black">{{$model->title}}</a></h3>
             <div class="product-price title14 play-font">
                 <del class="silver">$601.00</del>
                 <ins class="black title18">$400.67</ins>
