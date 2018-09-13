@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->integer('parent_id')->nullable();
             $table->smallInteger('published');
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('url')->default('')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();
@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->text('text')->nullable();
             $table->json('images')->nullable();
 
-
+            $table->index('slug');
             $table->softDeletes();
             $table->timestamps();
         });

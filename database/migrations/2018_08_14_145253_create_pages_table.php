@@ -19,7 +19,7 @@ class CreatePagesTable extends Migration
             $table->smallInteger('published');
             $table->integer('sort')->default(0);
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('url')->default('');
             $table->string('view')->default('');
             $table->string('meta_title')->nullable();
@@ -29,6 +29,8 @@ class CreatePagesTable extends Migration
             $table->text('content')->nullable();
             $table->integer('template_id')->nullable();
             $table->json('fields')->nullable();
+
+            $table->index('slug');
             $table->softDeletes();
             $table->timestamps();
         });

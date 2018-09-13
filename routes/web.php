@@ -65,6 +65,8 @@ Route::group(['middleware' => 'auth', 'prefix' => "admin"], function () {
 
 Route::get('catalog', 'CategoryController@index')->name('catalog');
 
+Route::get('product_like/{slug}', 'ProductController@toggle_like');
+
 $categories_urls = Category::published()->pluck('url');
 foreach ($categories_urls as $url) {
     Route::get($url, 'CategoryController@show');

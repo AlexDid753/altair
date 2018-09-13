@@ -57,5 +57,24 @@ class Product extends Model
         return $url;
     }
 
+    public function isLiked(){
+        $products_liked = session()->get('products.liked');
+        if (empty($products_liked))
+            return false;
+        return in_array($this->id, $products_liked);
+    }
+
+    public function add_to_liked(){
+        session()->push('products.liked', $this->id);
+    }
+
+    public function remove_from_liked(){
+        $products_liked = session()->get('products.liked');
+        $key = array_search($this->id, $products_liked);
+        unset($products_liked[$key]);
+        session()->forget('products.liked');
+        session()->put('products.liked', $products_liked);
+    }
+
 
 }

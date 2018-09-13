@@ -224,22 +224,26 @@ $(function() {
 			});
 		});
 	}
-	//Popup Wishlist
-	$('.wishlist-link').on('click',function(event){
-		event.preventDefault();
-		$('.wishlist-mask').fadeIn();
-		var counter = 5;
-		var popup;
-		popup = setInterval(function() {
-			counter--;
-			if(counter < 0) {
-				clearInterval(popup);
-				$('.wishlist-mask').hide();
-			} else {
-				$(".wishlist-countdown").text(counter.toString());
-			}
-		}, 1000);
-	});
+	//Wishlist
+    $('.wishlist-link').on('click',function(event){
+        event.preventDefault();
+        var i = $(this).find('i');
+        var slug = i.data('slug');
+        if (slug){
+            $.ajax({
+                url: '/product_like/' + slug,
+				success: function () {
+                    if (i.hasClass('ion-android-favorite-outline')) {
+                        i.removeClass('ion-android-favorite-outline');
+                        i.addClass('ion-android-favorite');
+                    } else {
+                        i.removeClass('ion-android-favorite');
+                        i.addClass('ion-android-favorite-outline');
+                    }
+                }
+            });
+		}
+    });
 	//Menu Responsive
 	$('.toggle-mobile-menu').on('click',function(event){
 		event.preventDefault();

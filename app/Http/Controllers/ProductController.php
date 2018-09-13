@@ -28,4 +28,29 @@ class ProductController extends BaseController
             'products_recently_viewed' => $products_recently_viewed
         ]);
     }
+
+    /**
+     * Находит продукт по slug, добавляет его id в сессию
+     * или удаляет если он уже присутствует,
+     * и возвращает id лайкнутого товара
+     * @param $slug
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function toggle_like($slug)
+    {
+        $model = Product::where('slug', $slug)->first();
+
+        if (!$model) {
+            $returnData = array(
+                'status' => 'error',
+                'message' => 'Product not found!'
+            );
+            return response()->json($returnData, 404);
+        }
+
+        $model->isLiked() ? $model->remove_from_liked() : $model->add_to_liked();
+
+        return response()->json(['success'=>$model->id]);
+    }
+
 }
