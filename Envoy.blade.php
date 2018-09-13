@@ -105,7 +105,7 @@
 	deploy:finishing
 	deploy:cleanup
 	deploy:migrate
-	deploy:restart_services
+	{{--deploy:restart_services--}}
 	deploy:finished
 @endmacro
 
