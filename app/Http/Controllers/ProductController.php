@@ -16,8 +16,16 @@ class ProductController extends BaseController
         if (!$model)
             abort(404, 'Страница не найдена');
 
+        $products_recently_viewed_ids = session()->get('products.recently_viewed');
+        // Push product ID to session
+        if (!in_array($model->id,$products_recently_viewed_ids))
+            session()->push('products.recently_viewed', $model->id);
+
+        $products_recently_viewed = Product::limit(10)->whereIn('id', $products_recently_viewed_ids)->get();
+
         return view('product', [
-            'model' => $model
+            'model' => $model,
+            'products_recently_viewed' => $products_recently_viewed
         ]);
     }
 }
