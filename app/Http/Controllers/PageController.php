@@ -13,7 +13,6 @@ class PageController extends BaseController
 {
     public function show(Request $request, $url = '/')
     {
-        $session_data = $request->session()->all();
 
         if ($url != '/')
             $url = '/' . $url;
@@ -27,11 +26,6 @@ class PageController extends BaseController
 
         if (!$model)
             abort(404, 'Страница не найдена');
-
-//        // Push product ID to session  #todo перести в контроллер продуктов
-//        if($model->isProduct()){
-//            session()->push('products.recently_viewed', $model->id);
-//        };
 
         $params = [
             'model' => $model,
