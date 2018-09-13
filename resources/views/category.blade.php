@@ -15,6 +15,19 @@
         <div class="content-page">
             <div class="container">
                 <div class="row">
+                    @if(count($subcategories))
+                        <div class="block-cate2">
+                            <div class="title-box2 text-center">
+                                <h2 class="title24 dark play-font font-italic">Подкатегории</h2>
+                                <img src="images/home/jewelry2/line-black.png" alt="">
+                            </div>
+                            <div class="list-cat2">
+                                <div class="row">
+                                    @each('shared.subcategory_preview', $subcategories, 'model')
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     <div class="col-md-3 col-sm-4 col-xs-12">
                         <div class="sidebar sidebar-left">
                             <div class="widget widget-search">
@@ -36,11 +49,6 @@
                                     </div>
                                 </div>
                             </div>
-                            @if(count($subcategories))
-                                <div class="row">
-                                    @each('shared.subcategory_preview', $subcategories, 'model')
-                                </div>
-                            @endif
                             <div class="product-grid-view">
                                 <div class="row">
                                     @each('shared.product_preview', $products, 'model')
