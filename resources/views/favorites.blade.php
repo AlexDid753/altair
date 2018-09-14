@@ -54,44 +54,7 @@
                         <div class="contact-form-faq">
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div class="contact-form-page thanks">
-                                        <h2 class="title18 dark font-bold text-uppercase play-font">Благодарим за обратную связь. Мы свяжемся с вами в ближайшее время!</h2>
-                                    </div>
-                                    <div class="contact-form-page">
-                                        <h2 class="title18 dark font-bold text-uppercase play-font">Оставить контакты</h2>
-                                        <form class="contact-form favorites-form" method="post">
-                                            <input type="hidden" name="type" value="favorites">
-                                            <p class="contact-name">
-                                                <input name="name" class="dark border"
-                                                       placeholder="Ваше имя*"
-                                                       required
-                                                       value="" type="text">
-                                            </p>
-                                            <p class="contact-phone">
-                                                <input name="phone" class="dark border"
-                                                       required
-                                                       placeholder="Телефон*"
-                                                       pattern="\d*"
-                                                       value="" type="text">
-                                            </p>
-                                            <p class="contact-email">
-                                                <input name="email" class="dark border"
-                                                       placeholder="Email*"
-                                                       required
-                                                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-                                                       value="" type="text">
-                                            </p>
-                                            <p class="contact-message">
-                                                <textarea name="message" class="dark border"
-                                                          placeholder="Ваш комментарий"
-                                                          cols="30" rows="10"></textarea>
-                                            </p>
-                                            <p class="contact-submit">
-                                                <input class="shop-button white bg-dark" type="submit"
-                                                       value="Оставить контакты">
-                                            </p>
-                                        </form>
-                                    </div>
+                                    @include('shared.contact_form', ['contact_type'=>'favorites'])
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="contact-faq">

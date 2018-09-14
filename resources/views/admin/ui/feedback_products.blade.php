@@ -1,6 +1,9 @@
+<?php  $data = isset($fieldValue['value']) ? $fieldValue['value'] : json_decode($model->$fieldName);   ?>
+@if (!empty($data))
 <div class="form-group row">
+
     <label class="col-md-12 col-form-label">Избранные товары</label>
-    <?php  $data = isset($fieldValue['value']) ? $fieldValue['value'] : json_decode($model->$fieldName);    ?>
+
     <div class="col-md-12">
         <table class="table table-bordered">
             <thead>
@@ -19,3 +22,4 @@
         </table>
     </div>
 </div>
+@endif

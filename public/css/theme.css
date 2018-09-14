@@ -4180,6 +4180,9 @@ a.dark {
 .block-footer2 .form-newsletter2 {
   margin-top: 15px;
 }
+.block-footer2 .thanks {
+  display: none;
+}
 .form-newsletter2 input[type="text"] {
   height: 40px;
   border-width: 0 0 1px 0;

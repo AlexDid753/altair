@@ -281,24 +281,33 @@ $(function() {
         var liked_count = data.products_liked.length;
     	$('.wrap-cart-top2 sup.round').text(liked_count);
 	}
-    //Форма обратной связи
-	$('form.favorites-form').submit(function (event) {
-        event.preventDefault();
-		let favorites_data = [],
-			i = 0,
-			form = $(this),
-			form_data = form.serializeArray();
+
+	function get_favorites_table_data(){
+        let favorites_data = [];
         $('.cart_item').each(function () {
-			var favorite_item = $(this).find('.product-quantity span.qty-val'),
+            var favorite_item = $(this).find('.product-quantity span.qty-val'),
                 id = favorite_item.data('id'),
-				count = favorite_item.text();
+                count = favorite_item.text();
             favorites_data.push({
                 id: id,
                 count:  count
             });
         });
+        return favorites_data;
+	}
+    //Форма обратной связи
+	$('form.feedback-form').submit(function (event) {
+        event.preventDefault();
+		let favorites_data = [],
+			i = 0,
+			form = $(this),
+			feedback_type = form.find("input[name='type']").val(),
+			form_data = form.serializeArray();
 
-        form_data.push({name: 'products', value: JSON.stringify(favorites_data)});
+		if (feedback_type == 'favorites') {
+            favorites_data = get_favorites_table_data();
+            form_data.push({name: 'products', value: JSON.stringify(favorites_data)});
+		}
 
         $.ajax({
             url: '/feedback',
@@ -309,12 +318,20 @@ $(function() {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-				$('.contact-form-page').hide();
-                $('.contact-form-page.thanks').show();
+                switch(feedback_type) {
+                    case 'subscribe':
+                    	let block_footer = $('.block-footer2');
+                        block_footer.find('.feedback-form').hide();
+                        block_footer.find('.desc.opaci').hide();
+                        block_footer.find('.thanks').show();
+                        break;
+                    default:
+                        $('.contact-form-page').hide();
+                        $('.contact-form-page.thanks').show();
+                        break;
+                }
             }
         });
-        //$("input[name='favorites-products']").val(favorites_data);
-		console.log(favorites_data);
     });
 
 	//Menu Responsive
