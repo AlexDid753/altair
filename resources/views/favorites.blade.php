@@ -60,6 +60,7 @@
                                     <div class="contact-form-page">
                                         <h2 class="title18 dark font-bold text-uppercase play-font">Оставить контакты</h2>
                                         <form class="contact-form favorites-form" method="post">
+                                            <input type="hidden" name="type" value="favorites">
                                             <p class="contact-name">
                                                 <input name="name" class="dark border"
                                                        placeholder="Ваше имя*"
@@ -68,13 +69,16 @@
                                             </p>
                                             <p class="contact-phone">
                                                 <input name="phone" class="dark border"
-                                                       placeholder="Телефон"
+                                                       required
+                                                       placeholder="Телефон*"
+                                                       pattern="\d*"
                                                        value="" type="text">
                                             </p>
                                             <p class="contact-email">
                                                 <input name="email" class="dark border"
                                                        placeholder="Email*"
                                                        required
+                                                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
                                                        value="" type="text">
                                             </p>
                                             <p class="contact-message">
