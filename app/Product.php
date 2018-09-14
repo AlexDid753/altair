@@ -76,5 +76,12 @@ class Product extends Model
         session()->put('products.liked', $products_liked);
     }
 
+    public static function liked(){
+        $products_liked = session()->get('products.liked');
+        if ($products_liked != null)
+            return Product::whereIn('id', $products_liked)->get();
+        else
+            return [];
+    }
 
 }

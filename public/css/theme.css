@@ -1415,6 +1415,9 @@ div.table .product-info .product-title {
   border-radius: 50%;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
 }
+.center {
+  text-align: center;
+}
 .content-popup-form {
   padding: 0 20px;
 }
@@ -6091,7 +6094,7 @@ td.product-thumbnail img {
   padding: 15px 20px;
   text-transform: uppercase;
 }
-.wc-proceed-to-checkout a.checkout-button {
+.wc-proceed-to-checkout a.checkout-button, .back-to-catalog {
   color: #fff;
   display: inline-block;
   height: 40px;
@@ -6104,6 +6107,14 @@ td.product-thumbnail img {
   background: #333;
 }
 .wc-proceed-to-checkout a.checkout-button:hover {
+  background-color: #000;
+}
+
+.back-to-catalog {
+
+}
+.back-to-catalog:hover {
+  color: #fff;
   background-color: #000;
 }
 /*End Wooocommerce*/
