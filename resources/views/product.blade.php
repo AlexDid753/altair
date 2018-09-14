@@ -104,7 +104,8 @@
                                 </div>
                             </div>
                             <!-- End Product Detail -->
-                            <div class="related-tabs">
+                            @if(count($products_recently_viewed))
+                                <div class="related-tabs">
                                 <ul class="list-inline-block related-tab-title font-bold text-uppercase play-font">
                                     <li class="active">Недавно просмотренные товары</li>
                                 </ul>
@@ -292,6 +293,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                             <!-- End Related Tabs -->
                         </div>
                     </div>
