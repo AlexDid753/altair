@@ -53,7 +53,9 @@ class ProductController extends BaseController
 
         $model->isLiked() ? $model->remove_from_liked() : $model->add_to_liked();
 
-        return response()->json(['success'=>$model->id]);
+        return response()->json(['success'=>1,
+                                'product_id'=> $model->id,
+                                'products_liked' => Product::liked() ]);
     }
 
 }

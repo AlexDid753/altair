@@ -24,13 +24,13 @@
                                     @foreach($products_liked as $product)
                                         <tr class="cart_item">
                                             <td class="product-remove">
-                                                <a class="remove" href="#"><i class="fa fa-trash"></i></a>
+                                                <a class="remove" href="#"><i class="fa fa-trash" data-slug="{{$product->slug}}"></i></a>
                                             </td>
                                             <td class="product-thumbnail">
                                                 <a href="{{$product->url}}"><img  src="images/photos/glasses/dl-store-glasse-03.jpg" alt=""/></a>
                                             </td>
                                             <td class="product-name" data-title="Product">
-                                                <a href="#">{{$product->title}}</a>
+                                                <a href="{{$product->url}}">{{$product->title}}</a>
                                             </td>
                                             <td class="product-price" data-title="Price">
                                                 <span class="amount">$68.00</span>
