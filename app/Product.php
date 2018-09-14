@@ -11,7 +11,8 @@ class Product extends Model
     public static function validatorRules()
     {
         return [
-            'title' => 'required|string|max:255'
+            'title' => 'required|string|max:255',
+            'parent_id' => 'required'
         ];
     }
 
