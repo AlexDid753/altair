@@ -85,3 +85,13 @@ if (! function_exists('round_up')) {
             ceil($value * $mult) / $mult;
     }
 }
+
+if (! function_exists('set_atributes')) {
+    function set_atributes($attributes){
+        if (is_array($attributes) && !empty($attributes)){
+            foreach ($attributes as $attribute) {
+                echo $attribute;
+            }
+        }
+    }
+}

@@ -7,6 +7,9 @@
 
     <div class="col-md-12">
         <textarea
+                @if (isset($attributes))
+                    {{set_atributes($attributes)}}
+                @endif
                 id="{{ $fieldName }}"
                 name="{{ $fieldName }}"
                 class="form-control{{ $errors->has($fieldName) ? ' is-invalid' : '' }}"

@@ -11,7 +11,7 @@ class FeedbackController extends BaseAdminController
         'name' => ['type' => 'input', "attributes"=>['readonly'=>'readonly']],
         'phone' => ['type' => 'input', "attributes"=>['readonly'=>'readonly']],
         'email' => ['type' => 'input', "attributes"=>['readonly'=>'readonly']],
-        'message' => ['type' => 'input', "attributes"=>['readonly'=>'readonly']],
+        'message' => ['type' => 'text', "attributes"=>['readonly'=>'readonly']],
         'products'=> ['type' => 'input', "attributes"=>['readonly'=>'readonly']]
     ];
 

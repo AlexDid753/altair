@@ -20,10 +20,8 @@
     <div class="col-md-12">
         <input
                 {{--вывод атрибутов--}}
-                @if (isset($attributes) && is_array($attributes) && !empty($attributes))
-                    @foreach ($attributes as $attribute)
-                        {{ $attribute }}
-                    @endforeach
+                @if (isset($attributes))
+                    {{set_atributes($attributes)}}
                 @endif
                 id="{{ $fieldName }}"
                 type="text"
