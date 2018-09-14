@@ -58,4 +58,7 @@ class ProductController extends BaseController
                                 'products_liked' => Product::liked() ]);
     }
 
+    public function get_liked(){
+        return response()->json(['products_liked' => Product::liked() ]);
+    }
 }

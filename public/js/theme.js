@@ -282,6 +282,39 @@ $(function() {
     	$('.wrap-cart-top2 sup.round').text(liked_count);
 	}
 
+	$('.title18').click(function () {
+		let favorites_data = [],
+			i = 0,
+			form = $('form.favorites-form'),
+			form_data = form.serializeArray();
+        $('.cart_item').each(function () {
+			var favorite_item = $(this).find('.product-quantity span.qty-val'),
+                id = favorite_item.data('id'),
+				count = favorite_item.text();
+            favorites_data.push({
+                id: id,
+                count:  count
+            });
+        });
+
+        form_data.push({name: 'products', value: JSON.stringify(favorites_data)});
+
+        $.ajax({
+            url: '/feedback',
+			method: 'POST',
+            dataType: 'json',
+			data: form_data,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                $('.contact-form-page').append(response);
+            }
+        });
+        //$("input[name='favorites-products']").val(favorites_data);
+		console.log(favorites_data);
+    });
+
 	//Menu Responsive
 	$('.toggle-mobile-menu').on('click',function(event){
 		event.preventDefault();

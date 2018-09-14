@@ -5716,6 +5716,9 @@ a.dark {
 .contact-accordion {
   background: #fff;
 }
+.contact-accordion.dark {
+  background: #f4f4f4;
+}
 .contact-form-page {
   margin-right: 50px;
 }
@@ -5754,6 +5757,7 @@ a.dark {
 }
 .contact-form textarea {
   display: block;
+  resize: vertical;
   width: 100%;
   padding: 10px 15px 10px 40px;
 }
@@ -5775,6 +5779,9 @@ a.dark {
 }
 .contact-form p.contact-name::before {
   content: "\f007";
+}
+.contact-form p.contact-phone::before {
+  content: "\f095";
 }
 .contact-form p.contact-email::before {
   content: "\f0e0";

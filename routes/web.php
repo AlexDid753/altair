@@ -44,7 +44,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth', 'prefix' => "admin"], function () {
     Route::get('/', 'Admin\AdminController@index')->name('admin.index');
 
-    foreach (['user', 'page', 'template', 'news', 'menu', 'category', 'product'] as $url) {
+    foreach (['user', 'page', 'template', 'news', 'menu', 'category', 'product', 'feedback'] as $url) {
         Route::prefix($url)->group(function () use ($url) {
             $controller = 'Admin\\' . studly_case($url) . 'Controller';
 
@@ -64,8 +64,10 @@ Route::group(['middleware' => 'auth', 'prefix' => "admin"], function () {
 });
 
 Route::get('catalog', 'CategoryController@index')->name('catalog');
-
 Route::get('product_like/{slug}', 'ProductController@toggle_like');
+Route::post('products_get_liked', 'ProductController@get_liked');
+
+Route::post('feedback', 'FeedbackController@send');
 
 $categories_urls = Category::published()->pluck('url');
 foreach ($categories_urls as $url) {
