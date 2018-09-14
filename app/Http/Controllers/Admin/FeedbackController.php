@@ -12,7 +12,7 @@ class FeedbackController extends BaseAdminController
         'phone' => ['type' => 'input', "attributes"=>['readonly'=>'readonly']],
         'email' => ['type' => 'input', "attributes"=>['readonly'=>'readonly']],
         'message' => ['type' => 'text', "attributes"=>['readonly'=>'readonly']],
-        'products'=> ['type' => 'input', "attributes"=>['readonly'=>'readonly']]
+        'products'=> ['type' => 'feedback_products']
     ];
 
 
@@ -24,5 +24,31 @@ class FeedbackController extends BaseAdminController
         if (!$this->name) {
             $this->name = "feedback";
         }
+    }
+
+    public function index()
+    {
+        if ($this->listWhere())
+            $models = $this->model::where($this->listWhere())->paginate(50);
+        else
+            $models = $this->model::paginate(50);
+
+        return view()->first(['admin.' . $this->name . '.list', 'admin.feedback.index'], [
+            'models' => $models,
+            'name' => $this->name
+        ]);
+    }
+
+    public function edit($id)
+    {
+        $model = $this->model::find($id);
+        $categories = $this->getCategories();
+        return view('admin.feedback.edit', [
+            'model' => $model,
+            'name' => $this->name,
+            'fields' => $this->fields,
+            'categories' => $categories,
+            'class_name' => strtolower((new \ReflectionClass($model))->getShortName())
+        ]);
     }
 }

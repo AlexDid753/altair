@@ -281,11 +281,12 @@ $(function() {
         var liked_count = data.products_liked.length;
     	$('.wrap-cart-top2 sup.round').text(liked_count);
 	}
-
-	$('.title18').click(function () {
+    //Форма обратной связи
+	$('form.favorites-form').submit(function (event) {
+        event.preventDefault();
 		let favorites_data = [],
 			i = 0,
-			form = $('form.favorites-form'),
+			form = $(this),
 			form_data = form.serializeArray();
         $('.cart_item').each(function () {
 			var favorite_item = $(this).find('.product-quantity span.qty-val'),
@@ -308,7 +309,8 @@ $(function() {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                $('.contact-form-page').append(response);
+				$('.contact-form-page').hide();
+                $('.contact-form-page.thanks').show();
             }
         });
         //$("input[name='favorites-products']").val(favorites_data);

@@ -5722,6 +5722,9 @@ a.dark {
 .contact-form-page {
   margin-right: 50px;
 }
+.contact-form-page.thanks {
+  display: none;
+}
 .contact-accordion .toggle-tab-title {
   font-size: 14px;
   text-transform: uppercase;

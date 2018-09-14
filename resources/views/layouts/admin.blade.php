@@ -68,6 +68,10 @@
                                     <span data-feather="sidebar"></span>
                                     Шаблоны
                                 </a>
+                                <a class="nav-link" href="/admin/feedback">
+                                    <span data-feather="mail"></span>
+                                    Обратная связь
+                                </a>
                                 <a class="nav-link" href="/admin/settings">
                                     <span data-feather="settings"></span>
                                     Настройки

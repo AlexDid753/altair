@@ -54,9 +54,12 @@
                         <div class="contact-form-faq">
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="contact-form-page thanks">
+                                        <h2 class="title18 dark font-bold text-uppercase play-font">Благодарим за обратную связь. Мы свяжемся с вами в ближайшее время!</h2>
+                                    </div>
                                     <div class="contact-form-page">
                                         <h2 class="title18 dark font-bold text-uppercase play-font">Оставить контакты</h2>
-                                        <form class="contact-form favorites-form">
+                                        <form class="contact-form favorites-form" method="post">
                                             <p class="contact-name">
                                                 <input name="name" class="dark border"
                                                        placeholder="Ваше имя*"
