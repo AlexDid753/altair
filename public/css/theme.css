@@ -4361,6 +4361,21 @@ a.dark {
   transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
 }
+#header.default {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  background: #fefefe;
+  -webkit-box-shadow: 0 2px 2px #444;
+  -moz-box-shadow: 0 2px 2px #444;
+  -ms-box-shadow: 0 2px 2px #444;
+  -o-box-shadow: 0 2px 2px #444;
+  box-shadow: 0 2px 2px #444;
+}
+#header.default .logo.logo1, #header.default .header_year {
+  display: none;
+}
 .header3 {
   padding: 30px 0;
 }

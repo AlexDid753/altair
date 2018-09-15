@@ -334,6 +334,19 @@ $(function() {
         });
     });
 
+    //Фиксированная шапка
+    $(document).ready(function(){
+        // Фикмированная шапка при скролле
+        $("#header").removeClass("default");
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 40) {
+                $("#header").addClass("default").fadeIn('fast');
+            } else {
+                $("#header").removeClass("default").fadeIn('fast');
+            };
+        });
+    });
+
 	//Menu Responsive
 	$('.toggle-mobile-menu').on('click',function(event){
 		event.preventDefault();
