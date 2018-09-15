@@ -271,7 +271,7 @@ $(function() {
                 url: '/product_like/' + slug,
                 success: function (data) {
                     update_faves_count(data);
-                    table_row.hide();
+                    table_row.remove();
                 }
             });
         }
