@@ -22,18 +22,15 @@
                                     <div class="col-md-5 col-sm-12 col-xs-12">
                                         <div class="detail-gallery vertical">
                                             <div class="mid">
-                                                <img src="images/photos/jewelry/dark-light-jewelry-01.jpg" alt=""/>
+                                                <img src="{{$images[0]->image}}" alt=""/>
                                             </div>
                                             <div class="gallery-control">
                                                 <a href="#" class="prev"><i class="fa fa-angle-left"></i></a>
                                                 <div class="carousel" data-visible="6" data-vertical="true">
                                                     <ul class="list-none">
-                                                        <li><a href="#" class="active"><img src="images/photos/jewelry/dark-light-jewelry-01.jpg" alt=""/></a></li>
-                                                        <li><a href="#"><img src="images/photos/jewelry/dark-light-jewelry-02.jpg" alt=""/></a></li>
-                                                        <li><a href="#"><img src="images/photos/jewelry/dark-light-jewelry-03.jpg" alt=""/></a></li>
-                                                        <li><a href="#"><img src="images/photos/jewelry/dark-light-jewelry-04.jpg" alt=""/></a></li>
-                                                        <li><a href="#"><img src="images/photos/jewelry/dark-light-jewelry-05.jpg" alt=""/></a></li>
-                                                        <li><a href="#"><img src="images/photos/jewelry/dark-light-jewelry-06.jpg" alt=""/></a></li>
+                                                        @foreach($images as $key => $image)
+                                                            <li><a href="#" {{ $key==0? 'class=active' : '' }}><img src="{{$image->image}}" alt=""/></a></li>
+                                                        @endforeach
                                                         <li><a href="#"><img src="images/photos/jewelry/dark-light-jewelry-07.jpg" alt=""/></a></li>
                                                     </ul>
                                                 </div>

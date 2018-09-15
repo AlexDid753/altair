@@ -27,10 +27,13 @@ class ProductController extends BaseController
         $products_recently_viewed_ids = array_diff( $products_recently_viewed_ids, [$model->id] );
         $products_recently_viewed = Product::limit(10)->whereIn('id', $products_recently_viewed_ids)->get();
 
+        $images = !empty($model->images)? $images = json_decode($model->images) : [];
+
         return view('product', [
             'model' => $model,
             'products_recently_viewed' => $products_recently_viewed,
-            'products_liked' => Product::liked()
+            'products_liked' => Product::liked(),
+            'images' => $images
         ]);
     }
 
