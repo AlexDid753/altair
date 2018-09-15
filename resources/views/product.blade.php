@@ -19,19 +19,19 @@
                         <div class="content-page-detail">
                             <div class="product-detail detail-full-width">
                                 <div class="row">
+                                    @if(count($images))
                                     <div class="col-md-5 col-sm-12 col-xs-12">
                                         <div class="detail-gallery vertical">
                                             <div class="mid">
-                                                <img src="{{$images[0]->image}}" alt=""/>
+                                                <img src="{{empty($images)? : resize($images[0]->image, 700, 700)}}" alt=""/>
                                             </div>
                                             <div class="gallery-control">
                                                 <a href="#" class="prev"><i class="fa fa-angle-left"></i></a>
                                                 <div class="carousel" data-visible="6" data-vertical="true">
                                                     <ul class="list-none">
                                                         @foreach($images as $key => $image)
-                                                            <li><a href="#" {{ $key==0? 'class=active' : '' }}><img src="{{$image->image}}" alt=""/></a></li>
+                                                            <li><a href="#" {{ $key==0? 'class=active' : '' }}><img src="{{resize($image->image, 700, 700)}}" alt=""/></a></li>
                                                         @endforeach
-                                                        <li><a href="#"><img src="images/photos/jewelry/dark-light-jewelry-07.jpg" alt=""/></a></li>
                                                     </ul>
                                                 </div>
                                                 <a href="#" class="next"><i class="fa fa-angle-right"></i></a>
@@ -46,6 +46,7 @@
                                             <a href="#" class="float-shadow"><img src="images/icon/icon-pinterest.png" alt="" /></a>
                                         </div>
                                     </div>
+                                    @endif
                                     <div class="col-md-7 col-sm-12 col-xs-12">
                                         <div class="detail-info">
                                             <h2 class="product-title title24 text-uppercase dark font-bold play-font">{{$model->title}}</h2>
@@ -82,10 +83,6 @@
                                                     </li>
                                                 @endif
                                             </ul>
-                                            <div class="product-control">
-                                                <a href="#" class="prev"><i class="fa fa-long-arrow-left"></i></a>
-                                                <a href="#" class="next"><i class="fa fa-long-arrow-right"></i></a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
