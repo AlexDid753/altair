@@ -338,6 +338,9 @@ $(function() {
     $(document).ready(function(){
         // Фикмированная шапка при скролле
         $("#header").removeClass("default");
+        if ($(window).scrollTop() > 40) {
+            $("#header").addClass("default").fadeIn('fast');
+        }
         $(window).scroll(function(){
             if ($(this).scrollTop() > 40) {
                 $("#header").addClass("default").fadeIn('fast');
@@ -345,6 +348,11 @@ $(function() {
                 $("#header").removeClass("default").fadeIn('fast');
             };
         });
+    });
+
+    //Open link faves in header
+	$('.wrap-cart-top2 a').click(function () {
+		window.open($(this).attr('href'));
     });
 
 	//Menu Responsive
