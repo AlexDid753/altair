@@ -3166,6 +3166,7 @@ a.opaci:hover {
 }
 .logo.logo1 {
   margin-right: 30px;
+  text-align: center;
 }
 .free-order {
   padding: 13px 0;
@@ -3968,6 +3969,10 @@ a.dark {
 }
 .main-header2 .search-form {
   z-index: 10000;
+}
+.header_year {
+  text-align: center;
+  font-weight: bold;
 }
 .header2 {
   padding: 15px 0 20px;
@@ -6921,7 +6926,7 @@ img.line-icon {
   margin-right: 5px;
 }
 .nav-header-jewelry5 .logo {
-  margin-right: 70px;
+
 }
 .nav-header-jewelry5 .wrap-cart-top2 {
   margin-top: 15px;
