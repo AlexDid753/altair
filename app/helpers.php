@@ -71,6 +71,7 @@ if (! function_exists('selected')) {
 
 if (! function_exists('prepare_url')) {
     function prepare_url($url) {
+        $url = strtok($url, "?");
         if (substr($url, strlen($url)-1) == "/") $url = substr($url,0,strlen($url)-1);
         return $url;
     }

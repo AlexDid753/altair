@@ -18,7 +18,7 @@ class CategoryController extends BaseController
         if (!$model)
             abort(404, 'Страница не найдена');
         $subcategories = $model->childrens->where('published' , '=', 1);
-        $products = $model->products->where('published' , '=', 1);
+        $products = $model->products()->where('published' , '=', 1)->paginate(6);
 
         return view('category', [
             'model' => $model,

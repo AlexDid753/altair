@@ -53,12 +53,7 @@
                                 <div class="row">
                                     @each('shared.product_preview', $products, 'model')
                                 </div>
-                                <div class="pagi-nav text-right">
-                                    <a href="#" class="current">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#" class="next"><i class="fa fa-angle-right"></i></a>
-                                </div>
+                                <?php echo $products->links('shared.pagination'); ?>
                                 <!-- End Paginav -->
                             </div>
                         </div>
