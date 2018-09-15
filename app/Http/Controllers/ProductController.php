@@ -23,6 +23,8 @@ class ProductController extends BaseController
         if (!in_array($model->id,$products_recently_viewed_ids))
             session()->push('products.recently_viewed', $model->id);
 
+        //Delete current model id from array
+        $products_recently_viewed_ids = array_diff( $products_recently_viewed_ids, [$model->id] );
         $products_recently_viewed = Product::limit(10)->whereIn('id', $products_recently_viewed_ids)->get();
 
         return view('product', [
