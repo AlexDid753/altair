@@ -56,16 +56,6 @@
                                                 <del class="dark opaci title14">$84.00</del>
                                                 <ins class="title18 color font-bold">$37.00</ins>
                                             </div>
-                                            <ul class="wrap-rating list-inline-block">
-                                                <li>
-                                                    <div class="product-rate">
-                                                        <div class="product-rating" style="width:60%"></div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <span class="rate-number">(3.0)</span>
-                                                </li>
-                                            </ul>
                                             <p class="desc product-desc">Our urban and streetwear fashion place is no Old Navy, Banana Republic or a Walmart clothing store, God forbid. We've quickly become the Iowa's and Midwest's biggest online retailers. </p>
 
                                             <div class="detail-extra-link">
