@@ -15,8 +15,6 @@
                                     <th class="product-thumbnail">&nbsp;</th>
                                     <th class="product-name">Наименование</th>
                                     <th class="product-price">Цена</th>
-                                    <th class="product-quantity">Количество</th>
-                                    <th class="product-subtotal">Итого</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -35,17 +33,6 @@
                                         </td>
                                         <td class="product-price" data-title="Price">
                                             <span class="amount" data-price="{{--$product->price--}}">{{$product->price}}</span>
-                                            <span>&#8381;</span>
-                                        </td>
-                                        <td class="product-quantity" data-title="Quantity">
-                                            <div class="detail-qty border">
-                                                <a href="#" class="qty-up"><i class="fa fa-angle-up"></i></a>
-                                                <span data-id="{{$product->id}}" class="qty-val">1</span>
-                                                <a href="#" class="qty-down"><i class="fa fa-angle-down"></i></a>
-                                            </div>
-                                        </td>
-                                        <td class="product-subtotal" data-title="Total">
-                                            <span class="amount">{{$product->price}}</span>
                                             <span>&#8381;</span>
                                         </td>
                                     </tr>

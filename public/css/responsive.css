@@ -182,6 +182,9 @@
 }
 /*End Screen 860*/
 @media (max-width: 767px) {
+  .white-space {
+    height: 20px;
+  }
   .list-service-footer .list-none {
     flex-wrap: wrap;
     -webkit-flex-wrap: wrap;
