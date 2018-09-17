@@ -25,6 +25,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{$models->links()}}
         </div>
         <div class="col-md-1">
             <div class="control-buttons">

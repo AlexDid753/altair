@@ -5,7 +5,6 @@
         <div class="col-md-10">
             <table class="table table-striped">
                 <tbody>
-
                 @foreach ($models as $model)
                     <tr>
                         <td>{{ $model->name }}</td>
@@ -16,9 +15,9 @@
                         </td>
                     </tr>
                 @endforeach
-
                 </tbody>
             </table>
+            {{$models->links()}}
         </div>
     </div>
 @endsection
