@@ -22,6 +22,8 @@ class ProductController extends BaseAdminController
         'parent_id' => ['type' => 'dropdown', 'label' => 'Parent', 'model' => 'Category', 'method' => 'dropdown'],
 
         'text' => 'editor',
+        'price' => ['type' => 'input', 'input_type' => 'number', "attributes"=>['step' => "step='0.01'"]],
+        'old_price' => ['type' => 'input', 'input_type' => 'number' , "attributes"=>['step' => "step='0.01'"]],
         'images' => 'multi_image',
 
         'meta_title' => 'input',

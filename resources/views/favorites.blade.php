@@ -34,7 +34,8 @@
                                             <a href="{{$product->url}}">{{$product->title}}</a>
                                         </td>
                                         <td class="product-price" data-title="Price">
-                                            <span class="amount">$68.00</span>
+                                            <span class="amount" data-price="{{--$product->price--}}">{{$product->price}}</span>
+                                            <span>&#8381;</span>
                                         </td>
                                         <td class="product-quantity" data-title="Quantity">
                                             <div class="detail-qty border">
@@ -44,7 +45,8 @@
                                             </div>
                                         </td>
                                         <td class="product-subtotal" data-title="Total">
-                                            <span class="amount">$68.00</span>
+                                            <span class="amount">{{$product->price}}</span>
+                                            <span>&#8381;</span>
                                         </td>
                                     </tr>
                                 @endforeach

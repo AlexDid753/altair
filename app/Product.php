@@ -12,7 +12,9 @@ class Product extends Model
     {
         return [
             'title' => 'required|string|max:255',
-            'parent_id' => 'required'
+            'parent_id' => 'required',
+            'price' => 'required|between:0,999999',
+            'old_price' => 'between:0,999999'
         ];
     }
 
@@ -49,27 +51,48 @@ class Product extends Model
     {
         $url = '/' . trim($this->slug, '/');
         $parent = $this->parent;
-        if ($parent){
+        if ($parent) {
             $url = $parent->url . $url;
-        }else {
-            $url = '/'. 'catalog/' . trim($this->slug, '/');
+        } else {
+            $url = '/' . 'catalog/' . trim($this->slug, '/');
         }
 
         return $url;
     }
 
-    public function isLiked(){
+
+    public function prepared_price() {
+        return $this->prepare_price($this->price);
+    }
+
+    public function prepared_old_price() {
+        return $this->prepare_price($this->old_price);
+    }
+
+    public function prepare_price($value){
+        if (empty($value))
+            return;
+        if (strpos($value, ".") !== false) {
+            return $value.'&#8381;';
+        }
+        return $value . '.00&#8381;';
+    }
+
+    public function isLiked()
+    {
         $products_liked = session()->get('products.liked');
         if (empty($products_liked))
             return false;
         return in_array($this->id, $products_liked);
     }
 
-    public function add_to_liked(){
+    public function add_to_liked()
+    {
         session()->push('products.liked', $this->id);
     }
 
-    public function remove_from_liked(){
+    public function remove_from_liked()
+    {
         $products_liked = session()->get('products.liked');
         $key = array_search($this->id, $products_liked);
         unset($products_liked[$key]);
@@ -77,7 +100,8 @@ class Product extends Model
         session()->put('products.liked', $products_liked);
     }
 
-    public static function liked(){
+    public static function liked()
+    {
         $products_liked = session()->get('products.liked');
         if ($products_liked != null)
             return Product::whereIn('id', $products_liked)->get();

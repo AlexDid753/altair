@@ -282,6 +282,7 @@ $(function() {
     	$('.wrap-cart-top2 sup.round').text(liked_count);
 	}
 
+	//Получить информацию о продуктах из таблицы(id и количество)
 	function get_favorites_table_data(){
         let favorites_data = [];
         $('.cart_item').each(function () {
@@ -295,6 +296,9 @@ $(function() {
         });
         return favorites_data;
 	}
+
+
+
     //Форма обратной связи
 	$('form.feedback-form').submit(function (event) {
         event.preventDefault();

@@ -1,4 +1,10 @@
 <div class="form-group row">
+    <?php
+        $input_type = 'text';
+        if (is_array($fieldValue)) {
+            $input_type = array_key_exists('input_type', $fieldValue)? $fieldValue['input_type'] : 'text';
+        }
+    ?>
     {{--todo отрефакторить бы--}}
     @if (isset($attributes) && is_array($attributes))
         @if (!array_key_exists('hidden', $attributes))  {{-- Не выводить label для скрытого инпута --}}
@@ -24,7 +30,7 @@
                     {{set_atributes($attributes)}}
                 @endif
                 id="{{ $fieldName }}"
-                type="text"
+                type="{{ $input_type }}"
                 autocomplete="off"
                 class="form-control{{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
                 name="{{ $fieldName }}"

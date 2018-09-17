@@ -51,8 +51,8 @@
                                         <div class="detail-info">
                                             <h2 class="product-title title24 text-uppercase dark font-bold play-font">{{$model->title}}</h2>
                                             <div class="product-price play-font">
-                                                <del class="dark opaci title14">$84.00</del>
-                                                <ins class="title18 color font-bold">$37.00</ins>
+                                                <del class="dark opaci title14">{!! $model->prepared_old_price() !!}</del>
+                                                <ins class="title18 color font-bold">{!! $model->prepared_price() !!}</ins>
                                             </div>
                                             <p class="desc product-desc">Our urban and streetwear fashion place is no Old Navy, Banana Republic or a Walmart clothing store, God forbid. We've quickly become the Iowa's and Midwest's biggest online retailers. </p>
 
