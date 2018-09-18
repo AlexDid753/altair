@@ -65,7 +65,6 @@ Route::group(['middleware' => 'auth', 'prefix' => "admin"], function () {
 
 Route::get('search', ['as' => 'search', 'uses' => 'SearchController@search']);
 
-
 Route::get('catalog', 'CategoryController@index')->name('catalog');
 Route::get('product_like/{slug}', 'ProductController@toggle_like');
 Route::post('products_get_liked', 'ProductController@get_liked');
