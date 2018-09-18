@@ -75,13 +75,21 @@ class EventServiceProvider extends ServiceProvider
 
         Category::saved(function($model)
         {
+            foreach ($model->products as $product)
+                $product->save(); //Чтобы вызвать колбеки сохранения продукта
             self::setChildrensUrl($model);
             self::setProductsUrl($model);
         });
 
         Product::saving(function($model)
         {
+            $model->set_categories_title();
             self::setUrl($model);
+        });
+
+        Product::saved(function($model)
+        {
+            $model->reindex();
         });
     }
 }

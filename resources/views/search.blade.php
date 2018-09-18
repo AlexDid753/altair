@@ -23,6 +23,7 @@
                                     <div class="row">
                                         @each('shared.product_preview', $models, 'model')
                                     </div>
+                                    <?php// echo $models->links('shared.pagination'); ?>
                             @else
                                     <div class="row">
                                         <h3 class="title14 text-uppercase pull-left play-font dark">{{$message}}</h3>
