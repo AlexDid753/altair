@@ -47,7 +47,7 @@
                                         </div>
                                     </div>
                                     @endif
-                                    <div class="col-md-7 col-sm-12 col-xs-12">
+                                    <div class="{{ count($images)? 'col-md-7' : 'col-md-12' }} col-sm-12 col-xs-12">
                                         <div class="detail-info">
                                             <h2 class="product-title title24 text-uppercase dark font-bold play-font">{{$model->title}}</h2>
                                             <div class="product-price play-font">
