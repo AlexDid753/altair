@@ -16,7 +16,13 @@ class SearchController extends BaseController
         }
         else{
             $q = $request->all()['q'];
-            $models = Product::search($q);
+            $models = Product::searchByQuery([
+                'multi_match' => [
+                    'query' => $q,
+                    'fuzziness' => 'AUTO',
+                    'fields' => [ "categories_title^5","title^2", "text"]
+                ],
+            ]);
             if (!count($models)){
                 $message = 'Ничего не найдено';
             }

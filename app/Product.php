@@ -27,15 +27,18 @@ class Product extends Model
     protected $mappingProperties = array(
         'title' => [
             'type' => 'text',
-            "analyzer" => "standard",
+//            "language" =>   "russian", todo на проде можно будет включить если названия будут на русском
+//            "stopwords" => "_russian_"
+
         ],
         'text' => [
             'type' => 'text',
-            "analyzer" => "standard",
+            "language" =>   "russian",
+            "stopwords" => "_russian_"
         ],
         'categories_title' => [
-            'type' => 'text',
-            "analyzer" => "standard",
+            "language" =>   "russian",
+            "stopwords" => "_russian_"
         ],
     );
 
