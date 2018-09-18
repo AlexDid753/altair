@@ -157,7 +157,7 @@ class Product extends Model
     }
     public function preview_image()
     {
-        return resize($this->get_images_array()[0], 228, 228);
+        return $this->get_images_array()[0];
     }
 
 

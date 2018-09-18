@@ -392,6 +392,7 @@ $(function() {
 	}
 	if($('.quickview-link').length>0){
 		$('.quickview-link').fancybox({
+            type   : 'image',
 			afterLoad: function () {
 				detail_gallery();
 			}
