@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Elasticquent\ElasticquentTrait;
 
 class Product extends Model
 {
+    use ElasticquentTrait;
     use Traits\ResourcePageMethods;
 
     public static function validatorRules()
@@ -18,6 +20,25 @@ class Product extends Model
         ];
     }
 
+    protected $maps = [
+        'category' => 'categories.title'
+    ];
+
+    protected $mappingProperties = array(
+        'title' => [
+            'type' => 'text',
+            "analyzer" => "standard",
+        ],
+        'text' => [
+            'type' => 'text',
+            "analyzer" => "standard",
+        ],
+        'categories_title' => [
+            'type' => 'text',
+            "analyzer" => "standard",
+        ],
+    );
+
     protected $fillable = [
         'parent_id',
         'published',
@@ -28,12 +49,13 @@ class Product extends Model
         'meta_description',
         'meta_keywords',
         'text',
-        'images'
+        'images',
+        'categories_title'
     ];
 
     protected $casts = [
         'published' => 'boolean',
-        //'images' => 'array'
+        'categories_title' => 'array'
     ];
 
 
@@ -107,6 +129,21 @@ class Product extends Model
             return Product::whereIn('id', $products_liked)->get();
         else
             return [];
+    }
+
+    public static function set_cats(){
+        $products = Product::all();
+        foreach ($products as $product)
+        {
+            $categories_title = [];
+            foreach ($product->categories as $category) {
+                array_push($categories_title, $category->title);
+
+            }
+            $product->categories_title = $categories_title;
+            var_dump( $product->categories_title );
+            $product->save();
+        }
     }
 
 }
