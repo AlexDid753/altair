@@ -2,16 +2,6 @@
 
 @section('content')
     <section id="content">
-        <div class="wrap-bread-crumb">
-            <div class="container">
-                <div class="bread-crumb">
-                    <a href="#">Home</a>
-                    <a href="#">Shop</a>
-                    <strong>Clothing</strong>
-                </div>
-            </div>
-        </div>
-        <!-- End Bread Crumb -->
         <div class="content-page">
             <div class="container">
                 <div class="row">
