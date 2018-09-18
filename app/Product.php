@@ -83,19 +83,22 @@ class Product extends Model
     }
 
 
-    public function prepared_price() {
+    public function prepared_price()
+    {
         return $this->prepare_price($this->price);
     }
 
-    public function prepared_old_price() {
+    public function prepared_old_price()
+    {
         return $this->prepare_price($this->old_price);
     }
 
-    public function prepare_price($value){
+    public function prepare_price($value)
+    {
         if (empty($value))
             return;
         if (strpos($value, ".") !== false) {
-            return $value.'&#8381;';
+            return $value . '&#8381;';
         }
         return $value . '.00&#8381;';
     }
@@ -131,19 +134,32 @@ class Product extends Model
             return [];
     }
 
-    public static function set_cats(){
-        $products = Product::all();
-        foreach ($products as $product)
-        {
-            $categories_title = [];
-            foreach ($product->categories as $category) {
-                array_push($categories_title, $category->title);
-
-            }
-            $product->categories_title = $categories_title;
-            var_dump( $product->categories_title );
-            $product->save();
+    public function set_categories_title()
+    {
+        $categories_title = [];
+        foreach ($this->categories as $category) {
+            array_push($categories_title, $category->title);
         }
+        $this->categories_title = $categories_title;
     }
+
+    public function get_images_array($default_src = 'images/photos/jewelry/dark-light-jewelry-01.jpg')
+    {
+        $images_sources = [$default_src];
+        if ( !empty($this->images) ) {
+            $images = json_decode($this->images);
+            $images_sources = array();
+            foreach ($images as $image) {
+                array_push($images_sources, $image->image);
+            }
+        }
+        return $images_sources;
+    }
+    public function preview_image()
+    {
+        return resize($this->get_images_array()[0], 228, 228);
+    }
+
+
 
 }
