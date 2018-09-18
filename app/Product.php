@@ -85,6 +85,11 @@ class Product extends Model
         return $url;
     }
 
+    public function getNameAttribute()
+    {
+        return $this->attributes['title'];
+    }
+
 
     public function prepared_price()
     {

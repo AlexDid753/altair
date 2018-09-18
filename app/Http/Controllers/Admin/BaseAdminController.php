@@ -131,12 +131,6 @@ class BaseAdminController extends Controller
         return Redirect::to('/admin/'.$this->name);
     }
 
-    public function form(Request $request, $id = null)
-    {
-        $where = ['id' => $id];
-        $model = $this->model::firstOrNew($where);
-    }
-
     public function listWhere()
     {
 

@@ -5,7 +5,7 @@
         <div class="content-page">
             <div class="container">
                 <div class="content-about content-contact-page">
-                    <h2 class="title30 play-font dark font-bold text-uppercase">contact us</h2>
+                    <h2 class="title30 play-font dark font-bold text-uppercase">{{$model->title}}</h2>
                     <div class="contact-google-map bg-white border">
                         <div id="map" class="map-custom"></div>
                         <script>
@@ -34,30 +34,27 @@
                                 <div class="contact-box contact-address-box">
                                     <span class="dark"><i class="fa fa-home"></i></span>
                                     <label class="title16 dark">Адрес:</label>
-                                    <p class="desc">The Company Name Inc. 4320 St Vincent Place,Glasgow, DC 28</p>
+                                    <p class="desc">{{$settings->address}}</p>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-7 col-xs-12">
+                            <div class="col-md-3 col-sm-7 col-xs-12">
                                 <div class="contact-box">
                                     <span class="dark"><i class="fa fa-phone"></i></span>
                                     <ul class="list-inline-block">
                                         <li>
-                                            <label class="title16 dark">Телефоны:</label>
+                                            <label class="title16 dark">Телефон:</label>
                                         </li>
                                     </ul>
                                     <p class="desc">
-                                        <span class="">800-6688-999;</span>
-                                    </p>
-                                    <p class="desc">
-                                        <span class="">800-8866-404</span>
+                                        <span class=""><a href="tel:{{$settings->phone}}">{{$settings->phone}}</a></span>
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-5 col-xs-12">
+                            <div class="col-md-4 col-sm-5 col-xs-12">
                                 <div class="contact-box contact-email-box">
                                     <span class="dark"><i class="fa fa-envelope"></i></span>
                                     <label class="title16 dark">e-mail:</label>
-                                    <p class="desc"><a href="#" class="">themefusion@gmail.com</a></p>
+                                    <p class="desc"><a href="mailto:{{$settings->email}}" class="">{{$settings->email}}</a></p>
                                 </div>
                             </div>
                         </div>

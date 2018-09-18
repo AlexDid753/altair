@@ -6,7 +6,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use App\Menu;
-//use App\Settings;
+use App\Settings;
 use App\Page;
 use Illuminate\Pagination\Paginator;
 
@@ -34,8 +34,8 @@ class AppServiceProvider extends ServiceProvider
             $latestNews = Page::where(['parent_id' => 8])->orderBy('created_at', 'desc')->limit(2)->get();
             view()->share('latestNews', $latestNews);
 
-//            $settings = new Settings;
-//            view()->share('settings', $settings);
+            $settings = new Settings;
+            view()->share('settings', $settings);
 
             if (!starts_with(request()->path(), 'admin'))
                 Paginator::defaultView('pagination::default');

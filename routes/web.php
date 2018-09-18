@@ -43,6 +43,8 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth', 'prefix' => "admin"], function () {
     Route::get('/', 'Admin\AdminController@index')->name('admin.index');
+    Route::get('settings', 'Admin\SettingsController@form')->name('settings');
+    Route::post('settings', 'Admin\SettingsController@form');
 
     foreach (['user', 'page', 'template', 'news', 'menu', 'category', 'product', 'feedback'] as $url) {
         Route::prefix($url)->group(function () use ($url) {

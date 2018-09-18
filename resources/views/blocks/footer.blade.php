@@ -50,11 +50,11 @@
                                     </li>
                                     <li>
                                         <i class="fa fa-volume-control-phone white"></i>
-                                        <span class="text-uppercase white opaci">+7 (812) 555 5555</span>
+                                        <span class="text-uppercase white opaci"><a class="white opaci" href="tel:{{$settings->phone}}">{{$settings->phone}}</a></span>
                                     </li>
                                     <li>
                                         <i class="fa fa-envelope white"></i>
-                                        <a class="white opaci" href="mailto:contact.7uptheme@gmail.com">contact@altair-serebro.ru</a>
+                                        <a class="white opaci" href="mailto:{{$settings->email}}">{{$settings->email}}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -68,7 +68,7 @@
                             <li><a href="{{$item->getUrl()}}" class="white wobble-top">{{$item->name}}</a></li>
                         @endforeach
                     </ul>
-                    <p class="desc copyright-footer text-center"><span class="white opaci"> Altair-Serebro © 2018 Создание сайта — </span> <a target="_blank" href="http://Molinos.Ru" class="white">Molinos.Ru</a></p>
+                    <p class="desc copyright-footer text-center"><span class="white opaci">Altair-Serebro © 2018 Создание сайта — </span> <a target="_blank" href="http://Molinos.Ru" class="white">Molinos.Ru</a></p>
                 </div>
             </div>
         </div>
