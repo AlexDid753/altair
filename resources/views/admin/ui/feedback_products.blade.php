@@ -9,14 +9,12 @@
             <thead>
             <tr>
                 <th scope="col">Товар</th>
-                <th scope="col">Количество</th>
             </tr>
             </thead>
             @foreach($data as $data_item)
-                <?php $product = \App\Product::where('id', $data_item->id)->first(); ?>
+                <?php $product = \App\Product::find($data_item->id); ?>
                 <tr>
                     <th><a href="{{$product->url}}">{{$product->title}}</a></th>
-                    <th>{{$data_item->count}}</th>
                 </tr>
             @endforeach
         </table>

@@ -282,16 +282,16 @@ $(function() {
     	$('.wrap-cart-top2 sup.round').text(liked_count);
 	}
 
-	//Получить информацию о продуктах из таблицы(id и количество)
+	//Получить информацию о продуктах из таблицы(id и количество(убрано))
 	function get_favorites_table_data(){
         let favorites_data = [];
         $('.cart_item').each(function () {
-            var favorite_item = $(this).find('.product-quantity span.qty-val'),
-                id = favorite_item.data('id'),
-                count = favorite_item.text();
+            var favorite_item = $(this).find('.product-remove i'),
+                id = favorite_item.data('id');
+                //count = favorite_item.text();
             favorites_data.push({
                 id: id,
-                count:  count
+                //count:  count
             });
         });
         return favorites_data;

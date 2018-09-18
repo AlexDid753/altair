@@ -22,6 +22,7 @@
                                     <tr class="cart_item">
                                         <td class="product-remove">
                                             <a class="remove" href="#"><i class="fa fa-trash"
+                                                                          data-id="{{$product->id}}"
                                                                           data-slug="{{$product->slug}}"></i></a>
                                         </td>
                                         <td class="product-thumbnail">
