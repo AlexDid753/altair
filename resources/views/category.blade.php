@@ -29,6 +29,7 @@
                         </div>
                     @endif
                     <div class="col-md-3 col-sm-4 col-xs-12">
+<<<<<<< Updated upstream
                         <div class="sidebar sidebar-left">
                             <div class="widget widget-search">
                                 <h2 class="widget-title title14 font-bold text-uppercase play-font">Поиск</h2>
@@ -39,6 +40,9 @@
                             </div>
                             <!-- End Widget -->
                         </div>
+=======
+                        @include('shared.search_side_panel')
+>>>>>>> Stashed changes
                     </div>
                     <div class="col-md-9 col-sm-8 col-xs-12">
                         <div class="content-blog-page shop-boxed-banner">
