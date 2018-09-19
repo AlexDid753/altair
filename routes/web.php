@@ -36,7 +36,7 @@ Route::get('/category_product_generate',function(){
 */
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/elfinder', 'Barryvdh\Elfinder\ElfinderController@showPopup')->name('elfinder');
+    Route::get('/admin/elfinder', ['uses' => '\Barryvdh\Elfinder\ElfinderController@showCKeditor4'])->name('elfinder');
 });
 
 Auth::routes();
