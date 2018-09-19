@@ -40,14 +40,14 @@
             <div class="list-banner-jewelry3">
                 <div class="row">
                     <div class="col-sm-6 col-xs-12">
-                        <div class="item-banner-jewelry3 banner-adv zoom-rotate fade-out-in">
+                        <div class="item-banner-jewelry3 zoom-rotate fade-out-in">
                             <a href="{{$model->href2}}" class="adv-thumb-link"><img src="{{$model->image2}}" alt="" />
                                 <div class="banner-info">
                                     <h3 class="title30 play-font dark font-italic">{{$model->text_img2}}</h3>
                                 </div>
                             </a>
                         </div>
-                        <div class="item-banner-jewelry3 banner-adv zoom-image line-scale style2">
+                        <div class="item-banner-jewelry3 zoom-image line-scale style2">
                             <a href="{{$model->href3}}" class="adv-thumb-link"><img src="{{$model->image3}}" alt="" />
                                 <div class="banner-info">
                                     <h3 class="title30 play-font dark font-italic">{{$model->text_img3}}</h3>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 col-xs-12">
-                        <div class="item-banner-jewelry3 banner-adv zoom-image line-scale style2">
+                        <div class="item-banner-jewelry3 zoom-image line-scale style2">
                             <a href="{{$model->href4}}" class="adv-thumb-link"><img src="{{$model->image4}}" alt="" />
                                 <div class="banner-info">
                                     <h3 class="title30 play-font dark font-italic">{{$model->text_img4}}</h3>
@@ -65,7 +65,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="item-banner-jewelry3 banner-adv zoom-rotate fade-out-in">
+                        <div class="item-banner-jewelry3 zoom-rotate fade-out-in">
                             <a href="{{$model->href5}}" class="adv-thumb-link"><img src="{{$model->image5}}" alt="" />
                                 <div class="banner-info">
                                     <h3 class="title30 play-font dark font-italic">{{$model->text_img5}}</h3>
