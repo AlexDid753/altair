@@ -23,6 +23,8 @@
                                     <div class="row">
                                         @each('shared.product_preview', $models, 'model')
                                     </div>
+                                    {{$models->appends(request()->input())->links('shared.pagination')}}
+                                    {{--добавляем к ссылкам на пагинации остальные GET параметры--}}
                             @else
                                     <div class="row">
                                         <h3 class="title14 text-uppercase pull-left play-font dark">{{$message}}</h3>
