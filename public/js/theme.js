@@ -275,7 +275,15 @@ $(function() {
                 }
             });
         }
+        setTimeout(check_table, 150);
     });
+
+    function check_table() {
+        if ($('.cart_item').length == 0) {
+				$('.not_empty_faves').hide();
+				$('.empty_faves').show();
+        }
+    }
 
     function update_faves_count(data){
         var liked_count = data.products_liked.length;

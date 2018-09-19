@@ -7006,3 +7006,7 @@ img.line-icon {
 .mega-menu-home ul li span {
   margin: 0 5px;
 }
+
+.empty_faves {
+  display: none;
+}
