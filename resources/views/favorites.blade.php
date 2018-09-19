@@ -27,14 +27,13 @@
                                         </td>
                                         <td class="product-thumbnail">
                                             <a href="{{$product->url}}"><img
-                                                        src="images/photos/glasses/dl-store-glasse-03.jpg" alt=""/></a>
+                                                        src="{{resize($product->preview_image(), 100, 100)}}" alt=""/></a>
                                         </td>
                                         <td class="product-name" data-title="Product">
                                             <a href="{{$product->url}}">{{$product->title}}</a>
                                         </td>
                                         <td class="product-price" data-title="Price">
-                                            <span class="amount" data-price="{{--$product->price--}}">{{$product->price}}</span>
-                                            <span>&#8381;</span>
+                                            <span class="amount">{!! $product->prepared_price() !!}</span>
                                         </td>
                                     </tr>
                                 @endforeach
