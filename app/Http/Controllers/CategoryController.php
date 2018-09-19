@@ -33,7 +33,11 @@ class CategoryController extends BaseController
         if (!$models)
             abort(404, 'Страница не найдена');
 
+        $model = new Page();
+        $model->name = 'Каталог';
+
         return view('catalog', [
+            'model' => $model,
             'models' => $models,
             'sidebarFilter' => false,
             'searchResult' => false
