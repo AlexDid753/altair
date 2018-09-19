@@ -63,13 +63,14 @@ class EventServiceProvider extends ServiceProvider
     public static function sendMail($model)
     {
         $data = array('model'=>$model);
-
-        Mail::send('emails.mail', $data, function($message) {
-            $settings = new Settings;
-            $message->to($settings->admin_email)
-                ->subject('Обратная связь со страницы Избранное');
-            $message->from('a1eshenbka46@gmail.com','Altair');
-        });
+        try {
+            Mail::send('emails.mail', $data, function($message) {
+                $settings = new Settings;
+                $message->to($settings->admin_email)
+                    ->subject('Обратная связь со страницы Избранное');
+                $message->from('a1eshenbka46@gmail.com','Altair');
+            });
+        } catch (\Exception $e) {}
     }
 
     public function boot()
