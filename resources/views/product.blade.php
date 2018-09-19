@@ -44,10 +44,13 @@
                                                 <del class="dark opaci title14">{!! $model->prepared_old_price() !!}</del>
                                                 <ins class="title18 color font-bold">{!! $model->prepared_price() !!}</ins>
                                             </div>
-                                            <p class="desc product-desc">Our urban and streetwear fashion place is no Old Navy, Banana Republic or a Walmart clothing store, God forbid. We've quickly become the Iowa's and Midwest's biggest online retailers. </p>
+                                            <p class="desc product-desc">{!! $model->text !!}</p>
 
                                             <div class="detail-extra-link">
                                                 <a href="#" class="wishlist-link"><i class="fa {{$model->isLiked() ? 'fa-heart' : 'fa-heart-o'}}" data-slug="{{$model->slug}}"></i><span>{{$model->isLiked() ? 'Удалить из избранного' : 'Добавить в избранное'}}</span></a>
+                                                @if(!empty($model->link))
+                                                <a href="{{$model->link}}" target="_blank"><i class="fa fa-external-link"></i><span>{{$model->link_text ? $model->link_text : 'Посмотреть в источнике'}}</span></a>
+                                                @endif
                                             </div>
                                             <ul class="list-none product-meta-info">
                                                 <li>
