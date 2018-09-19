@@ -1,5 +1,11 @@
 <!DOCTYPE HTML>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<?php
+    if (!isset($model)) {
+        $model = new \App\Page();
+        $model->name = config('app.name');
+    }
+?>
 <head>
     <base href="/">
     <meta charset="UTF-8">
