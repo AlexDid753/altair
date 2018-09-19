@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Settings;
+use Illuminate\Support\Facades\Mail;
+use App\Feedback;
 use App\Page;
 use App\Category;
 use App\Product;
@@ -27,7 +30,8 @@ class EventServiceProvider extends ServiceProvider
      * @return void
      */
 
-    public static function setUrl($model){
+    public static function setUrl($model)
+    {
         $newUrl = $model->fullUrl();
         if ($newUrl != $model->url) {
             $model->url = $newUrl;
@@ -35,14 +39,16 @@ class EventServiceProvider extends ServiceProvider
         //Log::model($model);
     }
 
-    public static function setChildrensUrl($model) {
+    public static function setChildrensUrl($model)
+    {
         if (count($model->childrens))
             foreach ($model->childrens as $children)
                 if ($children->url != $children->fullUrl())
                     $children->save();
     }
 
-    public static function setProductsUrl($model){
+    public static function setProductsUrl($model)
+    {
         if (count($model->products))
             foreach ($model->products as $product)
                 if ($product->url != $product->fullUrl())
@@ -54,42 +60,55 @@ class EventServiceProvider extends ServiceProvider
             }
     }
 
+    public static function sendMail($model)
+    {
+        $data = array('model'=>$model);
+
+        Mail::send('emails.mail', $data, function($message) {
+            $settings = new Settings;
+            $message->to($settings->admin_email)
+                ->subject('Обратная связь со страницы Избранное');
+            $message->from('a1eshenbka46@gmail.com','Altair');
+        });
+    }
+
     public function boot()
     {
         parent::boot();
 
-        Page::saving(function($model)
-        {
+        Page::saving(function ($model) {
             self::setUrl($model);
         });
 
-        Page::saved(function($model)
-        {
+        Page::saved(function ($model) {
             self::setChildrensUrl($model);
         });
 
-        Category::saving(function($model)
-        {
+        Category::saving(function ($model) {
             self::setUrl($model);
         });
 
-        Category::saved(function($model)
-        {
+        Category::saved(function ($model) {
             foreach ($model->products as $product)
                 $product->save(); //Чтобы вызвать колбеки сохранения продукта
             self::setChildrensUrl($model);
             self::setProductsUrl($model);
         });
 
-        Product::saving(function($model)
-        {
+        Product::saving(function ($model) {
             $model->set_categories_title();
             self::setUrl($model);
         });
 
-        Product::saved(function($model)
-        {
+        Product::saved(function ($model) {
             $model->reindex();
+        });
+
+        Feedback::saved(function ($model) {
+            if($model->type == 'favorites'){
+                self::sendMail($model);
+            }
+
         });
     }
 }
