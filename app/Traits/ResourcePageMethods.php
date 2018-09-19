@@ -66,15 +66,21 @@ trait ResourcePageMethods
         return $query->where('published','=', 1)->get();
     }
 
-    public function fullUrl()
+    public function get_images_array($default_src = 'images/photos/jewelry/dark-light-jewelry-01.jpg')
     {
-        $url = '/' . trim($this->slug, '/');
-        $parent = $this->parent;
-        while ($parent) {
-            $url = '/' . $parent->slug . $url;
-            $parent = $parent->parent;
+        $images_sources = [$default_src];
+        if ( !empty($this->images) ) {
+            $images = json_decode($this->images);
+            $images_sources = array();
+            foreach ($images as $image) {
+                array_push($images_sources, $image->image);
+            }
         }
+        return $images_sources;
+    }
 
-        return $url;
+    public function preview_image()
+    {
+        return $this->get_images_array()[0];
     }
 }

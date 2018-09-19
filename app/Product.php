@@ -151,23 +151,4 @@ class Product extends Model
         $this->categories_title = $categories_title;
     }
 
-    public function get_images_array($default_src = 'images/photos/jewelry/dark-light-jewelry-01.jpg')
-    {
-        $images_sources = [$default_src];
-        if ( !empty($this->images) ) {
-            $images = json_decode($this->images);
-            $images_sources = array();
-            foreach ($images as $image) {
-                array_push($images_sources, $image->image);
-            }
-        }
-        return $images_sources;
-    }
-    public function preview_image()
-    {
-        return $this->get_images_array()[0];
-    }
-
-
-
 }
