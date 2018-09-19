@@ -4365,7 +4365,7 @@ a.dark {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 9999;
+  z-index: 100;
   background: #fefefe;
   -webkit-box-shadow: 0 2px 2px #444;
   -moz-box-shadow: 0 2px 2px #444;
