@@ -13,7 +13,14 @@
                                 <p class="desc white opaci">Введите свою почту чтобы подписаться на рассылку об акциях.</p>
                                 <form class="form-newsletter2 feedback-form" method="post">
                                     <input type="hidden" name="type" value="subscribe">
-                                    <input type="text" name="email" placeholder="Электронная почта">
+                                    <input required
+                                           type="text"
+                                           name="email"
+                                           placeholder="Электронная почта"
+                                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                                           oninvalid="this.setCustomValidity('Введите корректный адрес электронной почты')"
+                                           oninput="setCustomValidity('')"
+                                    >
                                     <input type="submit" value="Подписаться">
                                 </form>
                             </div>

@@ -16,14 +16,20 @@
                    required
                    placeholder="Телефон*"
                    pattern="\d*"
-                   value="" type="text">
+                   type="text"
+                   oninvalid="this.setCustomValidity('Введите корректный номер телефона')"
+                   oninput="setCustomValidity('')"
+            >
         </p>
         <p class="contact-email">
             <input name="email" class="dark border"
                    placeholder="Email*"
                    required
                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-                   value="" type="text">
+                   type="text"
+                   oninvalid="this.setCustomValidity('Введите корректный адрес электронной почты')"
+                   oninput="setCustomValidity('')"
+            >
         </p>
         <p class="contact-message">
                                                 <textarea name="message" class="dark border"
