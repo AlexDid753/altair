@@ -348,13 +348,13 @@ $(function() {
 
     //Фиксированная шапка
     $(document).ready(function(){
-        // Фикмированная шапка при скролле
+        // Фикcированная шапка при скролле
         $("#header").removeClass("default");
-        if ($(window).scrollTop() > 40) {
+        if ($(window).scrollTop() > 60) {
             $("#header").addClass("default").fadeIn('fast');
         }
         $(window).scroll(function(){
-            if ($(this).scrollTop() > 40) {
+            if ($(this).scrollTop() > 60) {
                 $("#header").addClass("default").fadeIn('fast');
             } else {
                 $("#header").removeClass("default").fadeIn('fast');
