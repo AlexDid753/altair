@@ -31,6 +31,7 @@
                                                             src="{{resize($product->preview_image(), 100, 100)}}" alt=""/></a>
                                             </td>
                                             <td class="product-name" data-title="Product">
+                                                <img class="product-name__mobile-img" src="{{resize($product->preview_image(), 100, 100)}}" alt=""/>
                                                 <a href="{{$product->url}}">{{$product->title}}</a>
                                             </td>
                                             <td class="product-price" data-title="Price">

@@ -1481,6 +1481,9 @@ div.table .product-info .product-title {
 .product-mini-cart.table .product-delete {
   width: 20px;
 }
+.product-name__mobile-img {
+  display: none;
+}
 /*End Mini Cart*/
 /*Begin Count Down Master*/
 .countdown-master .flip-clock-divider .flip-clock-label {

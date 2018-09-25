@@ -711,6 +711,9 @@
     margin-top: 0;
     margin-bottom: 30px;
   }
+  .product-name__mobile-img {
+    display: block;
+  }
 }
 /*End Screen 480*/
 @media (max-width: 375px) {
