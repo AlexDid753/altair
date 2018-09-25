@@ -20,6 +20,9 @@ class ProductController extends BaseAdminController
         'slug' => 'input',
         'url' => ['type' => 'input', "attributes"=>['readonly'=>'readonly']],
         'parent_id' => ['type' => 'dropdown', 'label' => 'Parent', 'model' => 'Category', 'method' => 'dropdown'],
+        'code' => ['type' => 'input', "attributes"=>['style'=>"style='text-transform: uppercase;'"]],
+        'presence' => 'checkbox',
+
 
         'text' => 'editor',
         'price' => ['type' => 'input', 'input_type' => 'number', "attributes"=>['step' => "step='0.01'"]],
@@ -27,6 +30,12 @@ class ProductController extends BaseAdminController
         'link' => ['type' => 'input', "attributes"=>['placeholder' => "placeholder='Например: http://site.ru'"]],
         'link_text' => 'input',
         'images' => 'multi_image',
+
+        'weight' => ['type' => 'input', 'input_type' => 'number', "attributes"=>['step' => "step='0.01' placeholder='В граммах'"]],
+        'sample' => 'input',
+        'material' => 'input',
+        'piece' => 'input',
+
 
         'meta_title' => 'input',
         'meta_description' => 'input',

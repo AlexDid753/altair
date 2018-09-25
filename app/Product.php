@@ -90,6 +90,11 @@ class Product extends Model
         return $this->attributes['title'];
     }
 
+    public function getWeightAttribute()
+    {
+        return $this->attributes['weight'] . "г.";
+    }
+
 
     public function prepared_price()
     {
@@ -106,6 +111,10 @@ class Product extends Model
         if (empty($value))
             return;
         if (strpos($value, ".") !== false) {
+            $pieces = explode(".", $value);
+            if (strlen($pieces[1]) < 2){
+                return $value . '0&#8381;';
+            }
             return $value . '&#8381;';
         }
         return $value . '.00&#8381;';

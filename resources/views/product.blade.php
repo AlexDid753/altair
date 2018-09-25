@@ -10,32 +10,39 @@
                             <div class="product-detail detail-full-width">
                                 <div class="row">
                                     @if(count($images))
-                                    <div class="col-md-5 col-sm-12 col-xs-12">
-                                        <div class="detail-gallery vertical">
-                                            <div class="mid">
-                                                <img src="{{empty($images)? : resize($images[0]->image, 700, 700)}}" alt=""/>
-                                            </div>
-                                            <div class="gallery-control">
-                                                <a href="#" class="prev"><i class="fa fa-angle-left"></i></a>
-                                                <div class="carousel" data-visible="6" data-vertical="true">
-                                                    <ul class="list-none">
-                                                        @foreach($images as $key => $image)
-                                                            <li><a href="#" {{ $key==0? 'class=active' : '' }}><img src="{{resize($image->image, 700, 700)}}" alt=""/></a></li>
-                                                        @endforeach
-                                                    </ul>
+                                        <div class="col-md-5 col-sm-12 col-xs-12">
+                                            <div class="detail-gallery vertical">
+                                                <div class="mid">
+                                                    <img src="{{empty($images)? : resize($images[0]->image, 700, 700)}}"
+                                                         alt=""/>
                                                 </div>
-                                                <a href="#" class="next"><i class="fa fa-angle-right"></i></a>
+                                                <div class="gallery-control">
+                                                    <a href="#" class="prev"><i class="fa fa-angle-left"></i></a>
+                                                    <div class="carousel" data-visible="6" data-vertical="true">
+                                                        <ul class="list-none">
+                                                            @foreach($images as $key => $image)
+                                                                <li><a href="#" {{ $key==0? 'class=active' : '' }}><img
+                                                                                src="{{resize($image->image, 700, 700)}}"
+                                                                                alt=""/></a></li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                    <a href="#" class="next"><i class="fa fa-angle-right"></i></a>
+                                                </div>
+                                            </div>
+                                            <!-- End Gallery -->
+                                            <div class="detail-share-social text-center">
+                                                <span>Share</span>
+                                                <a href="#" class="float-shadow"><img src="images/icon/icon-email.png"
+                                                                                      alt=""/></a>
+                                                <a href="#" class="float-shadow"><img
+                                                            src="images/icon/icon-facebook.png" alt=""/></a>
+                                                <a href="#" class="float-shadow"><img src="images/icon/icon-twitter.png"
+                                                                                      alt=""/></a>
+                                                <a href="#" class="float-shadow"><img
+                                                            src="images/icon/icon-pinterest.png" alt=""/></a>
                                             </div>
                                         </div>
-                                        <!-- End Gallery -->
-                                        <div class="detail-share-social text-center">
-                                            <span>Share</span>
-                                            <a href="#" class="float-shadow"><img src="images/icon/icon-email.png" alt="" /></a>
-                                            <a href="#" class="float-shadow"><img src="images/icon/icon-facebook.png" alt="" /></a>
-                                            <a href="#" class="float-shadow"><img src="images/icon/icon-twitter.png" alt="" /></a>
-                                            <a href="#" class="float-shadow"><img src="images/icon/icon-pinterest.png" alt="" /></a>
-                                        </div>
-                                    </div>
                                     @endif
                                     <div class="{{ count($images)? 'col-md-7' : 'col-md-12' }} col-sm-12 col-xs-12">
                                         <div class="detail-info">
@@ -47,23 +54,60 @@
                                             <p class="desc product-desc">{!! $model->text !!}</p>
 
                                             <div class="detail-extra-link">
-                                                <a href="#" class="wishlist-link"><i class="fa {{$model->isLiked() ? 'fa-heart' : 'fa-heart-o'}}" data-slug="{{$model->slug}}"></i><span>{{$model->isLiked() ? 'Удалить из корзины' : 'Добавить в корзину'}}</span></a>
+                                                <a href="#" class="wishlist-link"><i
+                                                            class="fa {{$model->isLiked() ? 'fa-heart' : 'fa-heart-o'}}"
+                                                            data-slug="{{$model->slug}}"></i><span>{{$model->isLiked() ? 'Удалить из корзины' : 'Добавить в корзину'}}</span></a>
                                                 @if(!empty($model->link))
-                                                <a href="{{$model->link}}" target="_blank"><i class="fa fa-external-link"></i><span>{{$model->link_text ? $model->link_text : 'Посмотреть в источнике'}}</span></a>
+                                                    <a href="{{$model->link}}" target="_blank"><i
+                                                                class="fa fa-external-link"></i><span>{{$model->link_text ? $model->link_text : 'Посмотреть в источнике'}}</span></a>
                                                 @endif
                                             </div>
                                             <ul class="list-none product-meta-info">
                                                 <li>
-                                                    <div class="item-product-meta-info product-code-info">
-                                                        <label>Артикул:</label>
-                                                        <span>SUK01</span>
-                                                    </div>
+                                                    @if(!empty($model->code))
+                                                        <div class="item-product-meta-info product-code-info">
+                                                            <label>Артикул:</label>
+                                                            <span>{{$model->code}}</span>
+                                                        </div>
+                                                    @endif
                                                 </li>
                                                 <li>
                                                     <div class="item-product-meta-info product-available-info">
                                                         <label>Наличие:</label>
-                                                        <span>В наличии</span>
+                                                        <span>{{$model->presence? 'В наличии' : 'Ожидается поступление'}}</span>
                                                     </div>
+                                                </li>
+                                                <li>
+                                                    @if(!empty($model->material))
+                                                        <div class="item-product-meta-info product-material-info">
+                                                            <label>Материал:</label>
+                                                            <span>{{$model->material}}</span>
+                                                        </div>
+                                                    @endif
+                                                </li>
+                                                <li>
+                                                    @if(!empty($model->weight))
+                                                        <div class="item-product-meta-info product-weight-info">
+                                                            <label>Вес:</label>
+                                                            <span>{{$model->weight}}</span>
+                                                        </div>
+                                                    @endif
+                                                </li>
+                                                <li>
+                                                    @if(!empty($model->sample))
+                                                        <div class="item-product-meta-info product-sample-info">
+                                                            <label>Проба:</label>
+                                                            <span>{{$model->sample}}</span>
+                                                        </div>
+                                                    @endif
+                                                </li>
+                                                <li>
+                                                    @if(!empty($model->piece))
+                                                        <div class="item-product-meta-info product-piece-info">
+                                                            <label>Вставка:</label>
+                                                            <span>{{$model->piece}}</span>
+                                                        </div>
+                                                    @endif
                                                 </li>
                                                 @if ($model->categories()->exists())
                                                     <li>
