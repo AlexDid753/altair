@@ -90,11 +90,6 @@ class Product extends Model
         return $this->attributes['title'];
     }
 
-    public function getWeightAttribute()
-    {
-        return $this->attributes['weight'] . "г.";
-    }
-
 
     public function prepared_price()
     {
