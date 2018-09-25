@@ -67,7 +67,7 @@ class EventServiceProvider extends ServiceProvider
             Mail::send('emails.admin_mail', $data, function($message) {
                 $settings = new Settings;
                 $message->to($settings->admin_email)
-                    ->subject('Обратная связь со страницы Избранное');
+                    ->subject('Обратная связь со страницы Корзина');
                 $message->from('a1eshenbka46@gmail.com','Altair');
             });
         } catch (\Exception $e) {}

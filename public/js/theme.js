@@ -237,21 +237,21 @@ $(function() {
                     update_faves_count(data);
                 	if (i.parents('.detail-info').length) {//если показывается в блоке детальной информации о продукте
                 		if(i.hasClass('fa-heart')) {
-                        	span.text('Добавить в избранное');
+                        	span.text('Добавить в корзину');
                             i.removeClass('fa-heart');
                             i.addClass('fa-heart-o');
 						}else {
-                			span.text('Удалить из избранного');
+                			span.text('Удалить из корзины');
                             i.removeClass('fa-heart-o');
                             i.addClass('fa-heart');
 						}
 					}else {
                         if (i.hasClass('ion-android-favorite-outline')) {
-                            span.text('Удалить из избранного');
+                            span.text('Удалить из корзины');
                             i.removeClass('ion-android-favorite-outline');
                             i.addClass('ion-android-favorite');
                         } else {
-                            span.text('Добавить в избранное');
+                            span.text('Добавить в Корзину');
                             i.removeClass('ion-android-favorite');
                             i.addClass('ion-android-favorite-outline');
                         }

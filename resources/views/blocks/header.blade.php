@@ -40,7 +40,7 @@
                     <!-- End Main Nav -->
                     <ul class="wrap-cart-top2 list-inline-block pull-right">
                         <li>
-                            <a href="{{\App\Page::find(2)->url}}" class="title18 wishlist-link" title="Избранное"><span class="white"><i class="icon ion-android-favorite-outline"></i></span><sup class="title10 round dark bg-white">{{count(\App\Product::liked())}}</sup></a>
+                            <a href="{{\App\Page::find(2)->url}}" class="title18 wishlist-link" title="Корзина"><span class="white"><i class="icon ion-bag"></i></span><sup class="title10 round dark bg-white">{{count(\App\Product::liked())}}</sup></a>
                         </li>
                     </ul>
                 </div>
