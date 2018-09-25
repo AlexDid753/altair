@@ -5,36 +5,18 @@
         <div class="container">
             <div class="banner-slider banner-jewelry3">
                 <div class="wrap-item" data-navigation="true" data-transition="fade" data-itemscustom="[[0,1]]">
-                    <div class="item-slider item-slider2">
-                        <div class="banner-thumb">
-                            <a href="{{$model->href1}}"><img src="{{resize($model->image1,1170,560)}}" alt="" /></a>
+                    @foreach($model->slider_linked_images as $slider_item)
+                        <div class="item-slider item-slider2">
+                            <div class="banner-thumb">
+                                <a href="{{$slider_item->link or ''}}"><img src="{{resize($slider_item->image,1170,560)}}" alt="" /></a>
+                            </div>
+                            <div class="banner-info animated text-center" data-animated="zoomIn">
+                                <h2 class="title48 play-font font-normal text-uppercase dark">{{$slider_item->title or ''}}</h2>
+                                <h3 class="title18 play-font font-italic dark">{{$slider_item->desc or ''}}</h3>
+                                <a href="{{$slider_item->link or ''}}" class="border-button dark title18">Перейти</a>
+                            </div>
                         </div>
-                        <div class="banner-info animated text-center" data-animated="zoomIn">
-                            <h2 class="title48 play-font font-normal text-uppercase dark">{{$model->text_img1}}</h2>
-                            <h3 class="title18 play-font font-italic dark">Open-Link Bracelets</h3>
-                            <a href="#" class="border-button dark title18">Shop now</a>
-                        </div>
-                    </div>
-                    <div class="item-slider item-slider2">
-                        <div class="banner-thumb">
-                            <a href="#"><img src="images/home/jewelry3/slide2.jpg" alt="" /></a>
-                        </div>
-                        <div class="banner-info animated text-center" data-animated="bounceIn">
-                            <h2 class="title48 play-font font-normal text-uppercase dark">Tucson & Miami</h2>
-                            <h3 class="title18 play-font font-italic dark">Bought Jewelry Box</h3>
-                            <a href="#" class="border-button dark title18">Shop now</a>
-                        </div>
-                    </div>
-                    <div class="item-slider item-slider2">
-                        <div class="banner-thumb">
-                            <a href="#"><img src="images/home/jewelry3/slide3.jpg" alt="" /></a>
-                        </div>
-                        <div class="banner-info animated text-center" data-animated="tada">
-                            <h2 class="title48 play-font font-normal text-uppercase dark">Moon & Neo</h2>
-                            <h3 class="title18 play-font font-italic dark">Diamond Jewelry</h3>
-                            <a href="#" class="border-button dark title18">Shop now</a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="list-banner-jewelry3">
