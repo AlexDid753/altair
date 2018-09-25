@@ -8,12 +8,12 @@
                     @foreach($model->slider_linked_images as $slider_item)
                         <div class="item-slider item-slider2">
                             <div class="banner-thumb">
-                                <a href="{{$slider_item->link or ''}}"><img src="{{resize($slider_item->image,1170,560)}}" alt="" /></a>
+                                <a href="{{$slider_item->link ?? ''}}"><img src="{{resize($slider_item->image,1170,560)}}" alt="" /></a>
                             </div>
                             <div class="banner-info animated text-center" data-animated="zoomIn">
-                                <h2 class="title48 play-font font-normal text-uppercase dark">{{$slider_item->title or ''}}</h2>
-                                <h3 class="title18 play-font font-italic dark">{{$slider_item->desc or ''}}</h3>
-                                <a href="{{$slider_item->link or ''}}" class="border-button dark title18">Перейти</a>
+                                <h2 class="title48 play-font font-normal text-uppercase dark">{{$slider_item->title ?? ''}}</h2>
+                                <h3 class="title18 play-font font-italic dark">{{$slider_item->desc ?? ''}}</h3>
+                                <a href="{{$slider_item->link ?? ''}}" class="border-button dark title18">Перейти</a>
                             </div>
                         </div>
                     @endforeach
@@ -21,41 +21,26 @@
             </div>
             <div class="list-banner-jewelry3">
                 <div class="row">
-                    <div class="col-sm-6 col-xs-12">
-                        <div class="item-banner-jewelry3 zoom-rotate fade-out-in">
-                            <a href="{{$model->href2}}" class="adv-thumb-link"><img src="{{resize($model->image2, 575,383)}}" alt="" />
-                                <div class="banner-info">
-                                    <h3 class="title30 play-font dark font-italic">{{$model->text_img2}}</h3>
-                                </div>
-                            </a>
+                    @foreach($model->previews_linked_images as $preview)
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="item-banner-jewelry3
+                                <?php
+                                    if ($loop->iteration % 3 != 0 && $loop->iteration != 1) {
+                                        echo 'zoom-rotate fade-out-in';
+                                    }else {
+                                        echo 'zoom-image line-scale style2';
+                                    }
+                                ?>
+                                 ">
+                                <a href="{{$preview->link}}" class="adv-thumb-link"><img src="{{resize($preview->image, 575,383)}}" alt="{{$preview->title ?? ''}}" />
+                                    <div class="banner-info">
+                                        <h3 class="title30 play-font dark font-italic">{{$preview->title ?? ''}}</h3>
+                                        <h3 class="title18 play-font dark">{{$preview->desc ?? ''}}</h3>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        <div class="item-banner-jewelry3 zoom-image line-scale style2">
-                            <a href="{{$model->href3}}" class="adv-thumb-link"><img src="{{resize($model->image3, 575,383)}}" alt="" />
-                                <div class="banner-info">
-                                    <h3 class="title30 play-font dark font-italic">{{$model->text_img3}}</h3>
-                                        <h3 class="title18 play-font dark">Upto 50% off</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xs-12">
-                        <div class="item-banner-jewelry3 zoom-image line-scale style2">
-                            <a href="{{$model->href4}}" class="adv-thumb-link"><img src="{{resize($model->image4, 575,383)}}" alt="" />
-                                <div class="banner-info">
-                                    <h3 class="title30 play-font dark font-italic">{{$model->text_img4}}</h3>
-                                        <h3 class="title18 play-font dark">Upto 80% off</h3>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item-banner-jewelry3 zoom-rotate fade-out-in">
-                            <a href="{{$model->href5}}" class="adv-thumb-link"><img src="{{resize($model->image5, 575,383)}}" alt="" />
-                                <div class="banner-info">
-                                    <h3 class="title30 play-font dark font-italic">{{$model->text_img5}}</h3>
-                                        <h8 class="title18 play-font dark">$290.00 - $675.00</h8>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
