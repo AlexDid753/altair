@@ -10,7 +10,6 @@ class MenuController extends BaseAdminController
     public $fields = [
         'name' => 'input',
         'published' => 'checkbox',
-        'protected' => 'checkbox',
         'sort' => 'input',
         'parent_id' => ['type' => 'dropdown', 'label' => 'Parent', 'model' => 'Menu', 'method' => 'dropdown'],
         'page_id' => ['type' => 'dropdown_menu', 'label' => 'Page', 'model' => 'Page',  'method' => 'dropdownMenu'],
