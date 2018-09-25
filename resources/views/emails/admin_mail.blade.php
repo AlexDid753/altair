@@ -1,4 +1,4 @@
 <p>Здравствуйте, на сайте Альтаир-Серебро был оставлен запрос на резервирование.</p>
 <p>Более подробно вы можете посмотреть информацию по ссылке:</p>
 
-<a href="{{config('app.url')}}/admin/feedback/{{$model->id}}/edit">Обратная связь #{{$model->id}}</a>
+<a href="{{config('app.url')}}/admin/feedback/{{$model->id}}/edit">Заказ #{{$model->id}}</a>
