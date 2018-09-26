@@ -132,7 +132,6 @@
 
     <script src='/packages/tinymce/tinymce.min.js'></script>
     <script src='/packages/colorbox/jquery.colorbox-min.js'></script>
-    <script type="text/javascript" src="/packages/barryvdh/elfinder/js/standalonepopup.min.js"></script>
     <script src="//unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
 

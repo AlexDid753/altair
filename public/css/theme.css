@@ -5987,7 +5987,6 @@ td.product-thumbnail img {
 .woocommerce table,
 .woocommerce th,
 .woocommerce td {
-  border: 1px solid #e5e5e5 !important;
   color: #555;
   margin: 0;
   padding: 15px 20px !important;
@@ -7011,7 +7010,9 @@ img.line-icon {
 .mega-menu-home ul li span {
   margin: 0 5px;
 }
-
 .empty_faves {
   display: none;
+}
+.table>thead>tr>th {
+  border-bottom: 1px solid #ddd;
 }
