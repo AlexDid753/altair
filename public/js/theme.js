@@ -618,6 +618,7 @@ jQuery(document).ready(function(){
 			}
 		});
 	}
+	$('.contact-phone input').mask("+7 (999) 999-9999");
 });
 //Window Load
 jQuery(window).on('load',function(){ 

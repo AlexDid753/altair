@@ -15,8 +15,7 @@
             <input name="phone" class="dark border"
                    required
                    placeholder="Телефон*"
-                   pattern="\d*"
-                   type="text"
+                   type="tel"
                    oninvalid="this.setCustomValidity('Введите корректный номер телефона')"
                    oninput="setCustomValidity('')"
             >

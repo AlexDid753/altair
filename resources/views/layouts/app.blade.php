@@ -60,6 +60,7 @@
 <script src="/js/libs/jquery.elevatezoom.min.js"></script>
 <script src="/js/libs/popup.min.js"></script>
 <script src="/js/libs/timecircles.min.js"></script>
+<script src="/js/libs/jquery.maskedinput.js"></script>
 <script src="/js/libs/wow.min.js"></script>
 <script src="/js/theme.js"></script>
 </body>
