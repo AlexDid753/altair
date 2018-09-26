@@ -246,14 +246,14 @@ $(function() {
                             i.addClass('fa-heart');
 						}
 					}else {
-                        if (i.hasClass('ion-android-favorite-outline')) {
+                        if (i.hasClass('ion-ios-cart-outline')) {
                             span.text('Удалить из корзины');
-                            i.removeClass('ion-android-favorite-outline');
-                            i.addClass('ion-android-favorite');
+                            i.removeClass('ion-ios-cart-outline');
+                            i.addClass('ion-ios-cart');
                         } else {
                             span.text('Добавить в Корзину');
-                            i.removeClass('ion-android-favorite');
-                            i.addClass('ion-android-favorite-outline');
+                            i.removeClass('ion-ios-cart');
+                            i.addClass('ion-ios-cart-outline');
                         }
 					}
                 }
