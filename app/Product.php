@@ -163,4 +163,13 @@ class Product extends Model
         }
     }
 
+    //Синхронизация связей с категориями
+    public function sync_categories()
+    {
+        $this->data = request()->all();
+        if (array_key_exists('categories', $this->data)){
+            $this->categories()->sync($this->data['categories']);
+        }
+    }
+
 }

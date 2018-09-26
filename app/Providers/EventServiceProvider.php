@@ -111,6 +111,7 @@ class EventServiceProvider extends ServiceProvider
         });
 
         Product::saved(function ($model) {
+            $model->sync_categories();
             $model->set_default_category();
             $model->reindex();
         });
