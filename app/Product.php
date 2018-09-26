@@ -33,11 +33,11 @@ class Product extends Model
         ],
         'text' => [
             'type' => 'text',
-            "language" =>   "russian",
+            "language" => "russian",
             "stopwords" => "_russian_"
         ],
         'categories_title' => [
-            "language" =>   "russian",
+            "language" => "russian",
             "stopwords" => "_russian_"
         ],
     );
@@ -107,7 +107,7 @@ class Product extends Model
             return;
         if (strpos($value, ".") !== false) {
             $pieces = explode(".", $value);
-            if (strlen($pieces[1]) < 2){
+            if (strlen($pieces[1]) < 2) {
                 return $value . '0&#8381;';
             }
             return $value . '&#8381;';
@@ -153,6 +153,14 @@ class Product extends Model
             array_push($categories_title, $category->title);
         }
         $this->categories_title = $categories_title;
+    }
+
+    public function set_default_category()
+    {
+        $this->data = request()->all();
+        if (array_key_exists('parent_id', $this->data)) {
+            $this->categories()->syncWithoutDetaching(intval($this->data['parent_id']));
+        }
     }
 
 }

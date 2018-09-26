@@ -111,6 +111,7 @@ class EventServiceProvider extends ServiceProvider
         });
 
         Product::saved(function ($model) {
+            $model->set_default_category();
             $model->reindex();
         });
 
@@ -118,7 +119,6 @@ class EventServiceProvider extends ServiceProvider
             if($model->type == 'favorites'){
                 self::sendMail($model);
             }
-
         });
     }
 }

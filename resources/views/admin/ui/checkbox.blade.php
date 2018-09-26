@@ -3,7 +3,12 @@
         <div class="checkbox">
             <label>
                 <input type="hidden" value="0" name="{{ $fieldName }}">
-                <input type="checkbox" value="1" name="{{ $fieldName }}" {{ $model->$fieldName ?: old($fieldName) ? 'checked' : '' }}>
+                <input {{--вывод атрибутов--}}
+                       @if (isset($attributes))
+                       {{set_atributes($attributes)}}
+                       @endif
+                       type="checkbox" value="1"
+                       name="{{ $fieldName }}" {{ $model->$fieldName ?: old($fieldName) ? 'checked' : '' }}>
                 @if (is_array($fieldValue) && !empty($fieldValue['label']))
                     {{ __($fieldValue['label']) }}
                 @else

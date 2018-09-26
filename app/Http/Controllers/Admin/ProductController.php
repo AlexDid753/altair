@@ -90,12 +90,10 @@ class ProductController extends BaseAdminController
             }
             $this->data = $request->all();
 
+
             //Синхронизация связей с категориями
             if (array_key_exists('categories', $this->data)){
                 $model->categories()->sync($this->data['categories']);
-            }
-            if (array_key_exists('parent_id', $this->data)) {
-                $model->categories()->syncWithoutDetaching(intval($this->data['parent_id']));
             }
 
             foreach ($this->fields as $field_name => $value) {
