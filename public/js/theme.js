@@ -272,10 +272,10 @@ $(function() {
                 success: function (data) {
                     update_faves_count(data);
                     table_row.remove();
+                    check_table();
                 }
             });
         }
-        setTimeout(check_table, 150);
     });
 
     function check_table() {
