@@ -5,6 +5,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <td>ID</td>
                         <td>Наименование</td>
                         <td>Категория</td>
                         <td class="text-right">
@@ -14,6 +15,7 @@
                 <tbody>
                     @foreach ($models as $model)
                             <tr>
+                                <td>{{ $model->id }}</td>
                                 <td>{{ $model->title }}</td>
                                 <td>{{ $model->parent->title or '—' }}</td>
                                 <td class="text-right">

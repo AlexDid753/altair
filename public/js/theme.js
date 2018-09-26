@@ -236,14 +236,14 @@ $(function() {
 				success: function (data) {
                     update_faves_count(data);
                 	if (i.parents('.detail-info').length) {//если показывается в блоке детальной информации о продукте
-                		if(i.hasClass('fa-heart')) {
+                		if(i.hasClass('ion-ios-cart')) {
                         	span.text('Добавить в корзину');
-                            i.removeClass('fa-heart');
-                            i.addClass('fa-heart-o');
+                            i.removeClass('ion-ios-cart');
+                            i.addClass('ion-ios-cart-outline');
 						}else {
                 			span.text('Удалить из корзины');
-                            i.removeClass('fa-heart-o');
-                            i.addClass('fa-heart');
+                            i.removeClass('ion-ios-cart-outline');
+                            i.addClass('ion-ios-cart');
 						}
 					}else {
                         if (i.hasClass('ion-ios-cart-outline')) {

@@ -55,13 +55,38 @@
 
                                             <div class="detail-extra-link">
                                                 <a href="#" class="wishlist-link"><i
-                                                            class="fa {{$model->isLiked() ? 'fa-heart' : 'fa-heart-o'}}"
+                                                            class="icon {{ $model->isLiked() ? 'ion-ios-cart' : 'ion-ios-cart-outline' }}"
                                                             data-slug="{{$model->slug}}"></i><span>{{$model->isLiked() ? 'Удалить из корзины' : 'Добавить в корзину'}}</span></a>
                                                 @if(!empty($model->link))
                                                     <a href="{{$model->link}}" target="_blank"><i
                                                                 class="fa fa-external-link"></i><span>{{$model->link_text ? $model->link_text : 'Посмотреть в источнике'}}</span></a>
                                                 @endif
                                             </div>
+                                            @if(!empty($connected_products))
+                                                <ul class="list-none list-product-group">
+                                                    @foreach($connected_products as $product)
+                                                        <li>
+                                                            <div class="item-product-group table-custom">
+                                                                <div class="product-thumb">
+                                                                    <a href="{{$product->url}}" class="product-thumb-link">
+                                                                        <img src="{{resize($product->get_images_array()[0], 700, 700)}}" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <h3 class="product-title title14 text-uppercase play-font"><a href="{{$product->url}}" class="dark">{{$product->title}}</a></h3>
+                                                                    <div class="product-price play-font">
+                                                                        <del class="silver">{!! $product->prepared_old_price() !!}</del>
+                                                                        <ins class="title14 dark">{!! $product->prepared_price() !!}</ins>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-extra-link4 title18">
+                                                                    @include('shared.add_to_cart_button', ['model' => $product])
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
                                             <ul class="list-none product-meta-info">
                                                 <li>
                                                     @if(!empty($model->code))

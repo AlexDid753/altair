@@ -42,9 +42,9 @@ class PageController extends BaseAdminController
     public function index()
     {
         if ($this->listWhere())
-            $models = $this->model::where($this->listWhere())->paginate(50);
+            $models = $this->model::where($this->listWhere())->orderBy('id')->paginate(50);
         else
-            $models = $this->model::paginate(50);
+            $models = $this->model::orderBy('id')->paginate(50);
 
         return view()->first(['admin.' . $this->name . '.list', 'admin.base.index_tree'], [
             'models' => $models,

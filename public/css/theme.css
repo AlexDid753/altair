@@ -2489,6 +2489,9 @@ a.opaci:hover {
 .detail-extra-link {
   margin: 0 -3px 25px;
 }
+.detail-extra-link i {
+  padding-right: 7px;
+}
 .item-product-meta-info label {
   min-width: 105px;
   font-weight: 400;
@@ -2690,6 +2693,10 @@ a.opaci:hover {
 }
 .list-product-group {
   margin-bottom: 30px;
+}
+.list-product-group .product-extra-link4 {
+  border-top: 0;
+  float: right;
 }
 .detail-group .detail-attr .addcart-link {
   margin: 0;

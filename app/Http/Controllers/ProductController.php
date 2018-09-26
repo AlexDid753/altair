@@ -29,11 +29,22 @@ class ProductController extends BaseController
 
         $images = !empty($model->images)? json_decode($model->images) : [];
 
+        $connected_products_ids = [];
+        foreach (!empty($model->connected_products)? explode(',', $model->connected_products) : [] as $id){
+            array_push($connected_products_ids, intval(trim($id)));
+        }
+        $connected_products_ids = array_unique($connected_products_ids);
+        unset($connected_products_ids[array_search($model->id, $connected_products_ids)]);
+
+        $connected_products = Product::limit(4)->whereIn('id', $connected_products_ids)->get();
+
+
         return view('product', [
             'model' => $model,
             'products_recently_viewed' => $products_recently_viewed,
             'products_liked' => Product::liked(),
-            'images' => $images
+            'images' => $images,
+            'connected_products' => $connected_products
         ]);
     }
 

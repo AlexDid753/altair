@@ -35,6 +35,9 @@ class ProductController extends BaseAdminController
         'sample' => 'input',
         'material' => 'input',
         'piece' => 'input',
+        'connected_products' => ['type' => 'input',
+            "attributes"=>['placeholder' =>
+                "placeholder='ID товаров строго через запятую, например: 56,49' "]],
 
 
         'meta_title' => 'input',
@@ -61,9 +64,9 @@ class ProductController extends BaseAdminController
     public function index()
     {
         if ($this->listWhere())
-            $models = $this->model::where($this->listWhere())->paginate(50);
+            $models = $this->model::where($this->listWhere())->orderBy('id')->paginate(50);
         else
-            $models = $this->model::paginate(50);
+            $models = $this->model::orderBy('id')->paginate(50);
 
         return view()->first(['admin.' . $this->name . '.list', 'admin.product.index'], [
             'models' => $models,
