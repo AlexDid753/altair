@@ -29,13 +29,14 @@ class ProductController extends BaseController
 
         $images = !empty($model->images)? json_decode($model->images) : [];
 
+        //Рекомендуемые товары
         $connected_products_ids = [];
         foreach (!empty($model->connected_products)? explode(',', $model->connected_products) : [] as $id){
             array_push($connected_products_ids, intval(trim($id)));
         }
         $connected_products_ids = array_unique($connected_products_ids);
-        unset($connected_products_ids[array_search($model->id, $connected_products_ids)]);
-
+        $key=array_search($model->id, $connected_products_ids);
+        if (false !== $key) unset($connected_products_ids[ $key ]);
         $connected_products = Product::limit(4)->whereIn('id', $connected_products_ids)->get();
 
 
