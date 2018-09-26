@@ -30,8 +30,7 @@
                                 <div class="logo logo-footer2 text-center">
                                     <a href="/">
                                         <span class="logo-icon title24 round white bg-dark"><i class="fa fa-diamond"></i></span>
-                                        <strong class="play-font  title30 white text-uppercase">Altair-</strong>
-                                        <span class="play-font font-normal title30 white">Serebro</span>
+                                        <strong class="play-font  title30 white text-uppercase">Альтаир</strong>
                                     </a>
                                 </div>
                                 <h2 class="title18 play-font white text-center font-italic">Подпишитесь на нас в соцсетях</h2>
@@ -75,7 +74,7 @@
                             <li><a href="{{$item->getUrl()}}" class="white wobble-top">{{$item->name}}</a></li>
                         @endforeach
                     </ul>
-                    <p class="desc copyright-footer text-center"><span class="white opaci">Altair-Serebro © 2018 Создание сайта — </span> <a target="_blank" href="http://Molinos.Ru" class="white">Molinos.Ru</a></p>
+                    <p class="desc copyright-footer text-center"><span class="white opaci">Альтаир © 2018 Создание сайта — </span> <a target="_blank" href="http://Molinos.Ru" class="white">Molinos.Ru</a></p>
                 </div>
             </div>
         </div>
