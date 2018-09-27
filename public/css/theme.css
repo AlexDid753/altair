@@ -2512,6 +2512,9 @@ a.opaci:hover {
 .product-detail {
   margin-bottom: 40px;
 }
+.product-remove i {
+  cursor: pointer;
+}
 .detail-info {
   position: relative;
 }

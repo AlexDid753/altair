@@ -8,7 +8,7 @@
                             <div class="block-footer2">
                                 <h2 class="title30 white play-font font-italic">Подписка на акции</h2>
                                 <div class="thanks">
-                                    <p class="desc white opaci thanks">Вам придет письмо с просьбой подтвердить подписку</p>
+                                    <p class="desc white opaci thanks">Спасибо за Вашу подписку.</p>
                                 </div>
                                 <p class="desc white opaci">Введите свою почту чтобы подписаться на рассылку об акциях.</p>
                                 <form class="form-newsletter2 feedback-form" method="post">
