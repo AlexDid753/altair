@@ -4,20 +4,12 @@ trait ResourcePageMethods
 {
     use SoftDeletes;
 
-    public function validatorRules($method = 'POST')
-    {
-        $default_rules = [
-            'title' => 'required|string|max:255',
-        ];
-        return $default_rules;
-    }
-
     public function setSlugAttribute($value)
     {
         if ($value != '/')
             $value = str_slug($value) ?: str_slug($this->attributes['title']);
 
-        while (self::where([['id', '<>', $this->id], ['parent_id', '=', $this->parent_id], ['slug', '=', $value]])->count()) {
+        while (self::where([['id', '<>', $this->id], ['slug', '=', $value]])->count()) {
             if (!preg_match('~^(.+-)(\d+)$~', $value))
                 $value = $value . '-1';
             else

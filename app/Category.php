@@ -24,6 +24,14 @@ class Category extends Model
         'published' => 'boolean',
     ];
 
+    public function validatorRules($method = 'POST')
+    {
+        $default_rules = [
+            'title' => 'required|string|max:255',
+        ];
+        return $default_rules;
+    }
+
     public function products()
     {
         return $this->belongsToMany('App\Product');
