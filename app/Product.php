@@ -10,14 +10,41 @@ class Product extends Model
     use ElasticquentTrait;
     use Traits\ResourcePageMethods;
 
-    public static function validatorRules()
+    public function validatorRules($method = 'POST')
     {
-        return [
+        $default_rules = [
             'title' => 'required|string|max:255',
             'parent_id' => 'required',
             'price' => 'required|between:0,999999',
-            'old_price' => 'between:0,999999'
+            'old_price' => 'between:0,999999',
+            'slug'=> 'unique:products'
         ];
+        $update_rules = [
+            'title' => 'required|string|max:255',
+            'parent_id' => 'required',
+            'price' => 'required|between:0,999999',
+            'old_price' => 'between:0,999999',
+            'slug'=> 'unique:products,slug,'.$this->id
+        ];
+        switch($method)
+        {
+            case 'GET':
+            case 'DELETE':
+                {
+                    return [];
+                }
+            case 'POST':
+                {
+                    return $default_rules;
+                }
+            case 'PUT':
+            case 'PATCH':
+                {
+                    return $update_rules;
+                }
+            default:
+                return $default_rules;
+        }
     }
 
     protected $maps = [

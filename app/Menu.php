@@ -12,11 +12,12 @@ class Menu extends Model
         'name', 'published', 'parent_id', 'sort', 'page_id', 'url'
     ];
 
-    public static function validatorRules()
+    public function validatorRules($method = 'POST')
     {
-        return [
+        $default_rules = [
             'name' => 'required|string|max:255'
         ];
+        return $default_rules;
     }
 
     public function childrens()

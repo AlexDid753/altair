@@ -74,36 +74,6 @@ class ProductController extends BaseAdminController
         ]);
     }
 
-    public function store(Request $request, $id = null)
-    {
-        $rules = $this->model::validatorRules();
-        $validator = Validator::make(Input::all(), $rules);
-
-        if ($validator->fails()) {
-            return Redirect::to('admin/'.$this->name.'/create')
-                ->withErrors($validator);
-        } else {
-
-            if (isset($id)) {
-                $model = $this->model::find($id);
-                Session::flash('message', 'Продукт обновлен!');
-            }else {
-                $model = new $this->model();
-                Session::flash('message', 'Продукт создан!');
-            }
-            $this->data = $request->all();
-
-
-            foreach ($this->fields as $field_name => $value) {
-                $model->$field_name = Input::get($field_name);
-            }
-
-            $model->save();
-
-            return Redirect::to('/admin/'.$this->name);
-        }
-    }
-
     public function create()
     {
         $model = new $this->model;

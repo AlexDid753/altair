@@ -48,16 +48,43 @@ class Page extends Model
         return $return;
     }
 
-    public static function validatorRules()
+    public function validatorRules($method = 'POST')
     {
-        return [
+        $default_rules = [
             'parent_id' => 'nullable|integer|exists:pages,id',
             'template_id' => 'nullable|integer|exists:templates,id',
             'published' => 'boolean',
             'name' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255',
             'fields' => 'nullable|array',
+            'slug' => 'nullable|string|max:255'
         ];
+        $update_rules = [
+            'parent_id' => 'nullable|integer|exists:pages,id',
+            'template_id' => 'nullable|integer|exists:templates,id',
+            'published' => 'boolean',
+            'name' => 'required|string|max:255',
+            'fields' => 'nullable|array',
+            'slug' => 'nullable|string|max:255|unique:pages,slug,'.$this->id,
+        ];
+        switch($method)
+        {
+            case 'GET':
+            case 'DELETE':
+                {
+                    return [];
+                }
+            case 'POST':
+                {
+                    return $default_rules;
+                }
+            case 'PUT':
+            case 'PATCH':
+                {
+                    return $update_rules;
+                }
+            default:
+                return $default_rules;
+        }
     }
 
     public function setSlugAttribute($value)

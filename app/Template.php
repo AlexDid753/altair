@@ -19,7 +19,7 @@ class Template extends Model
         'name', 'view', 'is_container', 'fields'
     ];
 
-    public static function validatorRules()
+    public function validatorRules($method = 'POST')
     {
         return [
             'name' => 'required|string|max:255',

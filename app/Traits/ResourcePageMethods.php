@@ -4,11 +4,12 @@ trait ResourcePageMethods
 {
     use SoftDeletes;
 
-    public static function validatorRules()
+    public function validatorRules($method = 'POST')
     {
-        return [
+        $default_rules = [
             'title' => 'required|string|max:255',
         ];
+        return $default_rules;
     }
 
     public function setSlugAttribute($value)

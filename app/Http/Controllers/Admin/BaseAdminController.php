@@ -85,7 +85,7 @@ class BaseAdminController extends Controller
 
     public function update(Request $request, $id)
     {
-        $rules = $this->model::validatorRules();
+        $rules = $this->model::find($id)->validatorRules('PUT');
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
             return back()->withInput()->withErrors($validator);
@@ -97,20 +97,23 @@ class BaseAdminController extends Controller
 
     public function store(Request $request, $id = null)
     {
-        $rules = $this->model::validatorRules();
+        if (isset($id)) {
+            $model = $this->model::find($id);
+        }else {
+            $model = new $this->model();
+        }
+        $method = $request->method();
+        $rules = $model->validatorRules($method);
         $validator = Validator::make(Input::all(), $rules);
 
         if ($validator->fails()) {
             return Redirect::to('admin/'.$this->name.'/create')
                 ->withErrors($validator);
         } else {
-
-            if (isset($id)) {
-                $model = $this->model::find($id);
-                Session::flash('message', "Успешно обновлено!");
+            if ($request->method() == 'POST') {
+                Session::flash('message', 'Успешно создано!');
             }else {
-                $model = new $this->model();
-                Session::flash('message', "Успешно создано!");
+                Session::flash('message', 'Успешно обновлено!');
             }
             $this->data = $request->all();
             foreach ($this->fields as $field_name => $value) {
