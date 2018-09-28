@@ -364,7 +364,7 @@ $(function() {
 
     //Open link faves in header
 	$('.wrap-cart-top2 a').click(function () {
-		window.open($(this).attr('href'));
+		window.open($(this).attr('href'),"_self");
     });
 
 	//Menu Responsive

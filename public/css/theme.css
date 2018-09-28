@@ -3679,6 +3679,9 @@ a.dark {
 .footer-menu > li:last-child {
   margin: 0;
 }
+#footer .form-newsletter2 input[type='text'] {
+  color: #fff;
+}
 .block-connect-download {
   padding: 30px 0;
   border-bottom: 4px solid rgba(255, 255, 255, 0.2);

@@ -29,8 +29,8 @@
                             <div class="block-footer2">
                                 <div class="logo logo-footer2 text-center">
                                     <a href="/">
-                                        <span class="logo-icon title24 round white bg-dark"><img src="images/icon/logo_white.png" alt=""></i></span>
-                                        <strong class="play-font  title30 white text-uppercase">Альтаир</strong>
+                                        <span class="logo-icon title24 round white bg-white"><img src="images/icon/logo.png" alt=""></span>
+                                        <strong class="play-font  title30 white">Альтаир</strong>
                                     </a>
                                 </div>
                                 <h2 class="title18 play-font white text-center font-italic">Подпишитесь на нас в соцсетях</h2>
