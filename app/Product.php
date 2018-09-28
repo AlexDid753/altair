@@ -54,8 +54,8 @@ class Product extends Model
     protected $mappingProperties = array(
         'title' => [
             'type' => 'text',
-//            "language" =>   "russian", todo на проде можно будет включить если названия будут на русском
-//            "stopwords" => "_russian_"
+            "language" =>   "russian",
+            "stopwords" => "_russian_"
 
         ],
         'text' => [
@@ -144,14 +144,7 @@ class Product extends Model
     {
         if (empty($value))
             return;
-        if (strpos($value, ".") !== false) {
-            $pieces = explode(".", $value);
-            if (strlen($pieces[1]) < 2) {
-                return $value . '0 &#8381;';
-            }
-            return $value . ' &#8381;';
-        }
-        return $value . '.00 &#8381;';
+        return intval($value) . ' &#8381;';
     }
 
     public function isLiked()
