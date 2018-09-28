@@ -1,6 +1,6 @@
 deploy stage:
 
-`envoy run deploy --environment=production`
+`envoy run deploy --env=production`
 
 deploy prod:
 
