@@ -68,16 +68,15 @@ class EventServiceProvider extends ServiceProvider
                 $settings = new Settings;
                 $message->to($settings->admin_email)
                     ->subject('Обратная связь со страницы Корзина');
-                $message->from('a1eshenbka46@gmail.com','Altair');
+                $message->from('contacts@serebro-altair.ru','Altair');
             });
         } catch (\Exception $e) {}
 
         try {
             Mail::send('emails.customer_mail', $data, function($message) use ($model) {
-
                 $message->to($model->email)
                     ->subject('Формирование заказа на сайте Альтаир');
-                $message->from('a1eshenbka46@gmail.com','Altair');
+                $message->from('contacts@serebro-altair.ru','Altair');
             });
         } catch (\Exception $e) {}
     }
