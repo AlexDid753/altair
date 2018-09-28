@@ -23,6 +23,7 @@
     @if ($model->meta_keywords)
         <meta content="{{ $model->meta_keywords }}" name="keywords">
     @endif
+    {!! $settings->scripts !!}
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7cPlayfair+Display:400,700,400i,700i" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/libs/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/libs/ionicons.min.css"/>
