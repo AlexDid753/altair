@@ -366,7 +366,6 @@ $(function() {
 	$('.wrap-cart-top2 a').click(function () {
 		window.open($(this).attr('href'),"_self");
     });
-
 	//Menu Responsive
 	$('.toggle-mobile-menu').on('click',function(event){
 		event.preventDefault();
@@ -755,7 +754,29 @@ jQuery(window).on('load',function(){
 			title: "",//show header title for the progress bar
 		});
 	});
+
+	//Search Form
+    var q = getUrlParameter('q');
+    if (q != null) {
+        $('.wg-search-form').find('input[type="text"]').val(q);
+	}
 });
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+
 //Window Resize
 jQuery(window).on('resize',function(){
 	offset_menu();
