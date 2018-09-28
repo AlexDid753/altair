@@ -38,9 +38,7 @@
                                 id="{{ str_slug($fieldName . $key) }}"
                                 data-key="link"
                                 data-target="{{ str_slug($fieldName) }}"
-                                value="<?php if (isset($value->link)) {
-                                    echo $value->link;
-                                } ?>">
+                                value="{{$value->link}}">
                         <input
                                 placeholder="Заглавие слайда"
                                 type="text"
@@ -49,9 +47,7 @@
                                 id="{{ str_slug($fieldName . $key) }}"
                                 data-key="title"
                                 data-target="{{ str_slug($fieldName) }}"
-                                value="<?php if (isset($value->title)) {
-                                    echo $value->title;
-                                } ?>">
+                                value="{{$value->title}}">
                         <input
                                 placeholder="Краткое описание"
                                 type="text"
@@ -60,9 +56,7 @@
                                 id="{{ str_slug($fieldName . $key) }}"
                                 data-key="desc"
                                 data-target="{{ str_slug($fieldName) }}"
-                                value="<?php if (isset($value->desc)) {
-                                    echo $value->desc;
-                                } ?>">
+                                value="{{$value->desc}}">
 
 
                     </div>
