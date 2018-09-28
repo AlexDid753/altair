@@ -13,7 +13,7 @@
                 id="{{ $fieldName }}"
                 name="{{ $fieldName }}"
                 class="form-control{{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
-                rows="3">{{ $model->$fieldModelName ?: old($fieldName) }}</textarea>
+                rows="3">{{ $model->value ?: old($fieldName) }}</textarea>
 
         @if ($errors->has($fieldName))
             <span class="invalid-feedback">
