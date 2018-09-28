@@ -32,15 +32,9 @@
                                             </div>
                                             <!-- End Gallery -->
                                             <div class="detail-share-social text-center">
-                                                <span>Share</span>
-                                                <a href="#" class="float-shadow"><img src="images/icon/icon-email.png"
-                                                                                      alt=""/></a>
-                                                <a href="#" class="float-shadow"><img
-                                                            src="images/icon/icon-facebook.png" alt=""/></a>
-                                                <a href="#" class="float-shadow"><img src="images/icon/icon-twitter.png"
-                                                                                      alt=""/></a>
-                                                <a href="#" class="float-shadow"><img
-                                                            src="images/icon/icon-pinterest.png" alt=""/></a>
+                                                <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+                                                <script src="//yastatic.net/share2/share.js"></script>
+                                                <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,gplus,twitter" data-size="s"></div>
                                             </div>
                                         </div>
                                     @endif

@@ -29,15 +29,14 @@
                             <div class="block-footer2">
                                 <div class="logo logo-footer2 text-center">
                                     <a href="/">
-                                        <span class="logo-icon title24 round white bg-white"><img src="images/icon/logo.png" alt=""></span>
-                                        <strong class="play-font  title30 white">Альтаир</strong>
+                                        <span class="logo-icon logo-icon_big title24 round white"><img src="images/icon/altair_logo.png" alt=""></span>
                                     </a>
                                 </div>
                                 <h2 class="title18 play-font white text-center font-italic">Подпишитесь на нас в соцсетях</h2>
                                 <div class="social-network-footer text-center">
+                                    <a href="#" class="inline-block round"><i class="fa fa-vk"></i></a>
+                                    <a href="#" class="inline-block round"><i class="fa fa-instagram"></i></a>
                                     <a href="#" class="inline-block round"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="inline-block round"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="inline-block round"><i class="fa fa-pinterest-p"></i></a>
                                 </div>
                             </div>
                         </div>

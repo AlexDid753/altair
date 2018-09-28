@@ -5,8 +5,7 @@
                 <div class="col-md-12">
                     <div class="logo logo1">
                         <a href="/">
-                            <span class="logo-icon title24 round white bg-white"><img src="images/icon/logo.png" alt=""></span>
-                            <strong class="play-font font-italic title30 white">Альтаир</strong>
+                            <span class="logo-icon logo-icon_big title24 round white"><img src="images/icon/altair_logo.png" alt=""></span>
                         </a>
                     </div>
                     <div class="header_year white">2000</div>
