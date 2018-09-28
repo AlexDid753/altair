@@ -3173,6 +3173,10 @@ a.opaci:hover {
   text-align: center;
   line-height: 50px;
 }
+.logo-icon.logo-icon_big {
+  width: 150px;
+  height: 70px;
+}
 .logo1 a > * {
   vertical-align: middle;
   display: inline-block;
