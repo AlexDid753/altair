@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Validation\Rule;
 
 class User extends Authenticatable
 {
@@ -29,11 +30,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function validatorRules($method = 'POST')
+    public function validatorRules($data)
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
+            'password' => $this->id && empty($data['password']) ? 'nullable' : 'required|string|min:6',
+            'email' => [
+                'required', 'string', 'email', 'max:255',
+                Rule::unique('users')->ignore($this->id)
+            ],
         ];
     }
 }

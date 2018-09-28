@@ -103,7 +103,9 @@ class BaseAdminController extends Controller
             $model = new $this->model();
         }
         $method = $request->method();
+        $this->data = $request->all();
         $rules = $model->validatorRules($method);
+        $this->processDataBeforeFill();
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
             return Redirect::to('admin/'.$this->name.'/create')
@@ -114,10 +116,7 @@ class BaseAdminController extends Controller
             }else {
                 Session::flash('message', 'Успешно обновлено!');
             }
-            $this->data = $request->all();
-            foreach ($this->fields as $field_name => $value) {
-                $model->$field_name = Input::get($field_name);
-            }
+            $model->fill($this->data);
             $model->save();
 
             return Redirect::to('/admin/'.$this->name);
@@ -135,6 +134,10 @@ class BaseAdminController extends Controller
 
     public function listWhere()
     {
+
+    }
+
+    protected function processDataBeforeFill() {
 
     }
 
