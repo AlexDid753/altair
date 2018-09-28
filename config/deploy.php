@@ -67,5 +67,17 @@ return [
 			 */
 			'tmp_dir' => '/tmp',
 		],
+        'production' => [
+			'server' => 'app@82.146.46.62',
+			'deploy_to' => '/home/app/production',
+			'repo_url' => 'git@gitlab.molinos.ru:support/altair.git',
+			'repo_branch' => 'develop',
+			'commit_hash' => 'HEAD',
+			'repo_tree' => '',
+			'linked_files' => ['.env'],
+			'linked_dirs' => ['storage/logs', 'storage/app/public'],
+			'keep_releases' => 5,
+			'tmp_dir' => '/tmp',
+		],
 	],
 ];
