@@ -97,12 +97,6 @@
                                                     @endif
                                                 </li>
                                                 <li>
-                                                    <div class="item-product-meta-info product-available-info">
-                                                        <label>Наличие:</label>
-                                                        <span>{{$model->presence? 'В наличии' : 'Ожидается поступление'}}</span>
-                                                    </div>
-                                                </li>
-                                                <li>
                                                     @if(!empty($model->material))
                                                         <div class="item-product-meta-info product-material-info">
                                                             <label>Материал:</label>

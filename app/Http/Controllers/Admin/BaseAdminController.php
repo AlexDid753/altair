@@ -105,7 +105,6 @@ class BaseAdminController extends Controller
         $method = $request->method();
         $rules = $model->validatorRules($method);
         $validator = Validator::make(Input::all(), $rules);
-
         if ($validator->fails()) {
             return Redirect::to('admin/'.$this->name.'/create')
                 ->withErrors($validator);
