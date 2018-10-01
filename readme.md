@@ -1,7 +1,7 @@
-deploy stage:
+deploy prod:
 
 `envoy run deploy --env=production`
 
-deploy prod:
+deploy stage:
 
 `envoy run deploy`
