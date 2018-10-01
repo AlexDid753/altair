@@ -5,7 +5,7 @@
                 <div class="col-md-12">
                     <div class="logo logo1">
                         <a href="/">
-                            <span class="logo-icon logo-icon_big title24 round white"><img src="images/icon/altair_logo.png" alt=""></span>
+                            <span class="logo-icon logo-icon_big title24 round white"><img src="{{$settings->logo}}" alt=""></span>
                         </a>
                     </div>
                     <div class="header_year white">2000</div>

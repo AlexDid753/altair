@@ -29,7 +29,7 @@
                             <div class="block-footer2">
                                 <div class="logo logo-footer2 text-center">
                                     <a href="/">
-                                        <span class="logo-icon logo-icon_big title24 round white"><img src="images/icon/altair_logo.png" alt=""></span>
+                                        <span class="logo-icon logo-icon_big title24 round white"><img src="{{$settings->logo}}" alt=""></span>
                                     </a>
                                 </div>
                                 <h2 class="title18 play-font white text-center font-italic">Подпишитесь на нас в соцсетях</h2>
