@@ -4662,6 +4662,32 @@ a.dark {
 .right-scroll-box .list-product {
   margin-top: 40px;
 }
+.rub {
+  line-height: 5px;
+  width: 0.4em;
+  border-bottom: 2px solid #333;
+  display: inline-block;
+  font-family: 'Open Sans', sans-serif;
+}
+.cart .rub {
+  border-bottom: 1px solid #333;
+}
+.cart .cart_totals {
+  background: #dcdcdc none repeat scroll 0 0;
+  margin: 0 0 -1px;
+  padding: 15px 20px;
+  text-transform: uppercase;
+}
+.cart .cart_totals .cart_totals-head {
+  font-size: 18px;
+  font-weight: 700;
+}
+.cart .cart_totals .cart_totals-price {
+  font-weight: bold;
+  padding-left: 7px;
+  padding-right: 2px;
+}
+
 .product-custom-slider .custom-paginum {
   position: relative;
   margin-top: 20px;

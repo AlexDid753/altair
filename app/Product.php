@@ -144,7 +144,7 @@ class Product extends Model
     {
         if (empty($value))
             return;
-        return intval($value) . ' &#8381;';
+        return intval($value) . ' <span class="rub">Р</span>';
     }
 
     public function isLiked()

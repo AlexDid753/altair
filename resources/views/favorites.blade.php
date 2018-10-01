@@ -39,6 +39,12 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    <tr>
+                                        <td colspan="4" class="cart_totals">
+                                            <span class="cart_totals-head">Итого:</span>
+                                            <span class="cart_totals-price"><span class="number">0</span><span class="rub"> Р</span></span>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>

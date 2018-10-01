@@ -273,10 +273,21 @@ $(function() {
                     update_faves_count(data);
                     table_row.remove();
                     check_table();
+                    print_summ();
                 }
             });
         }
     });
+
+    function print_summ() {
+        if ($('.cart_item').length != 0) {
+        	var summ = 0;
+            $('.cart_item').each(function () {
+				summ+=parseInt($(this).find('.product-price .amount').text());
+            });
+            $('.cart_totals-price .number').text(summ);
+        }
+    }
 
     function check_table() {
         if ($('.cart_item').length == 0) {
@@ -348,6 +359,7 @@ $(function() {
 
     //Фиксированная шапка
     $(document).ready(function(){
+        print_summ();
         // Фикcированная шапка при скролле
         $("#header").removeClass("default");
         if ($(window).scrollTop() > 60) {
