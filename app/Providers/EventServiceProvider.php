@@ -115,6 +115,10 @@ class EventServiceProvider extends ServiceProvider
             $model->reindex();
         });
 
+        Product::deleting(function($model){
+            $model->removeFromIndex();
+        });
+
         Feedback::saved(function ($model) {
             if($model->type == 'favorites'){
                 self::sendMail($model);
