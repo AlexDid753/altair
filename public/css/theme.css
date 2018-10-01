@@ -5664,6 +5664,9 @@ a.dark {
 .about-service {
   margin-bottom: -30px;
 }
+.about-client .client-thumb img {
+  border-radius: 50%;
+}
 .about-client-slider {
   margin: 0 -15px;
 }
