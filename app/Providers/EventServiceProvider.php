@@ -64,18 +64,20 @@ class EventServiceProvider extends ServiceProvider
     {
         $data = array('model'=>$model);
         try {
-            Mail::send('emails.admin_mail', $data, function($message) {
+            Mail::send('emails.admin_mail', $data, function($message) use ($model) {
                 $settings = new Settings;
+                $subject = 'Новый заказ №'. $model->id .' со страницы Корзина';
                 $message->to($settings->admin_email)
-                    ->subject('Обратная связь со страницы Корзина');
+                    ->subject($subject);
                 $message->from('contacts@serebro-altair.ru','Altair');
             });
         } catch (\Exception $e) {}
 
         try {
             Mail::send('emails.customer_mail', $data, function($message) use ($model) {
+                $subject = 'Формирование заказа №'. $model->id .' на сайте Альтаир';
                 $message->to($model->email)
-                    ->subject('Формирование заказа на сайте Альтаир');
+                    ->subject($subject);
                 $message->from('contacts@serebro-altair.ru','Altair');
             });
         } catch (\Exception $e) {}

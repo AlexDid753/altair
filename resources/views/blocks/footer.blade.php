@@ -6,11 +6,11 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="block-footer2">
-                                <h2 class="title30 white play-font font-italic">Подписка на акции</h2>
+                                <h2 class="title30 white play-font font-italic">Подписка на новинки</h2>
                                 <div class="thanks">
                                     <p class="desc white opaci thanks">Спасибо за Вашу подписку.</p>
                                 </div>
-                                <p class="desc white opaci">Введите свою почту чтобы подписаться на рассылку об акциях.</p>
+                                <p class="desc white opaci">Введите свою почту чтобы подписаться на рассылку о новинках.</p>
                                 <form class="form-newsletter2 feedback-form" method="post">
                                     <input type="hidden" name="type" value="subscribe">
                                     <input required

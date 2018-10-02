@@ -2,7 +2,7 @@
     <h2 class="title18 dark font-bold text-uppercase play-font">Благодарим за обратную связь. Мы свяжемся с вами в ближайшее время!</h2>
 </div>
 <div class="contact-form-page">
-    <h2 class="title18 dark font-bold text-uppercase play-font">Оставить контакты</h2>
+    <h2 class="title18 dark font-bold text-uppercase play-font">Контактная информация</h2>
     <form class="contact-form feedback-form" method="post">
         <input type="hidden" name="type" value="{{$contact_type}}">
         <p class="contact-name">
@@ -35,7 +35,8 @@
         </p>
         <p class="contact-submit">
             <input class="shop-button white bg-dark" type="submit"
-                   value="Оставить контакты">
+                   value="Оформить заказ">
         </p>
+        <p>Нажимая на кнопку "Оформить заказ" вы соглашаетесь с <a href="/privacy_policy">Пользовательским соглашением и условиями продажи</a></p>
     </form>
 </div>

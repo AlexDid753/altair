@@ -102,7 +102,7 @@
                                                     @if(!empty($model->weight))
                                                         <div class="item-product-meta-info product-weight-info">
                                                             <label>Вес:</label>
-                                                            <span>{{$model->weight}}г.</span>
+                                                            <span>{{$model->weight}} г</span>
                                                         </div>
                                                     @endif
                                                 </li>
