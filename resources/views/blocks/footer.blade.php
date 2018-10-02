@@ -46,14 +46,6 @@
                                 <p class="desc white opaci">Обращайтесь к нам по любым вопросам.</p>
                                 <ul class="list-none contact-foter2">
                                     <li>
-                                        <i class="fa fa-location-arrow white"></i>
-                                        <span class="text-uppercase white opaci">Доставка</span>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-question white"></i>
-                                        <span class="text-uppercase white opaci">Часто задаваемые вопросы</span>
-                                    </li>
-                                    <li>
                                         <i class="fa fa-volume-control-phone white"></i>
                                         <span class="text-uppercase white opaci"><a class="white opaci" href="tel:{{$settings->phone}}">{{$settings->phone}}</a></span>
                                     </li>

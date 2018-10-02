@@ -8,7 +8,6 @@
                             <span class="logo-icon logo-icon_big title24 round white"><img src="{{$settings->logo}}" alt=""></span>
                         </a>
                     </div>
-                    <div class="header_year white">2000</div>
                     <!-- End logo -->
                     <nav class="main-nav main-nav1 pull-left dark-style">
                         <ul>

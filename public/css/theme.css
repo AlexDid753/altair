@@ -976,6 +976,10 @@ li.menu-item-has-children:hover > .sub-menu {
 /*End Toggle Mobile Menu*/
 /*Begin Menu Responsive*/
 @media (max-width: 767px) {
+  .banner-slider .item-slider .banner-info.text-center {
+    text-align: left;
+    padding: 0px 30px;
+  }
   .mega-menu {
     display: none;
   }
