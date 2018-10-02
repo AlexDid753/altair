@@ -330,6 +330,14 @@ $(function() {
 		if (feedback_type == 'favorites') {
             favorites_data = get_favorites_table_data();
             form_data.push({name: 'products', value: JSON.stringify(favorites_data)});
+            $.ajax({
+                url: '/products_remove_liked',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('table.shop_table.cart').hide();
 		}
 
         switch(feedback_type) {
