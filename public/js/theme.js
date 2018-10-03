@@ -316,6 +316,19 @@ $(function() {
         return favorites_data;
 	}
 
+    //Очищает лайкнутые товары
+	function remove_liked(){
+        $.ajax({
+            url: '/products_remove_liked',
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('.wrap-cart-top2 sup.round').text(0);
+        console.log('liked products removed');
+	}
+
 
 
     //Форма обратной связи
@@ -330,13 +343,6 @@ $(function() {
 		if (feedback_type == 'favorites') {
             favorites_data = get_favorites_table_data();
             form_data.push({name: 'products', value: JSON.stringify(favorites_data)});
-            $.ajax({
-                url: '/products_remove_liked',
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
             $('table.shop_table.cart').hide();
 		}
 
@@ -361,7 +367,11 @@ $(function() {
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            success: function (response) {}
+            success: function (response) {
+                if (feedback_type == 'favorites') {
+                    remove_liked();
+                }
+			}
         });
     });
 

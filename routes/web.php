@@ -82,8 +82,13 @@ Route::get('search', ['as' => 'search', 'uses' => 'SearchController@search']);
 
 Route::get('catalog', 'CategoryController@index')->name('catalog');
 Route::get('product_like/{slug}', 'ProductController@toggle_like');
-Route::post('products_get_liked', 'ProductController@get_liked');
-Route::post('products_remove_liked', 'ProductController@remove_liked');
+Route::get('products_get_liked', function () {
+    return response()->json(['products_liked' => Product::liked() ]);
+});
+
+Route::post('products_remove_liked', function () {
+    session()->forget('products.liked');
+});
 
 Route::post('feedback', 'FeedbackController@send');
 

@@ -75,16 +75,4 @@ class ProductController extends BaseController
                                 'products_liked' => Product::liked() ]);
     }
 
-    public function get_liked(){
-        return response()->json(['products_liked' => Product::liked() ]);
-    }
-
-    /**
-     * Очищает данные о лайкнутых продуктах
-     */
-    public function remove_liked()
-    {
-        session()->put('products.liked', []);
-        return response()->json(['success'=>1]);
-    }
 }
