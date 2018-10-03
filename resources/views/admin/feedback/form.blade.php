@@ -11,3 +11,7 @@
         @endforeach
     </div>
 </div>
+
+@if($model->summ() > 0)
+    <p style="font-weight: bold">Сумма заказа: {{$model->summ()}}</p>
+@endif

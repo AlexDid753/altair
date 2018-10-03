@@ -7,7 +7,6 @@ foreach (json_decode($model->products) as $p){
 }
 
 $products = \App\Product::whereIn('id', $product_ids)->get();
-$summ = 0;
 ?>
 <base href="https://serebro-altair.ru/">
 <p>Ваш заказ №{{$model->id}} принят. Вам перезвонят в ближайшее время.</p>
@@ -23,14 +22,12 @@ $summ = 0;
         </thead>
         <tbody>
         @foreach($products as $product)
-            <?php $summ += $product->price; ?>
             <tr class="cart_item">
                 <td class="product-thumbnail">
                     <a href="{{$product->url}}"><img
                                 src="{{resize($product->preview_image(), 100, 100)}}" alt=""/></a>
                 </td>
                 <td class="product-name" data-title="Product">
-                    <img class="product-name__mobile-img" src="{{resize($product->preview_image(), 100, 100)}}" alt=""/>
                     <a href="{{$product->url}}">{{$product->title}}</a>
                 </td>
                 <td class="product-price" data-title="Price">
@@ -41,7 +38,7 @@ $summ = 0;
         <tr>
             <td colspan="4" class="cart_totals">
                 <span class="cart_totals-head">Итого:</span>
-                <span class="cart_totals-price"><span class="number">{{$summ}}</span>&#8381;</span>
+                <span class="cart_totals-price"><span class="number">{{$model->summ()}}</span> &#8381;</span>
             </td>
         </tr>
         </tbody>
