@@ -10,8 +10,7 @@
                         <div id="map" class="map-custom"></div>
                         <script>
                             function initMap() {
-                                var myLatLng = {lat: 59.965343, lng: 30.315496};
-
+                                var myLatLng = {lat: 59.917494, lng: 30.377044};
 
                                 var map = new google.maps.Map(document.getElementById('map'), {
                                     zoom: 15,
