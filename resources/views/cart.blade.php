@@ -51,6 +51,9 @@
                             <div class="contact-form-faq">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="contact-form-page thanks">
+                                            <h2 class="title18 dark font-bold text-uppercase play-font">Благодарим за заказ. Мы свяжемся с вами в ближайшее время!</h2>
+                                        </div>
                                         @include('shared.contact_form', ['contact_type'=>'favorites'])
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-12">

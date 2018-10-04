@@ -1,6 +1,3 @@
-<div class="contact-form-page thanks">
-    <h2 class="title18 dark font-bold text-uppercase play-font">Благодарим за обратную связь. Мы свяжемся с вами в ближайшее время!</h2>
-</div>
 <div class="contact-form-page">
     <h2 class="title18 dark font-bold text-uppercase play-font">Контактная информация</h2>
     <form class="contact-form feedback-form" method="post">
