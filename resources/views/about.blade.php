@@ -20,7 +20,7 @@
                                         <div class="client-thumb"><img src="{{resize($review->image, 70,70)}}" alt="" /></div>
                                         <div class="client-info">
                                             <p class="desc">{{$review->text}}</p>
-                                            <h3 class="title14 text-uppercase play-font"><a href="#" class="dark">{{$review->name}}</a></h3>
+                                            <h3 class="title14 text-uppercase play-font dark">{{$review->name}}</h3>
                                             <span class="silver">{{$review->position}}</span>
                                         </div>
                                     </div>
@@ -34,20 +34,20 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="item-about-service text-center white" style="background:#f4ca49">
-                                <a href="#" class="wobble-horizontal"><i class="fa fa-gift"></i></a>
-                                <h2 class="title30">Gift Card</h2>
+                                <a class="wobble-horizontal"><i class="fa fa-gift"></i></a>
+                                <h2 class="title30">Огромная коллекция украшений из серебра</h2>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="item-about-service text-center white" style="background:#ff607c">
-                                <a href="#" class="wobble-horizontal"><i class="fa fa-home"></i></a>
-                                <h2 class="title30">Store</h2>
+                                <a class="wobble-horizontal"><i class="fa fa-home"></i></a>
+                                <h2 class="title27">Качество, подтвержденное 20-летним опытом работы</h2>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="item-about-service text-center white" style="background:#37436d">
-                                <a href="#" class="wobble-horizontal"><i class="fa fa-life-bouy"></i></a>
-                                <h2 class="title30">Full Support</h2>
+                                <a class="wobble-horizontal"><i class="fa fa-life-bouy"></i></a>
+                                <h2 class="title30">Эксклюзивные подарки для близких людей</h2>
                             </div>
                         </div>
                     </div>
