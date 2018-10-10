@@ -76,9 +76,10 @@ function multiItemFill(id) {
 function hiddenInputSet() {
     $('input#page_type').val($('select#page_id option:selected').data('page-type'));
 }
-hiddenInputSet();
 
 jQuery(function($) {
+
+    hiddenInputSet();
 
     feather.replace();
 

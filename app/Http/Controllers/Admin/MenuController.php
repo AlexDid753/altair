@@ -13,7 +13,7 @@ class MenuController extends BaseAdminController
         'sort' => 'input',
         'parent_id' => ['type' => 'dropdown', 'label' => 'Parent', 'model' => 'Menu', 'method' => 'dropdown'],
         'page_id' => ['type' => 'dropdown_menu', 'label' => 'Page', 'model' => 'Page',  'method' => 'dropdownMenu'],
-        'page_type' => ['type' => 'input', "attributes"=>['hidden'=>'hidden']]
+        'page_type' => ['type' => 'input', 'label' => 'Тип станицы', "attributes"=>['readonly'=>'readonly']]
     ];
 
     public function index()
