@@ -4400,8 +4400,26 @@ a.dark {
   -o-box-shadow: 0 2px 2px #444;
   box-shadow: 0 2px 2px #444;
 }
+.logo.logo2{
+  display: none;
+}
 #header.default .logo.logo1, #header.default .header_year {
   display: none;
+}
+@media screen and (max-width: 768px) {
+  #header.default .logo.logo2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    text-align: center;
+  }
+  #header.default .logo.logo2 img{
+    max-width: 80%;
+    margin-top: -15px;
+  }
 }
 .header3 {
   padding: 30px 0;
