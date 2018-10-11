@@ -109,7 +109,8 @@
                                                 @endif
                                             </ul>
                                             @if(!empty($connected_products))
-                                                <h3 style="margin-top: 30px; margin-bottom: 20px">В комплект к этому товару подойдёт</h3>
+                                                <h3 style="margin-top: 30px; margin-bottom: 20px" class="play-font">
+                                                    В комплект к этому товару подойдёт</h3>
                                                 <ul class="list-none list-product-group">
                                                     @foreach($connected_products as $product)
                                                         <li>
