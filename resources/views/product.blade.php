@@ -108,7 +108,7 @@
                                                     </li>
                                                 @endif
                                             </ul>
-                                            @if(!empty($connected_products))
+                                            @if(isset($connected_products[0]))
                                                 <h3 style="margin-top: 30px; margin-bottom: 20px" class="play-font">
                                                     В комплект к этому товару подойдёт</h3>
                                                 <ul class="list-none list-product-group">
