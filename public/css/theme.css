@@ -4406,6 +4406,34 @@ a.dark {
 #header.default .logo.logo1, #header.default .header_year {
   display: none;
 }
+#header.default .logo.logo1{
+  display: inline-block;
+  float: left;
+  width: 110px;
+}
+#header.default .logo.logo1 img{
+  max-width: 110px;
+}
+#header.default .main-nav{
+  width: 80%;
+  margin-top: 10px;
+  margin-left: 25px;
+}
+#header.default .main-nav ul li a {
+  padding: 0 8px;
+}
+#header.default .main-nav .sub-menu a {
+  padding: 10px 15px!important;
+}
+@media screen and (max-width: 1100px) {
+  #header.default .logo.logo1{
+    float: left!important;
+  }
+  #header.default .main-nav{
+    width: 70%;
+    margin-left: 50px;
+  }
+}
 @media screen and (max-width: 768px) {
   #header.default .logo.logo2{
     position: absolute;
@@ -4417,8 +4445,14 @@ a.dark {
     text-align: center;
   }
   #header.default .logo.logo2 img{
-    max-width: 80%;
+    max-width: 80%!important;
     margin-top: -15px;
+  }
+  #header.default .logo.logo1{
+    display: none!important;
+  }
+  #header.default .main-nav{
+    margin-left: 0px;
   }
 }
 .header3 {
