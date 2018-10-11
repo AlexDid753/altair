@@ -34,6 +34,11 @@
                         </ul>
                         <a href="#" class="toggle-mobile-menu"><span></span></a>
                     </nav>
+                    <div class="logo logo2">
+                        <a href="/">
+                            <span class="logo-icon logo-icon_big title24 round white"><img src="{{$settings->logo}}" alt=""></span>
+                        </a>
+                    </div>
                     <!-- End Main Nav -->
                     <ul class="wrap-cart-top2 list-inline-block pull-right">
                         <li>

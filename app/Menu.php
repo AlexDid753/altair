@@ -9,7 +9,7 @@ class Menu extends Model
     protected $table = 'menu';
 
     protected $fillable = [
-        'name', 'published', 'parent_id', 'sort', 'page_id', 'url'
+        'name', 'published', 'parent_id', 'sort', 'page_id', 'url', 'page_type'
     ];
 
     public function validatorRules($method = 'POST')
