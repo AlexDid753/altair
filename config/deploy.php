@@ -19,7 +19,7 @@ return [
 			/**
 			 * SSH url to the server.
 			 */
-			'server' => 'altair',
+			'server' => 'altair.staging',
 
 			/**
 			 * The path on the remote server where the application should be deployed.
@@ -68,7 +68,7 @@ return [
 			'tmp_dir' => '/tmp',
 		],
         'production' => [
-			'server' => 'app@82.146.46.62',
+			'server' => 'altair',
 			'deploy_to' => '/home/app/production',
 			'repo_url' => 'git@gitlab.molinos.ru:support/altair.git',
 			'repo_branch' => 'develop',
