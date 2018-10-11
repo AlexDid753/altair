@@ -5675,13 +5675,13 @@ a.dark {
 .item-about-service {
   padding: 40px 15px 70px;
   margin-bottom: 30px;
+  height: 320px;
 }
 .item-about-service > a {
   font-size: 90px;
   color: #fff;
 }
 .item-about-service h2 {
-  text-transform: capitalize;
   font-weight: 400;
 }
 .about-service {

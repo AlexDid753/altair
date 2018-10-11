@@ -35,19 +35,19 @@
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="item-about-service text-center white" style="background:#f4ca49">
                                 <a class="wobble-horizontal"><i class="fa fa-gift"></i></a>
-                                <h2 class="title30">Огромная коллекция украшений из серебра</h2>
+                                <h2 class="title30">Эксклюзивные подарки для близких людей</h2>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="item-about-service text-center white" style="background:#ff607c">
                                 <a class="wobble-horizontal"><i class="fa fa-home"></i></a>
-                                <h2 class="title27">Качество, подтвержденное 20-летним опытом работы</h2>
+                                <h2 class="title30">Огромная коллекция украшений из серебра</h2>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="item-about-service text-center white" style="background:#37436d">
                                 <a class="wobble-horizontal"><i class="fa fa-life-bouy"></i></a>
-                                <h2 class="title30">Эксклюзивные подарки для близких людей</h2>
+                                <h2 class="title27">Качество, подтвержденное 20-летним опытом работы</h2>
                             </div>
                         </div>
                     </div>
