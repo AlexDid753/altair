@@ -65,7 +65,7 @@
                             <li><a href="{{$item->getUrl()}}" class="white wobble-top">{{$item->name}}</a></li>
                         @endforeach
                     </ul>
-                    <p class="desc copyright-footer text-center"><span class="white opaci">Альтаир © 2018 Создание сайта — </span> <a target="_blank" href="http://Molinos.Ru" class="white">Molinos.Ru</a></p>
+                    <p class="desc copyright-footer text-center"><span class="white opaci">Альтаир © 2018 Создание сайта — </span> <a target="_blank" href="https://Molinos.Ru" class="white">Molinos.Ru</a></p>
                 </div>
             </div>
         </div>
