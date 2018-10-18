@@ -46,6 +46,7 @@ if (!isset($model)) {
             @foreach ($model->slider_linked_images as $slider_item)
                 @media (min-width: 768px) {
                     .item-slider .banner-info[data-number='{{$slider_item->sort}}'] {
+                    @if(isset($slider_item->position)&&!empty($slider_item->position))
                         @switch($slider_item->position)
                             @case('right')
                                 @break
@@ -60,6 +61,7 @@ if (!isset($model)) {
 
                             @default
                         @endswitch
+                    @endif
                         {{isset($slider_item->position_top)&&!empty($slider_item->position_top) ?
                         'bottom: inherit;
                         top:'.$slider_item->position_top.'px;' : ""}}
