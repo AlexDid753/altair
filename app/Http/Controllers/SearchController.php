@@ -28,7 +28,7 @@ class SearchController extends BaseController
                     'query' => $q,
                     'prefix_length' => '6',
                     'fuzziness' => 'AUTO',
-                    'fields' => [ "categories_title^5","title^2"]
+                    'fields' => [ "categories_title^5","code^3","title^2"]
                 ],
             ], null,
                 null,

@@ -67,6 +67,9 @@ class Product extends Model
             "language" => "russian",
             "stopwords" => "_russian_"
         ],
+        'code' => [
+            'type' => 'text'
+        ],
     );
 
     protected $fillable = [
