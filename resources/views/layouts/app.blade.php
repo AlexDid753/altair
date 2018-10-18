@@ -49,10 +49,11 @@ if (!isset($model)) {
                     @if(isset($slider_item->position)&&!empty($slider_item->position))
                         @switch($slider_item->position)
                             @case('right')
+                                left: auto;
+                                right:0;
                                 @break
 
                             @case('left')
-                                left: auto;
                                 @break
 
                             @case('center')
