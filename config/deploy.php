@@ -68,7 +68,7 @@ return [
 			'tmp_dir' => '/tmp',
 		],
         'production' => [
-			'server' => 'altair',
+			'server' => 'app@82.146.46.62',
 			'deploy_to' => '/home/app/production',
 			'repo_url' => 'git@gitlab.molinos.ru:support/altair.git',
 			'repo_branch' => 'develop',
