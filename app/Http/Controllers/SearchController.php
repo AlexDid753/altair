@@ -22,7 +22,7 @@ class SearchController extends BaseController
         $page_number = 0;
         $message = null;
         if (empty($request->all()['q'])) {
-            $models = Product::where('published', 1)->orderBy('id');
+            $models = Product::orderBy('id');
         } else {
             if (!empty($request->all()['page'])) {
                 $page_number = $request->all()['page'] - 1;
@@ -52,13 +52,7 @@ class SearchController extends BaseController
                 'name' => 'product']);
         } else {
             //Фильтруем удаленные и неопубликованные и добавляем пагинацию
-            if(class_basename($models) == "Builder") {
-                $models = $models->paginate($products_limit);
-            }else {
-                $models = $models->filter(function ($model) {
-                    return $model->searchable();
-                })->paginate($products_limit);
-            }
+            $models = $models->where('published', 1)->paginate($products_limit);
 
             return view('search', [
                 'model' => $model,
