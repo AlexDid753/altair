@@ -46,30 +46,22 @@ if (!isset($model)) {
             @foreach ($model->slider_linked_images as $slider_item)
                 @media (min-width: 768px) {
                     .item-slider .banner-info[data-number='{{$slider_item->sort}}'] {
-                    @if(isset($slider_item->position)&&!empty($slider_item->position))
-                        @switch($slider_item->position)
-                            @case('right')
-                                left: auto;
-                                right:0;
-                                @break
+                        {{isset($slider_item->left)&&!empty($slider_item->left) ?
+                        'left:'.$slider_item->left.'px;' : ""}}
 
-                            @case('left')
-                                @break
-
-                            @case('center')
-                                right:0;
-                                @break
-
-                            @default
-                        @endswitch
-                    @endif
                         {{isset($slider_item->position_top)&&!empty($slider_item->position_top) ?
                         'bottom: inherit;
                         top:'.$slider_item->position_top.'px;' : ""}}
                     }
-
                     .item-slider .banner-info[data-number='{{$slider_item->sort}}'] h2 {
-                        font-weight: {{isset($slider_item->font_weight) ? $slider_item->font_weight : ''}};
+                        font-weight: {{isset($slider_item->font_weight1) ? $slider_item->font_weight1 : ''}};
+                        font-family: {!! isset($slider_item->font_family1) ? $slider_item->font_family1 : '' !!};
+                        font-size: {{isset($slider_item->font_size1) ? $slider_item->font_size1 : ''}};
+                    }
+                    .item-slider .banner-info[data-number='{{$slider_item->sort}}'] h3 {
+                        font-weight: {{isset($slider_item->font_weight2) ? $slider_item->font_weight2 : ''}};
+                        font-family: {!! isset($slider_item->font_family2) ? $slider_item->font_family2 : '' !!};
+                        font-size: {{isset($slider_item->font_size2) ? $slider_item->font_size2."px;" : ''}};
                     }
                 }
             @endforeach
