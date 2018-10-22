@@ -16,8 +16,9 @@
                     <div class="col-md-8">
                         <p class="col-md-12 font-weight-bold">Слайд номер {{$value->sort + 1}}</p>
                         <div class="input-group">
+                            <label for="" class="col-md-12 col-form-label">Путь к изображению</label>
                             <input
-                                    placeholder="Путь к изображению"
+                                    placeholder="storage/1170x560/picture.png"
                                     type="text"
                                     autocomplete="off"
                                     class="form-control multi-item-element img-field"
@@ -31,8 +32,9 @@
                                             data-feather="download"></span></a>
                             </div>
                         </div>
+                        <label for="" class="col-md-12 col-form-label">Ссылка на картинке</label>
                         <input
-                                placeholder="Ссылка на картинке"
+                                placeholder="/catalog"
                                 type="text"
                                 autocomplete="off"
                                 class="form-control multi-item-element"
@@ -40,6 +42,7 @@
                                 data-key="link"
                                 data-target="{{ str_slug($fieldName) }}"
                                 value="{{$value->link}}">
+                        <label for="" class="col-md-12 col-form-label">Заглавие слайда</label>
                         <input
                                 placeholder="Заглавие слайда"
                                 type="text"
@@ -49,6 +52,7 @@
                                 data-key="title"
                                 data-target="{{ str_slug($fieldName) }}"
                                 value="{{$value->title}}">
+                        <label for="" class="col-md-12 col-form-label">Описание слайда</label>
                         <input
                                 placeholder="Описание слайда"
                                 type="text"
@@ -58,8 +62,10 @@
                                 data-key="desc"
                                 data-target="{{ str_slug($fieldName) }}"
                                 value="{{$value->desc}}">
+                        <label for="" class="col-md-12 col-form-label">Отступ от левого края в пикселях(допустимы
+                            отрицательные значения)</label>
                         <input
-                                placeholder="Отступ от левого края в пикселях(допустимы отрицательные значения)"
+                                placeholder="(0..1000)"
                                 type="text"
                                 autocomplete="off"
                                 class="form-control multi-item-element"
@@ -67,8 +73,9 @@
                                 data-key="left"
                                 data-target="{{ str_slug($fieldName) }}"
                                 value="{{isset($value->left) ? $value->left : ""}}">
+                        <label for="" class="col-md-12 col-form-label">Отступ от верхнего края в пикселях</label>
                         <input
-                                placeholder="Отступ от верхнего края в пикселях"
+                                placeholder="(-1000..1000)"
                                 type="number"
                                 autocomplete="off"
                                 class="form-control multi-item-element"
@@ -77,11 +84,13 @@
                                 data-target="{{ str_slug($fieldName) }}"
                                 value="{{isset($value->position_top) ? $value->position_top : ""}}">
                         <label for="">Большая надпись (<a target="_blank"
-                                                           href="https://www.w3schools.com/cssref/css_websafe_fonts.asp">Примеры шрифтов</a>)</label>
+                                                          href="https://www.w3schools.com/cssref/css_websafe_fonts.asp">Примеры
+                                шрифтов</a>)</label>
 
                         <div class="input-group">
+                            <label for="" class="col-md-12 col-form-label">Семейство шрифтов для большой надписи</label>
                             <input
-                                    placeholder="Семейство шрифтов для большой надписи"
+                                    placeholder="'Comic Sans MS', cursive, sans-serif"
                                     type="text"
                                     autocomplete="off"
                                     class="form-control multi-item-element"
@@ -89,8 +98,9 @@
                                     data-key="font_family1"
                                     data-target="{{ str_slug($fieldName) }}"
                                     value="{{isset($value->font_family1) ? $value->font_family1 : ""}}">
+                            <label for="" class="col-md-12 col-form-label">Размер шрифта в пикселях</label>
                             <input
-                                    placeholder="Размер шрифта в пикселях"
+                                    placeholder="(8..40)"
                                     type="number"
                                     autocomplete="off"
                                     class="form-control multi-item-element"
@@ -98,8 +108,9 @@
                                     data-key="font_size1"
                                     data-target="{{ str_slug($fieldName) }}"
                                     value="{{isset($value->font_size1) ? $value->font_size1 : ""}}">
+                            <label for="" class="col-md-12 col-form-label">Насыщенность шрифта</label>
                             <input
-                                    placeholder="Font-weight(100-800)"
+                                    placeholder="(100..900)"
                                     type="number"
                                     autocomplete="off"
                                     class="form-control multi-item-element"
@@ -110,11 +121,13 @@
                         </div>
 
                         <label for="">Описание слайда (<a target="_blank"
-                                                          href="https://www.w3schools.com/cssref/css_websafe_fonts.asp">Примеры шрифтов</a>)</label>
+                                                          href="https://www.w3schools.com/cssref/css_websafe_fonts.asp">Примеры
+                                шрифтов</a>)</label>
 
                         <div class="input-group">
+                            <label for="" class="col-md-12 col-form-label">Семейство шрифтов для описания</label>
                             <input
-                                    placeholder="Семейство шрифтов для описания"
+                                    placeholder="'Lucida Console', Monaco, monospace"
                                     type="text"
                                     autocomplete="off"
                                     class="form-control multi-item-element"
@@ -122,8 +135,9 @@
                                     data-key="font_family2"
                                     data-target="{{ str_slug($fieldName) }}"
                                     value="{{isset($value->font_family2) ? $value->font_family2 : ""}}">
+                            <label for="" class="col-md-12 col-form-label">Размер шрифта в пикселях </label>
                             <input
-                                    placeholder="Размер шрифта в пикселях"
+                                    placeholder="(8..40)"
                                     type="number"
                                     autocomplete="off"
                                     class="form-control multi-item-element"
@@ -131,8 +145,9 @@
                                     data-key="font_size2"
                                     data-target="{{ str_slug($fieldName) }}"
                                     value="{{isset($value->font_size2) ? $value->font_size2 : ""}}">
+                            <label for="" class="col-md-12 col-form-label">Насыщенность шрифта</label>
                             <input
-                                    placeholder="Font-weight(100-800)"
+                                    placeholder="(100..900)"
                                     type="number"
                                     autocomplete="off"
                                     class="form-control multi-item-element"
@@ -141,8 +156,6 @@
                                     data-target="{{ str_slug($fieldName) }}"
                                     value="{{isset($value->font_weight2) ? $value->font_weight2 : ""}}">
                         </div>
-
-
 
 
                     </div>
