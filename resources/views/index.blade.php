@@ -11,7 +11,7 @@
                                 <a href="{{$slider_item->link ?? ''}}"><img src="{{resize($slider_item->image,1170,560)}}" alt="" /></a>
                             </div>
                             <div class="banner-info animated text-center" data-animated="zoomIn" data-number='{{$slider_item->sort}}'>
-                                <h2 class="title48 play-font font-normal text-uppercase dark">{{$slider_item->title ?? ''}}</h2>
+                                <h2 class="title48 play-font font-normal dark">{{$slider_item->title ?? ''}}</h2>
                                 <h3 class="title18 play-font font-italic dark">{{$slider_item->desc ?? ''}}</h3>
                                 <a href="{{$slider_item->link ?? ''}}" class="border-button dark title18">Перейти</a>
                             </div>
