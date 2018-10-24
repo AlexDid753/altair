@@ -54,12 +54,10 @@ if (!isset($model)) {
                         top:'.$slider_item->position_top.'px;' : ""}}
                     }
                     .item-slider .banner-info[data-number='{{$slider_item->sort}}'] h2 {
-                        font-weight: {{isset($slider_item->font_weight1) ? $slider_item->font_weight1 : ''}};
                         font-family: {!! isset($slider_item->font_family1) ? $slider_item->font_family1 : '' !!};
                         font-size: {{isset($slider_item->font_size1) ? $slider_item->font_size1."px;" : ''}};
                     }
                     .item-slider .banner-info[data-number='{{$slider_item->sort}}'] h3 {
-                        font-weight: {{isset($slider_item->font_weight2) ? $slider_item->font_weight2 : ''}};
                         font-family: {!! isset($slider_item->font_family2) ? $slider_item->font_family2 : '' !!};
                         font-size: {{isset($slider_item->font_size2) ? $slider_item->font_size2."px;" : ''}};
                     }

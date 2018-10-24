@@ -108,16 +108,6 @@
                                     data-key="font_size1"
                                     data-target="{{ str_slug($fieldName) }}"
                                     value="{{isset($value->font_size1) ? $value->font_size1 : ""}}">
-                            <label for="" class="col-md-12 col-form-label">Насыщенность шрифта</label>
-                            <input
-                                    placeholder="(100..900)"
-                                    type="number"
-                                    autocomplete="off"
-                                    class="form-control multi-item-element"
-                                    id="{{ str_slug($fieldName . $key) }}"
-                                    data-key="font_weight1"
-                                    data-target="{{ str_slug($fieldName) }}"
-                                    value="{{isset($value->font_weight1) ? $value->font_weight1 : ""}}">
                         </div>
 
                         <label for="">Описание слайда (<a target="_blank"
@@ -145,16 +135,6 @@
                                     data-key="font_size2"
                                     data-target="{{ str_slug($fieldName) }}"
                                     value="{{isset($value->font_size2) ? $value->font_size2 : ""}}">
-                            <label for="" class="col-md-12 col-form-label">Насыщенность шрифта</label>
-                            <input
-                                    placeholder="(100..900)"
-                                    type="number"
-                                    autocomplete="off"
-                                    class="form-control multi-item-element"
-                                    id="{{ str_slug($fieldName . $key) }}"
-                                    data-key="font_weight2"
-                                    data-target="{{ str_slug($fieldName) }}"
-                                    value="{{isset($value->font_weight2) ? $value->font_weight2 : ""}}">
                         </div>
 
 
