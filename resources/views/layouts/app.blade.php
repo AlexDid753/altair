@@ -15,6 +15,7 @@ if (!isset($model)) {
     <meta name="robots" content=""/>
     <meta name="yandex-verification" content="c4d052ac7add82f5"/>
     <meta name="google-site-verification" content="2TyHFP-Ix37YtnO3yNrS550AJY95TSk8Os49fXPeON4"/>
+    <meta name=“cmsmagazine” content=“848ae7630557f340f5b1ca0e385dc314" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $model->meta_title ?: $model->name }}</title>
     @if ($model->meta_description)
