@@ -64,7 +64,7 @@ class Page extends Model
             'published' => 'boolean',
             'name' => 'required|string|max:255',
             'fields' => 'nullable|array',
-            'slug' => 'nullable|string|max:255|unique:pages,slug,'.$this->id,
+            'slug' => 'nullable|string|max:255'
         ];
         switch($method)
         {
