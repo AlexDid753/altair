@@ -41,6 +41,7 @@ if (!isset($model)) {
     <link rel="stylesheet" type="text/css" href="/css/theme.css" media="all"/>
     <link rel="stylesheet" type="text/css" href="/css/responsive.css" media="all"/>
     <link rel="stylesheet" type="text/css" href="/css/browser.css" media="all"/>
+    <link rel="shortcut icon" href="{{{ asset('images/icon/favicon.png') }}}">
     <!-- <link rel="stylesheet" type="text/css" href="/css/rtl.css" media="all"/> -->
     <style>
         @if (isset($model->slider_linked_images) && count($model->slider_linked_images))
