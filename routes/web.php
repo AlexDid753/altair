@@ -102,6 +102,7 @@ foreach ($categories_urls as $url) {
     Route::get($url . "{url}", 'ProductController@show')->where('url', '[A-Za-z0-9/-]+');
 }
 
+Route::get('sitemap.xml', 'SitemapController@index')->name('sitemap');
+Route::get('{url?}', 'PageController@show')->where('url', '[A-Za-z0-9/-]+')->name('page.show');
 
-Route::get('{url?}', 'PageController@show')->where('url', '[A-Za-z0-9/-]+');
 
