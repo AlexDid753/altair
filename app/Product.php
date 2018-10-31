@@ -17,17 +17,16 @@ class Product extends Model
             'parent_id' => 'required',
             'price' => 'required|between:0,999999',
             'old_price' => 'between:0,999999',
-            'slug'=> 'unique:products'
+            'slug' => 'unique:products'
         ];
         $update_rules = [
             'title' => 'required|string|max:255',
             'parent_id' => 'required',
             'price' => 'required|between:0,999999',
             'old_price' => 'between:0,999999',
-            'slug'=> 'unique:products,slug,'.$this->id
+            'slug' => 'unique:products,slug,' . $this->id
         ];
-        switch($method)
-        {
+        switch ($method) {
             case 'GET':
             case 'DELETE':
                 {
@@ -54,7 +53,7 @@ class Product extends Model
     protected $mappingProperties = array(
         'title' => [
             'type' => 'text',
-            "language" =>   "russian",
+            "language" => "russian",
             "stopwords" => "_russian_"
 
         ],
@@ -66,6 +65,9 @@ class Product extends Model
         'categories_title' => [
             "language" => "russian",
             "stopwords" => "_russian_"
+        ],
+        'code' => [
+            'type' => 'text'
         ],
     );
 
@@ -195,11 +197,20 @@ class Product extends Model
         }
     }
 
+    public function searchable()
+    {
+        if ($this->published && !$this->trashed()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     //Синхронизация связей с категориями
     public function sync_categories()
     {
         $this->data = request()->all();
-        if (array_key_exists('categories', $this->data)){
+        if (array_key_exists('categories', $this->data)) {
             $this->categories()->sync($this->data['categories']);
         }
     }
