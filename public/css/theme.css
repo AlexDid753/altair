@@ -1179,6 +1179,7 @@ body .scroll-top:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-decoration: underline;
 }
 div.table .product-info .product-title {
   white-space: normal;
@@ -2487,6 +2488,7 @@ a.opaci:hover {
   padding: 0 10px;
   border: 1px solid #e5e5e5;
   margin: 0 3px;
+  background: rgba(51, 51, 51, 0.15);
 }
 .detail-extra-link a .fa {
   font-size: 12px;
@@ -6495,6 +6497,7 @@ input.register-button.save-change {
 .item-product4 {
   background: #fff;
   padding: 20px;
+  padding-bottom: 0;
 }
 .item-product4 .product-info {
   padding-top: 25px;
@@ -6506,6 +6509,7 @@ input.register-button.save-change {
   border-top: 1px solid #e5e5e5;
   margin: 27px -20px 0px;
   padding-top: 15px;
+  padding-bottom: 15px;
 }
 .product-extra-link4 a {
   position: relative;

@@ -42,7 +42,8 @@
                     <!-- End Main Nav -->
                     <ul class="wrap-cart-top2 list-inline-block pull-right">
                         <li>
-                            <a class="cart-top2-phone" href="tel:8 (812) 660-70-15">8 (812) 660-70-15</a>
+                            <a class="cart-top2-phone" href="tel:8 (812) 660-70-15">
+                                8 (812) 660-70-15</a>
                         </li>
                         <li>
                             <a href="{{\App\Page::find(2)->url}}" class="title18 wishlist-link" title="Корзина"><span class="white"><i class="fa fa-shopping-basket"></i></span>
