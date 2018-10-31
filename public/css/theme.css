@@ -4425,6 +4425,10 @@ a.dark {
 #header.default .main-nav .sub-menu a {
   padding: 10px 15px!important;
 }
+#header.default .cart-top2-phone{
+    display: none;
+}
+
 @media screen and (max-width: 1100px) {
   #header.default .logo.logo1{
     float: left!important;
@@ -4464,6 +4468,15 @@ a.dark {
 }
 .header3 .wrap-cart-top2 {
   margin-top: 55px;
+  position: relative;
+}
+.cart-top2-phone{
+  position: absolute;
+  top: 30px;
+  width: 150px;
+  color: #fff;
+  right: -20px;
+  font-weight: 600;
 }
 .header3 .nav-fixed {
   margin-top: 55px;

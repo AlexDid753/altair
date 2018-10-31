@@ -145,6 +145,10 @@
   .item-trend-design .trend-design-info {
     padding: 30px;
   }
+  .cart-top2-phone{
+    top: 105px;
+    right: 45px;
+  }
 }
 /*End Screen 990*/
 @media (max-width: 860px) {
