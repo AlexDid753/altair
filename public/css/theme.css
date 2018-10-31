@@ -4476,9 +4476,11 @@ a.dark {
   position: absolute;
   top: 30px;
   width: 150px;
-  color: #fff;
   right: -20px;
   font-weight: 600;
+}
+.cart-top2-phone a{
+  color: #fff;
 }
 .header3 .nav-fixed {
   margin-top: 55px;
