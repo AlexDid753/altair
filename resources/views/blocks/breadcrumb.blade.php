@@ -1,6 +1,6 @@
 @php
     $position = 2;
-    $revert_position = null;
+    $objs = collect([]);
 @endphp
 <section class="breadcrumbs">
     <div class="wrap-bread-crumb">
@@ -11,43 +11,41 @@
                     <a href="/" itemprop="item">
                         <span itemprop="name">Главная</span>
                     </a>
+                    <meta itemprop="position" content="1"/>
                 </span>
 
                 @if(($parent = $model->parent))
-                    @prepend('crumbs')
-                    <span itemprop="itemListElement" itemscope
-                          itemtype="http://schema.org/ListItem">
-                        <a href="{{ $parent->url }}"
-                           itemprop="item">
-                            <span itemprop="name">{{ $parent->name }}</span>
-                        </a>
-                    </span>
-                    @endprepend
+                    @php($objs->push($parent))
                 @endif
 
                 @while ($parent && ($parent = $parent->parent))
-                    @prepend('crumbs')
-
-                    <span itemprop="itemListElement" itemscope
-                          itemtype="http://schema.org/ListItem">
-                        <a href="{{ $parent->url }}"
-                           itemprop="item">
-                            <span itemprop="name">{{ $parent->name }}</span>
-                        </a>
-                    </span>
-                    @endprepend
+                    @php($objs->push($parent))
                 @endwhile
 
-                @push('crumbs')
+                @php($objs = $objs->reverse())
+
+                @foreach($objs as $obj)
                     <span itemprop="itemListElement" itemscope
                           itemtype="http://schema.org/ListItem">
+                        <a href="{{ $obj->url }}"
+                           itemprop="item">
+                            <span itemprop="name">{{ $obj->name }}</span>
+                        </a>
+                        <meta itemprop="position" content="<?php echo $position; $position += 1; ?>"/>
+                    </span>
+                @endforeach
+
+                <span itemprop="itemListElement" itemscope
+                      itemtype="http://schema.org/ListItem">
+                    <a href="{{ $model->url }}"
+                       itemprop="item" class="hidden"></a>
                         <span itemprop="item">
                             <span itemprop="name">{{ $model->name }}</span>
                         </span>
-                    </span>
-                @endpush
+                        <meta itemprop="position" content="<?php echo $position; ?>"/>
+                </span>
 
-                @stack('crumbs')
+
             </div>
         </div>
     </div>
