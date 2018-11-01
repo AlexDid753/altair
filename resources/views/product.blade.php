@@ -15,7 +15,9 @@
                                             <div class="detail-gallery vertical">
                                                 <div class="mid">
                                                     <img src="{{empty($images)? : resize($images[0]->image, 700, 700)}}"
-                                                         alt=""/>
+                                                         alt="Изображение: {{$model->title}}"
+                                                         title="{{$model->title}} из серебра, Альтаир"
+                                                    />
                                                 </div>
                                                 <div class="gallery-control">
                                                     <a href="#" class="prev"><i class="fa fa-angle-left"></i></a>
@@ -41,7 +43,7 @@
                                     @endif
                                     <div class="{{ count($images)? 'col-md-7' : 'col-md-12' }} col-sm-12 col-xs-12">
                                         <div class="detail-info">
-                                            <h2 class="product-title title24 text-uppercase dark font-bold play-font">{{$model->title}}</h2>
+                                            <h1 class="product-title title24 text-uppercase dark font-bold play-font">{{$model->title}}</h1>
                                             <div class="product-price play-font">
                                                 <del class="dark opaci title14">{!! $model->prepared_old_price() !!}</del>
                                                 <ins class="title18 color font-bold">{!! $model->prepared_price() !!}</ins>
