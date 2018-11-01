@@ -4476,7 +4476,7 @@ a.dark {
   position: absolute;
   top: 30px;
   width: 150px;
-  right: -20px;
+  right: 0px;
   font-weight: 600;
 }
 .cart-top2-phone a{
