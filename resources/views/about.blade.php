@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @includeIf('blocks.breadcrumb')
     <section id="content">
     <div class="content-page">
         <div class="container">

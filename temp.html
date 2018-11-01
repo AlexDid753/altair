@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<div>
+
+
+<!--<a target="_blank" href="https://e-commerce.raiffeisen.ru/vsmc3ds/pay_check/3dsproxy_init.jsp?PurchaseAmt=1&PurchaseDesc=1&CountryCode=643&CurrencyCode=643&MerchantName=Altair&MerchantURL=https://serebro-altair.ru&MerchantCity=SAINT%20PETERSBURG&MerchantID=000001680817001-80817001">Тест</a>-->
+
+
+<form method="post" action="https://e-commerce.raiffeisen.ru/vsmc3ds/pay_check/3dsproxy_init.jsp">
+    <input type="text" autocomplete="off" name="PurchaseAmt" value="1"></br>
+    <input type="text" autocomplete="off" name="PurchaseDesc" value="3"></br>
+    <input type="text" autocomplete="off" name="CountryCode" value="643"></br>
+    <input type="text" autocomplete="off" name="CurrencyCode" value="643"></br>
+    <input type="text" autocomplete="off" name="MerchantName" value="Altair"></br>
+    <input type="text" autocomplete="off" name="MerchantURL" value="https://serebro-altair.ru"></br>
+
+    <input type="text" autocomplete="off" name="MerchantCity" value="SAINT PETERSBURG"></br>
+    <input type="text" autocomplete="off" name="MerchantID" value="000001780247001-80247001"></br>
+    <button type="submit">GO</button></br>
+</form>
+
+</br>
+</br>
+
+<form action="https://e-commerce.raiffeisen.ru/portal/mrchtrnvw/trn_xml.jsp"
+      method="POST"
+      name="frm">
+    <input name="xICBSXPProxy.ReqType" type="hidden" value="100" /></br>
+    <input name="xICBSXPProxy.Version" type="hidden" value="05.00" /></br>
+    <input name="xICBSXPProxy.UserName" type="hidden" value="Логин" /></br>
+    <input name="xICBSXPProxy.UserPassword" type="hidden" value="Пароль" /></br>
+    <input name="MerchantID" type="hidden" value="MerchantID" /></br>
+    <input type="submit" value="GO!" />
+</form>
+
+<p>Оплата происходит через авторизационный сервер Процессингового центра Банка с использованием Банковских карт следующих платежных систем:&nbsp;</p>
+<ul>
+    <li>VISA International</li>
+    <li>MasterCard Worldwide</li>
+    <li>МИР</li>
+</ul>
+<p>При выборе формы оплаты с помощью пластиковой карты проведение платежа по заказу производится непосредственно после его оформления. После завершения оформления заказа в нашем магазине, Вы должны будете нажать на кнопку "Оплата картой", при этом система переключит Вас на страницу авторизационного сервера, где Вам будет предложено ввести данные пластиковой карты, инициировать ее авторизацию, после чего вернуться в наш магазин кнопкой "Вернуться в магазин". После того, как Вы возвращаетесь в наш магазин, система уведомит Вас о результатах авторизации. В случае подтверждения авторизации Ваш заказ будет автоматически выполняться в соответствии с заданными Вами условиями. В случае отказа в авторизации карты Вы сможете повторить процедуру оплаты.</p>
+
+    <div class="bank_logos">
+    <p><img src="images/logo/mc_securecode_156px_width.png" alt="" /></p>
+    <p><img src="images/logo/MirAccept.png" alt="" /></p>
+    <p><img src="images/logo/visa_pos_fc.png" alt="" /></p>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
