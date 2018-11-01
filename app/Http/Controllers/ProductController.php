@@ -39,13 +39,16 @@ class ProductController extends BaseController
         if (false !== $key) unset($connected_products_ids[ $key ]);
         $connected_products = Product::limit(4)->whereIn('id', $connected_products_ids)->get();
 
-
+        $meta_title = $model->meta_title ?? $model->name." из серебра, арт.".$model->code." - купить в интернет магазине Альтаир Серебро";
+        $meta_description = "Серебряное изделие: ".$model->name." - ".$model->parent->name." из серебра, работа опытных ювелиров. Заказать с доставкой по Петербургу.";
         return view('product', [
             'model' => $model,
             'products_recently_viewed' => $products_recently_viewed,
             'products_liked' => Product::liked(),
             'images' => $images,
-            'connected_products' => $connected_products
+            'connected_products' => $connected_products,
+            'meta_title'=>$meta_title,
+            'meta_description' => $meta_description
         ]);
     }
 

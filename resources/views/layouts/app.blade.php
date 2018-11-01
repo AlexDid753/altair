@@ -15,17 +15,18 @@ if (!isset($model)) {
     <meta name="robots" content=""/>
     <meta name="yandex-verification" content="c4d052ac7add82f5"/>
     <meta name="google-site-verification" content="2TyHFP-Ix37YtnO3yNrS550AJY95TSk8Os49fXPeON4"/>
-    <meta name=“cmsmagazine” content=“848ae7630557f340f5b1ca0e385dc314" />
+    <meta name=“cmsmagazine” content=“848ae7630557f340f5b1ca0e385dc314"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $model->meta_title ?: $model->name }}</title>
-    @if ($model->meta_description)
-        <meta content="{{ $model->meta_description }}" name="description">
+    <title>{{ $meta_title ?? $model->meta_title ?: $model->name }}</title>
+    @if ((isset( $meta_description )&&!empty( $meta_description ))|| $model->meta_description )
+        <meta content="{{$meta_description ?? $model->meta_description }}" name="description">
     @endif
-    @if ($model->meta_keywords)
-        <meta content="{{ $model->meta_keywords }}" name="keywords">
+    @if ((isset( $meta_keywords )&&!empty( $meta_keywords ))|| $model->meta_keywords )
+        <meta content="{{ $meta_keywords ?? $model->meta_keywords }}" name="keywords">
     @endif
     {!! $settings->scripts !!}
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7cPlayfair+Display:400,700,400i,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7cPlayfair+Display:400,700,400i,700i"
+          rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/libs/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/libs/ionicons.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/libs/bootstrap.min.css"/>
@@ -47,24 +48,27 @@ if (!isset($model)) {
         @if (isset($model->slider_linked_images) && count($model->slider_linked_images))
             @foreach ($model->slider_linked_images as $slider_item)
                 @media (min-width: 768px) {
-                    .item-slider .banner-info[data-number='{{$slider_item->sort}}'] {
-                        {{isset($slider_item->left)&&!empty($slider_item->left) ?
-                        'left:'.$slider_item->left.'px;' : ""}}
+            .item-slider .banner-info[data-number='{{$slider_item->sort}}'] {
+            {{isset($slider_item->left)&&!empty($slider_item->left) ?
+            'left:'.$slider_item->left.'px;' : ""}}
 
-                        {{isset($slider_item->position_top)&&!empty($slider_item->position_top) ?
-                        'bottom: inherit;
-                        top:'.$slider_item->position_top.'px;' : ""}}
-                    }
-                    .item-slider .banner-info[data-number='{{$slider_item->sort}}'] h2 {
-                        font-family: {!! isset($slider_item->font_family1) ? $slider_item->font_family1 : '' !!};
-                        font-size: {{isset($slider_item->font_size1) ? $slider_item->font_size1."px;" : ''}};
-                    }
-                    .item-slider .banner-info[data-number='{{$slider_item->sort}}'] h3 {
-                        font-family: {!! isset($slider_item->font_family2) ? $slider_item->font_family2 : '' !!};
-                        font-size: {{isset($slider_item->font_size2) ? $slider_item->font_size2."px;" : ''}};
-                    }
-                }
-            @endforeach
+            {{isset($slider_item->position_top)&&!empty($slider_item->position_top) ?
+            'bottom: inherit;
+            top:'.$slider_item->position_top.'px;' : ""}}
+
+            }
+
+            .item-slider .banner-info[data-number='{{$slider_item->sort}}'] h2 {
+                font-family: {!! isset($slider_item->font_family1) ? $slider_item->font_family1 : '' !!};
+                font-size: {{isset($slider_item->font_size1) ? $slider_item->font_size1."px;" : ''}};
+            }
+
+            .item-slider .banner-info[data-number='{{$slider_item->sort}}'] h3 {
+                font-family: {!! isset($slider_item->font_family2) ? $slider_item->font_family2 : '' !!};
+                font-size: {{isset($slider_item->font_size2) ? $slider_item->font_size2."px;" : ''}};
+            }
+        }
+        @endforeach
         @endif
 
     </style>
@@ -73,7 +77,7 @@ if (!isset($model)) {
 <div class="wrap">
 @include('blocks.header')
 <!-- End Header -->
-<div class="white-space"></div>
+    <div class="white-space"></div>
 @yield('content')
 <!-- End Content -->
 @include('blocks.footer')
