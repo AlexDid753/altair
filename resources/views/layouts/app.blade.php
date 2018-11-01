@@ -43,6 +43,9 @@ if (!isset($model)) {
     <link rel="stylesheet" type="text/css" href="/css/responsive.css" media="all"/>
     <link rel="stylesheet" type="text/css" href="/css/browser.css" media="all"/>
     <link rel="shortcut icon" href="{{{ asset('images/icon/favicon.png') }}}">
+    @if(isset($show_link_canonical)&&($show_link_canonical))
+    <link rel="canonical" href="{{\Illuminate\Support\Facades\URL::current()}}"/>
+    @endif
     <!-- <link rel="stylesheet" type="text/css" href="/css/rtl.css" media="all"/> -->
     <style>
         @if (isset($model->slider_linked_images) && count($model->slider_linked_images))
