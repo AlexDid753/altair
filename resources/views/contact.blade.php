@@ -29,12 +29,18 @@
                     </div>
                     <!-- End Google Map -->
                     <div class="contact-page-info blockquote">
-                        <div class="row">
+                        <div class="row" itemscope itemtype="http://schema.org/Organization">
+                            <span itemprop="name" class="hidden">Серебро-Альтаир</span>
                             <div class="col-md-5 col-sm-12 col-xs-12">
-                                <div class="contact-box contact-address-box">
+                                <div class="contact-box contact-address-box"
+                                     itemprop="address" itemscope
+                                     itemtype="http://schema.org/PostalAddress">
                                     <span class="dark"><i class="fa fa-home"></i></span>
                                     <label class="title16 dark">Адрес:</label>
                                     <p class="desc">{{$settings->address}}</p>
+                                    <span class="hidden" itemprop="streetAddress">ул. Атаманская, д. 3/6</span>
+                                    <span class="hidden" itemprop="postalCode">191167</span>
+                                    <span class="hidden" itemprop="addressLocality">Санкт-Петербург</span>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-7 col-xs-12">
@@ -46,7 +52,8 @@
                                         </li>
                                     </ul>
                                     <p class="desc">
-                                        <span class=""><a href="tel:{{$settings->phone}}">{{$settings->phone}}</a></span>
+                                        <span class="" itemprop="telephone"><a
+                                                    href="tel:{{$settings->phone}}">{{$settings->phone}}</a></span>
                                     </p>
                                 </div>
                             </div>
@@ -54,7 +61,8 @@
                                 <div class="contact-box contact-email-box">
                                     <span class="dark"><i class="fa fa-envelope"></i></span>
                                     <label class="title16 dark">e-mail:</label>
-                                    <p class="desc"><a href="mailto:{{$settings->email}}" class="">{{$settings->email}}</a></p>
+                                    <p class="desc"><a itemprop="email" href="mailto:{{$settings->email}}"
+                                                       class="">{{$settings->email}}</a></p>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +72,8 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="contact-form-page thanks">
-                                    <h2 class="title18 dark font-bold text-uppercase play-font">Благодарим за обратную связь.</h2>
+                                    <h2 class="title18 dark font-bold text-uppercase play-font">Благодарим за обратную
+                                        связь.</h2>
                                 </div>
                                 @include('shared.contact_form', ['contact_type' => 'contacts'])
                             </div>
