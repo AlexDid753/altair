@@ -20,6 +20,7 @@
 	$deployTo     = array_get($config, 'deploy_to', '');
 	$repoUrl      = array_get($config, 'repo_url');
 	$repoTree     = '/'. trim(array_get($config, 'repo_tree'));
+	$repoBranch   = array_get($config, 'repo_branch');
 	$commitHash   = isset($commit) ? $commit : array_get($config, 'commit_hash');
 	$linkedFiles  = array_get($config, 'linked_files', []);
 	$linkedDirs   = array_get($config, 'linked_dirs', []);
@@ -139,8 +140,8 @@
 
 	cd "{{ $repoPath }}"
 
-	echo "{{ $cmdGit }} checkout -f {{ $commitHash }}" 1>&2;
-	{{ $cmdGit }} checkout -f {{ $commitHash }}
+	echo "{{ $cmdGit }} checkout -f {{ $repoBranch }}" 1>&2;
+	{{ $cmdGit }} checkout -f {{ $repoBranch }}
 
 	echo "{{ $cmdGit }} submodule update --init" 1>&2;
 	{{ $cmdGit }} submodule update --init

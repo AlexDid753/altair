@@ -24,15 +24,17 @@
                                         <tr class="cart_item">
                                             <td class="product-remove">
                                                 <i class="icon ion-ios-close-outline"
-                                                                              data-id="{{$product->id}}"
-                                                                              data-slug="{{$product->slug}}"></i>
+                                                   data-id="{{$product->id}}"
+                                                   data-slug="{{$product->slug}}"></i>
                                             </td>
                                             <td class="product-thumbnail">
                                                 <a href="{{$product->url}}"><img
-                                                            src="{{resize($product->preview_image(), 100, 100)}}" alt=""/></a>
+                                                            src="{{resize($product->preview_image(), 100, 100)}}"
+                                                            alt=""/></a>
                                             </td>
                                             <td class="product-name" data-title="Product">
-                                                <img class="product-name__mobile-img" src="{{resize($product->preview_image(), 100, 100)}}" alt=""/>
+                                                <img class="product-name__mobile-img"
+                                                     src="{{resize($product->preview_image(), 100, 100)}}" alt=""/>
                                                 <a href="{{$product->url}}">{{$product->title}}</a>
                                             </td>
                                             <td class="product-price" data-title="Price">
@@ -43,7 +45,8 @@
                                     <tr>
                                         <td colspan="4" class="cart_totals">
                                             <span class="cart_totals-head">Итого:</span>
-                                            <span class="cart_totals-price"><span class="number">0</span><span class="rub"> Р</span></span>
+                                            <span class="cart_totals-price"><span class="number">0</span><span
+                                                        class="rub"> Р</span></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -53,9 +56,10 @@
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <div class="contact-form-page thanks">
-                                            <h2 class="title18 dark font-bold text-uppercase play-font">Благодарим за заказ. Мы свяжемся с вами в ближайшее время!</h2>
+                                            <h2 class="title18 dark font-bold text-uppercase play-font">
+                                                Благодарим за заказ. Страница оплаты заказа откроется через 5 секунд.</h2>
                                         </div>
-                                        @include('shared.contact_form', ['contact_type'=>'favorites'])
+                                        @include('shared.cart_form', ['contact_type'=>'favorites'])
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         @include('shared.faqs',['faqs' => $model->faqs])

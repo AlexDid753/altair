@@ -15,7 +15,11 @@ class FeedbackController extends BaseController
             $model[$key] = $value;
         };
         $model->save();
-        return response()->json(['success' => 1]);
+        return response()->json(
+            [
+                'success' => 1,
+                'order_number' => $model->id
+            ]);
     }
 
 }
