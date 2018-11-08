@@ -13,7 +13,6 @@ class PageController extends BaseController
 {
     public function show(Request $request, $url = '/')
     {
-
         if ($url != '/')
             $url = '/' . $url;
 
