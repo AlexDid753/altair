@@ -71,7 +71,7 @@ return [
 			'server' => 'app@82.146.46.62',
 			'deploy_to' => '/home/app/production',
 			'repo_url' => 'git@gitlab.molinos.ru:support/altair.git',
-			'repo_branch' => 'develop',
+			'repo_branch' => 'master',
 			'commit_hash' => 'HEAD',
 			'repo_tree' => '',
 			'linked_files' => ['.env'],
