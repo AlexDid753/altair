@@ -14,12 +14,12 @@ class Feedback extends Model
         'email',
         'phone',
         'products',
-        'message'
+        'message',
+        'privacy-policy'
     ];
 
     public function summ()
     {
-
         if (isset($this->products) && !empty($this->products)) {
             $product_ids = [];
             foreach (json_decode($this->products) as $p){
