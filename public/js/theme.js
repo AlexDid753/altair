@@ -49,7 +49,7 @@ $(function() {
 			});
 			next.on('click',function(event){
 				event.preventDefault();
-				current = current + 1;	
+				current = current + 1;
 				if(current>total){
 					current = 1;
 				}
@@ -72,7 +72,7 @@ $(function() {
 			});
 			prev.on('click',function(event){
 				event.preventDefault();
-				current = current - 1;	
+				current = current - 1;
 				if(current < 1){
 					current = total;
 				}
@@ -207,7 +207,7 @@ $(function() {
 					$(this).parents('.toggle-tab').find('.toggle-tab-content').slideUp();
 					$(this).next().stop(true,false).slideToggle();
 				}
-				
+
 			});
 		});
 	}
@@ -279,13 +279,17 @@ $(function() {
         }
     });
 
+    function get_summ() {
+        var summ = 0;
+        $('.cart_item').each(function () {
+            summ+=parseInt($(this).find('.product-price .amount').text());
+        });
+        return summ;
+    }
+
     function print_summ() {
         if ($('.cart_item').length != 0) {
-        	var summ = 0;
-            $('.cart_item').each(function () {
-				summ+=parseInt($(this).find('.product-price .amount').text());
-            });
-            $('.cart_totals-price .number').text(summ);
+            $('.cart_totals-price .number').text(get_summ());
         }
     }
 
@@ -329,6 +333,27 @@ $(function() {
         console.log('liked products removed');
 	}
 
+    function openWindowWithPost(url, data) {
+        var form = document.createElement("form");
+        // form.target = "_blank";
+        form.method = "POST";
+        form.action = url;
+        form.style.display = "none";
+
+        for (var key in data) {
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = key;
+            input.value = data[key];
+            form.appendChild(input);
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+    }
+
+
 
 
     //Форма обратной связи
@@ -370,6 +395,22 @@ $(function() {
             success: function (response) {
                 if (feedback_type == 'favorites') {
                     remove_liked();
+                    let summ = get_summ();
+                    let order_number = response.order_number;
+                    setTimeout(
+                        openWindowWithPost("https://e-commerce.raiffeisen.ru/vsmc3ds/pay_check/3dsproxy_init.jsp", {
+                        PurchaseAmt: summ,
+                        PurchaseDesc: order_number,
+                        CountryCode: "643",
+                        CurrencyCode: "643",
+                        MerchantName: "Altair",
+                        MerchantURL: "https://serebro-altair.ru",
+
+                        MerchantCity: "SAINT PETERSBURG",
+                        MerchantID: "000001780247001-80247001",
+                        SuccessURL: "https://serebro-altair.ru/success",
+                        FailURL: "https://serebro-altair.ru/fail",
+                    },"_self"), 5000);
                 }
 			}
         });
@@ -407,7 +448,7 @@ $(function() {
 			$(this).mCustomScrollbar({
 				advanced:{
 					autoScrollOnFocus: false,
-				}  
+				}
 			});
 		});
 	}
@@ -425,7 +466,7 @@ $(function() {
 	}
 	//Light Box
 	if($('.fancybox').length>0){
-		$('.fancybox').fancybox();	
+		$('.fancybox').fancybox();
 	}
 	if($('.quickview-link').length>0){
 		$('.quickview-link').fancybox({
@@ -433,7 +474,7 @@ $(function() {
 			afterLoad: function () {
 				detail_gallery();
 			}
-		});	
+		});
 	}
 	if($('.fancybox-media').length>0){
 		$('.fancybox-media').attr('rel', 'media-gallery').fancybox({
@@ -455,20 +496,20 @@ $(function() {
 	});
 	//Box Hover Dir
 	$('.box-hover-dir').each( function() {
-		$(this).hoverdir(); 
+		$(this).hoverdir();
 	});
 	//Background Image
 	if($('.banner-background').length>0){
 		$('.banner-background').each(function(){
 			var b_url = $(this).attr("data-image");
-			$(this).css('background-image','url("'+b_url+'")');	
+			$(this).css('background-image','url("'+b_url+'")');
 		});
 	}
-	//Box Parallax	
+	//Box Parallax
 	if($('.parallax').length>0){
 		$('.parallax').each(function(){
 			var p_url = $(this).attr("data-image");
-			$(this).css('background-image','url("'+p_url+'")');	
+			$(this).css('background-image','url("'+p_url+'")');
 		});
 	}
 	//Switch Register
@@ -485,7 +526,7 @@ $(function() {
 			$(this).parents('.register-content-box').find('.block-register').hide();
 		}
 	});
-	//Box Filter Product	
+	//Box Filter Product
 	if($('.box-product-filter').length>0){
 		$('.box-product-filter').each(function(){
 			var self = $(this);
@@ -527,13 +568,13 @@ function fixed_header(){
 			$('.header-ontop').removeClass('fixed-ontop');
 		}
 	}
-} 
+}
 //Slider Background
 function background(){
 	$('.bg-slider .item-slider').each(function(){
 		var src=$(this).find('.banner-thumb a img').attr('src');
 		$(this).css('background-image','url("'+src+'")');
-	});	
+	});
 }
 //After Action
 function afterAction(){
@@ -551,7 +592,7 @@ function afterAction(){
 			});
 		}
 	});
-	
+
 	var owl = this;
 	var visible = this.owl.visibleItems;
 	var first_item = visible[0];
@@ -650,9 +691,9 @@ jQuery(document).ready(function(){
 	$('.contact-phone input').mask("+7 (999) 999-9999");
 });
 //Window Load
-jQuery(window).on('load',function(){ 
+jQuery(window).on('load',function(){
 	//Pre Load
-	$('body').removeClass('preload'); 
+	$('body').removeClass('preload');
 	//Owl Carousel
 	if($('.wrap-item').length>0){
 		$('.wrap-item').each(function(){
@@ -663,7 +704,7 @@ jQuery(window).on('load',function(){
 				lazyLoad:true,
 				itemsCustom:data.itemscustom,
 				autoPlay:data.autoplay,
-				transitionStyle:data.transition, 
+				transitionStyle:data.transition,
 				paginationNumbers:data.paginumber,
 				beforeInit:background,
 				afterAction:afterAction,
@@ -680,7 +721,7 @@ jQuery(window).on('load',function(){
 		e.preventDefault();
 		$('.control-slider .wrap-item').trigger('owl.next');
 	});
-	
+
 	//Slick Slider
 	if($('.banner-slick .slick').length>0){
 		$('.banner-slick .slick').each(function(){
@@ -719,7 +760,7 @@ jQuery(window).on('load',function(){
 	//Time Countdown
 	if($('.time-countdown').length>0){
 		$(".time-countdown").each(function(){
-			var data = $(this).data(); 
+			var data = $(this).data();
 			$(this).TimeCircles({
 				fg_width: data.width,
 				bg_width: 0,
@@ -747,7 +788,7 @@ jQuery(window).on('load',function(){
 						color: data.color,
 					}
 				}
-			}); 
+			});
 		});
 	}
 	//Count Down Master
@@ -760,7 +801,7 @@ jQuery(window).on('load',function(){
 		    });
 		});
 	}
-	//List Item Masonry 
+	//List Item Masonry
 	if($('.list-item-masonry').length>0){
 		$('.list-item-masonry').masonry({
 			itemSelector: '.item-masonry',
