@@ -60,8 +60,7 @@
                                     </li>
                                     <li>
                                         <i class="fa fa-home white" aria-hidden="true"></i>
-                                        <span class="white opaci"><a class="white opaci"
-                                                                                    href="tel:{{$settings->address}}">{{$settings->address}}</a></span>
+                                        <span class="white opaci">{{$settings->address}}</span>
                                     </li>
                                 </ul>
                             </div>
