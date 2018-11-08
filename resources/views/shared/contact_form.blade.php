@@ -34,6 +34,9 @@
             <input class="shop-button white bg-dark" type="submit"
                    value="Оформить заказ">
         </p>
-        <p>Нажимая на кнопку "Оформить заказ", вы соглашаетесь с <a class="btn-link" href="/privacy-policy">Пользовательским соглашением и условиями продажи</a></p>
+        <p>Нажимая на кнопку "Оформить заказ", вы соглашаетесь с
+            <a target="_blank" class="btn-link" href="/privacy-policy">пользовательским соглашением и условиями продажи</a>
+            и
+            <a target="_blank" class="btn-link" href="/terms-of-return">политикой возврата при оплате картой</a>.</p>
     </form>
 </div>
