@@ -13,6 +13,7 @@
 use App\Category;
 use App\Product;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\File;
 
 /**
  * Генерация связей с продуктами
@@ -91,6 +92,12 @@ Route::post('products_remove_liked', function () {
     session()->forget('products.liked');
 });
 
+Route::get('robots.txt', function (){
+    $text = File::get('robots');
+    return response($text, 200)
+        ->header('Content-Type', 'text/plain; charset=utf-8');
+});
+
 Route::post('feedback', 'FeedbackController@send');
 
 $categories_urls = Category::published()->pluck('url');
@@ -102,6 +109,7 @@ foreach ($categories_urls as $url) {
     Route::get($url . "{url}", 'ProductController@show')->where('url', '[A-Za-z0-9/-]+');
 }
 
+Route::get('sitemap.xml', 'SitemapController@index')->name('sitemap');
+Route::get('{url?}', 'PageController@show')->where('url', '[A-Za-z0-9/-]+')->name('page.show');
 
-Route::get('{url?}', 'PageController@show')->where('url', '[A-Za-z0-9/-]+');
 

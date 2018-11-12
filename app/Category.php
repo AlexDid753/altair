@@ -51,10 +51,6 @@ class Category extends Model
         return $this->childrens()->where('published', '=', 1);
     }
 
-    public function parent()
-    {
-        return $this->belongsTo('App\Category');
-    }
 
     public function isContainer() {
         return false;

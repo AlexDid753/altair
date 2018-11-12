@@ -108,11 +108,25 @@ class Product extends Model
         return $this->belongsToMany('App\Category');
     }
 
+    /*
+    public function parentsCount(){
+        $count = 0;
+        if (($parent = $this->parent())){
+            $count+=1;
+
+        }
+        if ($parent->parent)
+            while ($parent && ($parent->parent)) {
+                $count+=1;
+            }
+        return $count;
+    }
+
     public function parent()
     {
         return $this->belongsTo('App\Category');
     }
-
+    */
     public function fullUrl()
     {
         $url = '/' . trim($this->slug, '/');

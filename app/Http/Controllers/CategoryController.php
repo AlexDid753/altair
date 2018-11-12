@@ -17,17 +17,33 @@ class CategoryController extends BaseController
         $model = Category::where(['published' => 1, 'url' => $url])->first();
         if (!$model)
             abort(404, 'Страница не найдена');
-        $subcategories = $model->childrens->where('published' , '=', 1);
-        $products = $model->products()->where('published' , '=', 1)->orderBy('id', 'asc')->paginate(6);
+        $subcategories = $model->childrens->where('published', '=', 1);
+
+        //meta
+        if (intval($request['page']) > 1) {
+            $meta_title = ($model->meta_title ?? $model->name) . " - страница " . intval($request['page']);
+            $meta_decription = ($model->meta_description ?? $model->name) . " - страница " . intval($request['page']);
+        } else {
+            $meta_title = $model->meta_title ?? $model->name;
+            $meta_decription = $model->meta_description ?? $model->name;
+        }
+        $show_link_canonical = (isset($request['page']));
+        //meta_end
+
+        $products = $model->products()->where('published', '=', 1)->orderBy('id', 'asc')->paginate(6);
 
         return view('category', [
             'model' => $model,
             'subcategories' => $subcategories,
-            'products' => $products
+            'products' => $products,
+            'meta_title' => $meta_title,
+            'meta_description' => $meta_decription,
+            'show_link_canonical' => $show_link_canonical
         ]);
     }
 
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         //Опубликованные корневые категории
         $models = Category::published()->where('parent_id', '=', null);
         if (!$models)
@@ -40,7 +56,7 @@ class CategoryController extends BaseController
             'model' => $model,
             'models' => $models,
             'sidebarFilter' => false,
-            'searchResult' => false
+            'searchResult' => false,
         ]);
     }
 

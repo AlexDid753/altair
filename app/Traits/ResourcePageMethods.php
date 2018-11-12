@@ -23,7 +23,19 @@ trait ResourcePageMethods
 
     public function parent()
     {
-        return $this->belongsTo('App\Page');
+        return $this->belongsTo('App\Category');
+    }
+
+    public function parentsCount(){
+        $count = 0;
+        if (($parent = $this->parent()->get())){
+            $count+=1;
+
+        }
+        while ($parent && ($parent->parent)) {
+            $count+=1;
+        }
+        return $count;
     }
 
     public static function getUrl($id)
