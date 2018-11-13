@@ -37,8 +37,7 @@
                    id="privacy-policy"
                    value="1"
             /> <label for="privacy-policy">Я согласен с
-                <a target="_blank" class="btn-link" href="/privacy-policy">пользовательским соглашением и условиями
-                    продажи</a>
+                <a target="_blank" class="btn-link" href="/privacy-policy">политикой конфиденциальности</a>
                 и
                 <a target="_blank" class="btn-link" href="/terms-of-return">политикой возврата при оплате
                     картой</a>.</label>

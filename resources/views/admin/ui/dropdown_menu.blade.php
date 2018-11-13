@@ -16,7 +16,8 @@
 
                 @if(!empty($option) && array_key_exists('name',$option))
                     <option
-                            value="{{ $option['id'] }}" {{ $option['id'] == ($model->$fieldModelName ?: old($fieldName))  ? 'selected' : '' }}
+                            value="{{ $option['id'] }}"
+                            {{ $option['id'] == ($model->$fieldModelName ?: old($fieldName)) && ($option['type'] == $model->page_type)  ? 'selected' : '' }}
                             data-page-type="{{$option['type']}}">{{ $option['name'] }}
                     </option>
                 @endif
