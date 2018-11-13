@@ -15,9 +15,10 @@ class SitemapController extends BaseController
         $products = Product::published();
         $categories = Category::published();
         $pages = Page::where(['published' => 1])->get();
-        $pages = $pages->merge($products)->merge($categories);
+        $all_pages = collect([]);
 
-        foreach ($pages as $page) {
+        $all_pages = $all_pages->merge($pages)->merge($products)->merge($categories);
+        foreach ($all_pages as $page) {
             $tag = Sitemap::addTag(route('page.show', $page->url), $page->updated_at, 'daily', '0.8');
         }
 
