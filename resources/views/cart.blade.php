@@ -56,8 +56,10 @@
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <div class="contact-form-page thanks">
-                                            <h2 class="title18 dark font-bold text-uppercase play-font">
-                                                Благодарим за заказ. Страница оплаты заказа откроется через 5 секунд.</h2>
+                                            <h2 class="title18 dark font-bold text-uppercase play-font thanks__message">
+                                                Благодарим за заказ. С вами скоро свяжутся. По всем интересующим
+                                                вопросам вы можете обратиться по телефону {{$settings->phone}}.
+                                            </h2>
                                         </div>
                                         @include('shared.cart_form', ['contact_type'=>'favorites'])
                                     </div>
