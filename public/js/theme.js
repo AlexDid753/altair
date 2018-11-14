@@ -397,6 +397,14 @@
             return (endSumm == null || endSumm == 0) ? false : true;
         }
 
+        function removeLastSym(str) {
+            return str.substring(0, str.length - 1);
+        }
+
+        function preparePhone(str) {
+            return parseInt(str.replace(/\D+/g,"").slice(1));
+        }
+
 
         //Форма обратной связи
         $('form.feedback-form').submit(function (event) {
@@ -469,30 +477,27 @@
 
         function getExt1(response) {
             let {order_number, email, phone} = response;
-            let str = "external_id:"+order_number+",total:"+endSumm+".0,email: "+email+",phone: "+phone+",sno:osn;";
+            let str = `external_id:${order_number},total:${endSumm}.0,email:${email},phone:${preparePhone(phone)},sno:osn;`;
             $('.cart_item').each(function () {
                 let price = parseInt($(this).find('.product-price .amount').text());
-                price = (payments_type == 2) ?  price * 0.5 : price;
+                price = (payments_type == 2) ? price * 0.5 : price;
                 str = str + `payments_sum:${price}.0, payments_type:${payments_type};`
-			});
+            });
             str = removeLastSym(str);
             return str;
         }
 
         function getExt2() {
-            var str = "sum:"+endSumm+".0,tax:none,";
+            let str = "";
             $('.cart_item').each(function () {
                 let name = $(this).find('.product-name a').text();
                 let price = parseInt($(this).find('.product-price .amount').text());
-                let cart_item_data = "name:"+name+",price:"+price+".0,quantity:1.0;sum:"+price+".0,tax:vat0,tax_sum:0.0";
-                str = str+cart_item_data;
+                let sum = (payments_type == 2) ? price * 0.5 : price;
+                let cart_item_data = `name:${name},price:${price}.0,quantity:1.0;sum:${sum}.0,tax:vat0,tax_sum:0.0;`;
+                str = str + cart_item_data;
             });
             return str;
         }
-
-        function removeLastSym(str) {
-           return str.substring(0, str.length - 1);
-		}
 
         //Фиксированная шапка
         $(document).ready(function () {
