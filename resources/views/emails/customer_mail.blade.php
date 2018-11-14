@@ -10,6 +10,7 @@ $products = \App\Product::whereIn('id', $product_ids)->get();
 ?>
 <base href="https://serebro-altair.ru/">
 <p>Ваш заказ №{{$model->id}} принят. Вам перезвонят в ближайшее время.</p>
+<p>Выбранный тип оплаты: {{$model->pay_type}}</p>
 
 <div class="table-responsive">
     <table class="shop_table cart table">

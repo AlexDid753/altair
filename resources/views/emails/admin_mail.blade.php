@@ -6,12 +6,13 @@ foreach (json_decode($model->products) as $p){
 $products = \App\Product::whereIn('id', $product_ids)->get();
 
 ?>
+<base href="https://serebro-altair.ru/">
 
 <p>Здравствуйте, на сайте Альтаир-Серебро был оставлен запрос на резервирование.</p>
 <p>Вы можете просмотреть информацию в административной панели по ссылке:</p>
 <a href="{{config('app.url')}}/admin/feedback/{{$model->id}}/edit">Заказ #{{$model->id}}</a>
 
-<base href="https://serebro-altair.ru/">
+<p>Выбранный тип оплаты: {{$model->pay_type}}</p>
 
 <div class="table-responsive">
     <table class="shop_table cart table">

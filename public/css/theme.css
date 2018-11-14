@@ -1336,6 +1336,20 @@ div.table .product-info .product-title {
 .currency-box .dropdown-list li a span {
   margin: 0 5px;
 }
+.cart-form {
+
+}
+.cart-form .select-box {
+  margin: 0px 0px 15px;
+}
+.cart-form .select-box select {
+  background: #8686864d;
+  text-transform: none;
+}
+.cart-submit_totals-price {
+  padding-left: 24px;
+  font-weight: bold;
+}
 .language-box .dropdown-link::after,
 .currency-box .dropdown-link::after {
   font-family: fontAwesome;

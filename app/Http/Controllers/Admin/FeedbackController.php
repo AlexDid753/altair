@@ -12,6 +12,7 @@ class FeedbackController extends BaseAdminController
         'phone' => ['type' => 'input', "attributes"=>['readonly'=>'readonly']],
         'email' => ['type' => 'input', "attributes"=>['readonly'=>'readonly']],
         'message' => ['type' => 'text', "attributes"=>['readonly'=>'readonly']],
+        'pay_type' => ['type' => 'input', "attributes"=>['readonly'=>'readonly']],
         'products'=> ['type' => 'feedback_products']
     ];
 
@@ -29,9 +30,9 @@ class FeedbackController extends BaseAdminController
     public function index()
     {
         if ($this->listWhere())
-            $models = $this->model::where($this->listWhere())->orderBy('id')->paginate(50);
+            $models = $this->model::where($this->listWhere())->orderBy('id', 'desc')->paginate(50);
         else
-            $models = $this->model::orderBy('id')->paginate(50);
+            $models = $this->model::orderBy('id', 'desc')->paginate(50);
 
         return view()->first(['admin.' . $this->name . '.list', 'admin.feedback.index'], [
             'models' => $models,
