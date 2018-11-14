@@ -53,9 +53,9 @@ class Feedback extends Model
         }
     }
 
-    public function getTypeAttribute($value)
+    public function type_word()
     {
-        switch ($value) {
+        switch ($this->type) {
             case 'contacts':
                 return "Обратная связь со страницы 'Контакты'";
                 break;
