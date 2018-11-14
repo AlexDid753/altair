@@ -436,12 +436,11 @@ $(function() {
             success: function (response) {
                 if (feedback_type == 'favorites') {
                     remove_liked();
-                    let summ = get_summ();
                     let order_number = response.order_number;
                     if ( isOnlineOrder(endSumm) ) {
                         setTimeout(
                             openWindowWithPost("https://e-commerce.raiffeisen.ru/vsmc3ds/pay_check/3dsproxy_init.jsp", {
-                                PurchaseAmt: summ,
+                                PurchaseAmt: endSumm,
                                 PurchaseDesc: order_number,
                                 CountryCode: "643",
                                 CurrencyCode: "643",
