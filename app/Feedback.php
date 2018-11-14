@@ -52,4 +52,21 @@ class Feedback extends Model
                 return "";
         }
     }
+
+    public function getTypeAttribute($value)
+    {
+        switch ($value) {
+            case 'contacts':
+                return "Обратная связь со страницы 'Контакты'";
+                break;
+            case 'subscribe':
+                return "Подписка на новости в футере";
+                break;
+            case 'favorites':
+                return "Заказ";
+                break;
+            default:
+                return "Неизвестно";
+        }
+    }
 }

@@ -43,9 +43,20 @@
                 <a target="_blank" class="btn-link" href="/terms-of-return">политикой возврата при оплате
                     картой</a>.</label>
         </p>
+        <div class="contact-pay_type select-box">
+            <select required
+                    name="pay_type"
+                    id="pay_type">
+                <option value="">Тип оплаты</option>
+                <option value="0">Полная оплата онлайн</option>
+                <option value="1">Оплата 50%, остальное наличными курьеру</option>
+                <option value="2">Оплата наличными курьеру при получении</option>
+            </select>
+        </div>
         <p class="contact-submit cart-submit">
             <input class="shop-button white bg-dark" type="submit"
                    value="Оформить и оплатить заказ">
+            <span class="cart-submit_totals-price">Сумма к оплате: <span class="number"></span><span class="rub"> Р</span></span>
         </p>
         <p>Нажимая на кнопку "Оформить и оплатить заказ", вы соглашаетесь с офертой.</p>
     </form>
