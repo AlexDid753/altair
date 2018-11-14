@@ -1344,6 +1344,11 @@ div.table .product-info .product-title {
 }
 .cart-form .select-box select {
   background: #8686864d;
+  text-transform: none;
+}
+.cart-submit_totals-price {
+  padding-left: 24px;
+  font-weight: bold;
 }
 .language-box .dropdown-link::after,
 .currency-box .dropdown-link::after {

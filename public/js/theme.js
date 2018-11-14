@@ -289,7 +289,9 @@ $(function() {
 
     function print_summ() {
         if ($('.cart_item').length != 0) {
-            $('.cart_totals-price .number').text(get_summ());
+        	let start_summ = get_summ();
+            $('.cart_totals-price .number').text(start_summ); //Итого в таблице
+            $('.cart-submit_totals-price .number').text(start_summ); //span c ценой возле кнопки оформления
         }
     }
 
@@ -353,7 +355,42 @@ $(function() {
         document.body.removeChild(form);
     }
 
+    var endSumm = null;
 
+	$('.contact-pay_type select').change(function () {
+		let select_val = parseInt($(this).val());
+		let button = $('.cart-submit input');
+		var summ = get_summ();
+		let summ_number = $('.cart-submit_totals-price .number');
+        let summ_label = $('.cart-submit_totals-price');
+        switch (select_val) {
+            case 0: //full online
+                button.val('Оформить и оплатить заказ');
+                summ_label.show();
+                endSumm = summ;
+                break;
+            case 1: //50%
+                button.val('Оформить и оплатить заказ');
+                summ_label.show();
+                endSumm = summ * 0.5;
+                break;
+            case 2: //nal
+                button.val('Оформить заказ');
+                summ_label.hide();
+                endSumm = null;
+                break;
+            default:
+                endSumm = summ;
+                button.val('Оформить и оплатить заказ');
+                summ_label.show();
+                break;
+        }
+        summ_number.text(endSumm);
+    });
+
+	function isOnlineOrder(endSumm) {
+		return (endSumm == null || endSumm == 0) ?  false :  true;
+	}
 
 
     //Форма обратной связи
@@ -369,6 +406,10 @@ $(function() {
             favorites_data = get_favorites_table_data();
             form_data.push({name: 'products', value: JSON.stringify(favorites_data)});
             $('table.shop_table.cart').hide();
+            if ( isOnlineOrder(endSumm) ) {
+                let message = $('.thanks__message');
+                message.text('Благодарим за заказ. Страница оплаты заказа откроется через 5 секунд.');
+			}
 		}
 
         switch(feedback_type) {
@@ -397,20 +438,22 @@ $(function() {
                     remove_liked();
                     let summ = get_summ();
                     let order_number = response.order_number;
-                    setTimeout(
-                        openWindowWithPost("https://e-commerce.raiffeisen.ru/vsmc3ds/pay_check/3dsproxy_init.jsp", {
-                        PurchaseAmt: summ,
-                        PurchaseDesc: order_number,
-                        CountryCode: "643",
-                        CurrencyCode: "643",
-                        MerchantName: "Altair",
-                        MerchantURL: "https://serebro-altair.ru",
+                    if ( isOnlineOrder(endSumm) ) {
+                        setTimeout(
+                            openWindowWithPost("https://e-commerce.raiffeisen.ru/vsmc3ds/pay_check/3dsproxy_init.jsp", {
+                                PurchaseAmt: summ,
+                                PurchaseDesc: order_number,
+                                CountryCode: "643",
+                                CurrencyCode: "643",
+                                MerchantName: "Altair",
+                                MerchantURL: "https://serebro-altair.ru",
 
-                        MerchantCity: "SAINT PETERSBURG",
-                        MerchantID: "000001780247001-80247001",
-                        SuccessURL: "https://serebro-altair.ru/success",
-                        FailURL: "https://serebro-altair.ru/fail",
-                    },"_self"), 5000);
+                                MerchantCity: "SAINT PETERSBURG",
+                                MerchantID: "000001780247001-80247001",
+                                SuccessURL: "https://serebro-altair.ru/success",
+                                FailURL: "https://serebro-altair.ru/fail",
+                            },"_self"), 5000);
+					}
                 }
 			}
         });
