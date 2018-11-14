@@ -18,7 +18,9 @@ class FeedbackController extends BaseController
         return response()->json(
             [
                 'success' => 1,
-                'order_number' => $model->id
+                'order_number' => $model->id,
+                'email' => $model->email,
+                'phone' => $model->phone,
             ]);
     }
 

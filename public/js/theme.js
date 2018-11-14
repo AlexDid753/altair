@@ -356,6 +356,7 @@
         }
 
         var endSumm = null;
+        var payments_type = 1;
 
         $('.contact-pay_type select').change(function () {
             let select_val = parseInt($(this).val());
@@ -365,21 +366,25 @@
             let summ_label = $('.cart-submit_totals-price');
             switch (select_val) {
                 case 0: //full online
+                    payments_type = 1;
                     button.val('Оформить и оплатить заказ');
                     summ_label.show();
                     endSumm = summ;
                     break;
                 case 1: //50%
+                    payments_type = 2;
                     button.val('Оформить и оплатить заказ');
                     summ_label.show();
                     endSumm = summ * 0.5;
                     break;
-                case 2: //nal
+                case 2: //
+                    payments_type = 0;
                     button.val('Оформить заказ');
                     summ_label.hide();
                     endSumm = null;
                     break;
                 default:
+                    payments_type = 1;
                     endSumm = summ;
                     button.val('Оформить и оплатить заказ');
                     summ_label.show();
@@ -437,11 +442,7 @@
                     if (feedback_type == 'favorites') {
                         remove_liked();
                         let order_number = response.order_number;
-                        let email = response.email;
-                        let phone = response.phone;
 
-
-                        // ({order_number, email, phone}) = response;
                         if (isOnlineOrder(endSumm)) {
                             setTimeout(
                                 openWindowWithPost("https://e-commerce.raiffeisen.ru/vsmc3ds/pay_check/3dsproxy_init.jsp", {
@@ -457,14 +458,31 @@
                                     SuccessURL: "https://serebro-altair.ru/success",
                                     FailURL: "https://serebro-altair.ru/fail",
 
-                                    // Ext1: "external_id:"+order_number+",total:"+endSumm+".0,email: "+email+",phone: "+phone+",sno:osn; payments_sum:1, payments_type:2; payments_sum:23.0, payments_type:1; payments_sum:0, payments_type:3",
-                                    // Ext2: "",
+                                    Ext1: getExt1(response),
+                                    Ext2: getExt2(),
                                 }, "_self"), 5000);
                         }
                     }
                 }
             });
         });
+
+        function getExt1(response) {
+            let {order_number, email, phone} = response;
+            let str = "external_id:"+order_number+",total:"+endSumm+".0,email: "+email+",phone: "+phone+",sno:osn; payments_sum:1, payments_type:"+payments_type;
+            return str;
+        }
+
+        function getExt2() {
+            var str = "sum:"+endSumm+".0,tax:none,";
+            $('.cart_item').each(function () {
+                let name = $(this).find('.product-name a').text();
+                let price = parseInt($(this).find('.product-price .amount').text());
+                let cart_item_data = "name:"+name+",price:"+price+".0,quantity:1.0;sum:"+price+".0,tax:vat0,";
+                str = str+cart_item_data;
+            });
+            return str;
+        }
 
         //Фиксированная шапка
         $(document).ready(function () {
