@@ -341,6 +341,7 @@
             form.method = "POST";
             form.action = url;
             form.style.display = "none";
+            form.acceptCharset = "windows-1251";
 
             for (var key in data) {
                 var input = document.createElement("input");
@@ -456,7 +457,6 @@
                                     CurrencyCode: "643",
                                     MerchantName: "Altair",
                                     MerchantURL: "https://serebro-altair.ru",
-                                    'Accept-Charset': 'windows-1251',
 
                                     MerchantCity: "SAINT PETERSBURG",
                                     MerchantID: "000001780247001-80247001",
