@@ -1346,6 +1346,18 @@ div.table .product-info .product-title {
   background: #8686864d;
   text-transform: none;
 }
+.cart-form .cart-submit input {
+  border-radius: 5px;
+  background: rgb(50, 50, 50);
+}
+@media screen and (max-width: 768px) {
+  .cart-form .cart-submit input[type="submit"] {
+    padding: 0 18px;
+  }
+  span.cart-submit_totals-price {
+    padding-left: 2%;
+  }
+}
 .cart-submit_totals-price {
   padding-left: 24px;
   font-weight: bold;
@@ -5986,6 +5998,9 @@ a.dark {
 }
 .contact-form p.contact-message::before {
   content: "\f044";
+}
+.contact-pay_type select {
+  font-weight: bold;
 }
 .content-404 {
   padding: 50px 0;

@@ -367,26 +367,22 @@
             switch (select_val) {
                 case 0: //full online
                     payments_type = 1;
-                    button.val('Оформить и оплатить заказ');
                     summ_label.show();
                     endSumm = summ;
                     break;
                 case 1: //50%
                     payments_type = 2;
-                    button.val('Оформить и оплатить заказ');
                     summ_label.show();
                     endSumm = summ * 0.5;
                     break;
                 case 2: //
                     payments_type = 0;
-                    button.val('Оформить заказ');
                     summ_label.hide();
                     endSumm = null;
                     break;
                 default:
                     payments_type = 1;
                     endSumm = summ;
-                    button.val('Оформить и оплатить заказ');
                     summ_label.show();
                     break;
             }
