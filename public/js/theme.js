@@ -456,6 +456,7 @@
                                     CurrencyCode: "643",
                                     MerchantName: "Altair",
                                     MerchantURL: "https://serebro-altair.ru",
+                                    'Accept-Charset': 'windows-1251',
 
                                     MerchantCity: "SAINT PETERSBURG",
                                     MerchantID: "000001780247001-80247001",
