@@ -34,6 +34,7 @@
             <input name="privacy-policy"
                    type="checkbox"
                    required
+                   checked
                    id="privacy-policy"
                    value="1"
             /> <label for="privacy-policy">Я согласен с
@@ -46,17 +47,17 @@
             <select required
                     name="pay_type"
                     id="pay_type">
-                <option value="">Тип оплаты</option>
-                <option value="0">Полная оплата онлайн</option>
-                <option value="1">Оплата 50%, остальное наличными курьеру</option>
-                <option value="2">Оплата наличными курьеру при получении</option>
+                <option value="">ВЫБРАТЬ СПОСОБ ОПЛАТЫ</option>
+                <option value="2">Наличными при получении</option>
+                <option value="0">Банковской картой на сайте онлайн</option>
+                <option value="1">Банковской картой на сайте онлайн (предоплата 50%)</option>
             </select>
         </div>
         <p class="contact-submit cart-submit">
             <input class="shop-button white bg-dark" type="submit"
-                   value="Оформить и оплатить заказ">
+                   value="Оформить заказ">
             <span class="cart-submit_totals-price">Сумма к оплате: <span class="number"></span><span class="rub"> Р</span></span>
         </p>
-        <p>Нажимая на кнопку "Оформить и оплатить заказ", вы соглашаетесь с офертой.</p>
+        <p>Нажимая на кнопку "Оформить заказ", вы соглашаетесь с офертой.</p>
     </form>
 </div>

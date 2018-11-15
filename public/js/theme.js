@@ -367,26 +367,22 @@
             switch (select_val) {
                 case 0: //full online
                     payments_type = 1;
-                    button.val('Оформить и оплатить заказ');
                     summ_label.show();
                     endSumm = summ;
                     break;
                 case 1: //50%
                     payments_type = 2;
-                    button.val('Оформить и оплатить заказ');
                     summ_label.show();
                     endSumm = summ * 0.5;
                     break;
                 case 2: //
                     payments_type = 0;
-                    button.val('Оформить заказ');
                     summ_label.hide();
                     endSumm = null;
                     break;
                 default:
                     payments_type = 1;
                     endSumm = summ;
-                    button.val('Оформить и оплатить заказ');
                     summ_label.show();
                     break;
             }
@@ -477,7 +473,7 @@
 
         function getExt1(response) {
             let {order_number, email, phone} = response;
-            let str = `external_id:${order_number},total:${endSumm}.0,email:${email},phone:${preparePhone(phone)},sno:osn;`;
+            let str = `external_id:${order_number},total:${endSumm}.0,email:${email},phone:${preparePhone(phone)},sno:usn_income_outcome;`;
             $('.cart_item').each(function () {
                 let price = parseInt($(this).find('.product-price .amount').text());
                 price = (payments_type == 2) ? price * 0.5 : price;
@@ -493,7 +489,7 @@
                 let name = $(this).find('.product-name a').text();
                 let price = parseInt($(this).find('.product-price .amount').text());
                 let sum = (payments_type == 2) ? price * 0.5 : price;
-                let cart_item_data = `sum:${sum}.0,tax:vat0,tax_sum:0.0,name:${name},price:${price}.0,quantity:1.0;`;
+                let cart_item_data = `sum:${sum}.0,tax:none,tax_sum:0.0,name:${name},price:${price}.0,quantity:1.0;`;
                 str = str + cart_item_data;
             });
             str = removeLastSym(str);
