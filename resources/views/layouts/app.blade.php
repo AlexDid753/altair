@@ -8,7 +8,7 @@ if (!isset($model)) {
 ?>
 <head>
     <base href="/">
-    <meta charset="UTF-8">
+    <meta content="text/html; charset=windows-1251" http-equiv="Content-Type" />
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>

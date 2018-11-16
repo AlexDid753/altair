@@ -487,10 +487,10 @@
         function getExt2() {
             let str = "";
             $('.cart_item').each(function () {
-                let name = $(this).find('.product-name a').text();
-                let price = parseInt($(this).find('.product-price .amount').text());
-                let sum = (payments_type == 2) ? price * 0.5 : price;
-                let cart_item_data = `sum:${sum}.0,tax:none,tax_sum:0.0,name:${name},price:${price}.0,quantity:1.0;`;
+                let name = $(this).find('.product-name a').text(),
+                 price = parseInt($(this).find('.product-price .amount').text()),
+                 sum = (payments_type == 2) ? price * 0.5 : price,
+                 cart_item_data = `sum:${sum}.0,tax:none,tax_sum:0.0,name:${name},price:${price}.0,quantity:1.0;`;
                 str = str + cart_item_data;
             });
             str = removeLastSym(str);
