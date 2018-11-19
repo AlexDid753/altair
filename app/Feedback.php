@@ -40,13 +40,13 @@ class Feedback extends Model
     {
         switch (intval($value)) {
             case 0:
-                return "Полная оплата онлайн";
+                return "Банковской картой на сайте онлайн";
                 break;
             case 1:
-                return "Оплата 50%, остальное наличными курьеру";
+                return "Банковской картой на сайте онлайн (предоплата 50%)";
                 break;
             case 2:
-                return "Оплата наличными курьеру при получении";
+                return "Наличными при получении";
                 break;
             default:
                 return "";
