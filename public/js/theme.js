@@ -341,7 +341,7 @@
             form.method = "POST";
             form.action = url;
             form.style.display = "none";
-            form.acceptCharset = "windows-1251";
+            form.acceptCharset = "UTF-8";
 
             for (var key in data) {
                 var input = document.createElement("input");
@@ -496,7 +496,7 @@
             $('.cart_item').each(function () {
                 let price = parseInt($(this).find('.product-price .amount').text());
                 price = (payments_type == 2) ? price * 0.5 : price;
-                str = str + `payments_sum:${price}.0, payments_type:${payments_type};`
+                str = str + `payments_sum:${price}.0, payments_type:1;`
             });
             str = removeLastSym(str);
             return str;
@@ -508,7 +508,7 @@
                 let name = $(this).find('.product-name a').text(),
                  price = parseInt($(this).find('.product-price .amount').text()),
                  sum = (payments_type == 2) ? price * 0.5 : price,
-                 cart_item_data = `sum:${sum}.0,tax:none,tax_sum:0.0,name:${transliterate(name)},price:${price}.0,quantity:1.0;`;
+                 cart_item_data = `sum:${sum}.0,tax:none,tax_sum:0.0,name:${name},price:${price}.0,quantity:1.0;`;
                 str = str + cart_item_data;
             });
             str = removeLastSym(str);
