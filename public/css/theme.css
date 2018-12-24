@@ -2340,7 +2340,7 @@ a.opaci:hover {
   text-align: center;
   z-index: 10;
   background: #000;
-  border-radius: 50%;
+  border-radius: 0;
   opacity: 0;
   visibility: hidden;
   color: #fff;
@@ -3950,7 +3950,7 @@ a.dark {
   opacity: 0.7;
 }
 /******************************************************************************************************************
-													Home Jewelry		
+													Home Jewelry
 *******************************************************************************************************************/
 .addcart-link,
 .compare-link,
@@ -5684,7 +5684,7 @@ a.dark {
   margin-top: 50px;
 }
 /**************************************************************************************************
-											Pages	
+											Pages
 ***************************************************************************************************/
 .content-about > h2.title30 {
   margin-bottom: 25px;
@@ -6323,7 +6323,7 @@ td.product-thumbnail img {
 }
 /*End Wooocommerce*/
 /*************************************************************************************************
-										Login/Register 
+										Login/Register
 **************************************************************************************************/
 .title-form-account {
   margin-bottom: 20px;
@@ -6437,7 +6437,7 @@ input.register-button.save-change {
   margin: auto;
 }
 /*************************************************************************************************
-									End	Login/Register 
+									End	Login/Register
 **************************************************************************************************/
 /* ----------------------- Compare products --------------------- */
 .compare-title {
@@ -6614,8 +6614,6 @@ input.register-button.save-change {
 .item-product4 .product-thumb > .quickview-link {
   top: 0;
   right: 0;
-  left: 0;
-  bottom: 0;
 }
 .item-product4 .product-thumb .product-label {
   top: 0;
