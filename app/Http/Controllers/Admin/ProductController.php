@@ -25,6 +25,7 @@ class ProductController extends BaseAdminController
 
 
         'text' => 'editor',
+        'video' => 'editor',
         'price' => ['type' => 'input', 'input_type' => 'number'],
         'old_price' => ['type' => 'input', 'input_type' => 'number'],
         'link' => ['type' => 'input', "attributes"=>['placeholder' => "placeholder='Например: http://site.ru'"]],
