@@ -18,9 +18,9 @@
                                                          alt="Изображение: {{$model->title}}"
                                                          title="{{$model->title}} из серебра, Альтаир"
                                                     />
-                                                    <div class="col-md-12">
-                                                        {!! $model->video !!}
-                                                    </div>
+                                                </div>
+                                                <div class="mid video">
+                                                    {!! $model->video !!}
                                                 </div>
                                                 <div class="gallery-control">
                                                     <a href="#" class="prev"><i class="fa fa-angle-left"></i></a>
