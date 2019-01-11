@@ -1178,7 +1178,6 @@ body .scroll-top:hover {
   padding-bottom: 2px;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
   text-decoration: underline;
 }
 div.table .product-info .product-title {
