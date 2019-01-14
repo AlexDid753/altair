@@ -1179,6 +1179,7 @@ body .scroll-top:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   text-decoration: underline;
+  white-space: nowrap;
 }
 div.table .product-info .product-title {
   white-space: normal;
@@ -1884,6 +1885,9 @@ div.table .product-info .product-title {
   border: 1px solid #e5e5e5;
   padding: 0 15px;
 }
+.show-by.sort-list .dropdown-link .silver {
+  min-width: 200px;
+}
 .sort-pagi-bar > li {
   margin: 0 15px;
 }
@@ -1899,6 +1903,9 @@ div.table .product-info .product-title {
   left: auto;
   right: 0;
   width: 70px;
+}
+.show-by.sort-list .dropdown-list {
+  width: 170px;
 }
 .dropdown-list li a {
   display: block;

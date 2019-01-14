@@ -31,6 +31,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h1 class="title30 font-bold text-uppercase pull-left play-font dark">{{$model->name}}</h1>
+                                          @include('shared.sort_panel')
                                         </div>
                                     </div>
                                 </div>
@@ -38,8 +39,7 @@
                                     <div class="row">
                                         @each('shared.product_preview', $products, 'model')
                                     </div>
-                                <?php echo $products->links('shared.pagination'); ?>
-                                <!-- End Paginav -->
+                                {!! $products->links('shared.pagination') !!}
                                 </div>
                             </div>
                         </div>

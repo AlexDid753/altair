@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\ProductsFilter;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\Page;
 use App\Category;
 use App\Product;
+use Illuminate\Support\Facades\Input;
 
 
 class CategoryController extends BaseController
@@ -29,13 +31,12 @@ class CategoryController extends BaseController
         }
         $show_link_canonical = (isset($request['page']));
         //meta_end
-
-        $products = $model->products()->where('published', '=', 1)->orderBy('id', 'asc')->paginate(6);
+        $products = (new ProductsFilter($model->products(), $request))->apply();
 
         return view('category', [
             'model' => $model,
             'subcategories' => $subcategories,
-            'products' => $products,
+            'products' => $products->appends(Input::except('page')),
             'meta_title' => $meta_title,
             'meta_description' => $meta_decription,
             'show_link_canonical' => $show_link_canonical
