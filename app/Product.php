@@ -219,11 +219,7 @@ class Product extends Model
 
     public function searchable()
     {
-        if ($this->published && !$this->trashed()) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($this->published && !$this->trashed())? true : false;
     }
 
     //Синхронизация связей с категориями

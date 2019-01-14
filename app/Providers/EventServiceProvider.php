@@ -95,15 +95,12 @@ class EventServiceProvider extends ServiceProvider
             self::setChildrensUrl($model);
         });
 
-        Category::saving(function ($model) {
+        Category::updating(function ($model) {
             self::setUrl($model);
-        });
-
-        Category::saved(function ($model) {
+            self::setChildrensUrl($model);
+            ini_set('max_execution_time', 180); //3 minutes
             foreach ($model->products as $product)
                 $product->save(); //Чтобы вызвать колбеки сохранения продукта
-            self::setChildrensUrl($model);
-            self::setProductsUrl($model);
         });
 
         Product::saving(function ($model) {
