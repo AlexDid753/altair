@@ -7206,3 +7206,6 @@ img.line-icon {
 .category_seo-text {
   padding-top: 30px;
 }
+.zoomContainer {
+  cursor: zoom-in;
+}

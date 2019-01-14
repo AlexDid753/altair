@@ -713,6 +713,11 @@
                     borderSize: 1,
                     containLensZoom: true
                 });
+                $(this).find('.mid img').bind("click", function(e) {
+                    var ez =   $(this).data('elevateZoom');
+                    $.fancybox(ez.getGalleryList());
+                    return false;
+                });
                 $(this).find(".carousel a").on('click', function (event) {
                     event.preventDefault();
                     $(this).parents('.detail-gallery').find(".carousel a").removeClass('active');
