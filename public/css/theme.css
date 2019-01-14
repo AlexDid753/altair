@@ -2309,6 +2309,17 @@ a.opaci:hover {
   left: 10px;
   z-index: 11;
 }
+.product__mobile-content {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .product__mobile-content {
+    display: block;
+  }
+  .product__desktop-content {
+    display: none;
+  }
+}
 .product-thumb .product-label span {
   display: block;
   height: 30px;
