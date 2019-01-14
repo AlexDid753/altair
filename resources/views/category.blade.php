@@ -45,6 +45,10 @@
                         </div>
                     @endif
                 </div>
+
+              <div class="col-12 category_seo-text">
+                {!! $model->text !!}
+              </div>
             </div>
         </div>
     </section>

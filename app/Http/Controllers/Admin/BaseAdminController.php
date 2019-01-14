@@ -97,11 +97,7 @@ class BaseAdminController extends Controller
 
     public function store(Request $request, $id = null)
     {
-        if (isset($id)) {
-            $model = $this->model::find($id);
-        }else {
-            $model = new $this->model();
-        }
+        $model = (isset($id))? $this->model::find($id) : $model = new $this->model();
         $method = $request->method();
         $this->data = $request->all();
         $rules = $model->validatorRules($method);
@@ -113,11 +109,11 @@ class BaseAdminController extends Controller
         } else {
             if ($request->method() == 'POST') {
                 Session::flash('message', 'Успешно создано!');
+                $model->fill($this->data)->save();
             }else {
                 Session::flash('message', 'Успешно обновлено!');
+                $model->update($this->data);
             }
-            $model->fill($this->data);
-            $model->save();
 
             return Redirect::to('/admin/'.$this->name);
         }
