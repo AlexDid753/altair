@@ -12,10 +12,10 @@
         @foreach($images as $key => $image)
           <li>
             <a href="#" {{ $key==0? 'class=active' : '' }}>
-              <img id="img_01"
-                   src="{{resize($image->image, 700, 700)}}"
+              <img src="{{resize($image->image, 700, 700)}}"
                    alt=""
-                   data-zoom-image="{{$image->image}}"/>
+                   data-fancybox="{{$image->image}}"
+              />
             </a>
           </li>
         @endforeach

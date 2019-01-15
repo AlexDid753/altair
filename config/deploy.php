@@ -19,7 +19,7 @@ return [
 			/**
 			 * SSH url to the server.
 			 */
-			'server' => 'altair',
+			'server' => 'altair.staging',
 
 			/**
 			 * The path on the remote server where the application should be deployed.

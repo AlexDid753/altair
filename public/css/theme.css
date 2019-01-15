@@ -1885,7 +1885,7 @@ div.table .product-info .product-title {
   border: 1px solid #e5e5e5;
   padding: 0 15px;
 }
-.show-by.sort-list .dropdown-link .silver {
+.show-by.sort-list .dropdown-link .silver,.show-by.sort-list .dropdown-list {
   min-width: 200px;
 }
 .sort-pagi-bar > li {
@@ -1904,9 +1904,9 @@ div.table .product-info .product-title {
   right: 0;
   width: 70px;
 }
-.show-by.sort-list .dropdown-list {
-  width: 170px;
-}
+/*.show-by.sort-list .dropdown-list {*/
+  /*width: 200px;*/
+/*}*/
 .dropdown-list li a {
   display: block;
   padding: 5px 10px;
