@@ -705,6 +705,9 @@
                     visible: data.visible,
                     vertical: data.vertical,
                 });
+                let firstImg = $(this).find(".carousel a").first(),
+                    url = firstImg.find('img').data("fancybox");
+                firstImg.parents('.detail-gallery').find(".mid img").data("fancybox", url);
                 //Elevate Zoom
                 $(this).find('.mid img').elevateZoom({
                     zoomType: "lens",
@@ -714,16 +717,27 @@
                     containLensZoom: true
                 });
                 $(this).find('.mid img').bind("click", function(e) {
+                    $(this).find('.mid img').elevateZoom({
+                        zoomType: "lens",
+                        lensShape: "square",
+                        lensSize: 100,
+                        borderSize: 1,
+                        containLensZoom: true
+                    });
                     var ez =   $(this).data('elevateZoom');
-                    $.fancybox(ez.getGalleryList());
+                    $.fancybox([
+                        $(this).data('fancybox')
+                    ],{'type': 'image'});
                     return false;
                 });
                 $(this).find(".carousel a").on('click', function (event) {
                     event.preventDefault();
                     $(this).parents('.detail-gallery').find(".carousel a").removeClass('active');
                     $(this).addClass('active');
-                    var z_url = $(this).find('img').attr("src");
+                    var z_url = $(this).find('img').attr("src"),
+                        big_url = $(this).find('img').data("fancybox");
                     $(this).parents('.detail-gallery').find(".mid img").attr("src", z_url);
+                    $(this).parents('.detail-gallery').find(".mid img").data("fancybox", big_url);
                     $('.zoomLens').css('background-image', 'url("' + z_url + '")');
                 });
             });
