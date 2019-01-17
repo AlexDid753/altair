@@ -113,6 +113,7 @@
 	deploy:finishing
 	deploy:cleanup
 	deploy:migrate
+	elasticsearch:start
 	{{--deploy:restart_services--}}
 	deploy:finished
 @endmacro
@@ -406,6 +407,11 @@
 @task('db:dump-delete-remote', ['on' => 'web'])
   echo "db:dump-delete-remote";
   rm {{ $sharedPath }}/db.dump
+@endtask
+
+@task('elasticsearch:start', ['on' => 'web'])
+	echo "sudo service elasticsearch start";
+	sudo service elasticsearch start
 @endtask
 
 @task('db:dump-create', ['on' => 'localhost'])

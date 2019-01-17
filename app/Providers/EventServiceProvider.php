@@ -96,11 +96,14 @@ class EventServiceProvider extends ServiceProvider
         });
 
         Category::updating(function ($model) {
-            self::setUrl($model);
-            self::setChildrensUrl($model);
-            ini_set('max_execution_time', 180); //3 minutes
-            foreach ($model->products as $product)
-                $product->save(); //Чтобы вызвать колбеки сохранения продукта
+            $original = $model->getOriginal();
+            if (($model->slug != $original['slug']) || $model->title != $original['title']) {
+                ini_set('max_execution_time', 180); //3 minutes
+                self::setUrl($model);
+                self::setChildrensUrl($model);
+                foreach ($model->products as $product)
+                    $product->save(); //Чтобы вызвать колбеки сохранения продукта
+            }
         });
 
         Product::saving(function ($model) {
