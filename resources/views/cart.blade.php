@@ -35,7 +35,10 @@
                                             <td class="product-name" data-title="Product">
                                                 <img class="product-name__mobile-img"
                                                      src="{{resize($product->preview_image(), 100, 100)}}" alt=""/>
-                                                <a href="{{$product->url}}">{{$product->title}}</a>
+                                                <a href="{{$product->url}}">
+                                                    {{ $product->title }}
+                                                    {{ getProductData($product->id,'size') }}
+                                                </a>
                                             </td>
                                             <td class="product-price" data-title="Price">
                                                 <span class="amount">{!! $product->prepared_price() !!}</span>

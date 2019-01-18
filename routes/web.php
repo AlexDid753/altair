@@ -91,6 +91,7 @@ Route::get('products_get_liked', function () {
 Route::post('products_remove_liked', function () {
     session()->forget('products.liked');
 });
+Route::post('product_data/{id}', 'ProductController@add_data');
 
 Route::get('robots.txt', function (){
     $text = File::get('robots');

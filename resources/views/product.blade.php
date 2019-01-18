@@ -73,6 +73,16 @@
                       </div>
                       <ul class="list-none product-meta-info">
                         <li>
+                          <div class="item-product-size-info detail-attr attr-size">
+                            <label>Размер:</label>
+                            <ul class="list-inline-block list-attr-label">
+                              @for ($i = 14; $i <= 23; $i+=0.5)
+                                <li><span data-id="{{$model->id}}">{{number_format( (float) $i, 1, '.', '')}}</span></li>
+                              @endfor
+                            </ul>
+                          </div>
+                        </li>
+                        <li>
                           @if(!empty($model->code))
                             <div class="item-product-meta-info product-code-info">
                               <label>Артикул:</label>
