@@ -312,10 +312,12 @@
             let favorites_data = [];
             $('.cart_item').each(function () {
                 var favorite_item = $(this).find('.product-remove i'),
-                    id = favorite_item.data('id');
+                    id = favorite_item.data('id'),
+                    size = favorite_item.data('size')
                 //count = favorite_item.text();
                 favorites_data.push({
                     id: id,
+                    size: size
                     //count:  count
                 });
             });

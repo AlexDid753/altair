@@ -100,15 +100,10 @@ if (! function_exists('set_atributes')) {
 if (! function_exists('getProductData')) {
     function getProductData($id,$key) {
         $product_data = session()->get('products.data');
-        $message = '';
+        $attr = '';
         if (isset($product_data[$id]) && isset($product_data[$id][$id][$key])) {
             $attr = $product_data[$id][$id][$key];
-            switch ($key) {
-                case 'size':
-                    $message = '(Размер: '.$attr.')';
-                    break;
-            }
         }
-        return $message;
+        return $attr;
     }
 }
