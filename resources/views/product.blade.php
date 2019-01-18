@@ -73,13 +73,11 @@
                       </div>
                       <ul class="list-none product-meta-info">
                         <li>
-                          <div class="item-product-size-info detail-attr attr-size">
+                          <div class="item-product-meta-info detail-attr attr-size">
                             <label>Размер:</label>
-                            <ul class="list-inline-block list-attr-label">
-                              @for ($i = 14; $i <= 23; $i+=0.5)
-                                <li><span data-id="{{$model->id}}">{{number_format( (float) $i, 1, '.', '')}}</span></li>
-                              @endfor
-                            </ul>
+                            @if(($model->parent->id == 13) || ($model->parent->id == 29))
+                              @includeIf('shared.ring_sizes')
+                            @endif
                           </div>
                         </li>
                         <li>
