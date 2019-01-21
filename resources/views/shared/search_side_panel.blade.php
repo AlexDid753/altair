@@ -6,4 +6,19 @@
             <input type="submit" value=""/>
         </form>
     </div>
+    <div class="widget widget-price">
+        <h2 class="widget-title title14 font-bold play-font text-uppercase dark">Цена</h2>
+        <div class="widget-content">
+            <div class="range-filter" >
+                <div class="slider-range" id="price-filter">
+                    <div class="inputs d-flex">
+                        <input id="price_min" type="number" class="col-6" style="width: 40%">
+                        <input id="price_max" type="number" class="col-6" style="width: 40%">
+                    </div>
+                    <span class="min-price"></span>
+                    <span class="max-price"></span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

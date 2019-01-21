@@ -2,7 +2,7 @@
 
 @section('content')
     @includeIf('blocks.breadcrumb')
-    <section id="content">
+    <section id="content" data-id="{{$model->id}}">
         <div class="content-page">
             <div class="container">
                 <div class="row">
@@ -35,11 +35,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-grid-view">
-                                    <div class="row">
-                                        @each('shared.product_preview', $products, 'model')
-                                    </div>
-                                {!! $products->links('shared.pagination') !!}
+                                <div class="products-block">
+                                  @include('blocks.products-grid', ['products' => $products])
+                                </div>
                                 </div>
                             </div>
                         </div>

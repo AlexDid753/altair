@@ -6938,6 +6938,12 @@ img.line-icon {
 .wrap-nav-search9.white-style .search-hover .submit-form::after {
   color: #fff;
 }
+.widget-price .inputs {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -53px
+}
 .content-top-jewelry4 .banner-info {
   top: auto;
   height: auto;

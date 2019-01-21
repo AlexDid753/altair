@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Input;
 
 class CategoryController extends BaseController
 {
+    public function get(Request $request, $category_id) {
+        $url = prepare_url($request->getRequestUri());
+        $model = Category::find($category_id);
+        $products = (new ProductsFilter($model->products(), $request))->apply();
+        $view = view("blocks.products-grid", ['products' => $products])->render();
+        return response()->json(['html'=>$view]);
+    }
+
     public function show(Request $request)
     {
         $url = prepare_url($request->getRequestUri());

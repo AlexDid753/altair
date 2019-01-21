@@ -15,27 +15,6 @@ use App\Product;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
 
-/**
- * Генерация связей с продуктами
- */
-/*
-Route::get('/category_product_generate',function(){
-    $faker = Faker\Factory::create();
-
-    $limit = 40;
-
-    for ($i = 0; $i < $limit; $i++) {
-
-        DB::table('category_product')->insert([ //,
-            'category_id' => $faker->numberBetween($min = 0, $max = 16),
-            'product_id' => $faker->numberBetween($min = 47, $max = 96)
-        ]);
-        echo "Успешно вставлена связь <br>";
-    }
-    echo "Закоментируйте текущий роут!";
-});
-*/
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/elfinder', ['uses' => '\Barryvdh\Elfinder\ElfinderController@showPopup'])->name('elfinder');
 });
@@ -83,6 +62,7 @@ Route::group(['middleware' => 'auth', 'prefix' => "admin"], function () {
 Route::get('search', ['as' => 'search', 'uses' => 'SearchController@search']);
 
 Route::get('catalog', 'CategoryController@index')->name('catalog');
+Route::get('catalog_get/{category_id}', 'CategoryController@get')->name('catalog.get');
 Route::get('product_like/{slug}', 'ProductController@toggle_like');
 Route::get('products_get_liked', function () {
     return response()->json(['products_liked' => Product::liked() ]);

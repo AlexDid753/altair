@@ -21,7 +21,7 @@
                                                     @if (count($subMenuItem->childrens))
                                                         <ul class="sub-menu">
                                                             @foreach($subMenuItem->childrens as $subMenuItem)
-                                                                <li><a href="{{ $subMenuItem->getUrl() }}">{{ $subMenuItem->name }}</a></li>
+                                                                <li><a href="{{ $subMenuItem->getUrl() }}">{{ $subMenuItem->name }}</a></li> {{--todo getUrl требует оптимизации, сохранения url на сохранение menu --}}
                                                             @endforeach
                                                         </ul>
                                                     @endif
