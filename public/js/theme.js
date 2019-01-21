@@ -443,10 +443,12 @@
             let favorites_data = [];
             $('.cart_item').each(function () {
                 var favorite_item = $(this).find('.product-remove i'),
-                    id = favorite_item.data('id');
+                    id = favorite_item.data('id'),
+                    size = favorite_item.data('size')
                 //count = favorite_item.text();
                 favorites_data.push({
                     id: id,
+                    size: size
                     //count:  count
                 });
             });
@@ -892,6 +894,21 @@
         }
     }
 
+    function productAddData(id,json_data) {
+        $.ajax({
+            url: '/product_data/' + id,
+            dataType: 'json',
+            type: "POST",
+            data: json_data,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    }
+
 //Document Ready
     jQuery(document).ready(function () {
         //Menu Responsive
@@ -915,6 +932,19 @@
             });
         }
         $('.contact-phone input').mask("+7 (999) 999-9999");
+
+        $('.attr-size .list-attr-label li span').click(function () {
+            let size = $(this).text(),
+                id = $(this).data('id'),
+                data = { [id] : { 'size' : size } };
+
+            $(this).closest('.list-attr-label').find('li span').each(function () {
+                $(this).removeClass('active')
+            })
+
+            $(this).addClass('active')
+            productAddData(id,data);
+        })
     });
 //Window Load
     jQuery(window).on('load', function () {

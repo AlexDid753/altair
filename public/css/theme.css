@@ -5424,7 +5424,7 @@ a.dark {
   right: 0;
   content: "";
 }
-.list-attr-label li a {
+.list-attr-label li a, .list-attr-label li span {
   display: block;
   min-width: 30px;
   height: 30px;
@@ -5432,6 +5432,11 @@ a.dark {
   text-align: center;
   line-height: 28px;
   position: relative;
+  cursor: pointer;
+}
+.list-attr-label li a.active, .list-attr-label li span.active {
+  background: #e5e5e5;
+  color: #fff;
 }
 .list-category-toggle .toggle-tab-title {
   padding: 8px 0;

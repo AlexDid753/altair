@@ -78,4 +78,12 @@ class ProductController extends BaseController
                                 'products_liked' => Product::liked() ]);
     }
 
+    public function add_data(Request $request, $id) {
+        $data = $request->post();
+        $products_data = session()->get('products.data') ?? [];
+        $storedItem = $data;
+        $products_data[$id] = $storedItem;
+        session()->put('products.data', $products_data);
+        return json_encode($products_data);
+    }
 }

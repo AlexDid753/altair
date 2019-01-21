@@ -96,3 +96,14 @@ if (! function_exists('set_atributes')) {
         }
     }
 }
+
+if (! function_exists('getProductData')) {
+    function getProductData($id,$key) {
+        $product_data = session()->get('products.data');
+        $attr = '';
+        if (isset($product_data[$id]) && isset($product_data[$id][$id][$key])) {
+            $attr = $product_data[$id][$id][$key];
+        }
+        return $attr;
+    }
+}
