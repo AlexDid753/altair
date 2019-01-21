@@ -86,11 +86,9 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function (response) {
-                        console.log(response.html)
                         $('.products-block').html(response.html)
                     },
                     error: function (response) {
-                        alert('error!')
                         console.log('response')
                     }
                 })
@@ -287,15 +285,22 @@
                 $(this).find(".slider-range").slider({
                     range: true,
                     min: 0,
-                    max: 50000,
+                    max: 100000,
                     values: [100, 30000],
+                    create: function (event, ui) {
+                        attachSlider()
+                    },
                     slide: function (event, ui) {
                         $(this).find(".min-price").text(ui.values[0] + '₽');
                         $(this).find(".max-price").text(ui.values[1] + '₽');
+                        attachSlider()
                     },
                     change: function (event, ui) {
                         reloadUrl('minPrice', ui.values[0])
                         reloadUrl('maxPrice', ui.values[1])
+                        $(this).find(".min-price").text(ui.values[0] + '₽');
+                        $(this).find(".max-price").text(ui.values[1] + '₽');
+                        attachSlider()
                         reloadProducts()
                     }
                 });
@@ -303,6 +308,17 @@
                 $(this).find(".max-price").appendTo($(this).find('.ui-slider-handle').last()).text($(this).find(".slider-range").slider("values", 1) + '₽');
             });
         }
+
+        function attachSlider() {
+            $('#price_min').val($('#price-filter').slider("values", 0));
+            $('#price_max').val($('#price-filter').slider("values", 1));
+        }
+
+        $('.slider-range input').change(function(e) {
+            var setIndex = (this.id == "price_max") ? 1 : 0;
+            $('#price-filter').slider("values", setIndex, $(this).val())
+        })
+
         //Toggle Class
         if ($('.list-attr').length > 0) {
             $('.list-attr a').on('click', function (event) {

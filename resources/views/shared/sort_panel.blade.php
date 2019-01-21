@@ -25,7 +25,7 @@
   </li>
   <li>
     <div class="dropdown-box show-by">
-      <span href="#" class="dropdown-link"><span class="gray">Товаров на странице:</span><span class="silver">{{(request()->count > 100)? 'Все' : request()->count ?? 12}}</span></span>
+      <span href="#" class="dropdown-link"><span class="gray">Товаров на странице:</span><span class="silver">{{(request()->count > 100)? 'Все' : intval(request()->count==0)? 12 : intval(request()->count)}}</span></span>
       <ul class="dropdown-list filter-count-list list-none">
         <li><a data-count='12' href="javascript:void(0);">12</a></li>
         <li><a data-count='24' href="javascript:void(0);">24</a></li>
