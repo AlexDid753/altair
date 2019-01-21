@@ -61,6 +61,16 @@
             }
         };
 
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
         function reloadUrl(param,value) {
             window.history.replaceState('', '', updateURLParameter(window.location.href, param, value));
         }
@@ -87,6 +97,13 @@
                     },
                     success: function (response) {
                         $('.products-block').html(response.html)
+
+                        //Пофиксил ссылки для страниц на блоке продуктов
+                        $('.products-block').find('.pagi-nav a').each(function () {
+                            let href = $(this).attr('href'),
+                                page = getParameterByName('page', href);
+                            $(this).attr('href', window.location.href + `&page=${page}`)
+                        })
                     },
                     error: function (response) {
                         console.log('response')
