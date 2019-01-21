@@ -1,6 +1,116 @@
 (function ($) {
     "use strict"; // Start of use strict
     $(function () {
+        function updateURLParameter(url, param, paramVal)
+        {
+            var TheAnchor = null;
+            var newAdditionalURL = "";
+            var tempArray = url.split("?");
+            var baseURL = tempArray[0];
+            var additionalURL = tempArray[1];
+            var temp = "";
+
+            if (additionalURL)
+            {
+                var tmpAnchor = additionalURL.split("#");
+                var TheParams = tmpAnchor[0];
+                TheAnchor = tmpAnchor[1];
+                if(TheAnchor)
+                    additionalURL = TheParams;
+
+                tempArray = additionalURL.split("&");
+
+                for (var i=0; i<tempArray.length; i++)
+                {
+                    if(tempArray[i].split('=')[0] != param)
+                    {
+                        newAdditionalURL += temp + tempArray[i];
+                        temp = "&";
+                    }
+                }
+            }
+            else
+            {
+                var tmpAnchor = baseURL.split("#");
+                var TheParams = tmpAnchor[0];
+                TheAnchor  = tmpAnchor[1];
+
+                if(TheParams)
+                    baseURL = TheParams;
+            }
+
+            if(TheAnchor)
+                paramVal += "#" + TheAnchor;
+
+            var rows_txt = temp + "" + param + "=" + paramVal;
+            return baseURL + "?" + newAdditionalURL + rows_txt;
+        }
+
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                }
+            }
+        };
+
+        function reloadUrl(param,value) {
+            window.history.replaceState('', '', updateURLParameter(window.location.href, param, value));
+        }
+
+        function reloadProducts() {
+            let id = $('#content').data('id'),
+                count = getUrlParameter('count'),
+                sortByPrice = getUrlParameter('sortByPrice'),
+                minPrice = getUrlParameter('minPrice'),
+                maxPrice = getUrlParameter('maxPrice'),
+                href = window.location.href,
+                pathname = window.location.pathname,
+                query = `count=${count}&sortByPrice=${sortByPrice}&minPrice=${minPrice}&maxPrice=${maxPrice}`;
+
+            history.pushState(null, '', `${pathname}?${query}`);
+            // window.location.replace(window.location.hostname + url);
+
+            if (id) {
+                $.ajax({
+                    url: `/catalog_get/${id}?${query}`,
+                    type: 'GET',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        console.log(response.html)
+                        $('.products-block').html(response.html)
+                    },
+                    error: function (response) {
+                        alert('error!')
+                        console.log('response')
+                    }
+                })
+            }
+        }
+
+        $('.filter-sort-list a').click(function () {
+            let sort = $(this).data('sort');
+            $(this).closest('.dropdown-box').find('.dropdown-link .silver').text($(this).text())
+            reloadUrl('sortByPrice', sort)
+            reloadProducts()
+        })
+
+        $('.filter-count-list a').click(function () {
+            let count = $(this).data('count');
+            $(this).closest('.dropdown-box').find('.dropdown-link .silver').text($(this).text())
+            reloadUrl('count', count)
+            reloadProducts()
+        })
+
         //Custom Slider
         if ($('.product-custom-slider').length > 0) {
             $('.product-custom-slider').each(function () {
@@ -177,15 +287,20 @@
                 $(this).find(".slider-range").slider({
                     range: true,
                     min: 0,
-                    max: 500,
-                    values: [25, 400],
+                    max: 50000,
+                    values: [100, 30000],
                     slide: function (event, ui) {
-                        $(this).find(".min-price").text('$' + ui.values[0]);
-                        $(this).find(".max-price").text('$' + ui.values[1]);
+                        $(this).find(".min-price").text(ui.values[0] + '₽');
+                        $(this).find(".max-price").text(ui.values[1] + '₽');
+                    },
+                    change: function (event, ui) {
+                        reloadUrl('minPrice', ui.values[0])
+                        reloadUrl('maxPrice', ui.values[1])
+                        reloadProducts()
                     }
                 });
-                $(this).find(".min-price").appendTo($(this).find('.ui-slider-handle').first()).text('$' + $(this).find(".slider-range").slider("values", 0));
-                $(this).find(".max-price").appendTo($(this).find('.ui-slider-handle').last()).text('$' + $(this).find(".slider-range").slider("values", 1));
+                $(this).find(".min-price").appendTo($(this).find('.ui-slider-handle').first()).text($(this).find(".slider-range").slider("values", 0) + '₽');
+                $(this).find(".max-price").appendTo($(this).find('.ui-slider-handle').last()).text($(this).find(".slider-range").slider("values", 1) + '₽');
             });
         }
         //Toggle Class
@@ -469,17 +584,17 @@
 
         function getExt1(response) {
             let {order_number, email, phone} = response;
-            let str = "external_id:"+order_number+",total:"+endSumm+".0,email: "+email+",phone: "+phone+",sno:osn; payments_sum:1, payments_type:"+payments_type;
+            let str = "external_id:" + order_number + ",total:" + endSumm + ".0,email: " + email + ",phone: " + phone + ",sno:osn; payments_sum:1, payments_type:" + payments_type;
             return str;
         }
 
         function getExt2() {
-            var str = "sum:"+endSumm+".0,tax:none,";
+            var str = "sum:" + endSumm + ".0,tax:none,";
             $('.cart_item').each(function () {
                 let name = $(this).find('.product-name a').text();
                 let price = parseInt($(this).find('.product-price .amount').text());
-                let cart_item_data = "name:"+name+",price:"+price+".0,quantity:1.0;sum:"+price+".0,tax:vat0,";
-                str = str+cart_item_data;
+                let cart_item_data = "name:" + name + ",price:" + price + ".0,quantity:1.0;sum:" + price + ".0,tax:vat0,";
+                str = str + cart_item_data;
             });
             return str;
         }
@@ -498,7 +613,6 @@
                 } else {
                     $("#header").removeClass("default").fadeIn('fast');
                 }
-                ;
             });
         });
 
@@ -716,7 +830,7 @@
                     borderSize: 1,
                     containLensZoom: true
                 });
-                $(this).find('.mid img').bind("click", function(e) {
+                $(this).find('.mid img').bind("click", function (e) {
                     $(this).find('.mid img').elevateZoom({
                         zoomType: "lens",
                         lensShape: "square",
@@ -724,10 +838,10 @@
                         borderSize: 1,
                         containLensZoom: true
                     });
-                    var ez =   $(this).data('elevateZoom');
+                    var ez = $(this).data('elevateZoom');
                     $.fancybox([
                         $(this).data('fancybox')
-                    ],{'type': 'image'});
+                    ], {'type': 'image'});
                     return false;
                 });
                 $(this).find(".carousel a").on('click', function (event) {

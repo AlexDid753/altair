@@ -13,4 +13,13 @@ class ProductsFilter extends QueryFilter
     public function sortByPrice($value = 'asc') {
         return $this->published()->orderBy('price', $value);
     }
+
+    public function minPrice($value = 0) {
+        return $this->published()->where('price', '>=', intval($value));
+    }
+
+    public function maxPrice($value = 999999) {
+        $value = (intval($value) == 0)? 999999 : $value;
+        return $this->published()->where('price', '<=', $value);
+    }
 }
