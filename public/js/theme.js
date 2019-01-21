@@ -75,56 +75,6 @@
             window.history.replaceState('', '', updateURLParameter(window.location.href, param, value));
         }
 
-        function reloadProducts() {
-            let id = $('#content').data('id'),
-                count = getUrlParameter('count'),
-                sortByPrice = getUrlParameter('sortByPrice'),
-                minPrice = getUrlParameter('minPrice'),
-                maxPrice = getUrlParameter('maxPrice'),
-                href = window.location.href,
-                pathname = window.location.pathname,
-                query = `count=${count}&sortByPrice=${sortByPrice}&minPrice=${minPrice}&maxPrice=${maxPrice}`;
-
-            history.pushState(null, '', `${pathname}?${query}`);
-            // window.location.replace(window.location.hostname + url);
-
-            if (id) {
-                $.ajax({
-                    url: `/catalog_get/${id}?${query}`,
-                    type: 'GET',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function (response) {
-                        $('.products-block').html(response.html)
-
-                        //Пофиксил ссылки для страниц на блоке продуктов
-                        $('.products-block').find('.pagi-nav a').each(function () {
-                            let href = $(this).attr('href'),
-                                page = getParameterByName('page', href);
-                            $(this).attr('href', window.location.href + `&page=${page}`)
-                        })
-                    },
-                    error: function (response) {
-                        console.log('response')
-                    }
-                })
-            }
-        }
-
-        $('.filter-sort-list a').click(function () {
-            let sort = $(this).data('sort');
-            $(this).closest('.dropdown-box').find('.dropdown-link .silver').text($(this).text())
-            reloadUrl('sortByPrice', sort)
-            reloadProducts()
-        })
-
-        $('.filter-count-list a').click(function () {
-            let count = $(this).data('count');
-            $(this).closest('.dropdown-box').find('.dropdown-link .silver').text($(this).text())
-            reloadUrl('count', count)
-            reloadProducts()
-        })
 
         //Custom Slider
         if ($('.product-custom-slider').length > 0) {
@@ -651,6 +601,66 @@
             });
         });
 
+        /* Filters start */
+        function reloadProducts() {
+            let id = $('#content').data('id'),
+                count = getUrlParameter('count'),
+                sortByPrice = getUrlParameter('sortByPrice'),
+                minPrice = getUrlParameter('minPrice'),
+                maxPrice = getUrlParameter('maxPrice'),
+                piece = getUrlParameter('piece'),
+                href = window.location.href,
+                pathname = window.location.pathname,
+                query = `count=${count}&sortByPrice=${sortByPrice}&minPrice=${minPrice}&maxPrice=${maxPrice}&piece=${piece}`;
+
+            history.pushState(null, '', `${pathname}?${query}`);
+            // window.location.replace(window.location.hostname + url);
+
+            if (id) {
+                $.ajax({
+                    url: `/catalog_get/${id}?${query}`,
+                    type: 'GET',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        $('.products-block').html(response.html)
+
+                        //Пофиксил ссылки для страниц на блоке продуктов
+                        $('.products-block').find('.pagi-nav a').each(function () {
+                            let href = $(this).attr('href'),
+                                page = getParameterByName('page', href);
+                            $(this).attr('href', window.location.href + `&page=${page}`)
+                        })
+                    },
+                    error: function (response) {
+                        console.log('response')
+                    }
+                })
+            }
+        }
+
+        $('.filter-sort-list a').click(function () {
+            let sort = $(this).data('sort');
+            $(this).closest('.dropdown-box').find('.dropdown-link .silver').text($(this).text())
+            reloadUrl('sortByPrice', sort)
+            reloadProducts()
+        })
+
+        $('.filter-count-list a').click(function () {
+            let count = $(this).data('count');
+            $(this).closest('.dropdown-box').find('.dropdown-link .silver').text($(this).text())
+            reloadUrl('count', count)
+            reloadProducts()
+        })
+
+        $('.widget-attr-stone a').click(function () {
+            let piece = ($(this).hasClass('active')? true : false)
+            reloadUrl('piece', piece)
+            reloadProducts()
+        })
+
+        /* Filters end */
         //Open link faves in header
         $('.wrap-cart-top2 a').click(function () {
             window.open($(this).attr('href'), "_self");

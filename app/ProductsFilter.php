@@ -22,4 +22,14 @@ class ProductsFilter extends QueryFilter
         $value = (intval($value) == 0)? 999999 : $value;
         return $this->published()->where('price', '<=', $value);
     }
+
+    public function piece($value = false) {
+        $value = ($value === 'true')? true: false;
+        return ($value == true)? $this->published()
+            ->where('piece', '!=', '')
+            ->where('piece', '!=', 'эмаль')
+            ->where('piece', '!=', 'Эмаль')
+            ->where('piece', '!=', 'фианит')
+            ->where('piece', '!=', 'Фианит') : $this->published();
+    }
 }

@@ -6,6 +6,21 @@
             <input type="submit" value=""/>
         </form>
     </div>
+    <div class="widget widget-attr widget-attr-stone">
+        <h2 class="widget-title title14 font-bold play-font text-uppercase dark">Вставка</h2>
+        <div class="widget-content">
+            <ul class="list-none list-attr">
+                <li><a href="javascript:void(0);" class="{{(request()->piece == 'true')?'active':''}}">Камень
+                        <span>
+                            {{ $model->products->where('piece', '!=', '')
+                            ->where('piece', '!=', 'эмаль')
+                            ->where('piece', '!=', 'Эмаль')
+                            ->where('piece', '!=', 'фианит')
+                            ->where('piece', '!=', 'Фианит')->count() }}
+                        </span></a></li>
+            </ul>
+        </div>
+    </div>
     <div class="widget widget-price">
         <h2 class="widget-title title14 font-bold play-font text-uppercase dark">Цена</h2>
         <div class="widget-content">
