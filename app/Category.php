@@ -69,4 +69,44 @@ class Category extends Model
         return $url;
     }
 
+    /*
+     * Возращает наименования кастомных
+     * атрибутов в зависимости от принадлежности к категории
+     */
+    public function customProductFields() :array
+    {
+        //Атрибуты для категории "Серьги"
+        if (array_intersect($this->parentsIds(), [3])) { //Если среди родителей есть категория с id==3 то вот customFields
+            return [
+                'fastener_type' => ['type' => 'dropdown', 'label' => 'Fastener type', 'model' => 'Category', 'method' => 'fastener_type_dropdown']
+            ];
+        }
+        //Атрибуты для категории "Броши"
+        if (array_intersect($this->parentsIds(), [15])) {
+            return [
+                'design' => ['type' => 'dropdown', 'label' => 'Design', 'model' => 'Category', 'method' => 'design_dropdown']
+            ];
+        }
+        return [];
+    }
+
+    public static function fastener_type_dropdown()
+    {
+        return [
+            0 => '',
+            1 => 'Пусеты на винтовом замке (или гвоздики)',
+            2 => 'Английский замок'
+        ];
+    }
+
+    public static function design_dropdown()
+    {
+        return [
+            0 => '',
+            1 => 'Ажурные',
+            2 => 'Животный мир',
+            3 => 'Булавки и иглы'
+        ];
+    }
+
 }
