@@ -6,6 +6,7 @@
             <input type="submit" value=""/>
         </form>
     </div>
+    @if($model->products)
     <div class="widget widget-attr widget-attr-stone">
         <h2 class="widget-title title14 font-bold play-font text-uppercase dark">Вставка</h2>
         <div class="widget-content">
@@ -34,4 +35,5 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
