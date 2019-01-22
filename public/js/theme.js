@@ -441,6 +441,7 @@
             form.method = "POST";
             form.action = url;
             form.style.display = "none";
+            form.acceptCharset = "UTF-8";
 
             for (var key in data) {
                 var input = document.createElement("input");
@@ -496,6 +497,32 @@
         function isOnlineOrder(endSumm) {
             return (endSumm == null || endSumm == 0) ? false : true;
         }
+
+        function removeLastSym(str) {
+            return str.substring(0, str.length - 1);
+        }
+
+        function preparePhone(str) {
+            return parseInt(str.replace(/\D+/g,"").slice(1));
+        }
+
+        //Если с английского на русский, то передаём вторым параметром true.
+        let transliterate = (
+            function() {
+                var
+                    rus = "щ   ш  ч  ц  ю  я  ё  ж  ъ  ы  э  а б в г д е з и й к л м н о п р с т у ф х ь".split(/ +/g),
+                    eng = "shh sh ch cz yu ya yo zh `` y' e` a b v g d e z i j k l m n o p r s t u f x `".split(/ +/g)
+                ;
+                return function(text, engToRus) {
+                    var x;
+                    for(x = 0; x < rus.length; x++) {
+                        text = text.split(engToRus ? eng[x] : rus[x]).join(engToRus ? rus[x] : eng[x]);
+                        text = text.split(engToRus ? eng[x].toUpperCase() : rus[x].toUpperCase()).join(engToRus ? rus[x].toUpperCase() : eng[x].toUpperCase());
+                    }
+                    return text;
+                }
+            }
+        )();
 
 
         //Форма обратной связи
@@ -569,18 +596,26 @@
 
         function getExt1(response) {
             let {order_number, email, phone} = response;
-            let str = "external_id:" + order_number + ",total:" + endSumm + ".0,email: " + email + ",phone: " + phone + ",sno:osn; payments_sum:1, payments_type:" + payments_type;
+            let str = `external_id:${order_number},total:${endSumm}.0,email:${email},phone:${preparePhone(phone)},sno:usn_income_outcome;`;
+            $('.cart_item').each(function () {
+                let price = parseInt($(this).find('.product-price .amount').text());
+                price = (payments_type == 2) ? price * 0.5 : price;
+                str = str + `payments_sum:${price}.0, payments_type:1;`
+            });
+            str = removeLastSym(str);
             return str;
         }
 
         function getExt2() {
-            var str = "sum:" + endSumm + ".0,tax:none,";
+            let str = "";
             $('.cart_item').each(function () {
-                let name = $(this).find('.product-name a').text();
-                let price = parseInt($(this).find('.product-price .amount').text());
-                let cart_item_data = "name:" + name + ",price:" + price + ".0,quantity:1.0;sum:" + price + ".0,tax:vat0,";
+                let name = $(this).find('.product-name a').text(),
+                 price = parseInt($(this).find('.product-price .amount').text()),
+                 sum = (payments_type == 2) ? price * 0.5 : price,
+                 cart_item_data = `sum:${sum}.0,tax:none,tax_sum:0.0,name:${name},price:${price}.0,quantity:1.0;`;
                 str = str + cart_item_data;
             });
+            str = removeLastSym(str);
             return str;
         }
 
