@@ -28,8 +28,6 @@ class ProductsFilter extends QueryFilter
         return ($value == true)? $this->published()
             ->where('piece', '!=', '')
             ->where('piece', '!=', 'эмаль')
-            ->where('piece', '!=', 'Эмаль')
-            ->where('piece', '!=', 'фианит')
-            ->where('piece', '!=', 'Фианит') : $this->published();
+            ->where('piece', '!=', 'Эмаль') : $this->published();
     }
 }

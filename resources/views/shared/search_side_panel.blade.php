@@ -14,9 +14,7 @@
                         <span>
                             {{ $model->products->where('piece', '!=', '')
                             ->where('piece', '!=', 'эмаль')
-                            ->where('piece', '!=', 'Эмаль')
-                            ->where('piece', '!=', 'фианит')
-                            ->where('piece', '!=', 'Фианит')->count() }}
+                            ->where('piece', '!=', 'Эмаль')->count() }}
                         </span></a></li>
             </ul>
         </div>
