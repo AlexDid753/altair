@@ -30,4 +30,10 @@ class ProductsFilter extends QueryFilter
             ->where('piece', '!=', 'эмаль')
             ->where('piece', '!=', 'Эмаль') : $this->published();
     }
+
+    public function complect($value = false) {
+        $value = ($value === 'true')? true: false;
+        return ($value == true)? $this->published()
+            ->where('connected_products', '!=', '') : $this->published();
+    }
 }
