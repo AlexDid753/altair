@@ -644,9 +644,24 @@
                 minPrice = getUrlParameter('minPrice'),
                 maxPrice = getUrlParameter('maxPrice'),
                 piece = getUrlParameter('piece'),
+                complect = getUrlParameter('complect'),
                 href = window.location.href,
                 pathname = window.location.pathname,
-                query = `count=${count}&sortByPrice=${sortByPrice}&minPrice=${minPrice}&maxPrice=${maxPrice}&piece=${piece}`;
+                query = '',
+                params = {
+                    count: count,
+                    sortByPrice: sortByPrice,
+                    minPrice: minPrice,
+                    maxPrice: maxPrice,
+                    piece: piece,
+                    complect: complect,
+                };
+
+            for (const [key, value] of Object.entries(params)) {
+                if ( value ) {
+                    query += `${key}=${value}&`
+                }
+            }
 
             history.pushState(null, '', `${pathname}?${query}`);
             // window.location.replace(window.location.hostname + url);
@@ -692,6 +707,12 @@
         $('.widget-attr-stone a').click(function () {
             let piece = ($(this).hasClass('active')? true : false)
             reloadUrl('piece', piece)
+            reloadProducts()
+        })
+
+        $('.widget-attr-complect a').click(function () {
+            let complect = ($(this).hasClass('active')? true : false)
+            reloadUrl('complect', complect)
             reloadProducts()
         })
 
