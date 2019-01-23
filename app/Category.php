@@ -75,16 +75,28 @@ class Category extends Model
      */
     public function customProductFields() :array
     {
-        //Атрибуты для категории "Серьги"
-        if (array_intersect($this->parentsIds(), [3])) { //Если среди родителей есть категория с id==3 то вот customFields
+        //Атрибуты для категории "Серьги" (id = 14)
+        if (array_intersect($this->parentsIds(), [14])) { //Если среди родителей есть категория с id==14 то вот customFields
             return [
-                'fastener_type' => ['type' => 'dropdown', 'label' => 'Fastener type', 'model' => 'Category', 'method' => 'fastener_type_dropdown']
+                'fastener_type' => [
+                    'type' => 'dropdown',
+                    'label' => 'Fastener type',
+                    'rus_label' => 'Вид застежки',
+                    'model' => 'Category',
+                    'method' => 'fastener_type_dropdown',
+                ]
             ];
         }
-        //Атрибуты для категории "Броши"
+        //Атрибуты для категории "Броши" (id = 15)
         if (array_intersect($this->parentsIds(), [15])) {
             return [
-                'design' => ['type' => 'dropdown', 'label' => 'Design', 'model' => 'Category', 'method' => 'design_dropdown']
+                'design' => [
+                    'type' => 'dropdown',
+                    'label' => 'Design',
+                    'rus_label' => 'Дизайн',
+                    'model' => 'Category',
+                    'method' => 'design_dropdown',
+                ]
             ];
         }
         return [];

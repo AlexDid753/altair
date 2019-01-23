@@ -24,13 +24,16 @@
       <h2 class="widget-title title14 font-bold play-font text-uppercase dark">Комплект</h2>
       <div class="widget-content">
         <ul class="list-none list-attr">
-          <li><a href="javascript:void(0);" class="{{(request()->connected_products == 'true')?'active':''}}">Присутствует
+          <li><a href="javascript:void(0);" class="{{(request()->complect == 'true')?'active':''}}">Присутствует
               <span>
                 {{ $model->products->where('connected_products', '!=', '')->count() }}
               </span></a></li>
         </ul>
       </div>
     </div>
+    @foreach($model->customProductFields() as $field_name => $value)
+      @include('shared.side_multicheckbox')
+    @endforeach
     <div class="widget widget-price">
       <h2 class="widget-title title14 font-bold play-font text-uppercase dark">Цена</h2>
       <div class="widget-content">

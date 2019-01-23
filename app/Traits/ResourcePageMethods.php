@@ -41,7 +41,7 @@ trait ResourcePageMethods
 
     public function parentsIds()
     {
-        $ids = [];
+        $ids = [$this->id];
         $parent = $this->parent;
         while ($parent) {
             array_push($ids,$parent->id);
