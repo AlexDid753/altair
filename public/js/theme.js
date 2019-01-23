@@ -612,7 +612,7 @@
                 let name = $(this).find('.product-name a').text(),
                  price = parseInt($(this).find('.product-price .amount').text()),
                  sum = (payments_type == 2) ? price * 0.5 : price,
-                 cart_item_data = `sum:${sum}.0,tax:none,tax_sum:0.0,name:${name},price:${price}.0,quantity:1.0;`;
+                 cart_item_data = `sum:${sum}.0,tax:none,tax_sum:0.0,name:${transliterate(name)},price:${price}.0,quantity:1.0;`;
                 str = str + cart_item_data;
             });
             str = removeLastSym(str);
@@ -644,9 +644,28 @@
                 minPrice = getUrlParameter('minPrice'),
                 maxPrice = getUrlParameter('maxPrice'),
                 piece = getUrlParameter('piece'),
+                complect = getUrlParameter('complect'),
+                fastener_type = getUrlParameter('fastener_type'),
+                design = getUrlParameter('design'),
                 href = window.location.href,
                 pathname = window.location.pathname,
-                query = `count=${count}&sortByPrice=${sortByPrice}&minPrice=${minPrice}&maxPrice=${maxPrice}&piece=${piece}`;
+                query = '',
+                params = {
+                    count: count,
+                    sortByPrice: sortByPrice,
+                    minPrice: minPrice,
+                    maxPrice: maxPrice,
+                    piece: piece,
+                    complect: complect,
+                    fastener_type: fastener_type,
+                    design: design
+                };
+
+            for (const [key, value] of Object.entries(params)) {
+                if ( value ) {
+                    query += `${key}=${value}&`
+                }
+            }
 
             history.pushState(null, '', `${pathname}?${query}`);
             // window.location.replace(window.location.hostname + url);
@@ -689,13 +708,46 @@
             reloadProducts()
         })
 
+        //todo solid но после того как проверит клиент
         $('.widget-attr-stone a').click(function () {
             let piece = ($(this).hasClass('active')? true : false)
             reloadUrl('piece', piece)
             reloadProducts()
         })
 
+        $('.widget-attr-complect a').click(function () {
+            let complect = ($(this).hasClass('active')? true : false)
+            reloadUrl('complect', complect)
+            reloadProducts()
+        })
+
+        let multiCheckBoxAttrs = ['fastener_type', 'design'];
+        multiCheckBoxAttrs.forEach(function(item, i, arr) {
+            console.log(item);
+            $(`.widget-attr-${item} a`).click(function() {
+                let getAttrs = () => {
+                    let types = [],
+                        key,
+                        index;
+                    $(this).closest('.widget.widget-attr').find('.list-attr li').each(function () {
+                        key = $(this).data('key')
+                        if ($(this).find('a').hasClass('active')) {
+                            types.indexOf(key) === -1 ? types.push(key) : '';
+                        } else {
+                            index = types.indexOf(key);
+                            if (index !== -1) types.splice(index, 1);
+                        }
+
+                    })
+                    return types
+                }
+                reloadUrl(item, getAttrs())
+                reloadProducts()
+            })
+        })
         /* Filters end */
+
+
         //Open link faves in header
         $('.wrap-cart-top2 a').click(function () {
             window.open($(this).attr('href'), "_self");

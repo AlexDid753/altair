@@ -90,6 +90,7 @@ class ProductController extends BaseAdminController
 
     public function edit($id)
     {
+        //todo $model = $this->model::withTrashed()->find($id); или убрать из индекса удаленные товары
         $model = $this->model::find($id);
         $categories = $this->getCategories();
         return view('admin.product.edit', [
@@ -100,8 +101,5 @@ class ProductController extends BaseAdminController
             'class_name' => strtolower((new \ReflectionClass($model))->getShortName())
         ]);
     }
-
-
-
 
 }

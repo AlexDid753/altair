@@ -72,14 +72,14 @@
                         @endif
                       </div>
                       <ul class="list-none product-meta-info">
+                        @if(($model->parent->id == 13) || ($model->parent->id == 29))
                         <li>
                           <div class="item-product-meta-info detail-attr attr-size">
                             <label>Размер:</label>
-                            @if(($model->parent->id == 13) || ($model->parent->id == 29))
                               @includeIf('shared.ring_sizes')
-                            @endif
                           </div>
                         </li>
+                        @endif
                         <li>
                           @if(!empty($model->code))
                             <div class="item-product-meta-info product-code-info">

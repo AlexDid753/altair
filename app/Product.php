@@ -100,6 +100,8 @@ class Product extends Model
         'text',
         'video',
         'images',
+        'fastener_type',
+        'design',
         'categories_title'
     ];
 
@@ -108,6 +110,10 @@ class Product extends Model
         'categories_title' => 'array'
     ];
 
+    public function customFields()
+    {
+        return $this->parent->customProductFields();
+    }
 
     public function categories()
     {
@@ -128,10 +134,6 @@ class Product extends Model
         return $count;
     }
 
-    public function parent()
-    {
-        return $this->belongsTo('App\Category');
-    }
     */
     public function fullUrl()
     {
