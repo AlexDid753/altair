@@ -153,6 +153,15 @@ class Product extends Model
         return $this->attributes['title'];
     }
 
+    public function fastener_type()
+    {
+        return Category::fastener_type_dropdown()[intval($this->attributes['fastener_type'])];
+    }
+
+    public function design()
+    {
+        return Category::design_dropdown()[intval($this->attributes['design'])];
+    }
 
     public function prepared_price()
     {

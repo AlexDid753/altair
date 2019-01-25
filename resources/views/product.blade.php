@@ -120,6 +120,16 @@
                             </div>
                           @endif
                         </li>
+                        @foreach($model->customFields() as $field_name => $value)
+                          @if(!empty($model->$field_name()))
+                            <li>
+                              <div class="item-product-meta-info product-{{$field_name}}-info">
+                                <label>{{$value['rus_label']}}:</label>
+                                <span>{{ $model->$field_name() }}</span>
+                              </div>
+                            </li>
+                          @endif
+                        @endforeach
                         @if ($model->categories()->exists())
                           <li>
                             <div class="item-product-meta-info product-category-info">
