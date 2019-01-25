@@ -1,0 +1,44 @@
+User-agent: *
+Disallow: /?
+Disallow: /*?
+Disallow: /*%
+Disallow: /*&
+Disallow: /404
+Disallow: /index.php?
+Disallow: /index.html
+Disallow: /index.php
+Disallow: /index2.php
+Disallow: /*tag
+Disallow: /search
+Disallow: /admin
+
+User-Agent: Yandex
+Disallow: /?
+Disallow: /*?
+Disallow: /*%
+Disallow: /*&
+Disallow: /404
+Disallow: /index.php?
+Disallow: /index.html
+Disallow: /index.php
+Disallow: /index2.php
+Disallow: /*tag
+Disallow: /search
+Disallow: /admin
+
+User-Agent: Googlebot
+Disallow: /?
+Disallow: /*?
+Disallow: /*%
+Disallow: /*&
+Disallow: /404
+Disallow: /index.php?
+Disallow: /index.html
+Disallow: /index.php
+Disallow: /index2.php
+Disallow: /*tag
+Disallow: /search
+Disallow: /admin
+
+Host: serebro-altair.ru
+Sitemap: https://serebro-altair.ru/sitemap.xml
