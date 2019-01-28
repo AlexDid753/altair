@@ -242,4 +242,10 @@ class Product extends Model
         }
     }
 
+    public function isRing()
+    {
+        $ring_categories_ids = [13,19,29];
+        return (array_intersect($this->parentsIds(), $ring_categories_ids)) ? true : false;
+    }
+
 }

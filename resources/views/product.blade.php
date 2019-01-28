@@ -72,7 +72,7 @@
                         @endif
                       </div>
                       <ul class="list-none product-meta-info">
-                        @if(($model->parent->id == 13) || ($model->parent->id == 29))
+                        @if($model->isRing())
                         <li>
                           <div class="item-product-meta-info detail-attr attr-size">
                             <label>Размер:</label>
