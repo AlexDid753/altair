@@ -1,16 +1,14 @@
 <div class="form-group row">
+  @php
+    $options = call_user_func_array(['App\\' . $fieldValue['model'], $fieldValue['method']], [$model->id]);
+    $arrFieldName = str_replace(['[', ']'], "", $fieldName)
+  @endphp
     @if (is_array($fieldValue) && !empty($fieldValue['label']))
         <label for="{{ $fieldName }}" class="col-md-12 col-form-label">{{ __($fieldValue['label']) }}</label>
     @else
         <label for="{{ $fieldName }}" class="col-md-12 col-form-label">{{ __(str_singular(ucfirst(str_replace('_', ' ', $fieldName)))) }}</label>
     @endif
-
     <div class="col-md-12">
-
-        @php
-            $options = call_user_func_array(['App\\' . $fieldValue['model'], $fieldValue['method']], [$model->id]);
-        @endphp
-
         <select
                 {{--вывод атрибутов--}}
                 @if (isset($fieldValue['attributes']))
@@ -20,7 +18,7 @@
                 class="form-control {{ $errors->has($fieldName) ? 'is-invalid' : '' }}"
                 name="{{ $fieldName }}">
             @foreach ($options as $id => $option)
-                <option value="{{ $id }}" {{ $id == ($model->$fieldModelName ?: old($fieldName))  ? 'selected' : '' }}>{{ $option }}</option>
+                <option value="{{ $id }}" {{ in_array($id, $model->$arrFieldName) ?? old($fieldName) ? 'selected' : '' }}>{{ $option }}</option>
             @endforeach
         </select>
 

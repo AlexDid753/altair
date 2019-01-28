@@ -102,12 +102,14 @@ class Product extends Model
         'images',
         'fastener_type',
         'design',
+        'excepted_sizes',
         'categories_title'
     ];
 
     protected $casts = [
         'published' => 'boolean',
-        'categories_title' => 'array'
+        'categories_title' => 'array',
+        'excepted_sizes' => 'array'
     ];
 
     public function customFields()
@@ -246,6 +248,11 @@ class Product extends Model
     {
         $ring_categories_ids = [13,19,29];
         return (array_intersect($this->parentsIds(), $ring_categories_ids)) ? true : false;
+    }
+
+    public static function excepted_sizes_dropdown()
+    {
+        return range(14,23, 0.5);;
     }
 
 }

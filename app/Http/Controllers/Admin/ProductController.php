@@ -36,6 +36,14 @@ class ProductController extends BaseAdminController
         'sample' => 'input',
         'material' => 'input',
         'piece' => 'input',
+        'excepted_sizes[]' => [
+            'type' => 'multi_dropdown',
+            'label' => 'Excepted sizes',
+            'model' => 'Product',
+            'method' => 'excepted_sizes_dropdown' ,
+            "attributes"=>['multiple' => 'multiple']
+        ],
+
         'connected_products' => ['type' => 'input',
             "attributes"=>['placeholder' =>
                 "placeholder='ID товаров строго через запятую, например: 56,49' "]],
@@ -92,6 +100,9 @@ class ProductController extends BaseAdminController
     {
         //todo $model = $this->model::withTrashed()->find($id); или убрать из индекса удаленные товары
         $model = $this->model::find($id);
+        if( !$model->isRing() ) {
+            unset($this->fields['excepted_sizes[]']);
+        };
         $categories = $this->getCategories();
         return view('admin.product.edit', [
             'model' => $model,
