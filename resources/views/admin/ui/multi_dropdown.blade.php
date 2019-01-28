@@ -18,7 +18,7 @@
                 class="form-control {{ $errors->has($fieldName) ? 'is-invalid' : '' }}"
                 name="{{ $fieldName }}">
             @foreach ($options as $id => $option)
-                <option value="{{ $id }}" {{ in_array($id, $model->$arrFieldName) ?? old($fieldName) ? 'selected' : '' }}>{{ $option }}</option>
+                <option value="{{ $id }}" {{ (isset($model->$arrFieldName) && in_array($id, $model->$arrFieldName)) ? 'selected' : '' }}>{{ $option }}</option>
             @endforeach
         </select>
 
