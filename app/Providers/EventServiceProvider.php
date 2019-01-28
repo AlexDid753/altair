@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Menu;
 use App\Settings;
 use Illuminate\Support\Facades\Mail;
 use App\Feedback;
@@ -122,6 +123,10 @@ class EventServiceProvider extends ServiceProvider
 
         Product::deleting(function($model){
             $model->removeFromIndex();
+        });
+
+        Menu::saving(function($model){
+            $model->url = $model->getUrl();
         });
 
         Feedback::saved(function ($model) {

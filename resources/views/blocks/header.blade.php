@@ -14,18 +14,10 @@
               @foreach($topMenu as $menuItem)
                 <li class="{{ count($menuItem->childrens) ? 'menu-item-has-children' : ''}}">
                   <a href="{{$menuItem->getUrl()}}">{{$menuItem->name}}</a>
-                  @if (count($menuItem->childrens)) {{--todo сделать рекурсивное применение шаблона --}}
+                  @if (count($menuItem->childrens))
                   <ul class="sub-menu">
                     @foreach($menuItem->childrens as $subMenuItem)
-                      <li class="{{ count($subMenuItem->childrens) ? 'menu-item-has-children' : ''}}"><a href="{{ $subMenuItem->getUrl() }}">{{ $subMenuItem->name }}</a>
-                        @if (count($subMenuItem->childrens))
-                          <ul class="sub-menu">
-                            @foreach($subMenuItem->childrens as $subMenuItem)
-                              <li><a href="{{ $subMenuItem->getUrl() }}">{{ $subMenuItem->name }}</a></li> {{--todo getUrl требует оптимизации, сохранения url на сохранение menu --}}
-                            @endforeach
-                          </ul>
-                        @endif
-                      </li>
+                      @include('shared.sub_menu')
                     @endforeach
                   </ul>
                   @endif
@@ -45,8 +37,8 @@
 
           <ul class="wrap-cart-top2 list-inline-block pull-right">
             <li>
-              <a href="{{\App\Page::find(2)->url}}" class="title18 wishlist-link" title="Корзина"><span class="white"><i class="fa fa-shopping-basket"></i></span>
-                <sup class="title10 round dark bg-white">{{count(\App\Product::liked())}}</sup></a>
+              <a href="{{Page::find(2)->url}}" class="title18 wishlist-link" title="Корзина"><span class="white"><i class="fa fa-shopping-basket"></i></span>
+                <sup class="title10 round dark bg-white">{{count(Product::liked())}}</sup></a>
             </li>
           </ul>
         </div>
