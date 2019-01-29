@@ -18,6 +18,7 @@
                   <ul class="sub-menu">
                     @foreach($menuItem->childrens as $subMenuItem)
                       @include('shared.sub_menu')
+                      @include('anatica')
                     @endforeach
                   </ul>
                   @endif
