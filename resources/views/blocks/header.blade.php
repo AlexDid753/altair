@@ -11,17 +11,8 @@
           <!-- End logo -->
           <nav class="main-nav main-nav1 pull-left dark-style">
             <ul>
-              @foreach($topMenu as $menuItem)
-                <li class="{{ count($menuItem->childrens) ? 'menu-item-has-children' : ''}}">
-                  <a href="{{$menuItem->getUrl()}}">{{$menuItem->name}}</a>
-                  @if (count($menuItem->childrens))
-                  <ul class="sub-menu">
-                    @foreach($menuItem->childrens as $subMenuItem)
-                      @include('shared.sub_menu')
-                    @endforeach
-                  </ul>
-                  @endif
-                </li>
+              @foreach($topMenu as $subMenuItem)
+                @include('shared.sub_menu_item')
               @endforeach
             </ul>
             <a href="#" class="toggle-mobile-menu"><span></span></a>
