@@ -1,53 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-    @includeIf('blocks.breadcrumb')
-    <section id="content" data-id="{{$model->id}}">
-        <div class="content-page">
-            <div class="container">
+  @includeIf('blocks.breadcrumb')
+  <section id="content" data-id="{{$model->id}}">
+    <div class="content-page">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-4 col-xs-12">
+            @include('shared.search_side_panel')
+          </div>
+          <div class="col-md-9 col-sm-8 col-xs-12">
+            <div class="content-blog-page shop-boxed-banner">
+              <div class="title-page">
                 <div class="row">
-                    @if(count($subcategories))
-                        <div class="col-md-12">
-                            <h1 class="title30 font-bold text-uppercase pull-left play-font dark">{{$model->name}}</h1>
-                        </div>
-                        <div class="block-cate2">
-                            <div class="title-box2 text-center">
-                                <h2 class="title24 dark play-font font-italic">Подкатегории</h2>
-                                <img src="images/home/jewelry2/line-black.png" alt="">
-                            </div>
-                            <div class="list-cat2">
-                                <div class="row">
-                                    @each('shared.subcategory_preview', $subcategories, 'model')
-                                </div>
-                            </div>
-                        </div>
-                    @else
-                        <div class="col-md-3 col-sm-4 col-xs-12">
-                            @include('shared.search_side_panel')
-                        </div>
-                        <div class="col-md-9 col-sm-8 col-xs-12">
-                            <div class="content-blog-page shop-boxed-banner">
-                                <div class="title-page">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h1 class="title30 font-bold text-uppercase pull-left play-font dark">{{$model->name}}</h1>
-                                          @include('shared.sort_panel')
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="products-block">
-                                  @include('blocks.products-grid', ['products' => $products])
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
+                  <div class="col-md-12">
+                    <h1 class="title30 font-bold text-uppercase pull-left play-font dark">{{$model->name}}</h1>
+                    @include('shared.sort_panel')
+                  </div>
                 </div>
-
-              <div class="col-12 category_seo-text">
-                {!! $model->text !!}
+              </div>
+              <div class="products-block">
+                @include('blocks.products-grid', ['products' => $products])
               </div>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+      <div class="col-12 category_seo-text">
+        {!! $model->text !!}
+      </div>
+    </div>
+    </div>
+  </section>
 @endsection
