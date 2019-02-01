@@ -10,7 +10,7 @@
             <div class="content-page-detail">
               <div class="product-detail detail-full-width">
                 <div class="row">
-                  <div class="product__mobile-content">
+                  <div class="col-md-5 col-sm-12 col-xs-12 product__mobile-content">
                     <div class="detail-tabs">
                       @if(!empty($model->video))
                       <div class="detail-tab-title">

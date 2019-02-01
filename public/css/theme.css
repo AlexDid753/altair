@@ -2630,6 +2630,7 @@ a.opaci:hover {
 }
 .list-tag-detail li.active a {
   color: #333;
+  background-color: #c4c4c4;
 }
 .list-tag-detail li.active a::after {
   position: absolute;
