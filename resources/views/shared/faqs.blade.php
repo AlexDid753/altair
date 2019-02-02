@@ -3,7 +3,7 @@
     @if(isset($faqs) && count($faqs))
         <div class="contact-accordion dark toggle-tab">
             @foreach($faqs as $faq)
-                <div class="item-toggle-tab <?php if($loop->iteration == 1) {echo 'active';} ?>">
+                <div class="item-toggle-tab {{($loop->iteration == 1)? 'active' : ''}}">
                     <h2 class="toggle-tab-title dark">{{$faq->title}}</h2>
                     <p class="desc toggle-tab-content dark opaci">{{$faq->text}} </p>
                 </div>

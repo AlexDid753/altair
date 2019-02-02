@@ -100,14 +100,22 @@ class Product extends Model
         'text',
         'video',
         'images',
+        'fastener_type',
+        'design',
+        'excepted_sizes',
         'categories_title'
     ];
 
     protected $casts = [
         'published' => 'boolean',
-        'categories_title' => 'array'
+        'categories_title' => 'array',
+        'excepted_sizes' => 'array'
     ];
 
+    public function customFields()
+    {
+        return $this->parent->customProductFields();
+    }
 
     public function categories()
     {
@@ -128,10 +136,6 @@ class Product extends Model
         return $count;
     }
 
-    public function parent()
-    {
-        return $this->belongsTo('App\Category');
-    }
     */
     public function fullUrl()
     {
@@ -151,6 +155,15 @@ class Product extends Model
         return $this->attributes['title'];
     }
 
+    public function fastener_type()
+    {
+        return Category::fastener_type_dropdown()[intval($this->attributes['fastener_type'])];
+    }
+
+    public function design()
+    {
+        return Category::design_dropdown()[intval($this->attributes['design'])];
+    }
 
     public function prepared_price()
     {
@@ -219,11 +232,7 @@ class Product extends Model
 
     public function searchable()
     {
-        if ($this->published && !$this->trashed()) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($this->published && !$this->trashed())? true : false;
     }
 
     //Синхронизация связей с категориями
@@ -233,6 +242,17 @@ class Product extends Model
         if (array_key_exists('categories', $this->data)) {
             $this->categories()->sync($this->data['categories']);
         }
+    }
+
+    public function isRing()
+    {
+        $ring_categories_ids = [13,19,29];
+        return (array_intersect($this->parentsIds(), $ring_categories_ids)) ? true : false;
+    }
+
+    public static function excepted_sizes_dropdown()
+    {
+        return range(14,23, 0.5);;
     }
 
 }

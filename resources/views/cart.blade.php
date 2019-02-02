@@ -25,7 +25,9 @@
                                             <td class="product-remove">
                                                 <i class="icon ion-ios-close-outline"
                                                    data-id="{{$product->id}}"
-                                                   data-slug="{{$product->slug}}"></i>
+                                                   data-slug="{{$product->slug}}"
+                                                   data-size="{{getProductData($product->id,'size')}}">
+                                                </i>
                                             </td>
                                             <td class="product-thumbnail">
                                                 <a href="{{$product->url}}"><img
@@ -35,7 +37,10 @@
                                             <td class="product-name" data-title="Product">
                                                 <img class="product-name__mobile-img"
                                                      src="{{resize($product->preview_image(), 100, 100)}}" alt=""/>
-                                                <a href="{{$product->url}}">{{$product->title}}</a>
+                                                <a href="{{$product->url}}">
+                                                    {{ $product->title }}
+                                                    {{ !empty(getProductData($product->id,'size'))? '(Размер: '.getProductData($product->id,'size').')':''}}
+                                                </a>
                                             </td>
                                             <td class="product-price" data-title="Price">
                                                 <span class="amount">{!! $product->prepared_price() !!}</span>

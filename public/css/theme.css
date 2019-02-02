@@ -1178,8 +1178,8 @@ body .scroll-top:hover {
   padding-bottom: 2px;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
   text-decoration: underline;
+  white-space: nowrap;
 }
 div.table .product-info .product-title {
   white-space: normal;
@@ -1897,6 +1897,9 @@ div.table .product-info .product-title {
   border: 1px solid #e5e5e5;
   padding: 0 15px;
 }
+.show-by.sort-list .dropdown-link .silver,.show-by.sort-list .dropdown-list {
+  min-width: 200px;
+}
 .sort-pagi-bar > li {
   margin: 0 15px;
 }
@@ -1913,6 +1916,9 @@ div.table .product-info .product-title {
   right: 0;
   width: 70px;
 }
+/*.show-by.sort-list .dropdown-list {*/
+  /*width: 200px;*/
+/*}*/
 .dropdown-list li a {
   display: block;
   padding: 5px 10px;
@@ -2315,6 +2321,17 @@ a.opaci:hover {
   left: 10px;
   z-index: 11;
 }
+.product__mobile-content {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .product__mobile-content {
+    display: block;
+  }
+  .product__desktop-content {
+    display: none;
+  }
+}
 .product-thumb .product-label span {
   display: block;
   height: 30px;
@@ -2613,6 +2630,7 @@ a.opaci:hover {
 }
 .list-tag-detail li.active a {
   color: #333;
+  background-color: #c4c4c4;
 }
 .list-tag-detail li.active a::after {
   position: absolute;
@@ -5419,7 +5437,7 @@ a.dark {
   right: 0;
   content: "";
 }
-.list-attr-label li a {
+.list-attr-label li a, .list-attr-label li span {
   display: block;
   min-width: 30px;
   height: 30px;
@@ -5427,6 +5445,11 @@ a.dark {
   text-align: center;
   line-height: 28px;
   position: relative;
+  cursor: pointer;
+}
+.list-attr-label li a.active, .list-attr-label li span.active {
+  background: #e5e5e5;
+  color: #fff;
 }
 .list-category-toggle .toggle-tab-title {
   padding: 8px 0;
@@ -6936,6 +6959,12 @@ img.line-icon {
 .wrap-nav-search9.white-style .search-hover .submit-form::after {
   color: #fff;
 }
+.widget-price .inputs {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -53px
+}
 .content-top-jewelry4 .banner-info {
   top: auto;
   height: auto;
@@ -7199,4 +7228,11 @@ img.line-icon {
 }
 .video{
   margin-top: 15px;
+}
+
+.category_seo-text {
+  padding-top: 30px;
+}
+.zoomContainer {
+  cursor: zoom-in;
 }

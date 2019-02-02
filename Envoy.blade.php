@@ -1,6 +1,7 @@
 @setup
 
 	$configFile = __DIR__ . '/config/deploy.php';
+	$localDir = __DIR__;
 
 	if ( ! file_exists($configFile)) {
 		throw new Exception('Config file '. $configFile .' not found.');
@@ -9,6 +10,12 @@
 	$deployConfig = include($configFile);
 	$environment  = isset($env) ? $env : array_get($deployConfig, 'default');
 	$beginOn      = microtime(true);
+
+	$db_remote = isset($db_remote) ? $db_remote : 'app_' . $environment;
+	$db_user_remote = isset($db_user_remote) ? $db_user_remote : 'app_dbu';
+
+	$db_local = trim(explode('=', `cat .env | grep DB_DATABASE`)[1]);
+	$db_user_local = trim(explode('=', `cat .env | grep DB_USERNAME`)[1]);
 
 	$name   = array_get($deployConfig, 'name', 'untitled');
 	$slack  = array_get($deployConfig, 'slack');
@@ -236,8 +243,8 @@
 			{{ $cmdPhp }} composer.phar self-update 2>&1
 		fi
 
-		echo "{{ $cmdPhp }} composer.phar install --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction" 1>&2;
-		{{ $cmdPhp }} composer.phar install --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction 2>&1
+		echo "{{ $cmdPhp }} composer.phar install --no-dev --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction" 1>&2;
+		{{ $cmdPhp }} composer.phar install --no-dev --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction 2>&1
 	fi
 @endtask
 
@@ -304,13 +311,13 @@
 
 @task('deploy:migrate', ['on' => 'web'])
 
-	php {{ $releasePath }}/artisan migrate
+	php {{ $releasePath }}/artisan migrate --force
 
 @endtask
 
 @task('deploy:restart_services', ['on' => 'web'])
-	sudo supervisorctl update
-	sudo supervisorctl restart laravel-worker:*
+	{{--sudo supervisorctl update--}}
+	{{--sudo supervisorctl restart laravel-worker:*--}}
 @endtask
 
 @task('deploy:finishing', ['on' => 'web'])
@@ -330,6 +337,85 @@
 	echo "rsync -czavP storage/app/public/ {{ $server }}:{{ $sharedPath }}/storage/app/public/" 1>&2;
 	rsync -czavP {{ $server }}:{{ $sharedPath }}/storage/app/public/ storage/app/public/
 @endtask
+
+@story('app:pull')
+	db:dump
+	db:dump-download
+	db:dump-delete-remote
+	db:clear
+	db:import
+	db:dump-delete
+	public:pull
+@endstory
+
+@story('db:pull')
+	db:dump
+	db:dump-download
+	db:dump-delete-remote
+	db:clear
+	db:import
+	db:dump-delete
+@endstory
+
+@story('db:push')
+  db:dump-create
+  db:dump-load
+  db:dump-delete
+	db:clear-web
+  db:import-web
+  db:dump-delete-remote
+@endstory
+
+@task('db:dump', ['on' => 'web'])
+	echo "db:dump";
+	pg_dump --no-acl --no-owner -U {{ $db_user_remote }} {{ $db_remote }} > {{ $sharedPath }}/db.dump
+@endtask
+
+@task('db:dump-download', ['on' => 'localhost'])
+	echo "db:dump-download";
+	scp {{ $server }}:{{ $sharedPath }}/db.dump {{ $localDir }}/storage/db.dump
+@endtask
+
+
+@task('db:clear', ['on' => 'localhost'])
+	echo "db:clear";
+	psql -U {{ $db_user_local }} -c "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = '{{ $db_local }}' AND pid <> pg_backend_pid();" {{ $db_local }}
+	dropdb -U {{ $db_user_local }} {{ $db_local }}
+	createdb -U {{ $db_user_local }} {{ $db_local }}
+@endtask
+
+@task('db:clear-web', ['on' => 'web'])
+	echo "db:clear-web";
+	psql -U {{ $db_user_remote }} -c "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = '{{ $db_remote }}' AND pid <> pg_backend_pid();" {{ $db_remote }}
+  dropdb -U postgres {{ $db_remote }}
+	createdb -U postgres {{ $db_remote }}
+@endtask
+
+@task('db:import', ['on' => 'localhost'])
+	psql -d {{ $db_local }} < {{ $localDir }}/storage/db.dump
+@endtask
+
+@task('db:import-web', ['on' => 'web'])
+	psql -d {{ $db_remote }} -U {{ $db_user_remote }} < {{ $sharedPath }}/db.dump
+@endtask
+
+@task('db:dump-delete', ['on' => 'localhost'])
+	rm {{ $localDir }}/storage/db.dump
+@endtask
+
+@task('db:dump-delete-remote', ['on' => 'web'])
+	echo "db:dump-delete-remote";
+	rm {{ $sharedPath }}/db.dump
+@endtask
+
+@task('db:dump-create', ['on' => 'localhost'])
+  pg_dump --no-acl --no-owner -U {{ $db_user_local }} {{ $db_local }} > {{ $localDir }}/storage/db.dump
+@endtask
+
+@task('db:dump-load', ['on' => 'localhost'])
+  scp {{ $localDir }}/storage/db.dump {{ $server }}:{{ $sharedPath }}/db.dump
+@endtask
+
 
 @error
 	if ($task === 'deploy:check') {

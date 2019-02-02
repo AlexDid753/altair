@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Menu;
 use App\Settings;
 use Illuminate\Support\Facades\Mail;
 use App\Feedback;
@@ -97,13 +98,16 @@ class EventServiceProvider extends ServiceProvider
 
         Category::saving(function ($model) {
             self::setUrl($model);
+            self::setChildrensUrl($model);
         });
 
-        Category::saved(function ($model) {
-            foreach ($model->products as $product)
-                $product->save(); //Чтобы вызвать колбеки сохранения продукта
-            self::setChildrensUrl($model);
-            self::setProductsUrl($model);
+        Category::updating(function ($model) {
+            $original = $model->getOriginal();
+            if (($model->slug != $original['slug']) || $model->title != $original['title']) {
+                ini_set('max_execution_time', 180); //3 minutes
+                foreach ($model->products as $product)
+                    $product->save(); //Чтобы вызвать колбеки сохранения продукта
+            }
         });
 
         Product::saving(function ($model) {
@@ -119,6 +123,10 @@ class EventServiceProvider extends ServiceProvider
 
         Product::deleting(function($model){
             $model->removeFromIndex();
+        });
+
+        Menu::saving(function($model){
+            $model->url = $model->getUrl();
         });
 
         Feedback::saved(function ($model) {

@@ -1,4 +1,5 @@
 <?php namespace App\Traits;
+use App\Category;
 use Illuminate\Database\Eloquent\SoftDeletes;
 trait ResourcePageMethods
 {
@@ -26,16 +27,33 @@ trait ResourcePageMethods
         return $this->belongsTo('App\Category');
     }
 
-    public function parentsCount(){
+    public function parentsCount()
+    {
         $count = 0;
         if (($parent = $this->parent()->get())){
             $count+=1;
-
         }
         while ($parent && ($parent->parent)) {
             $count+=1;
         }
         return $count;
+    }
+
+    public function parentsIds()
+    {
+        $ids = [$this->id];
+        $parent = $this->parent;
+        while ($parent) {
+            array_push($ids,$parent->id);
+            $parent = $parent->parent;
+        }
+        return $ids;
+
+    }
+
+    public function parents()
+    {
+        return Category::whereIn('id', $this->parentsIds());
     }
 
     public static function getUrl($id)

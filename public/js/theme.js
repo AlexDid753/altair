@@ -1,6 +1,81 @@
 (function ($) {
     "use strict"; // Start of use strict
     $(function () {
+        function updateURLParameter(url, param, paramVal)
+        {
+            var TheAnchor = null;
+            var newAdditionalURL = "";
+            var tempArray = url.split("?");
+            var baseURL = tempArray[0];
+            var additionalURL = tempArray[1];
+            var temp = "";
+
+            if (additionalURL)
+            {
+                var tmpAnchor = additionalURL.split("#");
+                var TheParams = tmpAnchor[0];
+                TheAnchor = tmpAnchor[1];
+                if(TheAnchor)
+                    additionalURL = TheParams;
+
+                tempArray = additionalURL.split("&");
+
+                for (var i=0; i<tempArray.length; i++)
+                {
+                    if(tempArray[i].split('=')[0] != param)
+                    {
+                        newAdditionalURL += temp + tempArray[i];
+                        temp = "&";
+                    }
+                }
+            }
+            else
+            {
+                var tmpAnchor = baseURL.split("#");
+                var TheParams = tmpAnchor[0];
+                TheAnchor  = tmpAnchor[1];
+
+                if(TheParams)
+                    baseURL = TheParams;
+            }
+
+            if(TheAnchor)
+                paramVal += "#" + TheAnchor;
+
+            var rows_txt = temp + "" + param + "=" + paramVal;
+            return baseURL + "?" + newAdditionalURL + rows_txt;
+        }
+
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                }
+            }
+        };
+
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        function reloadUrl(param,value) {
+            window.history.replaceState('', '', updateURLParameter(window.location.href, param, value));
+        }
+
+
         //Custom Slider
         if ($('.product-custom-slider').length > 0) {
             $('.product-custom-slider').each(function () {
@@ -177,17 +252,40 @@
                 $(this).find(".slider-range").slider({
                     range: true,
                     min: 0,
-                    max: 500,
-                    values: [25, 400],
+                    max: 100000,
+                    values: [100, 30000],
+                    create: function (event, ui) {
+                        attachSlider()
+                    },
                     slide: function (event, ui) {
-                        $(this).find(".min-price").text('$' + ui.values[0]);
-                        $(this).find(".max-price").text('$' + ui.values[1]);
+                        $(this).find(".min-price").text(ui.values[0] + '₽');
+                        $(this).find(".max-price").text(ui.values[1] + '₽');
+                        attachSlider()
+                    },
+                    change: function (event, ui) {
+                        reloadUrl('minPrice', ui.values[0])
+                        reloadUrl('maxPrice', ui.values[1])
+                        $(this).find(".min-price").text(ui.values[0] + '₽');
+                        $(this).find(".max-price").text(ui.values[1] + '₽');
+                        attachSlider()
+                        reloadProducts()
                     }
                 });
-                $(this).find(".min-price").appendTo($(this).find('.ui-slider-handle').first()).text('$' + $(this).find(".slider-range").slider("values", 0));
-                $(this).find(".max-price").appendTo($(this).find('.ui-slider-handle').last()).text('$' + $(this).find(".slider-range").slider("values", 1));
+                $(this).find(".min-price").appendTo($(this).find('.ui-slider-handle').first()).text($(this).find(".slider-range").slider("values", 0) + '₽');
+                $(this).find(".max-price").appendTo($(this).find('.ui-slider-handle').last()).text($(this).find(".slider-range").slider("values", 1) + '₽');
             });
         }
+
+        function attachSlider() {
+            $('#price_min').val($('#price-filter').slider("values", 0));
+            $('#price_max').val($('#price-filter').slider("values", 1));
+        }
+
+        $('.slider-range input').change(function(e) {
+            var setIndex = (this.id == "price_max") ? 1 : 0;
+            $('#price-filter').slider("values", setIndex, $(this).val())
+        })
+
         //Toggle Class
         if ($('.list-attr').length > 0) {
             $('.list-attr a').on('click', function (event) {
@@ -312,10 +410,12 @@
             let favorites_data = [];
             $('.cart_item').each(function () {
                 var favorite_item = $(this).find('.product-remove i'),
-                    id = favorite_item.data('id');
+                    id = favorite_item.data('id'),
+                    size = favorite_item.data('size')
                 //count = favorite_item.text();
                 favorites_data.push({
                     id: id,
+                    size: size
                     //count:  count
                 });
             });
@@ -508,7 +608,7 @@
                 let name = $(this).find('.product-name a').text(),
                  price = parseInt($(this).find('.product-price .amount').text()),
                  sum = (payments_type == 2) ? price * 0.5 : price,
-                 cart_item_data = `sum:${sum}.0,tax:none,tax_sum:0.0,name:${name},price:${price}.0,quantity:1.0;`;
+                 cart_item_data = `sum:${sum}.0,tax:none,tax_sum:0.0,name:${transliterate(name)},price:${price}.0,quantity:1.0;`;
                 str = str + cart_item_data;
             });
             str = removeLastSym(str);
@@ -529,9 +629,120 @@
                 } else {
                     $("#header").removeClass("default").fadeIn('fast');
                 }
-                ;
             });
         });
+
+        /* Filters start */
+        function reloadProducts() {
+            let id = $('#content').data('id'),
+                count = getUrlParameter('count'),
+                sortByPrice = getUrlParameter('sortByPrice'),
+                minPrice = getUrlParameter('minPrice'),
+                maxPrice = getUrlParameter('maxPrice'),
+                piece = getUrlParameter('piece'),
+                complect = getUrlParameter('complect'),
+                fastener_type = getUrlParameter('fastener_type'),
+                design = getUrlParameter('design'),
+                href = window.location.href,
+                pathname = window.location.pathname,
+                query = '',
+                params = {
+                    count: count,
+                    sortByPrice: sortByPrice,
+                    minPrice: minPrice,
+                    maxPrice: maxPrice,
+                    piece: piece,
+                    complect: complect,
+                    fastener_type: fastener_type,
+                    design: design
+                };
+
+            for (const [key, value] of Object.entries(params)) {
+                if ( value ) {
+                    query += `${key}=${value}&`
+                }
+            }
+
+            history.pushState(null, '', `${pathname}?${query}`);
+            // window.location.replace(window.location.hostname + url);
+
+            if (id) {
+                $.ajax({
+                    url: `/catalog_get/${id}?${query}`,
+                    type: 'GET',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        $('.products-block').html(response.html)
+
+                        //Пофиксил ссылки для страниц на блоке продуктов
+                        $('.products-block').find('.pagi-nav a').each(function () {
+                            let href = $(this).attr('href'),
+                                page = getParameterByName('page', href);
+                            $(this).attr('href', window.location.href + `&page=${page}`)
+                        })
+                    },
+                    error: function (response) {
+                        console.log('response')
+                    }
+                })
+            }
+        }
+
+        $('.filter-sort-list a').click(function () {
+            let sort = $(this).data('sort');
+            $(this).closest('.dropdown-box').find('.dropdown-link .silver').text($(this).text())
+            reloadUrl('sortByPrice', sort)
+            reloadProducts()
+        })
+
+        $('.filter-count-list a').click(function () {
+            let count = $(this).data('count');
+            $(this).closest('.dropdown-box').find('.dropdown-link .silver').text($(this).text())
+            reloadUrl('count', count)
+            reloadProducts()
+        })
+
+        //todo solid но после того как проверит клиент
+        $('.widget-attr-stone a').click(function () {
+            let piece = ($(this).hasClass('active')? true : false)
+            reloadUrl('piece', piece)
+            reloadProducts()
+        })
+
+        $('.widget-attr-complect a').click(function () {
+            let complect = ($(this).hasClass('active')? true : false)
+            reloadUrl('complect', complect)
+            reloadProducts()
+        })
+
+        let multiCheckBoxAttrs = ['fastener_type', 'design'];
+        multiCheckBoxAttrs.forEach(function(item, i, arr) {
+            console.log(item);
+            $(`.widget-attr-${item} a`).click(function() {
+                let getAttrs = () => {
+                    let types = [],
+                        key,
+                        index;
+                    $(this).closest('.widget.widget-attr').find('.list-attr li').each(function () {
+                        key = $(this).data('key')
+                        if ($(this).find('a').hasClass('active')) {
+                            types.indexOf(key) === -1 ? types.push(key) : '';
+                        } else {
+                            index = types.indexOf(key);
+                            if (index !== -1) types.splice(index, 1);
+                        }
+
+                    })
+                    return types
+                }
+                reloadUrl(item, getAttrs())
+                reloadProducts()
+            })
+        })
+        /* Filters end */
+
 
         //Open link faves in header
         $('.wrap-cart-top2 a').click(function () {
@@ -736,6 +947,9 @@
                     visible: data.visible,
                     vertical: data.vertical,
                 });
+                let firstImg = $(this).find(".carousel a").first(),
+                    url = firstImg.find('img').data("fancybox");
+                firstImg.parents('.detail-gallery').find(".mid img").data("fancybox", url);
                 //Elevate Zoom
                 $(this).find('.mid img').elevateZoom({
                     zoomType: "lens",
@@ -744,12 +958,28 @@
                     borderSize: 1,
                     containLensZoom: true
                 });
+                $(this).find('.mid img').bind("click", function (e) {
+                    $(this).find('.mid img').elevateZoom({
+                        zoomType: "lens",
+                        lensShape: "square",
+                        lensSize: 100,
+                        borderSize: 1,
+                        containLensZoom: true
+                    });
+                    var ez = $(this).data('elevateZoom');
+                    $.fancybox([
+                        $(this).data('fancybox')
+                    ], {'type': 'image'});
+                    return false;
+                });
                 $(this).find(".carousel a").on('click', function (event) {
                     event.preventDefault();
                     $(this).parents('.detail-gallery').find(".carousel a").removeClass('active');
                     $(this).addClass('active');
-                    var z_url = $(this).find('img').attr("src");
+                    var z_url = $(this).find('img').attr("src"),
+                        big_url = $(this).find('img').data("fancybox");
                     $(this).parents('.detail-gallery').find(".mid img").attr("src", z_url);
+                    $(this).parents('.detail-gallery').find(".mid img").data("fancybox", big_url);
                     $('.zoomLens').css('background-image', 'url("' + z_url + '")');
                 });
             });
@@ -772,6 +1002,21 @@
             $('.btn-toggle-mobile-menu').remove();
             $('.main-nav .sub-menu,.main-nav .mega-menu').slideDown();
         }
+    }
+
+    function productAddData(id,json_data) {
+        $.ajax({
+            url: '/product_data/' + id,
+            dataType: 'json',
+            type: "POST",
+            data: json_data,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (data) {
+                console.log(data)
+            }
+        })
     }
 
 //Document Ready
@@ -797,6 +1042,19 @@
             });
         }
         $('.contact-phone input').mask("+7 (999) 999-9999");
+
+        $('.attr-size .list-attr-label li span').click(function () {
+            let size = $(this).text(),
+                id = $(this).data('id'),
+                data = { [id] : { 'size' : size } };
+
+            $(this).closest('.list-attr-label').find('li span').each(function () {
+                $(this).removeClass('active')
+            })
+
+            $(this).addClass('active')
+            productAddData(id,data);
+        })
     });
 //Window Load
     jQuery(window).on('load', function () {
