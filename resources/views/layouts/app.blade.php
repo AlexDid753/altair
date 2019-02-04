@@ -7,6 +7,9 @@ if (!isset($model)) {
 }
 ?>
 <head>
+    @if(config('app.env') == 'production')
+        {!! $settings->scripts !!}
+    @endif
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -23,9 +26,6 @@ if (!isset($model)) {
     @endif
     @if ((isset( $meta_keywords )&&!empty( $meta_keywords ))|| $model->meta_keywords )
         <meta content="{{ $meta_keywords ?? $model->meta_keywords }}" name="keywords">
-    @endif
-    @if(config('app.env') == 'production')
-    {!! $settings->scripts !!}
     @endif
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7cPlayfair+Display:400,700,400i,700i"
           rel="stylesheet">
