@@ -41,7 +41,7 @@ if (!isset($model)) {
     <link rel="stylesheet" type="text/css" href="/css/libs/owl.theme.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/libs/animate.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/libs/hover.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/theme.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="/css/theme.css?v=040219" media="all"/>
     <link rel="stylesheet" type="text/css" href="/css/responsive.css" media="all"/>
     <link rel="stylesheet" type="text/css" href="/css/browser.css" media="all"/>
     <link rel="shortcut icon" href="{{{ asset('images/icon/favicon.png') }}}">
@@ -101,7 +101,7 @@ if (!isset($model)) {
 <script src="/js/libs/timecircles.min.js"></script>
 <script src="/js/libs/jquery.maskedinput.js"></script>
 <script src="/js/libs/wow.min.js"></script>
-<script src="/js/theme.js"></script>
+<script src="/js/theme.js?v=040219"></script>
 @if(config('app.env') == 'production')
     <div class="mango-callback" data-settings='{"type":"", "id": "MTAwMDk1MDc=","autoDial" : "0", "lang" : "ru-ru", "host":"widgets.mango-office.ru/", "errorMessage": "В данный момент наблюдаются технические проблемы и совершение звонка невозможно"}'>
     </div>
