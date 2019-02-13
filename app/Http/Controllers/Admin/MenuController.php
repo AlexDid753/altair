@@ -18,7 +18,7 @@ class MenuController extends BaseAdminController
 
     public function index()
     {
-        $models = $this->model::where(['parent_id' => null])->orderBy('id')->paginate(50);
+        $models = $this->model::where(['parent_id' => null])->orderBy('sort')->paginate(50);
         return view('admin.base.index_tree', [
             'models' => $models,
             'name' => $this->name

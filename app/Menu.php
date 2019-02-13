@@ -25,6 +25,11 @@ class Menu extends Model
         return $this->hasMany('App\Menu', 'parent_id', 'id')->sortAsc();
     }
 
+    public function childrensSorted()
+    {
+        return $this->childrens->sortBy('sort');
+    }
+
     public function getUrl()
     {
         if(!empty($this->url))
