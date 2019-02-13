@@ -89,6 +89,11 @@ trait ResourcePageMethods
         return $query->where('published','=', 1)->get();
     }
 
+    public function scopeSortedByName($query)
+    {
+        return $query->orderBy('name');
+    }
+
     public function get_images_array($default_src = 'images/photos/jewelry/dark-light-jewelry-01.jpg')
     {
         $images_sources = [$default_src];
