@@ -14,8 +14,8 @@
                                     <a href="{{ route($name.'.delete', ['id' => $model->id]) }}" onclick="return confirm('Действительно удалить &quot;{{ $model->name }}&quot; ?')"><span data-feather="trash"></span></a>
                                 </td>
                             </tr>
-                            @if ($model->childrensSorted())
-                                @includeIf('admin.base.table_row', ['models' => $model->childrensSorted(), 'padding' => 18])
+                            @if ($model->childrens->sortBy('sort'))
+                                @includeIf('admin.base.table_row', ['models' => $model->childrens->sortBy('sort'), 'padding' => 18])
                             @endif
                         @endif
                     @endforeach
