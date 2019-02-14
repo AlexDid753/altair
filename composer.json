@@ -10,6 +10,7 @@
         "barryvdh/laravel-ide-helper": "^2.4",
         "doctrine/dbal": "^2.6",
         "elasticquent/elasticquent": "dev-master",
+        "elasticsearch/elasticsearch": "^6.1",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.8",
         "guzzlehttp/guzzle": "^6.3",
