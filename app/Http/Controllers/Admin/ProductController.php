@@ -98,6 +98,7 @@ class ProductController extends BaseAdminController
 
     public function edit($id)
     {
+        session()->put('previous_url', url()->previous());
         //todo $model = $this->model::withTrashed()->find($id); или убрать из индекса удаленные товары
         $model = $this->model::find($id);
         if( !$model->isRing() ) {
@@ -111,6 +112,18 @@ class ProductController extends BaseAdminController
             'categories' => $categories,
             'class_name' => strtolower((new \ReflectionClass($model))->getShortName())
         ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $rules = $this->model::find($id)->validatorRules('PUT');
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return back()->withInput()->withErrors($validator);
+        }else {
+            $this->store($request,$id);
+            return redirect(session()->get('previous_url'));
+        }
     }
 
 }
