@@ -11,7 +11,9 @@ class SearchController extends BaseController
 {
     public function search(Request $request)
     {
-        ($request->path() == 'admin/search') ? $admin_search = true : $admin_search = false;
+        $admin_search = (strpos($request->path(), 'admin') !== false);
+        $page_number = 0;
+        $message = null;
         if ($admin_search) {
             $products_limit = 50; //Количество товаров на странице
         } else {
@@ -19,8 +21,6 @@ class SearchController extends BaseController
             $model = new Page;
             $model->name = 'Страница поиска';
         }
-        $page_number = 0;
-        $message = null;
         if (empty($request->all()['q'])) {
             $models = Product::orderBy('id');
         } else {
@@ -51,12 +51,9 @@ class SearchController extends BaseController
                 'message' => $message,
                 'name' => 'product']);
         } else {
-            //Фильтруем удаленные и неопубликованные и добавляем пагинацию
-            $models = $models->where('published', 1)->paginate($products_limit);
-
             return view('search', [
                 'model' => $model,
-                'models' => $models,
+                'models' => $models->paginate($products_limit),
                 'message' => $message]);
         }
 
