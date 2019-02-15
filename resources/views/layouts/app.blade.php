@@ -48,6 +48,7 @@ if (!isset($model)) {
     @if(isset($show_link_canonical)&&($show_link_canonical))
     <link rel="canonical" href="{{\Illuminate\Support\Facades\URL::current()}}"/>
     @endif
+    <!-- <link rel="stylesheet" type="text/css" href="/css/rtl.css" media="all"/> -->
     <style>
         @if (isset($model->slider_linked_images) && count($model->slider_linked_images))
             @foreach ($model->slider_linked_images as $slider_item)
