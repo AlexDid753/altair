@@ -110,6 +110,10 @@ class EventServiceProvider extends ServiceProvider
             }
         });
 
+        Product::created(function($model){
+            $model->addToIndex();
+        });
+
         Product::saving(function ($model) {
             $model->set_categories_title();
             self::setUrl($model);
@@ -121,7 +125,7 @@ class EventServiceProvider extends ServiceProvider
             $model->reindex();
         });
 
-        Product::deleting(function($model){
+        Product::deleted(function($model){
             $model->removeFromIndex();
         });
 
