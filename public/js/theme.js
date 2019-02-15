@@ -690,6 +690,15 @@
             }
         }
 
+        $('.dropdown-box').hover(
+            function(){ $(this).addClass('dropdown-hover') },
+            function(){ $(this).removeClass('dropdown-hover') }
+        )
+
+        $('.dropdown-box').click(
+            function(){ $(this).toggleClass('dropdown-hover') }
+        )
+
         $('.filter-sort-list a').click(function () {
             let sort = $(this).data('sort');
             $(this).closest('.dropdown-box').find('.dropdown-link .silver').text($(this).text())
