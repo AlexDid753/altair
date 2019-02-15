@@ -3234,7 +3234,6 @@ a.opaci:hover {
 }
 .logo.logo1 {
   margin-right: 30px;
-  text-align: center;
 }
 .free-order {
   padding: 13px 0;
@@ -4457,6 +4456,21 @@ a.dark {
   -o-box-shadow: 0 2px 2px #444;
   box-shadow: 0 2px 2px #444;
 }
+#header.default .logo .logo-item {
+  display: none;
+}
+.logo, .logo a {
+  color: #fff;
+
+  text-transform: uppercase;
+}
+.logo .logo-item {
+  position: relative;
+  top: 30px;
+  padding: 0 18px;
+  width: 150px;
+  font-weight: 600;
+}
 .logo.logo2{
   display: none;
 }
@@ -4514,6 +4528,9 @@ a.dark {
   }
   #header.default .main-nav{
     margin-left: 0px;
+  }
+  #header .logo .logo-item {
+    display: none;
   }
 }
 .header3 {
@@ -7159,6 +7176,8 @@ img.line-icon {
 }
 .nav-header-jewelry5 .wrap-cart-top2 {
   margin-top: 15px;
+  position: absolute;
+  right: 10px;
 }
 .content-top-jewelry5 {
   padding: 30px 30px 40px;

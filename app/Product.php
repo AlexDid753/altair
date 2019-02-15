@@ -62,11 +62,6 @@ class Product extends Model
             "language" => "russian",
             "stopwords" => "_russian_"
         ],
-        'video' => [
-            'type' => 'text',
-            "language" => "russian",
-            "stopwords" => "_russian_"
-        ],
         'categories_title' => [
             "language" => "russian",
             "stopwords" => "_russian_"

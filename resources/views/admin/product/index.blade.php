@@ -5,6 +5,7 @@
             <form method="get" action="/admin/search">
                 <div class="input-group">
                     <input type="text" name="q" class="form-control"
+                           value="{{request()->q}}"
                            placeholder="Поиск по продуктам (Название, категория или артикул)">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="submit">
@@ -13,10 +14,12 @@
                     </div>
                 </div>
             </form>
+            @include('shared.admin_pagination')
             <table class="table table-striped">
                 <thead>
                 <tr>
                     <td>ID</td>
+                    <td>Артикул</td>
                     <td>Наименование</td>
                     <td>Категория</td>
                     <td class="text-right">
@@ -27,6 +30,7 @@
                 @foreach ($models as $model)
                     <tr>
                         <td>{{ $model->id }}</td>
+                        <td>{{ $model->code }}</td>
                         <td>{{ $model->title }}</td>
                         <td>{{ $model->parent->title or '—' }}</td>
                         <td class="text-right">
@@ -41,7 +45,7 @@
                 @endforeach
                 </tbody>
             </table>
-            {{$models->appends(request()->input())->links()}}
+            @include('shared.admin_pagination')
         </div>
         <div class="col-md-1">
             <div class="control-buttons">
