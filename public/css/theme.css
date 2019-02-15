@@ -1327,7 +1327,7 @@ div.table .product-info .product-title {
   transition: all 0.5s ease-out 0s;
   -webkit-transition: all 0.5s ease-out 0s;
 }
-.dropdown-box:hover .dropdown-list {
+.dropdown-box.dropdown-hover .dropdown-list {
   opacity: 1;
   visibility: visible;
   margin-top: 0;
