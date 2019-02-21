@@ -22,12 +22,9 @@ class Menu extends Model
 
     public function childrens()
     {
-        return $this->hasMany('App\Menu', 'parent_id', 'id')->sortAsc();
-    }
-
-    public function childrensSorted()
-    {
-        return $this->childrens->sortBy('sort');
+        return $this->hasMany('App\Menu', 'parent_id', 'id')
+            ->with('childrens')
+            ->orderBy('sort');
     }
 
     public function getUrl()
