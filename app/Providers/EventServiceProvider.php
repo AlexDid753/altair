@@ -70,7 +70,7 @@ class EventServiceProvider extends ServiceProvider
                 $subject = 'Новый заказ №'. $model->id .' со страницы Корзина';
                 $message->to($settings->admin_email)
                     ->subject($subject);
-                $message->from('contacts@serebro-altair.ru','Altair');
+                $message->from(config('mail.username'),'Altair');
             });
         } catch (\Exception $e) {}
 
@@ -79,7 +79,7 @@ class EventServiceProvider extends ServiceProvider
                 $subject = 'Формирование заказа №'. $model->id .' на сайте Альтаир';
                 $message->to($model->email)
                     ->subject($subject);
-                $message->from('contacts@serebro-altair.ru','Altair');
+                $message->from(config('mail.username'),'Altair');
             });
         } catch (\Exception $e) {}
     }
