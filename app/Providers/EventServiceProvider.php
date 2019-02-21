@@ -11,6 +11,7 @@ use App\Category;
 use App\Product;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Log;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -72,7 +73,9 @@ class EventServiceProvider extends ServiceProvider
                     ->subject($subject);
                 $message->from(config('mail.username'),'Altair');
             });
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            Log::error($e);
+        }
 
         try {
             Mail::send('emails.customer_mail', $data, function($message) use ($model) {
@@ -81,7 +84,9 @@ class EventServiceProvider extends ServiceProvider
                     ->subject($subject);
                 $message->from(config('mail.username'),'Altair');
             });
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            Log::error($e);
+        }
     }
 
     public function boot()
