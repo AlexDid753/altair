@@ -83,7 +83,7 @@
                         <li>
                           @if(!empty($model->code))
                             <div class="item-product-meta-info product-code-info">
-                              <label>Артикул:</label>
+                              <label>@lang('Code'):</label>
                               <span>{{$model->code}}</span>
                             </div>
                           @endif
@@ -91,7 +91,7 @@
                         <li>
                           @if(!empty($model->material))
                             <div class="item-product-meta-info product-material-info">
-                              <label>Материал:</label>
+                              <label>@lang('Material'):</label>
                               <span>{{$model->material}}</span>
                             </div>
                           @endif
@@ -99,7 +99,7 @@
                         <li>
                           @if(!empty($model->weight))
                             <div class="item-product-meta-info product-weight-info">
-                              <label>Средний вес:</label>
+                              <label>@lang('Weight'):</label>
                               <span>{{$model->weight}} г</span>
                             </div>
                           @endif
@@ -107,7 +107,7 @@
                         <li>
                           @if(!empty($model->sample))
                             <div class="item-product-meta-info product-sample-info">
-                              <label>Проба:</label>
+                              <label>@lang('Sample'):</label>
                               <span>{{$model->sample}}</span>
                             </div>
                           @endif
@@ -115,7 +115,7 @@
                         <li>
                           @if(!empty($model->piece))
                             <div class="item-product-meta-info product-piece-info">
-                              <label>Вставка:</label>
+                              <label>@lang('Piece'):</label>
                               <span>{{$model->piece}}</span>
                             </div>
                           @endif
