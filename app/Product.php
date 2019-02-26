@@ -109,7 +109,8 @@ class Product extends Model
 
     public function customFields()
     {
-        return $this->parent->customProductFields();
+        $parent = $this->parent;
+        return ($parent->exists())? $parent->customProductFields() : [];
     }
 
     public function categories()
