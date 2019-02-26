@@ -75,7 +75,9 @@ class ProductController extends BaseAdminController
         if ($this->listWhere())
             $models = $this->model::where($this->listWhere())->orderBy('id')->paginate(50);
         else
-            $models = $this->model::orderBy('id')->paginate(50);
+            $models = $this->model::orderBy('id')
+                ->with('parent')
+                ->paginate(50);
 
         return view()->first(['admin.' . $this->name . '.list', 'admin.product.index'], [
             'models' => $models,
