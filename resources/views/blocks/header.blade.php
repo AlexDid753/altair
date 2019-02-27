@@ -23,8 +23,9 @@
             </a>
           </div>
           <!-- End Main Nav -->
-          <div class="cart-top2-phone"><i class="fa fa-volume-control-phone white"></i>
-            <a href="tel:{{$settings->phone}}">{{$settings->phone}}</a></div>
+          <div class="cart-top2-phone">
+            <a href="tel:{{$settings->phone}}">{{$settings->phone}}</a>
+          </div>
 
           <ul class="wrap-cart-top2 list-inline-block pull-right">
             <li>

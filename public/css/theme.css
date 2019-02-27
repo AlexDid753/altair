@@ -4457,6 +4457,24 @@ a.dark {
   -o-box-shadow: 0 2px 2px #444;
   box-shadow: 0 2px 2px #444;
 }
+#header.default .logo .logo-item {
+  display: none;
+}
+#header.default .nav-header-jewelry5 .wrap-cart-top2 {
+  margin-top: 22px;
+}
+.logo, .logo a {
+  color: #fff;
+
+  text-transform: uppercase;
+}
+.logo .logo-item {
+  position: relative;
+  top: 30px;
+  padding: 0 18px;
+  width: 150px;
+  font-weight: 600;
+}
 .logo.logo2{
   display: none;
 }
@@ -4515,6 +4533,12 @@ a.dark {
   #header.default .main-nav{
     margin-left: 0px;
   }
+  #header .logo .logo-item {
+    display: none;
+  }
+  #header.default .nav-header-jewelry5 .wrap-cart-top2 {
+    margin-top: 23px;
+  }
 }
 .header3 {
   padding: 30px 0;
@@ -4533,6 +4557,7 @@ a.dark {
   width: 150px;
   right: 0px;
   font-weight: 600;
+  font-size: 15px
 }
 .cart-top2-phone a{
   color: #fff;
@@ -7155,7 +7180,7 @@ img.line-icon {
   margin-right: 5px;
 }
 .nav-header-jewelry5 .logo {
-
+  font-size: 13px;
 }
 .nav-header-jewelry5 .wrap-cart-top2 {
   margin-top: 15px;
