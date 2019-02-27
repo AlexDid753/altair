@@ -4459,6 +4459,9 @@ a.dark {
 #header.default .logo .logo-item {
   display: none;
 }
+#header.default .nav-header-jewelry5 .wrap-cart-top2 {
+  margin-top: 22px;
+}
 .logo, .logo a {
   color: #fff;
 
