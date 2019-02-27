@@ -25,11 +25,12 @@
     @endif
 
     <p class="font-weight-bold">Относится к категориям: </p>
-    @foreach($categories as $category)
+    @foreach($categories->sortBy('name') as $category)
       <div class="form-group row">
         <div class="col-md-12">
           <div class="checkbox">
-            {{ Form::checkbox('categories[]', $category->id) }} {{ $category->title }}
+            {{ Form::checkbox('categories[]', $category->id, $model->categories->contains($category->id),array('id'=>'category'.$category->id)) }}
+            {{ Form::label('category'.$category->id, $category->title) }}
           </div>
         </div>
       </div>

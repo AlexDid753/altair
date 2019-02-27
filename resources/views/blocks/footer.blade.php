@@ -38,7 +38,7 @@
                                     соцсетях</h2>
                                 <div class="social-network-footer text-center">
                                     <a href="#" class="inline-block round"><i class="fa fa-vk"></i></a>
-                                    <a href="#" class="inline-block round"><i class="fa fa-instagram"></i></a>
+                                    <a href="https://www.instagram.com/altairserebrospb/" class="inline-block round" target="_blank"><i class="fa fa-instagram"></i></a>
                                     <a href="#" class="inline-block round"><i class="fa fa-facebook"></i></a>
                                 </div>
                             </div>

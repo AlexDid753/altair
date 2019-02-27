@@ -27,7 +27,9 @@
         </div>
       </div>
       <div class="col-12 category_seo-text">
-        {!! $model->text !!}
+        <div class="container">
+          {!! $model->text !!}
+        </div>
       </div>
     </div>
     </div>

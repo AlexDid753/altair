@@ -1327,7 +1327,7 @@ div.table .product-info .product-title {
   transition: all 0.5s ease-out 0s;
   -webkit-transition: all 0.5s ease-out 0s;
 }
-.dropdown-box:hover .dropdown-list {
+.dropdown-box.dropdown-hover .dropdown-list {
   opacity: 1;
   visibility: visible;
   margin-top: 0;
@@ -3234,6 +3234,7 @@ a.opaci:hover {
 }
 .logo.logo1 {
   margin-right: 30px;
+  text-align: center;
 }
 .free-order {
   padding: 13px 0;
@@ -7183,8 +7184,6 @@ img.line-icon {
 }
 .nav-header-jewelry5 .wrap-cart-top2 {
   margin-top: 15px;
-  position: absolute;
-  right: 10px;
 }
 .content-top-jewelry5 {
   padding: 30px 30px 40px;

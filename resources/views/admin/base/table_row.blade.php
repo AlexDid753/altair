@@ -14,7 +14,7 @@
         </td>
     </tr>
 
-    @if ($model->childrens)
-        @include('admin.base.table_row', ['models' => $model->childrens, 'padding' => $padding + 18])
+    @if ($model->childrens->sortBy('sort'))
+        @include('admin.base.table_row', ['models' => $model->childrens->sortBy('sort'), 'padding' => $padding + 18])
     @endif
 @endforeach

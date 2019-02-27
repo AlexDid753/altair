@@ -11,6 +11,7 @@ use App\Category;
 use App\Product;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Log;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -70,18 +71,22 @@ class EventServiceProvider extends ServiceProvider
                 $subject = 'Новый заказ №'. $model->id .' со страницы Корзина';
                 $message->to($settings->admin_email)
                     ->subject($subject);
-                $message->from('contacts@serebro-altair.ru','Altair');
+                $message->from(config('mail.username'),'Altair');
             });
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            Log::error($e);
+        }
 
         try {
             Mail::send('emails.customer_mail', $data, function($message) use ($model) {
                 $subject = 'Формирование заказа №'. $model->id .' на сайте Альтаир';
                 $message->to($model->email)
                     ->subject($subject);
-                $message->from('contacts@serebro-altair.ru','Altair');
+                $message->from(config('mail.username'),'Altair');
             });
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            Log::error($e);
+        }
     }
 
     public function boot()
@@ -110,6 +115,10 @@ class EventServiceProvider extends ServiceProvider
             }
         });
 
+        Product::created(function($model){
+            $model->addToIndex();
+        });
+
         Product::saving(function ($model) {
             $model->set_categories_title();
             self::setUrl($model);
@@ -121,7 +130,7 @@ class EventServiceProvider extends ServiceProvider
             $model->reindex();
         });
 
-        Product::deleting(function($model){
+        Product::deleted(function($model){
             $model->removeFromIndex();
         });
 

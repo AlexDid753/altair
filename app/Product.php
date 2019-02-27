@@ -62,11 +62,6 @@ class Product extends Model
             "language" => "russian",
             "stopwords" => "_russian_"
         ],
-        'video' => [
-            'type' => 'text',
-            "language" => "russian",
-            "stopwords" => "_russian_"
-        ],
         'categories_title' => [
             "language" => "russian",
             "stopwords" => "_russian_"
@@ -114,7 +109,7 @@ class Product extends Model
 
     public function customFields()
     {
-        return $this->parent->customProductFields();
+        return ($this->parent()->exists())? $this->parent->customProductFields() : [];
     }
 
     public function categories()
