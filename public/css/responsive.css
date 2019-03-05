@@ -253,7 +253,7 @@
 /*End Screen 860*/
 @media (max-width: 1024px) {
   .cart-top2-phone{
-    top: 105px;
+    top: 95px;
     width: 100%;
     left: 0;
     right: 0;
@@ -671,7 +671,7 @@
         padding: 30px;
     }
     .nav-header-jewelry5 .wrap-cart-top2 {
-        top: 105px;
+        top: 95px;
     }
 }
 
