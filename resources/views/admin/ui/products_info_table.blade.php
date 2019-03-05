@@ -21,6 +21,7 @@
           </th>
           <th>
             <p>Цена: {{$product->price}}</p>
+            <p>Артикул: {{$product->code}}</p>
             <p>{{($data_item->size)?'Размер: '.$data_item->size : ''}}</p>
           </th>
         </tr>
