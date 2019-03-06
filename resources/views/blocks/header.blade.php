@@ -37,15 +37,15 @@
 
           <ul class="wrap-cart-top2 list-inline-block pull-right">
             <li>
+              <a href="{{Page::find(2)->url}}" class="title18 wishlist-link" title="Корзина"><span class="white"><i class="fa fa-shopping-basket"></i></span>
+                <sup class="title10 round dark bg-white">{{count(Product::liked())}}</sup></a>
+            </li>
+            <li>
               <a href="/search" class="title18 wishlist-link" title="Поиск">
                 <span class="white">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </span>
               </a>
-            </li>
-            <li>
-              <a href="{{Page::find(2)->url}}" class="title18 wishlist-link" title="Корзина"><span class="white"><i class="fa fa-shopping-basket"></i></span>
-                <sup class="title10 round dark bg-white">{{count(Product::liked())}}</sup></a>
             </li>
           </ul>
         </div>
