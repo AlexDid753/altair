@@ -997,7 +997,7 @@
 
 //Menu Responsive
     function menu_responsive() {
-        if ($(window).width() < 768) {
+        if ($(window).width() < 1024) {
             if ($('.btn-toggle-mobile-menu').length > 0) {
                 return false;
             } else {
