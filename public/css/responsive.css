@@ -186,6 +186,9 @@
   #header.default .nav-header-jewelry5 .wrap-cart-top2 {
     /*margin-top: 23px;*/
   }
+  .nav-header-jewelry5 {
+    padding: 20px 0;
+  }
   .nav-header-jewelry5 .wrap-cart-top2 {
     /*margin-top: 15px;*/
     position: absolute;
@@ -258,6 +261,7 @@
     left: 0;
     right: 0;
     text-align: center;
+    font-size: 15px;
   }
   .table-responsive>.table.cart>tbody>tr>td, .table-responsive>.table>tbody>tr>th, .table-responsive>.table>tfoot>tr>td, .table-responsive>.table>tfoot>tr>th, .table-responsive>.table>thead>tr>td, .table-responsive>.table>thead>tr>th {
     white-space: normal;
