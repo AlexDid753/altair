@@ -4365,7 +4365,7 @@ a.dark {
   right: 0;
   left: 76%;
   font-weight: 600;
-  font-size: 15px
+  font-size: 17px
 }
 .cart-top2-phone a{
   color: #fff;
@@ -6977,7 +6977,7 @@ img.line-icon {
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.7);
-  padding: 20px 0;
+  padding: 0;
 }
 .logo.logo1 .logo-icon {
   margin-right: 5px;
