@@ -801,7 +801,7 @@
 @media (max-width: 480px) {
   .main-nav > ul {
     overflow: auto;
-    max-height: 700px;
+    max-height: 470px;
     }
   .table.cart .product-thumbnail {
     display: none;
