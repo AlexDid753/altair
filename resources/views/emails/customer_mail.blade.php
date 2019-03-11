@@ -9,10 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  <base href="https://serebro-altair.ru/">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <base href="{{config('app.url')}}">
 </head>
-<base href="https://serebro-altair.ru/">
 <div class="container">
   <p>Ваш заказ №{{$model->id}} принят. Вам перезвонят в ближайшее время.</p>
   <p>Выбранный тип оплаты: {{$model->pay_type}}</p>
