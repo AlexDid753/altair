@@ -7065,3 +7065,6 @@ img.line-icon {
 .zoomContainer {
   cursor: zoom-in;
 }
+.CDEK-widget__delivery-type__box {
+    display: none !important;
+}
