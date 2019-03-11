@@ -716,7 +716,7 @@ input:hover {
 }
 /*End Banner Adv*/
 /*******************************************************************************************************
-										Preview	Menu				
+										Preview	Menu
 ********************************************************************************************************/
 .main-nav > ul > li .sub-menu > li.menu-item-preview {
   position: relative;
@@ -7261,4 +7261,7 @@ img.line-icon {
 }
 .zoomContainer {
   cursor: zoom-in;
+}
+.CDEK-widget__delivery-type__box {
+    display: none !important;
 }
