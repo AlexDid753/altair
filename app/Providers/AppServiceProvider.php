@@ -33,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
             $footerMenu = Menu::where(['parent_id' => 2])->get();
             view()->share('footerMenu', $footerMenu);
 
+            $footerMenu2 = Menu::where(['parent_id' => 89])->get();
+            view()->share('footerMenu2', $footerMenu2);
+
             $latestNews = Page::where(['parent_id' => 8])->orderBy('created_at', 'desc')->limit(2)->get();
             view()->share('latestNews', $latestNews);
 
