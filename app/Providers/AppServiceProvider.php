@@ -30,11 +30,11 @@ class AppServiceProvider extends ServiceProvider
                 ->orderBy('sort')->get();
             view()->share('topMenu', $topMenu);
 
-            $footerMenu = Menu::where(['parent_id' => 2])->get();
-            view()->share('footerMenu', $footerMenu);
+            $footerMenuInfo = Menu::where(['parent_id' => 2])->get();
+            view()->share('footerMenuInfo', $footerMenuInfo);
 
-            $footerMenu2 = Menu::where(['parent_id' => 89])->get();
-            view()->share('footerMenu2', $footerMenu2);
+            $footerMenuDirections = Menu::where(['parent_id' => 89])->get();
+            view()->share('footerMenuDirections', $footerMenuDirections);
 
             $latestNews = Page::where(['parent_id' => 8])->orderBy('created_at', 'desc')->limit(2)->get();
             view()->share('latestNews', $latestNews);
