@@ -4361,11 +4361,11 @@ a.dark {
 .cart-top2-phone{
   position: absolute;
   top: 30px;
-  width: 150px;
+  width: 175px;
   right: 0;
-  left: 76%;
+  left: 74%;
   font-weight: 600;
-  font-size: 17px
+  font-size: 20px
 }
 .cart-top2-phone a{
   color: #fff;
