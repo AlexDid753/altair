@@ -20,12 +20,13 @@
             {{($product->trashed())?' (Продукт удален)' : ''}}
           </th>
           <th>
-            <p>Цена: {{$product->price}}</p>
+            <p>Цена: {{$product->price}}&#8381;</p>
             <p>Артикул: {{$product->code}}</p>
             <p>{{($data_item->size)?'Размер: '.$data_item->size : ''}}</p>
           </th>
         </tr>
       @endforeach
     </table>
+    @include('admin.feedback.summ')
   </div>
 </div>
