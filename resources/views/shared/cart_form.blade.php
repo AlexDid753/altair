@@ -54,7 +54,7 @@
             </select>
         </div>
         <p class="contact-submit cart-submit">
-            <input class="shop-button white bg-dark" type="submit"
+            <input class="shop-button white bg-dark" type="submit" onclick="ym(50521729, 'reachGoal', 'zakaz'); return true;"
                    value="Оформить заказ">
             <span class="cart-submit_totals-price">Сумма к оплате: <span class="number"></span><span class="rub"> Р</span></span>
         </p>

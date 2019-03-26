@@ -63,7 +63,7 @@
                       <p class="desc product-desc">{!! $model->text !!}</p>
 
                       <div class="detail-extra-link">
-                        <a href="#" class="wishlist-link"><i
+                        <a href="#" class="wishlist-link" onclick="ym(50521729, 'reachGoal', 'korzina'); return true;"><i
                               class="icon {{ $model->isLiked() ? 'ion-ios-cart' : 'ion-ios-cart-outline' }}"
                               data-slug="{{$model->slug}}"></i><span>{{$model->isLiked() ? 'Удалить из корзины' : 'Добавить в корзину'}}</span></a>
                         @if(!empty($model->link))
