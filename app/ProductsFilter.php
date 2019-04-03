@@ -8,7 +8,9 @@ class ProductsFilter extends QueryFilter
     public function __construct($builder, $request)
     {
         parent::__construct($builder, $request);
-        $this->builder = $builder->orderBy('id','desc')->where('published', 1);
+        $this->builder = $builder->when(!request('sortByPrice'), function ($q) {
+            return $q->orderBy('id', 'desc');
+        })->where('published', 1);
     }
 
     public function sortByPrice($value = 'asc') {
