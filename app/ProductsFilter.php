@@ -9,7 +9,7 @@ class ProductsFilter extends QueryFilter
     {
         parent::__construct($builder, $request);
         $this->builder = $builder->when(!request('sortByPrice'), function ($q) {
-            return $q->orderBy('id', 'desc');
+            return $q->orderBy('code');
         })->where('published', 1);
     }
 
