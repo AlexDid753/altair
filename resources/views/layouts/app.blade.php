@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <?php
 if (!isset($model)) {
-    $model = new \App\Page();
+    $model = new Page();
     $model->name = config('app.name');
 }
 ?>
@@ -13,9 +13,6 @@ if (!isset($model)) {
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=""/>
-    <meta name="keywords" content=""/>
-    <meta name="robots" content=""/>
     <meta name="yandex-verification" content="c4d052ac7add82f5"/>
     <meta name="google-site-verification" content="2TyHFP-Ix37YtnO3yNrS550AJY95TSk8Os49fXPeON4"/>
     <meta name=“cmsmagazine” content=“848ae7630557f340f5b1ca0e385dc314"/>
