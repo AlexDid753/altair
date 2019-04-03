@@ -15,7 +15,7 @@ class Page extends Model
     ];
 
     protected $fillable = [
-        'parent_id', 'template_id', 'published', 'name', 'slug', 'fields'
+        'parent_id', 'template_id', 'published', 'name', 'slug', 'fields', 'sitemap_html_published'
     ];
 
     protected $casts = [
@@ -54,6 +54,7 @@ class Page extends Model
             'parent_id' => 'nullable|integer|exists:pages,id',
             'template_id' => 'nullable|integer|exists:templates,id',
             'published' => 'boolean',
+            'sitemap_html_published' => 'boolean',
             'name' => 'required|string|max:255',
             'fields' => 'nullable|array',
             'slug' => 'nullable|string|max:255'
@@ -62,6 +63,7 @@ class Page extends Model
             'parent_id' => 'nullable|integer|exists:pages,id',
             'template_id' => 'nullable|integer|exists:templates,id',
             'published' => 'boolean',
+            'sitemap_html_published' => 'boolean',
             'name' => 'required|string|max:255',
             'fields' => 'nullable|array',
             'slug' => 'nullable|string|max:255'
@@ -122,6 +124,13 @@ class Page extends Model
     public function isContainer()
     {
         return $this->template && $this->template->is_container;
+    }
+
+    public function scopeSitemapHtmlPublished($query)
+    {
+        return $query
+            ->where('published', 1)
+            ->where('sitemap_html_published', 1);
     }
 
     public function fullUrl()
