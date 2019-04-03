@@ -5,36 +5,37 @@ namespace App;
 
 class ProductsFilter extends QueryFilter
 {
-    public function published()
+    public function __construct($builder, $request)
     {
-        return $this->builder->where('published', '=', 1);
+        parent::__construct($builder, $request);
+        $this->builder = $builder->orderBy('id','desc')->where('published', 1);
     }
 
     public function sortByPrice($value = 'asc') {
-        return $this->published()->orderBy('price', $value);
+        return $this->builder->orderBy('price', $value);
     }
 
     public function minPrice($value = 0) {
-        return $this->published()->where('price', '>=', intval($value));
+        return $this->builder->where('price', '>=', intval($value));
     }
 
     public function maxPrice($value = 999999) {
         $value = (intval($value) == 0)? 999999 : $value;
-        return $this->published()->where('price', '<=', $value);
+        return $this->builder->where('price', '<=', $value);
     }
 
     public function piece($value = false) {
         $value = ($value === 'true')? true: false;
-        return ($value == true)? $this->published()
+        return ($value == true)? $this->builder
             ->where('piece', '!=', '')
             ->where('piece', '!=', 'эмаль')
-            ->where('piece', '!=', 'Эмаль') : $this->published();
+            ->where('piece', '!=', 'Эмаль') : $this->builder;
     }
 
     public function complect($value = false) {
         $value = ($value === 'true')? true: false;
-        return ($value == true)? $this->published()
-            ->where('connected_products', '!=', '') : $this->published();
+        return ($value == true)? $this->builder
+            ->where('connected_products', '!=', '') : $this->builder;
     }
 
     public function fastener_type($value = '') {
@@ -49,9 +50,9 @@ class ProductsFilter extends QueryFilter
         $value = preg_replace("/[^0-9,]/","",$value);
         if ($value) {
             $vals = explode(",", $value);
-            return $this->published()
+            return $this->builder
                 ->whereIn($attrName, $vals);
         }
-        return $this->published();
+        return $this->builder;
     }
 }
