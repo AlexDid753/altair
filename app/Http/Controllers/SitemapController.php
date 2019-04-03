@@ -10,7 +10,7 @@ use Watson\Sitemap\Facades\Sitemap;
 
 class SitemapController extends BaseController
 {
-    public function index()
+    public function xml()
     {
         $products = Product::published();
         $categories = Category::published();
@@ -23,5 +23,22 @@ class SitemapController extends BaseController
         }
 
         return Sitemap::render();
+    }
+
+    public function html()
+    {
+        $pages = Page::sitemapHtmlPublished()->get();
+        $categories = Category::where('published', 1)
+            ->where('parent_id',null)
+            ->with('childrens')
+            ->get();
+
+        $model = Page::find(15);
+
+        return view('sitemap', [
+            'model' => $model,
+            'pages' => $pages,
+            'categories' => $categories
+        ]);
     }
 }

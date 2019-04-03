@@ -39,7 +39,7 @@ class Category extends Model
 
     public function childrens()
     {
-        return $this->hasMany('App\Category', 'parent_id', 'id');
+        return $this->hasMany('App\Category', 'parent_id', 'id')->with('childrens');
     }
 
     public function getNameAttribute()

@@ -19,10 +19,10 @@ if (!isset($model)) {
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $meta_title ?? $model->meta_title ?: $model->name }}</title>
     @if ((isset( $meta_description )&&!empty( $meta_description ))|| $model->meta_description )
-        <meta content="{{$meta_description ?? $model->meta_description }}" name="description">
+    <meta content="{{$meta_description ?? $model->meta_description }}" name="description">
     @endif
     @if ((isset( $meta_keywords )&&!empty( $meta_keywords ))|| $model->meta_keywords )
-        <meta content="{{ $meta_keywords ?? $model->meta_keywords }}" name="keywords">
+    <meta content="{{ $meta_keywords ?? $model->meta_keywords }}" name="keywords">
     @endif
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7cPlayfair+Display:400,700,400i,700i"
           rel="stylesheet">
