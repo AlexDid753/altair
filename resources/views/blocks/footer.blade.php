@@ -64,7 +64,7 @@
                                     <a href="#" class="inline-block round"><i class="fa fa-vk"></i></a>
                                     <a href="https://www.instagram.com/altairserebrospb/" class="inline-block round" target="_blank"><i class="fa fa-instagram"></i></a>
                                     <a href="#" class="inline-block round"><i class="fa fa-facebook"></i></a>
-                                    <a href="https://www.youtube.com/channel/UCNW08j41Q5wxVbGNn681Ulw?view_as=subscriber" class="inline-block round"><i class="fa fa-youtube"></i></a>
+                                    <a href="https://www.youtube.com/channel/UCNW08j41Q5wxVbGNn681Ulw?view_as=subscriber"  target="_blank" class="inline-block round"><i class="fa fa-youtube"></i></a>
                                 </div>
                             </div>
                         </div>
