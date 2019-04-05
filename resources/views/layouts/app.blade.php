@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <?php
 if (!isset($model)) {
-    $model = new \App\Page();
+    $model = new Page();
     $model->name = config('app.name');
 }
 ?>
@@ -13,19 +13,16 @@ if (!isset($model)) {
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=""/>
-    <meta name="keywords" content=""/>
-    <meta name="robots" content=""/>
     <meta name="yandex-verification" content="c4d052ac7add82f5"/>
     <meta name="google-site-verification" content="2TyHFP-Ix37YtnO3yNrS550AJY95TSk8Os49fXPeON4"/>
     <meta name=“cmsmagazine” content=“848ae7630557f340f5b1ca0e385dc314"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $meta_title ?? $model->meta_title ?: $model->name }}</title>
     @if ((isset( $meta_description )&&!empty( $meta_description ))|| $model->meta_description )
-        <meta content="{{$meta_description ?? $model->meta_description }}" name="description">
+    <meta content="{{$meta_description ?? $model->meta_description }}" name="description">
     @endif
     @if ((isset( $meta_keywords )&&!empty( $meta_keywords ))|| $model->meta_keywords )
-        <meta content="{{ $meta_keywords ?? $model->meta_keywords }}" name="keywords">
+    <meta content="{{ $meta_keywords ?? $model->meta_keywords }}" name="keywords">
     @endif
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7cPlayfair+Display:400,700,400i,700i"
           rel="stylesheet">

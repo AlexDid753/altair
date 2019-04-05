@@ -12,8 +12,8 @@
 */
 use App\Category;
 use App\Product;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/elfinder', ['uses' => '\Barryvdh\Elfinder\ElfinderController@showPopup'])->name('elfinder');
@@ -90,7 +90,8 @@ foreach ($categories_urls as $url) {
     Route::get($url . "{url}", 'ProductController@show')->where('url', '[A-Za-z0-9/-]+');
 }
 
-Route::get('sitemap.xml', 'SitemapController@index')->name('sitemap');
+Route::get('sitemap.xml', 'SitemapController@xml')->name('sitemap.xml');
+Route::get('sitemap', 'SitemapController@html')->name('sitemap.html');
 Route::get('{url?}', 'PageController@show')->where('url', '[A-Za-z0-9/-]+')->name('page.show');
 
 

@@ -11,6 +11,7 @@ class PageController extends BaseAdminController
     public $fields = [
         'name' => 'input',
         'published' => 'checkbox',
+        'sitemap_html_published' => 'checkbox',
         'slug' => 'input',
         'url' => ['type' => 'input', "attributes"=>['readonly'=>'readonly']],
         'parent_id' => ['type' => 'dropdown', 'label' => 'Parent', 'model' => 'Page', 'method' => 'dropdown'],
